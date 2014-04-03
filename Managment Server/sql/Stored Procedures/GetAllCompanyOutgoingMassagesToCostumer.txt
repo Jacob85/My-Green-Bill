@@ -1,0 +1,40 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompanyOutgoingMassagesToCostumer`(in company_id int, in user_id int)
+BEGIN
+
+declare user_email varchar(45);
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+DECLARE isCompanyExist INT;
+declare isUserExist int;
+	
+SELECT isCompanyIdExist(company_id) INTO isCompanyExist;
+select isUserIdExist(user_id) into isUserExist;
+
+IF isCompanyExist=0 || isUserExist=0  THEN
+	SET @message_text = CONCAT('An error with the company id or the user id');
+	SIGNAL error_msg
+	SET MESSAGE_TEXT = @message_text;
+else
+	/*get the user email into my var*/
+	select user.email into user_email from user where user.id = user_id;
+	/*selecting the proper fildes from the tables */
+	select 
+		company.name as company_name,
+		massage_info.send_to,
+		massage_info.send_from,
+		massage_info.subject,
+		massage_info.content,
+		file.name as file_name,
+		file.path
+	from company
+	join outgoing_massages on company.id = outgoing_massages.company_id
+	join massage_info on outgoing_massages.massage_info_id = massage_info.id
+	left join file on massage_info.id = file.massage_id
+	where company.id = company_id && massage_info.send_to = user_email;
+end if;
+END

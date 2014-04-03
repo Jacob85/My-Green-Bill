@@ -1,0 +1,23 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllMonthlyStatsForCompany`(in company_id int)
+begin
+
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+declare isExist int;
+
+select isCompanyIdExist(company_id) into isExist;
+
+if isExist = 0 then
+	SET @message_text = CONCAT('A comapny with the ID: ', company_id, ' does not exist.');
+	SIGNAL error_msg
+	SET MESSAGE_TEXT = @message_text;
+else
+	select * from company_month_stats where company_month_stats.company_id = company_id;
+end if;
+
+END

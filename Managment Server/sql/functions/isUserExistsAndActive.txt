@@ -1,0 +1,21 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `isUserExistsAndActive`(idToCheck INT) RETURNS int(11)
+BEGIN
+    DECLARE res INT DEFAULT -1;
+	declare active int default 0;
+
+ 	SELECT IF( EXISTS(
+				SELECT *
+				FROM user
+				WHERE user.id=idToCheck), 1, 0) INTO res;
+
+select user.is_avtive  from user where user.id=idToCheck into active;
+
+select if(res = 1 and active =1, 1,0)into res;
+    RETURN res;
+  END

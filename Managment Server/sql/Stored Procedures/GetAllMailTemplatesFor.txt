@@ -1,0 +1,14 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllMailTemplatesFor`(IN target varchar(45))
+BEGIN
+	IF (target = 'All') THEN
+		SELECT * FROM mail_template;
+	ELSE
+		SELECT * FROM mail_template WHERE mail_template.name=target; 
+	END IF;
+END

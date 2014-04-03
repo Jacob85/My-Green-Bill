@@ -1,0 +1,20 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateCompanyAddress`(IN id INT, IN street VARCHAR(45), IN house_number INT,
+							IN city VARCHAR(45), IN postal_code VARCHAR(45),
+							IN country VARCHAR(45))
+BEGIN
+	UPDATE address
+	JOIN company_has_address ON address.id = company_has_address.address_id
+	SET
+	address.street_name = street,
+	address.house_number = house_number,
+	address.city = city,
+	address.postal_code = postal_code,
+	address.country = country
+	WHERE company_has_address.company_id = id;
+END

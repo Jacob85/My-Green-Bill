@@ -1,0 +1,25 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserIncomingMassages`(in id int)
+BEGIN
+
+select 
+	user.first_name,
+	user.last_name,
+	massage_info.send_to,
+	massage_info.send_from,
+	massage_info.subject,
+	massage_info.content,
+	file.name,
+	file.path
+from user
+join incoming_massages on user.id = incoming_massages.user_id
+join massage_info on incoming_massages.massage_info_id = massage_info.id
+left join file on massage_info.id = file.massage_id
+where user.id = id;
+
+END

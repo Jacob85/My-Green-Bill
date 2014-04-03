@@ -1,0 +1,33 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUsersOfCompany`(IN company_id INT, IN email varchar(45))
+BEGIN
+	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+	DECLARE isExist INT;
+
+	SELECT isCompanyIdExist(company_id) INTO isExist;
+	IF isExist = 0 THEN
+		SET @message_text = CONCAT('A comapny with the ID: ', id, ' does not exist.');
+		SIGNAL error_msg
+		SET MESSAGE_TEXT = @message_text;
+	ELSE
+		SELECT
+			company.id AS company_id,
+			company.name,
+			company.email AS company_email,
+			user.id	AS user_id,
+			user.email AS user_email,
+			user.first_name,
+			user.last_name
+		FROM company
+		JOIN user_client_of_company ON user_client_of_company.company_id = company.id
+				&& user_client_of_company.company_email = company.email
+		JOIN user ON user_client_of_company.user_id = user.id
+				&& user_client_of_company.user_email = user.email
+		WHERE company.id = company_id && company.email = email;
+	END IF;
+END

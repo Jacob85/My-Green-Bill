@@ -1,0 +1,33 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserUnpaidInvoices`(in user_id int)
+BEGIN
+
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+declare isExist int;
+
+select isUserIdExist(user_id) into isExist;
+if isExist = 0
+	then	
+	SET @message_text = CONCAT('A User with the ID: ', user_id, ' does not exist.');
+		SIGNAL error_msg
+		SET MESSAGE_TEXT = @message_text;
+	else
+		select 	user.first_name,
+				user.last_name,
+				billing_info.rank,
+				invoice_info.issue_date,
+				invoice_info.due_date,
+				invoice_info.content,
+				invoice_info.is_paid
+		from user
+		join billing_info on billing_info.id = user.billing_info_id
+		join invoice_info on invoice_info.billing_info_id = billing_info.id && invoice_info.is_paid = 0
+		where user.id = user_id;
+end if;
+
+END

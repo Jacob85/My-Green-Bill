@@ -1,0 +1,13 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserInvoices`(IN id INT)
+BEGIN
+	SELECT user.id, user.billing_info_id, invoice_info.content,
+		invoice_info.issue_date, invoice_info.due_date, invoice_info.amount
+	FROM user, invoice_info
+	WHERE user.id=id && user.billing_info_id = invoice_info.billing_info_id;
+END

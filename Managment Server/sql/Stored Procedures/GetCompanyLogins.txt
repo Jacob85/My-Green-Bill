@@ -1,0 +1,16 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCompanyLogins`(in id int)
+BEGIN
+
+select company.name , company.id, log_in_event.date, log_in_event.time 
+from company
+join company_has_log_in_event on company.id = company_has_log_in_event.company_id 
+join log_in_event on log_in_event.id = company_has_log_in_event.log_in_event_id
+where company.id = id;
+
+END

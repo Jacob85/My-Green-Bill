@@ -1,0 +1,23 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllMonthlyStatsForUser`(in user_id int)
+begin
+
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+declare isExist int;
+
+select isUserIdExist(user_id) into isExist;
+
+if isExist = 0 then
+	SET @message_text = CONCAT('A user with the ID: ', user_id, ' does not exist.');
+	SIGNAL error_msg
+	SET MESSAGE_TEXT = @message_text;
+else
+	select * from user_month_stats where user_month_stats.user_id = user_id;
+end if;
+
+END

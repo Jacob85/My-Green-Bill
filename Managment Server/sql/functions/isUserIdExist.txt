@@ -1,0 +1,16 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `isUserIdExist`(idToCheck INT) RETURNS int(11)
+BEGIN
+	DECLARE res INT DEFAULT -1;
+	
+	SELECT IF( EXISTS(
+				SELECT *
+				FROM user
+				WHERE user.id=idToCheck), 1, 0) INTO res;
+	RETURN res;
+END

@@ -1,0 +1,14 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllNewCompanysBetween`( in start_date date, in end_date date)
+BEGIN
+
+select company.name, company.id, company.email,company.join_date
+from company
+where company.join_date between start_date and end_date;
+
+END

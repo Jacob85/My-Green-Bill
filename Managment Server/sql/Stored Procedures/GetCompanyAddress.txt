@@ -1,0 +1,33 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCompanyAddress`(IN company_id INT, IN email varchar(45))
+BEGIN
+	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+	DECLARE isExist INT;
+
+	SELECT isCompanyIdExist(company_id) INTO isExist;
+	IF isExist = 0 THEN
+		SET @message_text = CONCAT('A comapny with the ID: ', id, ' does not exist.');
+		SIGNAL error_msg
+		SET MESSAGE_TEXT = @message_text;
+	ELSE
+		SELECT
+			company.id,
+			company.name,
+			company.email,
+			address.country,
+			address.city,
+			address.street_name,
+			address.house_number,
+			address.postal_code
+		FROM company
+		JOIN company_has_address ON company_has_address.company_id = company.id
+				&& company_has_address.company_email = company.email
+		JOIN address ON company_has_address.address_id = address.id
+		WHERE company.id = company_id && company.email = email;
+	END IF;
+END

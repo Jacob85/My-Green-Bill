@@ -1,0 +1,15 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddSubscriptionPlan`(IN plan_name varchar(45)
+																	,IN plan_description text
+																	,IN input_path_to_file varchar(45)
+																	,IN input_target_audience varchar(45))
+BEGIN	
+
+	insert into subscription_plans (name, description, path_to_fie, target_audience)
+	values (plan_name, plan_description, input_path_to_file, input_target_audience);
+END

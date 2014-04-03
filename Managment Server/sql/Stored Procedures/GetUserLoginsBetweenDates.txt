@@ -1,0 +1,16 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserLoginsBetweenDates`(in id int, in start_date date, in end_date date)
+BEGIN
+
+select user.first_name , user.last_name, user.id, log_in_event.date, log_in_event.time 
+from user
+inner join user_has_log_in_event on user.id = user_has_log_in_event.user_id 
+inner join log_in_event on log_in_event.id = user_has_log_in_event.log_in_event_id
+where user.id = id && log_in_event.date between start_date and end_date ;
+
+END

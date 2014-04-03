@@ -1,0 +1,91 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddMonthlyStatForCompany`(in company_id int, in start_date date, in end_date date)
+BEGIN
+
+/* Procedure Varibles*/
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+declare isExist int;
+declare monthName varchar(15);
+declare logIns int;
+declare sentMassages int;
+declare failedMassages int;
+declare sucssessMassages int;
+declare pendingMassages int;
+declare companyEmail varchar(45);
+
+/* check if the company exists */ 
+select isCompanyIdExist(company_id) into isExist;
+if isExist = 0 then
+	SET @message_text = CONCAT('A comapny with the ID: ', company_id, ' does not exist.');
+	SIGNAL error_msg
+	SET MESSAGE_TEXT = @message_text;
+else
+	select MONTHNAME(start_date) into monthName;   /*get the month name from the date*/
+	/* get number of logins to the system this month*/
+	select 
+	count(company_has_log_in_event.company_id) 
+	into logIns 
+	from company_has_log_in_event 
+	join log_in_event on log_in_event.id = company_has_log_in_event.log_in_event_id && log_in_event.date between start_date and end_date
+	where company_has_log_in_event.company_id = company_id; 
+	
+	select 
+	count(outgoing_massages.company_id)
+	into sentMassages 
+	from outgoing_massages
+	join massage_info on outgoing_massages.massage_info_id = massage_info.id && massage_info.date between start_date and end_date
+	where outgoing_massages.company_id = company_id; /* get the number of sent massages*/
+	/* get the company email*/
+	select company.email into companyEmail from company where company.id = company_id;
+	/* get the sucssess Massages */ 
+	select 
+	count(outgoing_massages.company_id) 
+	into sucssessMassages
+	from outgoing_massages
+	join massage_info on outgoing_massages.massage_info_id = massage_info.id 
+	where outgoing_massages.company_id = company_id && massage_info.status = 'sent' && massage_info.date between start_date and end_date;
+	/*get the  pending massages */
+	select 
+	count(outgoing_massages.company_id) 
+	into pendingMassages
+	from outgoing_massages
+	join massage_info on outgoing_massages.massage_info_id = massage_info.id 
+	where outgoing_massages.company_id = company_id && massage_info.status = 'pending' && massage_info.date between start_date and end_date;
+	/*get the  failed massages */
+	select 
+	count(outgoing_massages.company_id) 
+	into failedMassages
+	from outgoing_massages
+	join massage_info on outgoing_massages.massage_info_id = massage_info.id 
+	where outgoing_massages.company_id = company_id && massage_info.status = 'failed' && massage_info.date between start_date and end_date;
+	
+	/*insert the data into the table */
+	insert into company_month_stats (month_name,
+									start_date,
+									end_date,
+									num_of_log_in,
+									num_of_massages_sent,
+									num_of_failed_massages,
+									num_of_sucsses_massages_sent,
+									num_of_pending_massages,
+									company_id,
+									company_email)
+							values  (monthName,
+									start_date,
+									end_date,
+									logIns,
+									sentMassages,
+									failedMassages,
+									sucssessMassages,
+									pendingMassages,
+									company_id,
+									companyEmail);
+end if;
+
+
+END

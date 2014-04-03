@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/tomcat-jdbc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/jsch-0.1.50.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/jawin-stubs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/tomcat-juli-7.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/log4j-1.2.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/jawin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/org.json-20120521.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Mail Server/lib/commons-io-2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

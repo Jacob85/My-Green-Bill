@@ -1,0 +1,14 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllNewUsersBetween`( in start_date date, in end_date date)
+BEGIN
+
+select user.first_name, user.last_name, user.id,user.email,user.join_date
+from user
+where user.join_date between start_date and end_date ;
+
+END

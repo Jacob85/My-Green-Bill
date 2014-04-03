@@ -1,0 +1,35 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompany`(IN id INT,IN email varchar(45), IN company_name varchar(45),
+							IN pass varchar(45), IN subscription_plan INT, IN rank varchar(45),
+							IN street VARCHAR(45), IN house_number INT,
+							IN city VARCHAR(45), IN postal_code VARCHAR(45),
+							IN country VARCHAR(45))
+BEGIN
+	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+	DECLARE isExist INT;
+	DECLARE addressId INT;
+	
+	SELECT isCompanyIdExist(id) INTO isExist;
+
+	IF isExist=0 THEN
+		SELECT CreateNewAddress(street, house_number, city, postal_code, country) INTO addressId;
+
+		INSERT INTO billing_info (subscription_plans_id, rank)
+		VALUES(subscription_plan, rank);
+
+		INSERT INTO company
+		VALUES(id, email, company_name, pass, CURDATE(), LAST_INSERT_ID());
+
+		INSERT INTO company_has_address
+		VALUES(id, email, addressId);
+	ELSE
+		SET @message_text = CONCAT('A comapny with the ID: ', id, ' already exist.');
+		SIGNAL error_msg
+		SET MESSAGE_TEXT = @message_text;
+	END IF;
+END

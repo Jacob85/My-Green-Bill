@@ -1,0 +1,14 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetSubsciptionPlanFor`(IN target_audience varchar(45))
+BEGIN
+	if (target_audience = 'All') then
+		select * from subscription_plans;
+	else
+		select * from subscription_plans where subscription_plans.target_audience=target_audience; 
+	end if;
+END

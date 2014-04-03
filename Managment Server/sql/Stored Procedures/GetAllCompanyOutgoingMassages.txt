@@ -1,0 +1,34 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompanyOutgoingMassages`(in id int)
+BEGIN
+
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+DECLARE isExist INT;
+	
+SELECT isCompanyIdExist(id) INTO isExist;
+
+IF isExist=0 THEN
+	SET @message_text = CONCAT('A comapny with the ID: ', id, ' dosent exist.');
+	SIGNAL error_msg
+	SET MESSAGE_TEXT = @message_text;
+else
+	select 
+		company.name as company_name,
+		massage_info.send_to,
+		massage_info.send_from,
+		massage_info.subject,
+		massage_info.content,
+		file.name as file_name,
+		file.path
+	from company
+	join outgoing_massages on company.id = outgoing_massages.company_id
+	join massage_info on outgoing_massages.massage_info_id = massage_info.id
+	left join file on massage_info.id = file.massage_id
+	where company.id = id;
+end if;
+END

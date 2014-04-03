@@ -1,0 +1,49 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateNewInvoice`(IN table_target VARCHAR(45), IN id INT(11), IN email VARCHAR(45),
+										IN amount INT(11), IN issue_date DATE, IN due_date DATE,
+										IN content TEXT, IN is_paid BOOLEAN)
+BEGIN
+	/* procedure varibles */ 
+	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+	DECLARE isCompanyExist INT;
+	DECLARE isUserExist INT;
+	DECLARE billingInfoId INT;
+
+/* Check the table target -> user OR Company*/
+IF table_target="company" THEN
+	SELECT isCompanyIdExist(id) INTO isCompanyExist;
+	IF isCompanyExist = 0 THEN
+		SET @message_text = CONCAT('A comapny with the ID: ', id, ' and email ', email,' does not exist.');
+		SIGNAL error_msg
+		SET MESSAGE_TEXT = @message_text;
+	ELSE
+		SELECT company.billing_info_id
+		FROM company
+		WHERE company.id = id && company.email = email
+		INTO billingInfoId;
+
+		INSERT INTO invoice_info (amount, issue_date, due_date, content, billing_info_id, is_paid)
+		VALUES(amount, issue_date, due_date, content, billingInfoId, is_paid);
+	END IF;
+ELSE
+	SELECT isUserIdExist(id) INTO isUserExist;
+	IF isUserExist=0 THEN
+		SET @message_text = CONCAT('A user with the ID: ', id,' and email ', email,' does not exist.');
+		SIGNAL error_msg
+		SET MESSAGE_TEXT = @message_text;
+	ELSE
+		SELECT user.billing_info_id
+		FROM user
+		WHERE user.id = id && user.email = email
+		INTO billingInfoId;
+
+		INSERT INTO invoice_info (amount, issue_date, due_date, content, billing_info_id, is_paid)
+		VALUES(amount, issue_date, due_date, content, billingInfoId, is_paid);
+	END IF;
+END IF;
+END

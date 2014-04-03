@@ -1,0 +1,12 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `CreateNewAddress`(street VARCHAR(45), house_number INT, city VARCHAR(45), postal_code VARCHAR(45), country VARCHAR(45)) RETURNS int(11)
+BEGIN
+	INSERT INTO address (country, city, street_name, house_number, postal_code)
+	VALUES(country, city, street, house_number, postal_code);
+RETURN LAST_INSERT_ID();
+END

@@ -1,0 +1,30 @@
+/* 
+    Document   : style.css
+    Created on : Sep 27, 2013, 10:29:32 AM
+    Author     : Jacob
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+   
+}
+body
+{
+     background-color: paleturquoise;
+}
+.numberClass
+{
+   float: left; 
+   color: blue; 
+   font-size: 150%;
+}
+table
+{
+    border-collapse: collapse;
+    background-color: palegreen;
+    margin: 0 auto;
+}
+td{vertical-align: top;}
+h3 {color: mediumblue;}

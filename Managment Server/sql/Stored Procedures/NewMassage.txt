@@ -1,0 +1,58 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NewMassage`(in from_email varchar(45),
+								in from_id int,
+								in to_email varchar(45),
+								in to_id int,
+								in cc varchar(45),
+								in subject varchar(45),
+								in content text,
+								in status varchar(15),
+								in file_name varchar(45),
+								in path_to_file varchar(45))
+BEGIN
+
+/* procedure varibles */ 
+DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+declare isCompanyExist int;
+declare isUserExist int;
+declare masssageInfoId  int;
+
+/* check if the user and the company exists in the system*/
+select isCompanyIdExist(from_id) into isCompanyExist;
+select isUserIdExist(to_id) into isUserExist;
+
+if isCompanyExist = 0 || isUserExist=0 then
+	SET @message_text = CONCAT('A comapny with the ID: ', from_id, ' or user with the ID: ',to_id,' does not exist.');
+	SIGNAL error_msg
+	SET MESSAGE_TEXT = @message_text;
+else
+	/* user and company exist */
+	/* insert data into  massage_info */
+	insert	into massage_info (send_to,send_from,subject,content,cc,date,status)
+			values (to_email,from_email,subject,content,cc,CURDATE(),status);
+	/* get the last insert id (massage_info id) */
+	select LAST_INSERT_ID() into masssageInfoId;
+	
+	/* insert data into incoming_massages */
+	insert 	into incoming_massages (user_id,user_email,massage_info_id)
+			values (to_id,to_email,masssageInfoId);
+	
+	/*insert data into outgoing_massages*/
+	insert	into outgoing_massages(massage_info_id,company_id,company_email) 
+			values (masssageInfoId,from_id,from_email);
+
+end if;
+
+/* insert data into the file (if exist)*/
+if file_name is not null && path_to_file is not null then
+	/* file exists - > insert into file table */
+	insert 	into file (path,name,massage_id)
+			values (path_to_file,file_name,masssageInfoId);
+end if;
+
+END
