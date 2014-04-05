@@ -117,7 +117,7 @@ public class ConnectionManager
             Thread listeningThread = new Thread(new InnerCommunicationListening());
             listeningThread.start();
             LOGGER.info("Listening Thread has started");
-            
+
             // Creating new JSON message handler
             jsonMessageHandler = new JsonMessageHandler();
         }
@@ -177,7 +177,7 @@ public class ConnectionManager
             }
             catch (SQLException ignore)
             {
-            	
+
             }
         }
     }
@@ -212,16 +212,17 @@ public class ConnectionManager
                     {
                         this.LOGGER.info("JsonRequestSender sleep was interrupted: " + e.getMessage());
                     }
+
                     continue;
                 }
 
                 this.LOGGER.info(sentJsonRequestsMap.size() + " Requests to send, resending them..");
                 Iterator<Map.Entry<String, RequestJson>> iterator = sentJsonRequestsMap.entrySet().iterator();
-                
+
                 while (iterator.hasNext())
                 {
-                    Map.Entry<String, RequestJson> pairs = (Map.Entry<String, RequestJson>)iterator.next();
-                    RequestJson toResend = (RequestJson) pairs.getValue();
+                    Map.Entry<String, RequestJson> pairs = iterator.next();
+                    RequestJson toResend =  pairs.getValue();
                     if (toResend.getNumberOfResendingAttempts() < maxNumberOfResendAttempts)
                     {
                         sendMessage(toResend);
@@ -231,7 +232,7 @@ public class ConnectionManager
                     else
                     {
                         this.LOGGER.info("No more attempts to resend the Json request! already failed: " + toResend.getNumberOfResendingAttempts()
-                                        + " Disposing the request: " + toResend.getRequest().toString());
+                                + " Disposing the request: " + toResend.getRequest().toString());
                         iterator.remove();
                     }
                 }
@@ -270,12 +271,10 @@ public class ConnectionManager
             catch (UnknownHostException e)
             {
                 LOGGER.error("Error with host name: " + managmentBladeIp, e);
-                return;
             }
             catch (IOException e)
             {
                 LOGGER.info("Unable to send the request: " + message, e);
-                return;
             }
         }
     }
@@ -304,7 +303,7 @@ public class ConnectionManager
         @Override
         public void run()
         {
-           listen();
+            listen();
         }
 
         @Override
