@@ -145,10 +145,39 @@ public class DatabaseHandler
         return null;
     }
 
-/*    public Status addSignInRecord(GreenBillUser user)
+    public Status runUpdateQuery(String query) throws DatabaseException
     {
-      return null;
-    }*/
+        return runInsertQuery(query);
+    }
+
+    /**
+     * Change the user password in the database with the new password,
+     * The new password in already encrypted
+     * @param user The user to change the password to
+     * @param newPassword The new encrypted password
+     * @return
+     */
+    public Status changeUserPassword(GreenBillUser user, String newPassword)
+    {
+        if (!GeneralUtilities.isIdValid(user.getUserId()))
+        {
+           LOGGER.info("Cannot update user password, id is not valid!");
+            return new Status(Status.OperationStatus.FAILED, "Cannot update user password, id is not valid");
+        }
+        if (newPassword == null || newPassword.isEmpty())
+        {
+            LOGGER.info("Cannot update user password, password (" +newPassword +") is null or empty!");
+            return new Status(Status.OperationStatus.FAILED, "Cannot update user password, password (" +newPassword +") is null or empty!");
+        }
+        try
+        {
+            return runUpdateQuery("update user set password= '" + newPassword +"' where id=" + user.getUserId() + ";");
+        } catch (DatabaseException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * return check if the user exist in the Database
