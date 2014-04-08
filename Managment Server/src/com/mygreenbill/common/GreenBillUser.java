@@ -56,4 +56,13 @@ public class GreenBillUser
         this.userCompanyList = userCompanyList;
     }
 
+    public boolean isUserObjectFull(boolean needCompanyList)
+    {
+        return  userId != null &&
+                password != null &&
+                email != null &&
+                (needCompanyList ? userCompanyList != null : true);
+
+    }
+
 }

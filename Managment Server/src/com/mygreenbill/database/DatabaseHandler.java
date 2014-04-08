@@ -84,6 +84,23 @@ public class DatabaseHandler
 
     }
 
+    public Status addSignInRecord(GreenBillUser user)
+    {
+        if (!user.isUserObjectFull(false))
+        {
+             LOGGER.info("Cannot add add new sign in event to user because user in not full.. exiting!");
+            return new Status(Status.OperationStatus.FAILED, "User is not full");
+        }
+        try
+        {
+            return runInsertQuery("call AddUserLoginEvent (" + user.getUserId() + ", '" + user.getEmail() + "');");
+        } catch (DatabaseException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public List runGetQuery(String query) throws DatabaseException
     {
         if (query == null)
