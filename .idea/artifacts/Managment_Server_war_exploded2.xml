@@ -15,7 +15,7 @@
         </element>
       </element>
       <element id="library" level="project" name="lib1" />
-      <element id="javaee-facet-resources" facet="Managment Server/web/Web" />
+      <element id="dir-copy" path="$PROJECT_DIR$/Managment Server/web" />
     </root>
   </artifact>
 </component>
