@@ -6,6 +6,7 @@ import com.mygreenbill.common.ConnectionManager;
 import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
+import com.mygreenbill.registration.RegistrationRequestAbstract;
 import net.sf.resultsetmapper.ResultSetMapper;
 import org.apache.log4j.Logger;
 
@@ -217,6 +218,12 @@ public class DatabaseHandler
 
        // return true;
 
+    }
+
+    public Status registerUser(RegistrationRequestAbstract registrationRequest)
+    {
+        // todo yaki - implement registerUser method
+        return null;
     }
 
     /**
