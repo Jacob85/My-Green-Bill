@@ -21,7 +21,7 @@ public interface IMailServerHandler
      * @param forwardAddress
      * @return
      */
-    public boolean setForwardAddress(String accountName, String forwardAddress);
+    public boolean setNewForwardAddress(String accountName, String forwardAddress);
 
     /**
      *

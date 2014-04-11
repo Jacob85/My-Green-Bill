@@ -232,7 +232,7 @@ public class MailServerHandler implements IMailServerHandler
     }
 
     @Override
-    public boolean setForwardAddress(String accountName, String forwardAddress)
+    public boolean setNewForwardAddress(String accountName, String forwardAddress)
     {
         prepareMailServer(); // Connect to the hMailServer
 
@@ -246,7 +246,7 @@ public class MailServerHandler implements IMailServerHandler
         }
         catch (COMException e)
         {
-            LOGGER.error("COMException in setForwardAddress");
+            LOGGER.error("COMException in setNewForwardAddress");
             LOGGER.error(e.getMessage());
             return false;
         }
