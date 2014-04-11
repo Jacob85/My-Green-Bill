@@ -1,6 +1,8 @@
-package com.mygreenbill;
+package com.mygreenbill.messages;
 
 import com.mygreenbill.Exceptions.InitException;
+import com.mygreenbill.IMailServerHandler;
+import com.mygreenbill.MailServerHandler;
 import com.mygreenbill.common.ConnectionManager;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;
@@ -21,7 +23,7 @@ public class JsonMessageHandler
     }
     
     /**
-     * Processing JSON from an incoming message from the the Management-Blade
+     * Processing JSON of an incoming message from the the Management-Blade
      * @param json The incoming JSON to parse
      */
     public void processJson(JSONObject json)
@@ -65,6 +67,12 @@ public class JsonMessageHandler
 		{
         	LOGGER.error("InitException Error in processJson: " + e.getMessage());
 		}
+    }
+
+    public boolean checkMessageMD5(JSONObject json)
+    {
+
+        return false;
     }
     
     /**
