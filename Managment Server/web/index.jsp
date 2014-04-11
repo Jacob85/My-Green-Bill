@@ -54,12 +54,14 @@
                     <input type="password" placeholder="Password" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-success">Sign In</button>
-                <a data-toggle="modal" data-target="#sign_up_model" class="btn btn-primary">Sign Up</a>
+                <a data-toggle="modal" data-target="#full_registration" class="btn btn-primary">Sign Up</a>
             </form>
         </div><!--/.navbar-collapse -->
     </div>
 </div>
 
+<%-- canceled at the moment - the default model will be full regster with butons to google and facebook login --%>
+<%--
 <!-- Sign up Popup -->
 <div class="modal fade" id="sign_up_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -85,7 +87,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--%>
 
 
 <!-- Full Registration Model -->
@@ -125,6 +127,12 @@
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-10">
                             <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-10">
+                            <button class="btn btn-primary">Use Google</button>
+                            <button class="btn btn-primary">Use Facebook</button>
                         </div>
                     </div>
                 </form>

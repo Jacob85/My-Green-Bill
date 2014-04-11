@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<project name="Management Server">
+
+    <copy todir="out/artifacts/web_war_exploded" overwrite="true">
+        <fileset dir="web" casesensitive="yes">
+            <filename name="*.jsp"/>
+        </fileset>
+    </copy>
+
+</project>
