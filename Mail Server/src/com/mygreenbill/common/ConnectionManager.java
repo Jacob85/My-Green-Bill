@@ -205,7 +205,7 @@ public class ConnectionManager
                 {
                     try
                     {
-                        this.LOGGER.info("Nothing to Resend Sleeping for " + threadSleepTime + "...");
+                        this.LOGGER.info("Nothing to Resend Sleeping for " + threadSleepTime/1000 + "s...");
                         Thread.sleep(threadSleepTime);
                     }
                     catch (InterruptedException e)

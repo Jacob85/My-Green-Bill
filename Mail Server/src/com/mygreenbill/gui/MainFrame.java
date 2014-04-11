@@ -5,9 +5,13 @@ import com.mygreenbill.common.ConnectionManager;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ipeleg on 4/11/14.
@@ -18,14 +22,19 @@ public class MainFrame extends JFrame
     private static final Logger LOGGER = Logger.getLogger(MainFrame.class);
 
     private JTextArea textArea;
+    private JScrollPane scrollPane;
     private JButton startButton;
-    private JButton stopButton;
+    private JButton clearTextButton;
+    private JCheckBox autoScroll;
+    private JButton quitButton;
+    private JTextAreaAppender textAreaAppender;
 
     public MainFrame()
     {
         setTitle("Mail Blade Console");
-        setSize(600, 400);
+        setSize(800, 600);
         setLocationRelativeTo(null);
+        setResizable(false);
         setButtons();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -40,7 +49,6 @@ public class MainFrame extends JFrame
         startButton = new JButton("Start App");
         startButton.setBounds(10, 10, 100, 30);
         startButton.setToolTipText("Starting the application client and server threads");
-
         startButton.addActionListener(new ActionListener()
         {
             @Override
@@ -49,6 +57,10 @@ public class MainFrame extends JFrame
                 try
                 {
                     textArea.setText("");
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                    Date date = new Date();
+                    LOGGER.info("App started at: " + dateFormat.format(date));
+
                     ConnectionManager connectionManager = ConnectionManager.getInstance();
                     startButton.setEnabled(false);
                 }
@@ -59,11 +71,38 @@ public class MainFrame extends JFrame
             }
         });
 
-        stopButton = new JButton("Quit");
-        stopButton.setBounds(10, 50, 100, 30);
-        stopButton.setToolTipText("Exiting the application");
+        clearTextButton = new JButton("Clear Text");
+        clearTextButton.setBounds(10, 50, 100, 30);
+        clearTextButton.setToolTipText("Clearing the area text");
+        clearTextButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                textArea.setText("");
+            }
+        });
 
-        stopButton.addActionListener(new ActionListener()
+        autoScroll = new JCheckBox("Auto Scroll");
+        autoScroll.setSelected(true);
+        autoScroll.setBounds(10, 90, 110, 30);
+        autoScroll.setToolTipText("Disabling / Enabling the auto scroll");
+        autoScroll.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                if (autoScroll.isSelected())
+                    textAreaAppender.setAutoScroll(true);
+                else
+                    textAreaAppender.setAutoScroll(false);
+            }
+        });
+
+        quitButton = new JButton("Quit");
+        quitButton.setBounds(10, 130, 100, 30);
+        quitButton.setToolTipText("Exiting the application");
+        quitButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent event)
@@ -73,13 +112,19 @@ public class MainFrame extends JFrame
         });
 
         textArea = new JTextArea("Hello,\nplease click the start button in order to start the application.");
-        textArea.setBounds(120, 10, 450, 350);
-        textArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        textArea.setEditable(false);
 
-        Logger.getRootLogger().addAppender(new JTextAreaAppender(textArea));
+        scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBounds(120, 10, 650, 550);
+        scrollPane.setWheelScrollingEnabled(true);
+
+        textAreaAppender = new JTextAreaAppender(textArea);
+        Logger.getRootLogger().addAppender(textAreaAppender);
 
         panel.add(startButton);
-        panel.add(stopButton);
-        panel.add(textArea);
+        panel.add(clearTextButton);
+        panel.add(autoScroll);
+        panel.add(quitButton);
+        panel.add(scrollPane);
     }
 }
