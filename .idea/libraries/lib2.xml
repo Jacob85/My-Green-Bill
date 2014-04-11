@@ -27,7 +27,6 @@
       <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/tomcat-i18n-fr.jar!/" />
       <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/tomcat-i18n-es.jar!/" />
       <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/el-api.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/catalina.jar!/" />
       <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar!/" />
     </CLASSES>
     <JAVADOC />

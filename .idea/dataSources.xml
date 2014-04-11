@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1634491983">
+  <component name="DataSourceManagerImpl" format="xml" hash="2162288464">
     <data-source source="LOCAL" name="MySQL - mygreenbilldb@localhost" uuid="dd21ffd8-a681-4ee5-a66d-0dd634f36e0e">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -13,7 +13,7 @@
       </driver-properties>
       <libraries />
     </data-source>
-    <data-source source="LOCAL" name="MySQL - @AWS" uuid="e305b980-46f5-4254-8f73-a28ccf73485b">
+    <data-source source="LOCAL" name="MySQL - @54.72.109.83 Remore Amazon" uuid="5a0824dc-39e9-41b3-b059-025ce97c84e7">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

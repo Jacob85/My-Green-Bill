@@ -1,15 +1,6 @@
 <component name="libraryTable">
   <library name="lib1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/slf4j-log4j12-1.5.6.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/testng-plugin.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/junit-4.10.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/log4j-1.2.16.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/junit.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/testng.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/slf4j-api-1.5.8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/lib/org.json-20120521.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

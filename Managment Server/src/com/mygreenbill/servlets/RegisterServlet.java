@@ -23,6 +23,7 @@ public class RegisterServlet extends HttpServlet
     public RegisterServlet()
     {
         LOGGER.debug(RegisterServlet.class.getSimpleName() + " Was created");
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
