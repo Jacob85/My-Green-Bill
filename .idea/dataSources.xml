@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="571944972">
+  <component name="DataSourceManagerImpl" format="xml" hash="1634491983">
     <data-source source="LOCAL" name="MySQL - mygreenbilldb@localhost" uuid="dd21ffd8-a681-4ee5-a66d-0dd634f36e0e">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/mygreenbilldb</jdbc-url>
       <user-name>root</user-name>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="MySQL - @AWS" uuid="e305b980-46f5-4254-8f73-a28ccf73485b">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://54.72.109.83:3306</jdbc-url>
+      <user-name>hmailserver</user-name>
+      <user-password>dff9dfc2dfcfdfc4dfc1dfcbdfd8df98df9adf9bdf99</user-password>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

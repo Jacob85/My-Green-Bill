@@ -322,7 +322,10 @@ public class ConnectionManager
                     String str = new String(buffer, "UTF-8");
                     JSONObject ob = new JSONObject(str);
                     this.LOGGER.info("New message received, composed it into JSON: " + ob.toString());
-                    jsonMessageHandler.processJson(ob);
+
+                    // Only if the MD5 is equal process the JSON
+                    if (jsonMessageHandler.checkMessageMD5(ob))
+                        jsonMessageHandler.processJson(ob);
                 }
                 catch (IOException e)
                 {

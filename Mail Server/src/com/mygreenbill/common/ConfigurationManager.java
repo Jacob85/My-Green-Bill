@@ -27,8 +27,8 @@ public class ConfigurationManager
     {
         try
         {
-            //properties.load(ConfigurationManager.class.getResourceAsStream("/conf/configuration.properties"));
-            properties.load(new FileInputStream("/Users/ipeleg/Sites/Mail-Server-Blade/conf/configuration.properties"));
+            properties.load(ConfigurationManager.class.getResourceAsStream("/conf/configuration.properties"));
+            //properties.load(new FileInputStream("/Users/ipeleg/Sites/Mail-Server-Blade/conf/configuration.properties"));
         }
         catch (FileNotFoundException e)
         {

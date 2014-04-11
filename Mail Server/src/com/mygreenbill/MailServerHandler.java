@@ -217,14 +217,16 @@ public class MailServerHandler implements IMailServerHandler
 
             setCopyAttachmentToDbRule(accountName); // Set the rule for copying files for each incoming mail
             createAccountFolderInMysql(accountName); // Create folder for the account on the MySQL machine
-
-            closeMailServerConnection(); // Closing the connection with mail server
         }
         catch (COMException e)
         {
             LOGGER.error("COMException in createNewAccount");
             LOGGER.error(e.getMessage());
             return false;
+        }
+        finally
+        {
+            closeMailServerConnection(); // Closing the connection with mail server
         }
 
         LOGGER.info("New account was successfully created for -> " + accountName);
@@ -234,10 +236,9 @@ public class MailServerHandler implements IMailServerHandler
     @Override
     public boolean setNewForwardAddress(String accountName, String forwardAddress)
     {
-        prepareMailServer(); // Connect to the hMailServer
-
         try
         {
+            prepareMailServer(); // Connect to the hMailServer
             // Get the account for which new forward address needs to be set
             DispatchPtr account = (DispatchPtr) accounts.get("ItemByAddress", accountName + "@" + prop.getProperty("domain_name"));
 
@@ -250,8 +251,11 @@ public class MailServerHandler implements IMailServerHandler
             LOGGER.error(e.getMessage());
             return false;
         }
+        finally
+        {
+            closeMailServerConnection(); // Closing the connection with mail server
+        }
 
-        closeMailServerConnection(); // Closing the connection with mail server
         LOGGER.info("New forward address was set for: " + accountName + ", to: " + forwardAddress);
         return true;
     }
@@ -373,7 +377,9 @@ public class MailServerHandler implements IMailServerHandler
             LOGGER.error("IOException in getAccountAllAttachments");
             LOGGER.error(e.getMessage());
         }
-
-        closeMailServerConnection(); // Closing the connection with mail server
+        finally
+        {
+            closeMailServerConnection(); // Closing the connection with mail server
+        }
     }
 }
