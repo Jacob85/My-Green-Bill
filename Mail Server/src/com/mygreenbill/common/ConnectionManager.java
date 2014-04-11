@@ -1,6 +1,6 @@
 package com.mygreenbill.common;
 
-import com.mygreenbill.JsonMessageHandler;
+import com.mygreenbill.messages.JsonMessageHandler;
 import com.mygreenbill.Exceptions.*;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
