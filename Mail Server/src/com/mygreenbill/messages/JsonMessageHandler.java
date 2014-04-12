@@ -77,7 +77,7 @@ public class JsonMessageHandler
             switch (MessageType.valueOf(messageType))
             {
                 case ADD_USER:
-                    addNewAccount(innerJson.getString("accountName"), innerJson.getString("password"), innerJson.getString("address"));
+                    addNewAccount(innerJson.getString("userId"), innerJson.getString("accountName"), innerJson.getString("password"), innerJson.getString("address"));
                     break;
 
                 case SET_NEW_FORWARD_ADDRESS:
@@ -147,16 +147,19 @@ public class JsonMessageHandler
     
     /**
      * Creating new account in the hMailServer
+     * @param userId The user ID number
      * @param accountName The account name
      * @param address The email of the new account to which email will be forwarded
      * @param password The new account password
      */
-    public void addNewAccount(String accountName, String password, String address)
+    public void addNewAccount(String userId, String accountName, String password, String address)
     {
         try
         {
             mailServerHandler.createNewAccount(accountName, password, address);
-            databaseHandler.runUpdateQuery("update user set = '" );
+
+            // Set the user as active after creating an account
+            databaseHandler.runUpdateQuery("UPDATE user SET is_active='1' WHERE id='" + userId +"';" );
         }
         catch (DatabaseException e)
         {
