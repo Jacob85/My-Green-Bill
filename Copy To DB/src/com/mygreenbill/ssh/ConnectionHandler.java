@@ -68,7 +68,7 @@ public class ConnectionHandler
     {
         try
         {
-            LOGGER.info("Copying file " + fileToCopy.getName());
+            LOGGER.info("Starting to copy file " + fileToCopy.getName());
             channelSftp.put(new FileInputStream(fileToCopy), fileToCopy.getName());
         }
         catch (SftpException e)

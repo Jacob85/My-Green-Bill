@@ -11,6 +11,7 @@ import java.util.Properties;
 
 /**
  * Created by ipeleg on 3/24/14.
+ * Class for handling attachments copy to the DB machine
  */
 public class CopyAttachmentHandler
 {
@@ -43,12 +44,13 @@ public class CopyAttachmentHandler
         ArrayList<File> files = emlParser.getFiles();
         connectionHandler.changeFolderOnRemote(prop.getProperty("mysql_path") + accountName + "/");
 
-        for (int i=0 ; i<files.size() ; ++i)
+        // Go over all the attachments
+        for (File file : files)
         {
-            if (FilenameUtils.getExtension(files.get(i).getName()).equals("pdf"))
+            if (FilenameUtils.getExtension(file.getName()).equals("pdf"))
             {
-                connectionHandler.copyFileToRemote(files.get(i));
-                LOGGER.info("File " + files.get(i).getName() + " was copied to remote machine");
+                connectionHandler.copyFileToRemote(file);
+                LOGGER.info("File " + file.getName() + " was copied to remote machine");
             }
         }
     }
