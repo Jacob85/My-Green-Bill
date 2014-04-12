@@ -177,7 +177,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `NewMassage`(in from_email varchar(4
 								in content text,
 								in status varchar(15),
 								in file_name varchar(45),
-								in path_to_file varchar(45))
+								in path_to_file varchar(2048))
 BEGIN
 
 /* procedure varibles */ 

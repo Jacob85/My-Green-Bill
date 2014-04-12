@@ -3,8 +3,6 @@ package com.mygreenbill.database;
 import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.common.ConnectionManager;
-import com.mygreenbill.common.GeneralUtilities;
-import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
 import org.apache.log4j.Logger;
 
@@ -88,23 +86,6 @@ public class DatabaseHandler
 
     }
 
-    public Status addSignInRecord(GreenBillUser user)
-    {
-        if (!user.isUserObjectFull(false))
-        {
-             LOGGER.info("Cannot add add new sign in event to user because user in not full.. exiting!");
-            return new Status(Status.OperationStatus.FAILED, "User is not full");
-        }
-        try
-        {
-            return runInsertQuery("call AddUserLoginEvent (" + user.getUserId() + ", '" + user.getEmail() + "');");
-        } catch (DatabaseException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public List runGetQuery(String query) throws DatabaseException
     {
         if (query == null)
@@ -112,6 +93,7 @@ public class DatabaseHandler
             LOGGER.info("Unable to run get query: Query is null");
             return null;
         }
+
         ResultSet resultSet = null;
         ConnectionManager connectionManager = null;
         Connection connection = null;
@@ -152,76 +134,6 @@ public class DatabaseHandler
     public Status runUpdateQuery(String query) throws DatabaseException
     {
         return runInsertQuery(query);
-    }
-
-    /**
-     * Change the user password in the database with the new password,
-     * The new password in already encrypted
-     * @param user The user to change the password to
-     * @param newPassword The new encrypted password
-     * @return
-     */
-    public Status changeUserPassword(GreenBillUser user, String newPassword)
-    {
-        if (!GeneralUtilities.isIdValid(user.getUserId()))
-        {
-           LOGGER.info("Cannot update user password, id is not valid!");
-            return new Status(Status.OperationStatus.FAILED, "Cannot update user password, id is not valid");
-        }
-        if (newPassword == null || newPassword.isEmpty())
-        {
-            LOGGER.info("Cannot update user password, password (" +newPassword +") is null or empty!");
-            return new Status(Status.OperationStatus.FAILED, "Cannot update user password, password (" +newPassword +") is null or empty!");
-        }
-        try
-        {
-            return runUpdateQuery("update user set password= '" + newPassword +"' where id=" + user.getUserId() + ";");
-        } catch (DatabaseException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * return check if the user exist in the Database
-     * @param id the user id
-     * @param checkActive
-     * @return  true if exists else false
-     */
-    public boolean isUserExist(String id, boolean checkActive)
-    {
-        if (!GeneralUtilities.isIdValid(id))
-        {
-            LOGGER.info("Unable to check if user exists: invalid id");
-            return false;
-        }
-        String queryString;
-        if (checkActive)
-        {
-            queryString = isUserExistsAndActiveString.replace("?", id);
-        }
-        else
-        {
-            queryString = isUserExistsString.replace("?", id);
-        }
-        try
-        {
-            List<Map> list = runGetQuery(queryString);
-            Map map = list.get(0);
-            // get the first value
-            Integer firstValue = (Integer) map.values().toArray()[0];
-            //return the first value
-            return firstValue == 1 ? true : false;
-
-        } catch (DatabaseException e)
-        {
-            LOGGER.error(e);
-            return false;
-        }
-
-       // return true;
-
     }
 
     /**

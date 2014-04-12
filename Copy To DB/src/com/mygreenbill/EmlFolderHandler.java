@@ -5,10 +5,7 @@ import org.apache.log4j.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -96,6 +93,7 @@ public class EmlFolderHandler
         try
         {
             TO = String.valueOf(emlFile.getRecipients(Message.RecipientType.TO)[0]);
+            TO = TO.substring(TO.indexOf("<")+1, TO.lastIndexOf(">"));
         }
         catch (MessagingException e)
         {
@@ -107,8 +105,8 @@ public class EmlFolderHandler
     }
 
     /**
-     * Getting the "TO" header from the EML file which the account name is part of
-     * @return Return the TO header from the EML file
+     * Getting the "FROM" header from the EML file which the account name is part of
+     * @return Return the FROM header from the EML file
      */
     public String getFromHeader()
     {
@@ -117,6 +115,7 @@ public class EmlFolderHandler
         try
         {
             FROM = String.valueOf(emlFile.getFrom()[0]);
+            FROM = FROM.substring(FROM.indexOf("<")+1, FROM.lastIndexOf(">"));
         }
         catch (MessagingException e)
         {
@@ -128,12 +127,59 @@ public class EmlFolderHandler
     }
 
     /**
+     * Getting the "SUBJECT" header from the EML file which the account name is part of
+     * @return Return the SUBJECT header from the EML file
+     */
+    public String getSubjectHeader()
+    {
+        String SUBJECT = "";
+
+        try
+        {
+            SUBJECT = emlFile.getSubject();
+        }
+        catch (MessagingException e)
+        {
+            LOGGER.error("MessagingException in getSubjectHeader");
+            LOGGER.error(e.getMessage());
+        }
+
+        return SUBJECT;
+    }
+
+    /**
+     * Getting the "SUBJECT" header from the EML file which the account name is part of
+     * @return Return the SUBJECT header from the EML file
+     */
+    public String getEmailContent()
+    {
+        String CONTENT = "";
+
+        try
+        {
+            CONTENT = String.valueOf(emlFile.getContent());
+        }
+        catch (MessagingException e)
+        {
+            LOGGER.error("MessagingException in getEmailContent");
+            LOGGER.error(e.getMessage());
+        }
+        catch (IOException e)
+        {
+            LOGGER.error("IOException in getEmailContent");
+            LOGGER.error(e.getMessage());
+        }
+
+        return CONTENT;
+    }
+
+    /**
      * Stripping the account name from the "TO" header -> "accountName@mygreenbill.ssh"
      * @return Return the account name
      */
     public String getAccountName()
     {
         String account = getToHeader();
-        return account.substring(1, account.indexOf("@"));
+        return account.substring(0, account.indexOf("@"));
     }
 }
