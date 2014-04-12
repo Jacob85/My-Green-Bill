@@ -341,7 +341,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUser`(IN id INT,IN email varchar
 							IN subscription_plan INT, IN rank varchar(45),
 							IN street VARCHAR(45), IN house_number INT,
 							IN city VARCHAR(45), IN postal_code VARCHAR(45),
-							IN country VARCHAR(45))
+							IN country VARCHAR(45), IN hmail_account VARCHAR(45))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -356,7 +356,7 @@ BEGIN
 		VALUES(subscription_plan, rank);
 
 		INSERT INTO user
-		VALUES(id, email, first_name, last_name, pass, 1, CURDATE(), LAST_INSERT_ID());
+		VALUES(id, email, first_name, last_name, pass, hmail_account, 0, CURDATE(), LAST_INSERT_ID());
 
 		INSERT INTO user_has_address
 		VALUES(id, email, addressId);
@@ -1223,6 +1223,11 @@ END if;
 END $$
 DELIMITER ;
 
+drop procedure if exists `AddUserLoginEvent`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserLoginEvent`(IN id INT,IN email varchar(45))
   BEGIN

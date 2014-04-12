@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user` (
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
+  `hmail_account_name` VARCHAR(45) NULL,
   `is_active` TINYINT(1) NULL,
   `join_date` DATE NULL,
   `billing_info_id` INT NOT NULL,
@@ -606,8 +607,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `is_avtive`, `join_date`, `billing_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 1, '2013-09-21', 1);
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `is_avtive`, `join_date`, `billing_info_id`) VALUES (038054665, 'Idan@gmail.com', 'Idan', 'Peleg', '123', 1, '2013-09-16', 2);
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `billing_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 'ABCD', 1, '2013-09-21', 1);
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `billing_info_id`) VALUES (038054665, 'Idan@gmail.com', 'Idan', 'Peleg', '123', 'EFGH', 1, '2013-09-16', 2);
 
 COMMIT;
 
