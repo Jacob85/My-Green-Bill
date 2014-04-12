@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Managment Server Database">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Managment Server/src" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/database" />
+    </excluded>
+  </library>
+</component>
