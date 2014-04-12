@@ -5,15 +5,13 @@ import org.apache.log4j.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
  * Created by ipeleg on 3/24/14.
+ * Class for handling the folder which contain the EML file and the attachments
  */
 public class EmlFolderHandler
 {
@@ -27,13 +25,13 @@ public class EmlFolderHandler
         File emlFolder = new File(emlPath);
         files = new ArrayList<File>(Arrays.asList(emlFolder.listFiles())); // Get the folder content files
 
-        for (int i=0 ; i<files.size() ; ++i)
+        for (File file : files)
         {
-            if (FilenameUtils.getExtension(files.get(i).getName()).equals("eml"))
+            if (FilenameUtils.getExtension(file.getName()).equals("eml"))
             {
                 try
                 {
-                    InputStream source = new FileInputStream(files.get(i));
+                    InputStream source = new FileInputStream(file);
                     emlFile = new MimeMessage(null, source);
                 }
                 catch (FileNotFoundException e)
@@ -57,14 +55,14 @@ public class EmlFolderHandler
      */
     public void deleteAttachments()
     {
-        for (int i=0 ; i<files.size() ; ++i)
+        for (File file : files)
         {
-            if (!FilenameUtils.getExtension(files.get(i).getName()).equals("eml"))
+            if (!FilenameUtils.getExtension(file.getName()).equals("eml"))
             {
                 try
                 {
-                    if (files.get(i).delete())
-                        LOGGER.info(files.get(i).getName() + " was deleted");
+                    if (file.delete())
+                        LOGGER.info(file.getName() + " was deleted");
                 }
                 catch (Exception e)
                 {
@@ -77,7 +75,7 @@ public class EmlFolderHandler
 
     /**
      * Returns the files in the folder as ArrayList
-     * @return
+     * @return Return the files array
      */
     public ArrayList<File> getFiles()
     {
@@ -86,7 +84,7 @@ public class EmlFolderHandler
 
     /**
      * Getting the "TO" header from the EML file which the account name is part of
-     * @return
+     * @return Return the TO header from the EML file
      */
     public String getToHeader()
     {
@@ -95,6 +93,7 @@ public class EmlFolderHandler
         try
         {
             TO = String.valueOf(emlFile.getRecipients(Message.RecipientType.TO)[0]);
+            TO = TO.substring(TO.indexOf("<")+1, TO.lastIndexOf(">"));
         }
         catch (MessagingException e)
         {
@@ -106,12 +105,81 @@ public class EmlFolderHandler
     }
 
     /**
+     * Getting the "FROM" header from the EML file which the account name is part of
+     * @return Return the FROM header from the EML file
+     */
+    public String getFromHeader()
+    {
+        String FROM = "";
+
+        try
+        {
+            FROM = String.valueOf(emlFile.getFrom()[0]);
+            FROM = FROM.substring(FROM.indexOf("<")+1, FROM.lastIndexOf(">"));
+        }
+        catch (MessagingException e)
+        {
+            LOGGER.error("MessagingException in getFromHeader");
+            LOGGER.error(e.getMessage());
+        }
+
+        return FROM;
+    }
+
+    /**
+     * Getting the "SUBJECT" header from the EML file which the account name is part of
+     * @return Return the SUBJECT header from the EML file
+     */
+    public String getSubjectHeader()
+    {
+        String SUBJECT = "";
+
+        try
+        {
+            SUBJECT = emlFile.getSubject();
+        }
+        catch (MessagingException e)
+        {
+            LOGGER.error("MessagingException in getSubjectHeader");
+            LOGGER.error(e.getMessage());
+        }
+
+        return SUBJECT;
+    }
+
+    /**
+     * Getting the "SUBJECT" header from the EML file which the account name is part of
+     * @return Return the SUBJECT header from the EML file
+     */
+    public String getEmailContent()
+    {
+        String CONTENT = "";
+
+        try
+        {
+            CONTENT = String.valueOf(emlFile.getContent());
+        }
+        catch (MessagingException e)
+        {
+            LOGGER.error("MessagingException in getEmailContent");
+            LOGGER.error(e.getMessage());
+        }
+        catch (IOException e)
+        {
+            LOGGER.error("IOException in getEmailContent");
+            LOGGER.error(e.getMessage());
+        }
+
+        return CONTENT;
+    }
+
+    /**
      * Stripping the account name from the "TO" header -> "accountName@mygreenbill.ssh"
-     * @return
+     * @return Return the account name
      */
     public String getAccountName()
     {
         String account = getToHeader();
-        return account.substring(1, account.indexOf("@"));
+        return account.substring(0, account.indexOf("@"));
     }
 }

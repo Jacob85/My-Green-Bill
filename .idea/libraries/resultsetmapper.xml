@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="resultsetmapper">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/resultsetmapper.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

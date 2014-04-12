@@ -50,7 +50,8 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user` (
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
-  `is_avtive` TINYINT(1) NULL,
+  `hmail_account_name` VARCHAR(45) NULL,
+  `is_active` TINYINT(1) NULL,
   `join_date` DATE NULL,
   `billing_info_id` INT NOT NULL,
   PRIMARY KEY (`id`, `email`),
@@ -127,7 +128,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`file` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`file` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `path` VARCHAR(45) NULL,
+  `path` VARCHAR(2048) NULL,
   `name` VARCHAR(45) NULL,
   `massage_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -606,8 +607,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `is_avtive`, `join_date`, `billing_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 1, '2013-09-21', 1);
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `is_avtive`, `join_date`, `billing_info_id`) VALUES (038054665, 'Idan@gmail.com', 'Idan', 'Peleg', '123', 1, '2013-09-16', 2);
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `billing_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 'ABCD', 1, '2013-09-21', 1);
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `billing_info_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '123', 'ipeleg', 1, '2013-09-16', 2);
 
 COMMIT;
 
@@ -630,7 +631,7 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (12345678, 'company@mail.com', 'Bank Leumi', '1234', '2013-09-15', 3);
-INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (123456789, 'poalim@mail.com', 'Bank poaalim', '1234', '2013-09-16', 4);
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank poaalim', '1234', '2013-09-16', 4);
 
 COMMIT;
 
@@ -640,10 +641,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (1, 'yaki.ams@gmail.com', 'poalim@mail.com', 'Welcome', 'hi mate, thanks for joining bank hapoalim mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'sent');
+INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (1, 'yaki.ams@gmail.com', 'ipeleg@hotmail.com', 'Welcome', 'hi mate, thanks for joining bank hapoalim mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'sent');
 INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (2, 'yaki.ams@gmail.com', 'company@mail.com', 'Welcome', 'hi mate, thanks for joining bank leumi mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'sent');
-INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (3, 'Idan@gmail.com', 'poalim@mail.com', 'Welcome', 'hi mate, thanks for joining bank hapoalim mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'pending');
-INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (4, 'Idan@gmail.com', 'company@mail.com', 'Welcome', 'hi mate, thanks for joining bank leumi mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'failed');
+INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (3, 'ipeleg@mygreenbill.com', 'ipeleg@hotmail.com', 'Welcome', 'hi mate, thanks for joining bank hapoalim mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'pending');
+INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (4, 'ipeleg@mygreenbill.com', 'company@mail.com', 'Welcome', 'hi mate, thanks for joining bank leumi mailing service via \"My Green Bill\", Regards Bank Hapoalim', NULL, '2013-09-21', 'failed');
 INSERT INTO `mygreenbilldb`.`massage_info` (`id`, `send_to`, `send_from`, `subject`, `content`, `cc`, `date`, `status`) VALUES (5, 'yaki.ams@gmail.com', 'company@mail.com', 'hello', 'hello world', NULL, '2013-10-05', 'sent');
 
 COMMIT;
@@ -665,10 +666,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054664, 'yaki.ams@gmail.com', 123456789, 'poalim@mail.com');
-INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054665, 'Idan@gmail.com', 123456789, 'poalim@mail.com');
+INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054664, 'yaki.ams@gmail.com', 123456789, 'ipeleg@hotmail.com');
+INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054665, 'ipeleg@mygreenbill.com', 123456789, 'ipeleg@hotmail.com');
 INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054664, 'yaki.ams@gmail.com', 12345678, 'company@mail.com');
-INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054665, 'Idan@gmail.com', 12345678, 'company@mail.com');
+INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054665, 'ipeleg@mygreenbill.com', 12345678, 'company@mail.com');
 
 COMMIT;
 
@@ -680,8 +681,8 @@ START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 1);
 INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 2);
-INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054665, 'Idan@gmail.com', 3);
-INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054665, 'Idan@gmail.com', 4);
+INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 3);
+INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 4);
 INSERT INTO `mygreenbilldb`.`incoming_massages` (`user_id`, `user_email`, `massage_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 5);
 
 COMMIT;
@@ -692,9 +693,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (1, 123456789, 'poalim@mail.com');
+INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (1, 123456789, 'ipeleg@hotmail.com');
 INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (2, 12345678, 'company@mail.com');
-INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (3, 123456789, 'poalim@mail.com');
+INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (3, 123456789, 'ipeleg@hotmail.com');
 INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (4, 12345678, 'company@mail.com');
 INSERT INTO `mygreenbilldb`.`outgoing_massages` (`massage_info_id`, `company_id`, `company_email`) VALUES (5, 12345678, 'company@mail.com');
 
@@ -720,8 +721,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (1, 'John Roberts', 'Mailing Manager', 123456789, 'poalim@mail.com');
-INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (2, 'Daina Cohen', 'Marketing Manager', 123456789, 'poalim@mail.com');
+INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (1, 'John Roberts', 'Mailing Manager', 123456789, 'ipeleg@hotmail.com');
+INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (2, 'Daina Cohen', 'Marketing Manager', 123456789, 'ipeleg@hotmail.com');
 
 COMMIT;
 
@@ -795,8 +796,8 @@ START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`user_has_log_in_event` (`user_id`, `user_email`, `log_in_event_id`) VALUES (038054664, 'yaki.ams@gmail.com', 1);
 INSERT INTO `mygreenbilldb`.`user_has_log_in_event` (`user_id`, `user_email`, `log_in_event_id`) VALUES (038054664, 'yaki.ams@gmail.com ', 2);
-INSERT INTO `mygreenbilldb`.`user_has_log_in_event` (`user_id`, `user_email`, `log_in_event_id`) VALUES (038054665, 'Idan@gmail.com', 3);
-INSERT INTO `mygreenbilldb`.`user_has_log_in_event` (`user_id`, `user_email`, `log_in_event_id`) VALUES (038054665, 'Idan@gmail.com', 4);
+INSERT INTO `mygreenbilldb`.`user_has_log_in_event` (`user_id`, `user_email`, `log_in_event_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 3);
+INSERT INTO `mygreenbilldb`.`user_has_log_in_event` (`user_id`, `user_email`, `log_in_event_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 4);
 
 COMMIT;
 
@@ -807,8 +808,8 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`company_has_log_in_event` (`company_id`, `company_email`, `log_in_event_id`) VALUES (12345678, 'company@mail.com', 5);
-INSERT INTO `mygreenbilldb`.`company_has_log_in_event` (`company_id`, `company_email`, `log_in_event_id`) VALUES (123456789, 'poalim@mail.com', 6);
-INSERT INTO `mygreenbilldb`.`company_has_log_in_event` (`company_id`, `company_email`, `log_in_event_id`) VALUES (123456789, 'poalim@mail.com', 7);
+INSERT INTO `mygreenbilldb`.`company_has_log_in_event` (`company_id`, `company_email`, `log_in_event_id`) VALUES (123456789, 'ipeleg@hotmail.com', 6);
+INSERT INTO `mygreenbilldb`.`company_has_log_in_event` (`company_id`, `company_email`, `log_in_event_id`) VALUES (123456789, 'ipeleg@hotmail.com', 7);
 
 COMMIT;
 
@@ -819,7 +820,7 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`user_has_address` (`user_id`, `user_email`, `address_id`) VALUES (038054664, 'yaki.ams@gmail.com', 1);
-INSERT INTO `mygreenbilldb`.`user_has_address` (`user_id`, `user_email`, `address_id`) VALUES (038054665, 'Idan@gmail.com', 2);
+INSERT INTO `mygreenbilldb`.`user_has_address` (`user_id`, `user_email`, `address_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 2);
 
 COMMIT;
 
@@ -830,7 +831,7 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`company_has_address` (`company_id`, `company_email`, `address_id`) VALUES (12345678, 'company@mail.com', 3);
-INSERT INTO `mygreenbilldb`.`company_has_address` (`company_id`, `company_email`, `address_id`) VALUES (123456789, 'poalim@mail.com', 3);
+INSERT INTO `mygreenbilldb`.`company_has_address` (`company_id`, `company_email`, `address_id`) VALUES (123456789, 'ipeleg@hotmail.com', 3);
 
 COMMIT;
 

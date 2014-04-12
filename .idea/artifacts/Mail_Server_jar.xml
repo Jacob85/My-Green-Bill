@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Mail Server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mail_Server_jar</output-path>
+    <root id="archive" name="Mail Server.jar">
+      <element id="module-output" name="Mail Server" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/org.json-20120521.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/jsch-0.1.50.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/tomcat-jdbc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/tomcat-juli-7.0.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/commons-io-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/jawin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/log4j-1.2.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/jawin-stubs.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/javax.mail.jar" path-in-jar="/" />
+      <element id="directory" name="conf">
+        <element id="dir-copy" path="$PROJECT_DIR$/Mail Server/conf" />
+      </element>
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/mysql-connector-java-5.0.8-bin.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -65,7 +65,7 @@ public class ConnectionManager
         //todo yaki - move the hard coded configuration to file
         jdbcPoolProperties = new PoolProperties();
 
-        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":3306/" + databaseName);
+        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":"+ databasePort +"/" + databaseName);
         jdbcPoolProperties.setDriverClassName("com.mysql.jdbc.Driver");
         jdbcPoolProperties.setUsername(databaseUser);
         jdbcPoolProperties.setPassword(databasePassword);
@@ -164,6 +164,8 @@ public class ConnectionManager
             LOGGER.error("Unable to get new  connection from connection pool: " + e.getMessage(),e);
             throw new DatabaseException("Unable to get new connection from connection pool", e.getCause());
         }
+
+        LOGGER.info("Connection with DB was made");
         return connection;
     }
 
@@ -205,7 +207,7 @@ public class ConnectionManager
                 {
                     try
                     {
-                        this.LOGGER.info("Nothing to Resend Sleeping for " + threadSleepTime + "...");
+                        this.LOGGER.info("Nothing to Resend Sleeping for " + threadSleepTime/1000 + "s...");
                         Thread.sleep(threadSleepTime);
                     }
                     catch (InterruptedException e)
@@ -322,7 +324,10 @@ public class ConnectionManager
                     String str = new String(buffer, "UTF-8");
                     JSONObject ob = new JSONObject(str);
                     this.LOGGER.info("New message received, composed it into JSON: " + ob.toString());
-                    jsonMessageHandler.processJson(ob);
+
+                    // Only if the MD5 is equal process the JSON
+                    if (jsonMessageHandler.checkMessageMD5(ob))
+                        jsonMessageHandler.processJson(ob);
                 }
                 catch (IOException e)
                 {

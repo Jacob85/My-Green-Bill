@@ -2397,7 +2397,7 @@
     </procedure>
     <procedure name="test_multi_sets" schema="" catalog="test" type="1"/>
   </data-source>
-  <data-source source="LOCAL" name="MySQL - @54.72.109.83 Remore Amazon" uuid="5a0824dc-39e9-41b3-b059-025ce97c84e7">
+  <data-source source="LOCAL" name="MySQL - @54.72.109.83 Remote Amazon" uuid="5a0824dc-39e9-41b3-b059-025ce97c84e7">
     <database-info product="MySQL" version="5.5.34" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -3503,7 +3503,7 @@
     </table>
     <table name="file" schema="" catalog="mygreenbilldb" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="path" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="path" sqlType="VARCHAR" length="2048" precision="0" nullable="true" jdbcType="12"/>
       <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
       <column name="massage_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
@@ -3617,7 +3617,8 @@
       <column name="first_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
       <column name="last_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
       <column name="password" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="is_avtive" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <column name="hmail_account_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
       <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
       <column name="billing_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id,email"/>
@@ -4178,6 +4179,7 @@
         <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="10"/>
         <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="11"/>
         <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="12"/>
+        <parameter name="hmail_account" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="13"/>
       </prototype>
     </procedure>
     <procedure name="AddUserLoginEvent" schema="" catalog="mygreenbilldb" type="1">
@@ -4352,7 +4354,7 @@
         <parameter name="content" sqlType="TEXT" length="65535" precision="65535" nullable="true" jdbcType="-1" type="1" index="7"/>
         <parameter name="status" sqlType="VARCHAR" length="15" precision="15" nullable="true" jdbcType="12" type="1" index="8"/>
         <parameter name="file_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="9"/>
-        <parameter name="path_to_file" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="10"/>
+        <parameter name="path_to_file" sqlType="VARCHAR" length="2048" precision="2048" nullable="true" jdbcType="12" type="1" index="10"/>
       </prototype>
     </procedure>
     <procedure name="UpdateCompanyAddress" schema="" catalog="mygreenbilldb" type="1">

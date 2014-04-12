@@ -3,11 +3,7 @@ package com.mygreenbill.database;
 import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.common.ConnectionManager;
-import com.mygreenbill.common.GeneralUtilities;
-import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
-import com.mygreenbill.registration.RegistrationRequestAbstract;
-import net.sf.resultsetmapper.ResultSetMapper;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -90,23 +86,6 @@ public class DatabaseHandler
 
     }
 
-    public Status addSignInRecord(GreenBillUser user)
-    {
-        if (!user.isUserObjectFull(false))
-        {
-             LOGGER.info("Cannot add add new sign in event to user because user in not full.. exiting!");
-            return new Status(Status.OperationStatus.FAILED, "User is not full");
-        }
-        try
-        {
-            return runInsertQuery("call AddUserLoginEvent (" + user.getUserId() + ", '" + user.getEmail() + "');");
-        } catch (DatabaseException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public List runGetQuery(String query) throws DatabaseException
     {
         if (query == null)
@@ -114,6 +93,7 @@ public class DatabaseHandler
             LOGGER.info("Unable to run get query: Query is null");
             return null;
         }
+
         ResultSet resultSet = null;
         ConnectionManager connectionManager = null;
         Connection connection = null;
@@ -127,7 +107,7 @@ public class DatabaseHandler
             resultSet = statement.executeQuery(query);
             LOGGER.info("Get query: " + query + " was execute!");
 
-           // extract the result from the result set into list
+            // extract the result from the result set into list
             List toReturn = toList(resultSet);
             // close resources
             statement.close();
@@ -157,89 +137,14 @@ public class DatabaseHandler
     }
 
     /**
-     * Change the user password in the database with the new password,
-     * The new password in already encrypted
-     * @param user The user to change the password to
-     * @param newPassword The new encrypted password
-     * @return
-     */
-    public Status changeUserPassword(GreenBillUser user, String newPassword)
-    {
-        if (!GeneralUtilities.isIdValid(user.getUserId()))
-        {
-           LOGGER.info("Cannot update user password, id is not valid!");
-            return new Status(Status.OperationStatus.FAILED, "Cannot update user password, id is not valid");
-        }
-        if (newPassword == null || newPassword.isEmpty())
-        {
-            LOGGER.info("Cannot update user password, password (" +newPassword +") is null or empty!");
-            return new Status(Status.OperationStatus.FAILED, "Cannot update user password, password (" +newPassword +") is null or empty!");
-        }
-        try
-        {
-            return runUpdateQuery("update user set password= '" + newPassword +"' where id=" + user.getUserId() + ";");
-        } catch (DatabaseException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * return check if the user exist in the Database
-     * @param id the user id
-     * @return  true if exists else false
-     */
-    public boolean isUserExist(String id, boolean checkActive)
-    {
-        if (!GeneralUtilities.isIdValid(id))
-        {
-            LOGGER.info("Unable to check if user exists: invalid id");
-            return false;
-        }
-        String queryString;
-        if (checkActive)
-        {
-            queryString = isUserExistsAndActiveString.replace("?", id);
-        }
-        else
-        {
-            queryString = isUserExistsString.replace("?", id);
-        }
-        try
-        {
-            List list = runGetQuery(queryString);
-            Map map = (Map) list.get(0);
-            // get the first value
-            Integer firstValue = (Integer) map.values().toArray()[0];
-            //return the first value
-            return firstValue == 1 ? true : false;
-
-        } catch (DatabaseException e)
-        {
-            LOGGER.error(e);
-            return false;
-        }
-
-       // return true;
-
-    }
-
-    public Status registerUser(RegistrationRequestAbstract registrationRequest)
-    {
-        // todo yaki - implement registerUser method
-        return null;
-    }
-
-    /**
      * Helper method that converts a ResultSet into a list of maps, one per row
      * @param rs
      * @return list of maps, one per row, with column name as the key
-     * @throws SQLException if the connection fails
+     * @throws java.sql.SQLException if the connection fails
      */
-    private  final List toList(ResultSet rs) throws SQLException
+    private  final List<Map> toList(ResultSet rs) throws SQLException
     {
-        List wantedColumnNames = getColumnNames(rs);
+        List<String> wantedColumnNames = getColumnNames(rs);
 
         return toList(rs, wantedColumnNames);
     }
@@ -248,11 +153,11 @@ public class DatabaseHandler
      * @param rs ResultSet
      * @param wantedColumnNames of columns names to include in the result map
      * @return list of maps, one per column row, with column names as keys
-     * @throws SQLException if the connection fails
+     * @throws java.sql.SQLException if the connection fails
      */
-    public final List toList(ResultSet rs, List wantedColumnNames) throws SQLException
+    public final List<Map> toList(ResultSet rs, List wantedColumnNames) throws SQLException
     {
-        List rows = new ArrayList();
+        List<Map> rows = new ArrayList();
 
         int numWantedColumns = wantedColumnNames.size();
         while (rs.next())
@@ -276,11 +181,11 @@ public class DatabaseHandler
      * Return all column names as a list of strings
      * @param rs query result set
      * @return list of column name strings
-     * @throws SQLException if the query fails
+     * @throws java.sql.SQLException if the query fails
      */
-    public final List getColumnNames(ResultSet rs) throws SQLException
+    public final List<String> getColumnNames(ResultSet rs) throws SQLException
     {
-        List columnNames = new ArrayList();
+        List<String> columnNames = new ArrayList();
 
         ResultSetMetaData meta = rs.getMetaData();
 
