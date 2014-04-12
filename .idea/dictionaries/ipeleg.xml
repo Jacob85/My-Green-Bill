@@ -4,6 +4,7 @@
       <w>appenders</w>
       <w>hmail</w>
       <w>hmailserver</w>
+      <w>idan</w>
     </words>
   </dictionary>
 </component>

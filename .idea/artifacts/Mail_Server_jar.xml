@@ -15,13 +15,7 @@
       <element id="directory" name="conf">
         <element id="dir-copy" path="$PROJECT_DIR$/Mail Server/conf" />
       </element>
-      <element id="directory" name="com">
-        <element id="directory" name="mygreenbill">
-          <element id="directory" name="database">
-            <element id="library" level="project" name="Managment Server Database" />
-          </element>
-        </element>
-      </element>
+      <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/mysql-connector-java-5.0.8-bin.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -66,7 +67,16 @@ public class CopyAttachmentHandler
     {
         try
         {
-            databaseHandler.runUpdateQuery("");
+            String FROM = emlParser.getFromHeader();
+
+            List result = databaseHandler.runGetQuery("SELECT id FROM company WHERE email ='" + FROM + "';");
+            String FROM_ID = "";
+            String TO = emlParser.getToHeader();
+            String TO_ID = emlParser.getToHeader();
+
+            String path = prop.getProperty("mysql_path") + accountName + "/" + file.getName();
+
+            databaseHandler.runInsertQuery("CALL NewMassage(" + FROM + "," + FROM_ID + "," + TO + "," + TO_ID +");");
         }
         catch (DatabaseException e)
         {

@@ -65,7 +65,7 @@ public class ConnectionManager
         //todo yaki - move the hard coded configuration to file
         jdbcPoolProperties = new PoolProperties();
 
-        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":3306/" + databaseName);
+        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":"+ databasePort +"/" + databaseName);
         jdbcPoolProperties.setDriverClassName("com.mysql.jdbc.Driver");
         jdbcPoolProperties.setUsername(databaseUser);
         jdbcPoolProperties.setPassword(databasePassword);
@@ -164,6 +164,8 @@ public class ConnectionManager
             LOGGER.error("Unable to get new  connection from connection pool: " + e.getMessage(),e);
             throw new DatabaseException("Unable to get new connection from connection pool", e.getCause());
         }
+
+        LOGGER.info("Connection with DB was made");
         return connection;
     }
 

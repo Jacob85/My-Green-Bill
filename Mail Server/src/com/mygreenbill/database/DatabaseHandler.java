@@ -6,8 +6,6 @@ import com.mygreenbill.common.ConnectionManager;
 import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
-import com.mygreenbill.registration.RegistrationRequestAbstract;
-import net.sf.resultsetmapper.ResultSetMapper;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -188,6 +186,7 @@ public class DatabaseHandler
     /**
      * return check if the user exist in the Database
      * @param id the user id
+     * @param checkActive
      * @return  true if exists else false
      */
     public boolean isUserExist(String id, boolean checkActive)
@@ -208,8 +207,8 @@ public class DatabaseHandler
         }
         try
         {
-            List list = runGetQuery(queryString);
-            Map map = (Map) list.get(0);
+            List<Map> list = runGetQuery(queryString);
+            Map map = list.get(0);
             // get the first value
             Integer firstValue = (Integer) map.values().toArray()[0];
             //return the first value
@@ -225,21 +224,15 @@ public class DatabaseHandler
 
     }
 
-    public Status registerUser(RegistrationRequestAbstract registrationRequest)
-    {
-        // todo yaki - implement registerUser method
-        return null;
-    }
-
     /**
      * Helper method that converts a ResultSet into a list of maps, one per row
      * @param rs
      * @return list of maps, one per row, with column name as the key
-     * @throws SQLException if the connection fails
+     * @throws java.sql.SQLException if the connection fails
      */
-    private  final List toList(ResultSet rs) throws SQLException
+    private  final List<Map> toList(ResultSet rs) throws SQLException
     {
-        List wantedColumnNames = getColumnNames(rs);
+        List<String> wantedColumnNames = getColumnNames(rs);
 
         return toList(rs, wantedColumnNames);
     }
@@ -248,11 +241,11 @@ public class DatabaseHandler
      * @param rs ResultSet
      * @param wantedColumnNames of columns names to include in the result map
      * @return list of maps, one per column row, with column names as keys
-     * @throws SQLException if the connection fails
+     * @throws java.sql.SQLException if the connection fails
      */
-    public final List toList(ResultSet rs, List wantedColumnNames) throws SQLException
+    public final List<Map> toList(ResultSet rs, List wantedColumnNames) throws SQLException
     {
-        List rows = new ArrayList();
+        List<Map> rows = new ArrayList();
 
         int numWantedColumns = wantedColumnNames.size();
         while (rs.next())
@@ -276,11 +269,11 @@ public class DatabaseHandler
      * Return all column names as a list of strings
      * @param rs query result set
      * @return list of column name strings
-     * @throws SQLException if the query fails
+     * @throws java.sql.SQLException if the query fails
      */
-    public final List getColumnNames(ResultSet rs) throws SQLException
+    public final List<String> getColumnNames(ResultSet rs) throws SQLException
     {
-        List columnNames = new ArrayList();
+        List<String> columnNames = new ArrayList();
 
         ResultSetMetaData meta = rs.getMetaData();
 

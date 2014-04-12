@@ -3,16 +3,12 @@ package com.mygreenbill.gui;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.common.ConnectionManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by ipeleg on 4/11/14.

@@ -2,6 +2,8 @@ package com.mygreenbill.common;
 
 import com.mygreenbill.Exceptions.ConfigurationException;
 import org.apache.log4j.Logger;
+
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
@@ -27,7 +29,7 @@ public class ConfigurationManager
         try
         {
             properties.load(ConfigurationManager.class.getResourceAsStream("/conf/configuration.properties"));
-            //properties.load(new FileInputStream("/Users/ipeleg/Sites/Mail-Server-Blade/conf/configuration.properties"));
+            //properties.load(new FileInputStream("/Users/ipeleg/IdeaProjects/My-Green-Bill/Mail Server/conf/configuration.properties"));
         }
         catch (FileNotFoundException e)
         {
