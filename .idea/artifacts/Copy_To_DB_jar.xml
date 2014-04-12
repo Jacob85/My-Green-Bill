@@ -10,6 +10,13 @@
       <element id="directory" name="conf">
         <element id="dir-copy" path="$PROJECT_DIR$/../CopyToDB/conf" />
       </element>
+      <element id="directory" name="com">
+        <element id="directory" name="mygreenbill">
+          <element id="directory" name="database">
+            <element id="library" level="project" name="Managment Server Database" />
+          </element>
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

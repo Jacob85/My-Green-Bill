@@ -25,6 +25,10 @@ public class DatabaseHandler
     private final Logger LOGGER = Logger.getLogger(DatabaseHandler.class);
     private final String isUserExistsString = "select isUserIdExist(?);";
     private final String isUserExistsAndActiveString = "select isUserExistsAndActive(?);";
+
+    // ENUM which represent all the possible messages status
+    public enum MessageStatus {sent, pending, failed}
+
     public static DatabaseHandler getInstance()
     {
         if (instance == null)

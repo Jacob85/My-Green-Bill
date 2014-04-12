@@ -54,11 +54,13 @@ public class JsonMessageHandler
         }
         catch (JSONException e)
         {
-            LOGGER.error("JSONException in processJson: " + e.getMessage());
+            LOGGER.error("JSONException in processJson");
+            LOGGER.error(e.getMessage());
         }
         catch (InitException e)
 		{
-        	LOGGER.error("InitException in processJson: " + e.getMessage());
+        	LOGGER.error("InitException in processJson");
+            LOGGER.error(e.getMessage());
 		}
     }
 
@@ -87,7 +89,8 @@ public class JsonMessageHandler
         }
         catch (JSONException e)
         {
-            LOGGER.error("JSONException in handleMessage: " + e.getMessage());
+            LOGGER.error("JSONException in handleMessage");
+            LOGGER.error(e.getMessage());
         }
     }
 
@@ -118,7 +121,8 @@ public class JsonMessageHandler
         }
         catch (JSONException e)
         {
-            LOGGER.error("JSONException in checkMessageMD5: " + e.getMessage());
+            LOGGER.error("JSONException in checkMessageMD5");
+            LOGGER.error(e.getMessage());
         }
 
         LOGGER.info("Message with ID: " + id + "was not fully received");
@@ -163,7 +167,8 @@ public class JsonMessageHandler
         }
         catch (DatabaseException e)
         {
-            LOGGER.error("DatabaseException in addNewAccount: " + e.getMessage());
+            LOGGER.error("DatabaseException in addNewAccount");
+            LOGGER.error(e.getMessage());
         }
     }
 }

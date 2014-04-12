@@ -1,5 +1,7 @@
 package com.mygreenbill;
 
+import com.mygreenbill.Exceptions.DatabaseException;
+import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.ssh.ConnectionHandler;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
@@ -21,6 +23,7 @@ public class CopyAttachmentHandler
     private Properties prop = new Properties();
     private ConnectionHandler connectionHandler;
     private EmlFolderHandler emlParser;
+    private DatabaseHandler databaseHandler;
 
     public CopyAttachmentHandler(EmlFolderHandler emlParser)
     {
@@ -30,6 +33,8 @@ public class CopyAttachmentHandler
             prop.load(CopyAttachmentHandler.class.getResourceAsStream("/conf/configuration.properties")); // Load the file to the properties object
             connectionHandler = new ConnectionHandler();
             connectionHandler.createConnection(prop.getProperty("mysql_username"), prop.getProperty("mysql_password"), prop.getProperty("mysql_ip"));
+
+            databaseHandler = DatabaseHandler.getInstance();
         }
         catch (IOException e)
         {
@@ -51,7 +56,22 @@ public class CopyAttachmentHandler
             {
                 connectionHandler.copyFileToRemote(file);
                 LOGGER.info("File " + file.getName() + " was copied to remote machine");
+
+                updateDB(accountName, file);
             }
+        }
+    }
+
+    public void updateDB(String accountName, File file)
+    {
+        try
+        {
+            databaseHandler.runUpdateQuery("");
+        }
+        catch (DatabaseException e)
+        {
+            LOGGER.error("DatabaseException in updateDB");
+            LOGGER.error(e.getMessage());
         }
     }
 
