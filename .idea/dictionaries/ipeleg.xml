@@ -2,6 +2,7 @@
   <dictionary name="ipeleg">
     <words>
       <w>appenders</w>
+      <w>hmail</w>
     </words>
   </dictionary>
 </component>
