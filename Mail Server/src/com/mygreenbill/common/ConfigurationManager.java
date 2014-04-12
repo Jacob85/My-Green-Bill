@@ -2,7 +2,6 @@ package com.mygreenbill.common;
 
 import com.mygreenbill.Exceptions.ConfigurationException;
 import org.apache.log4j.Logger;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;

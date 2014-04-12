@@ -1,9 +1,11 @@
 package com.mygreenbill.messages;
 
+import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.IMailServerHandler;
 import com.mygreenbill.MailServerHandler;
 import com.mygreenbill.common.ConnectionManager;
+import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
@@ -12,19 +14,23 @@ import org.json.JSONObject;
 
 public class JsonMessageHandler
 {
-    public enum MessageType {ADD_USER, SET_NEW_FORWARD_ADDRESS};
+    // ENUM which represent all the possible messages types
+    public enum MessageType {ADD_USER, SET_NEW_FORWARD_ADDRESS}
     
     private final Logger LOGGER = Logger.getLogger(JsonMessageHandler.class);
     private IMailServerHandler mailServerHandler;
+    private DatabaseHandler databaseHandler;
     
     public JsonMessageHandler()
     {
     	mailServerHandler = new MailServerHandler();
+        databaseHandler = DatabaseHandler.getInstance();
     }
     
     /**
      * Processing JSON of an incoming message from the the Management-Blade.
      * This method should be called after the MD5 of the message was verified.
+     * The ACK JSON will also be sent by this method.
      * @param json The incoming JSON to parse
      */
     public void processJson(JSONObject json)
@@ -44,6 +50,26 @@ public class JsonMessageHandler
             ConnectionManager connectionManager = ConnectionManager.getInstance();
             connectionManager.sendToTrafficBlade(ackJson);
 
+            handleMessage(innerJson);
+        }
+        catch (JSONException e)
+        {
+            LOGGER.error("JSONException in processJson: " + e.getMessage());
+        }
+        catch (InitException e)
+		{
+        	LOGGER.error("InitException in processJson: " + e.getMessage());
+		}
+    }
+
+    /**
+     * Handling the inner JSON which is the message itself
+     * @param innerJson The inner JSON of the whole message which contain the message type.
+     */
+    public void handleMessage(JSONObject innerJson)
+    {
+        try
+        {
             // Getting the message type
             String messageType = innerJson.getString("MessageType");
 
@@ -61,12 +87,8 @@ public class JsonMessageHandler
         }
         catch (JSONException e)
         {
-            LOGGER.error("JSONException Error in processJson: " + e.getMessage());
+            LOGGER.error("JSONException in handleMessage: " + e.getMessage());
         }
-        catch (InitException e)
-		{
-        	LOGGER.error("InitException Error in processJson: " + e.getMessage());
-		}
     }
 
     /**
@@ -96,7 +118,7 @@ public class JsonMessageHandler
         }
         catch (JSONException e)
         {
-            LOGGER.error("JSONException Error in checkMessageMD5: " + e.getMessage());
+            LOGGER.error("JSONException in checkMessageMD5: " + e.getMessage());
         }
 
         LOGGER.info("Message with ID: " + id + "was not fully received");
@@ -131,6 +153,14 @@ public class JsonMessageHandler
      */
     public void addNewAccount(String accountName, String password, String address)
     {
-    	mailServerHandler.createNewAccount(accountName, password, address);
+        try
+        {
+            mailServerHandler.createNewAccount(accountName, password, address);
+            databaseHandler.runUpdateQuery("update user set = '" );
+        }
+        catch (DatabaseException e)
+        {
+            LOGGER.error("DatabaseException in addNewAccount: " + e.getMessage());
+        }
     }
 }

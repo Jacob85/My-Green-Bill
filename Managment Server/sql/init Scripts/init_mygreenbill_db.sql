@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user` (
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
-  `is_avtive` TINYINT(1) NULL,
+  `is_active` TINYINT(1) NULL,
   `join_date` DATE NULL,
   `billing_info_id` INT NOT NULL,
   PRIMARY KEY (`id`, `email`),

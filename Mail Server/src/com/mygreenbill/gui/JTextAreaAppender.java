@@ -1,11 +1,8 @@
 package com.mygreenbill.gui;
 
 import org.apache.log4j.AppenderSkeleton;
-import org.apache.log4j.WriterAppender;
 import org.apache.log4j.spi.LoggingEvent;
-
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 
 /**
  * Created by ipeleg on 4/11/14.
