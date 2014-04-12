@@ -2405,6 +2405,7 @@
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="hMailServer"/>
     <schema name="" catalog="information_schema"/>
+    <schema name="" catalog="mygreenbilldb"/>
     <schema name="" catalog="mysql"/>
     <schema name="" catalog="performance_schema"/>
     <schema name="" catalog="test"/>
@@ -2613,6 +2614,10 @@
       <column name="folderissubscribed" sqlType="TINYINT UNSIGNED" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="foldercreationtime" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="foldercurrentuid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="folderid"/>
+      <index name="folderid" unique="true" columns="folderid"/>
+      <index name="idx_hm_imapfolders_unique" unique="true" columns="folderaccountid,folderparentid,foldername"/>
+      <index name="idx_hm_imapfolders" unique="false" columns="folderaccountid"/>
     </table>
     <table name="hm_incoming_relays" schema="" catalog="hMailServer" type="TABLE">
       <column name="relayid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2621,11 +2626,15 @@
       <column name="relaylowerip2" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5"/>
       <column name="relayupperip1" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
       <column name="relayupperip2" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="relayid"/>
+      <index name="relayid" unique="true" columns="relayid"/>
     </table>
     <table name="hm_logon_failures" schema="" catalog="hMailServer" type="TABLE">
       <column name="ipaddress1" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
       <column name="ipaddress2" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5"/>
       <column name="failuretime" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <index name="idx_hm_logon_failures_failuretime" unique="false" columns="failuretime"/>
+      <index name="idx_hm_logon_failures_ipaddress" unique="false" columns="ipaddress1,ipaddress2"/>
     </table>
     <table name="hm_message_metadata" schema="" catalog="hMailServer" type="TABLE">
       <column name="metadata_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -2637,6 +2646,9 @@
       <column name="metadata_subject" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="metadata_to" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="metadata_cc" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="metadata_id"/>
+      <index name="idx_message_metadata_unique" unique="true" columns="metadata_accountid,metadata_folderid,metadata_messageid"/>
+      <index name="idx_message_metadata_id" unique="false" columns="metadata_messageid"/>
     </table>
     <table name="hm_messagerecipients" schema="" catalog="hMailServer" type="TABLE">
       <column name="recipientid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -2644,6 +2656,9 @@
       <column name="recipientaddress" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="recipientlocalaccountid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="recipientoriginaladdress" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="recipientid"/>
+      <index name="recipientid" unique="true" columns="recipientid"/>
+      <index name="idx_hm_messagerecipients" unique="false" columns="recipientmessageid"/>
     </table>
     <table name="hm_messages" schema="" catalog="hMailServer" type="TABLE">
       <column name="messageid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -2659,11 +2674,17 @@
       <column name="messagecreatetime" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="messagelocked" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="messageuid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="messageid"/>
+      <index name="messageid" unique="true" columns="messageid"/>
+      <index name="idx_hm_messages" unique="false" columns="messageaccountid,messagefolderid"/>
+      <index name="idx_hm_messages_type" unique="false" columns="messagetype"/>
     </table>
     <table name="hm_routeaddresses" schema="" catalog="hMailServer" type="TABLE">
       <column name="routeaddressid" sqlType="MEDIUMINT" length="7" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="routeaddressrouteid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="routeaddressaddress" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="routeaddressid"/>
+      <index name="routeaddressid" unique="true" columns="routeaddressid"/>
     </table>
     <table name="hm_routes" schema="" catalog="hMailServer" type="TABLE">
       <column name="routeid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2680,6 +2701,8 @@
       <column name="routetreatsecurityaslocal" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="routeusessl" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="routetreatsenderaslocaldomain" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="routeid"/>
+      <index name="routeid" unique="true" columns="routeid"/>
     </table>
     <table name="hm_rule_actions" schema="" catalog="hMailServer" type="TABLE">
       <column name="actionid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2697,6 +2720,9 @@
       <column name="actionheader" sqlType="VARCHAR" length="80" precision="0" nullable="false" jdbcType="12"/>
       <column name="actionvalue" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="actionrouteid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="actionid"/>
+      <index name="actionid" unique="true" columns="actionid"/>
+      <index name="idx_rules_actions" unique="false" columns="actionruleid"/>
     </table>
     <table name="hm_rule_criterias" schema="" catalog="hMailServer" type="TABLE">
       <column name="criteriaid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2706,6 +2732,9 @@
       <column name="criteriaheadername" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="criteriamatchtype" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="criteriamatchvalue" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="criteriaid"/>
+      <index name="criteriaid" unique="true" columns="criteriaid"/>
+      <index name="idx_rules_criterias" unique="false" columns="criteriaruleid"/>
     </table>
     <table name="hm_rules" schema="" catalog="hMailServer" type="TABLE">
       <column name="ruleid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2714,6 +2743,9 @@
       <column name="ruleactive" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="ruleuseand" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="rulesortorder" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ruleid"/>
+      <index name="ruleid" unique="true" columns="ruleid"/>
+      <index name="idx_rules" unique="false" columns="ruleaccountid"/>
     </table>
     <table name="hm_securityranges" schema="" catalog="hMailServer" type="TABLE">
       <column name="rangeid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2726,23 +2758,33 @@
       <column name="rangename" sqlType="VARCHAR" length="100" precision="0" nullable="false" jdbcType="12"/>
       <column name="rangeexpires" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="rangeexpirestime" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="rangeid"/>
+      <index name="rangeid" unique="true" columns="rangeid"/>
+      <index name="rangename" unique="true" columns="rangename"/>
     </table>
     <table name="hm_servermessages" schema="" catalog="hMailServer" type="TABLE">
       <column name="smid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="smname" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="smtext" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="smid"/>
+      <index name="smid" unique="true" columns="smid"/>
     </table>
     <table name="hm_settings" schema="" catalog="hMailServer" type="TABLE">
       <column name="settingid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="settingname" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
       <column name="settingstring" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="settinginteger" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="settingid"/>
+      <index name="settingid" unique="true" columns="settingid"/>
+      <index name="settingname" unique="true" columns="settingname"/>
     </table>
     <table name="hm_sslcertificates" schema="" catalog="hMailServer" type="TABLE">
       <column name="sslcertificateid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="sslcertificatename" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="sslcertificatefile" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="sslprivatekeyfile" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="sslcertificateid"/>
+      <index name="sslcertificateid" unique="true" columns="sslcertificateid"/>
     </table>
     <table name="hm_surblservers" schema="" catalog="hMailServer" type="TABLE">
       <column name="surblid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -2750,6 +2792,8 @@
       <column name="surblhost" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="surblrejectmessage" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="surblscore" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="surblid"/>
+      <index name="surblid" unique="true" columns="surblid"/>
     </table>
     <table name="hm_tcpipports" schema="" catalog="hMailServer" type="TABLE">
       <column name="portid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -2759,6 +2803,8 @@
       <column name="portaddress2" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5"/>
       <column name="portusessl" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="portsslcertificateid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="portid"/>
+      <index name="portid" unique="true" columns="portid"/>
     </table>
     <table name="hm_whitelist" schema="" catalog="hMailServer" type="TABLE">
       <column name="whiteid" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -2768,6 +2814,8 @@
       <column name="whiteupperipaddress2" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5"/>
       <column name="whiteemailaddress" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="whitedescription" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="whiteid"/>
+      <index name="whiteid" unique="true" columns="whiteid"/>
     </table>
     <table name="CHARACTER_SETS" schema="" catalog="information_schema" type="SYSTEM TABLE">
       <column name="CHARACTER_SET_NAME" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" def="Jyc="/>
@@ -3329,14 +3377,316 @@
       <column name="CHARACTER_SET_CLIENT" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="COLLATION_CONNECTION" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" def="Jyc="/>
     </table>
+    <table name="Inquiries_list" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="admin_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_inquiries_list_admin1" columns="admin_id" ref-table="admin" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_regiter_Inquiry_Inquiries_list1" table="regiter_Inquiry" schema="" catalog="mygreenbilldb" columns="Inquiries_list_id"/>
+      <exported-key name="fk_unregiter_Inquiry_Inquiries_list1" table="unregiter_Inquiry" schema="" catalog="mygreenbilldb" columns="Inquiries_list_id"/>
+      <index name="fk_inquiries_list_admin1_idx" unique="false" columns="admin_id"/>
+    </table>
+    <table name="address" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="country" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="street_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="house_number" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="postal_code" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_company_has_address_address1" table="company_has_address" schema="" catalog="mygreenbilldb" columns="address_id"/>
+      <exported-key name="fk_user_has_address_address1" table="user_has_address" schema="" catalog="mygreenbilldb" columns="address_id"/>
+    </table>
+    <table name="admin" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_inquiries_list_admin1" table="Inquiries_list" schema="" catalog="mygreenbilldb" columns="admin_id"/>
+      <exported-key name="fk_admin_has_mail_template_admin1" table="admin_manage_mail_template" schema="" catalog="mygreenbilldb" columns="admin_id"/>
+    </table>
+    <table name="admin_manage_mail_template" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="admin_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="mail_template_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="admin_id,mail_template_id"/>
+      <foreign-key name="fk_admin_has_mail_template_admin1" columns="admin_id" ref-table="admin" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_admin_has_mail_template_mail_template1" columns="mail_template_id" ref-table="mail_template" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_admin_has_mail_template_admin1_idx" unique="false" columns="admin_id"/>
+      <index name="fk_admin_has_mail_template_mail_template1_idx" unique="false" columns="mail_template_id"/>
+    </table>
+    <table name="billing_info" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="subscription_plans_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="rank" sqlType="ENUM" length="8" precision="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_billing_info_subscription_plans1" columns="subscription_plans_id" ref-table="subscription_plans" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_company_billing_info1" table="company" schema="" catalog="mygreenbilldb" columns="billing_info_id"/>
+      <exported-key name="fk_invoice_info_billing_info1" table="invoice_info" schema="" catalog="mygreenbilldb" columns="billing_info_id"/>
+      <exported-key name="fk_user_billing_info1" table="user" schema="" catalog="mygreenbilldb" columns="billing_info_id"/>
+      <index name="fk_billing_info_subscription_plans1_idx" unique="false" columns="subscription_plans_id"/>
+    </table>
+    <table name="company" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="billing_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,email"/>
+      <foreign-key name="fk_company_billing_info1" columns="billing_info_id" ref-table="billing_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_company_has_address_company1" table="company_has_address" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
+      <exported-key name="fk_company_has_log_in_event_company1" table="company_has_log_in_event" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
+      <exported-key name="fk_company_month_stats_company1" table="company_month_stats" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
+      <exported-key name="fk_contact_person_company1" table="contact_person" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
+      <exported-key name="fk_outcoming_massages_company1" table="outgoing_massages" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
+      <exported-key name="fk_user_has_company_company1" table="user_client_of_company" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
+      <index name="fk_company_billing_info1_idx" unique="false" columns="billing_info_id"/>
+    </table>
+    <table name="company_has_address" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="address_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="company_id,company_email,address_id"/>
+      <foreign-key name="fk_company_has_address_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_company_has_address_address1" columns="address_id" ref-table="address" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_company_has_address_address1_idx" unique="false" columns="address_id"/>
+      <index name="fk_company_has_address_company1_idx" unique="false" columns="company_id,company_email"/>
+    </table>
+    <table name="company_has_log_in_event" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="log_in_event_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="company_id,company_email,log_in_event_id"/>
+      <foreign-key name="fk_company_has_log_in_event_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_company_has_log_in_event_log_in_event1" columns="log_in_event_id" ref-table="log_in_event" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_company_has_log_in_event_company1_idx" unique="false" columns="company_id,company_email"/>
+      <index name="fk_company_has_log_in_event_log_in_event1_idx" unique="false" columns="log_in_event_id"/>
+    </table>
+    <table name="company_month_stats" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="month_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="start_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="end_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="num_of_log_in" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="num_of_massages_sent" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="num_of_failed_massages" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="num_of_sucsses_massages_sent" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="num_of_pending_massages" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id,company_id,company_email"/>
+      <foreign-key name="fk_company_month_stats_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_company_month_stats_company1_idx" unique="false" columns="company_id,company_email"/>
+    </table>
+    <table name="contact_info" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="phone_number" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="fax_number" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="office_number" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="contact_person_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_contact_info_contact_person1" columns="contact_person_id" ref-table="contact_person" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_contact_info_contact_person1_idx" unique="false" columns="contact_person_id"/>
+    </table>
+    <table name="contact_person" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="position" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_contact_person_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_contact_info_contact_person1" table="contact_info" schema="" catalog="mygreenbilldb" columns="contact_person_id"/>
+      <index name="fk_contact_person_company1_idx" unique="false" columns="company_id,company_email"/>
+    </table>
+    <table name="file" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="path" sqlType="VARCHAR" length="2048" precision="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="massage_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_file_massage1" columns="massage_id" ref-table="massage_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_file_massage1_idx" unique="false" columns="massage_id"/>
+    </table>
+    <table name="incoming_massages" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="massage_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="user_id,user_email,massage_info_id"/>
+      <foreign-key name="fk_table1_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_incoming_massages_massage_info1" columns="massage_info_id" ref-table="massage_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_incoming_massages_massage_info1_idx" unique="false" columns="massage_info_id"/>
+      <index name="fk_table1_user1_idx" unique="false" columns="user_id,user_email"/>
+    </table>
+    <table name="invoice_info" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="amount" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="issue_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="due_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="content" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="billing_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="is_paid" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_invoice_info_billing_info1" columns="billing_info_id" ref-table="billing_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_invoice_info_billing_info1_idx" unique="false" columns="billing_info_id"/>
+    </table>
+    <table name="log_in_event" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="time" sqlType="TIME" length="8" precision="0" nullable="true" jdbcType="92"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_company_has_log_in_event_log_in_event1" table="company_has_log_in_event" schema="" catalog="mygreenbilldb" columns="log_in_event_id"/>
+      <exported-key name="fk_user_has_log_in_event_log_in_event1" table="user_has_log_in_event" schema="" catalog="mygreenbilldb" columns="log_in_event_id"/>
+    </table>
+    <table name="mail_template" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="context" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="path_to_file" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="create_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_admin_has_mail_template_mail_template1" table="admin_manage_mail_template" schema="" catalog="mygreenbilldb" columns="mail_template_id"/>
+    </table>
+    <table name="massage_info" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="send_to" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="send_from" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="subject" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="cc" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="status" sqlType="ENUM" length="7" precision="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_file_massage1" table="file" schema="" catalog="mygreenbilldb" columns="massage_id"/>
+      <exported-key name="fk_incoming_massages_massage_info1" table="incoming_massages" schema="" catalog="mygreenbilldb" columns="massage_info_id"/>
+      <exported-key name="fk_incoming_massages_massage_info10" table="outgoing_massages" schema="" catalog="mygreenbilldb" columns="massage_info_id"/>
+    </table>
+    <table name="outgoing_massages" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="massage_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="massage_info_id,company_email,company_id"/>
+      <foreign-key name="fk_incoming_massages_massage_info10" columns="massage_info_id" ref-table="massage_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_outcoming_massages_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_incoming_massages_massage_info1_idx" unique="false" columns="massage_info_id"/>
+      <index name="fk_outcoming_massages_company1_idx" unique="false" columns="company_id,company_email"/>
+    </table>
+    <table name="regiter_Inquiry" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="recieved_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="subject" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="context" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="status" sqlType="ENUM" length="9" precision="0" nullable="true" jdbcType="1"/>
+      <column name="regiter_Inquirycol" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="Inquiries_list_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_type" sqlType="ENUM" length="7" precision="0" nullable="true" jdbcType="1" remarks="dXNlcl90eXBlID0gY29tcGFueSBvciB1c2VyIHtFTlVNKCd1c2VyJywnY29tcGFueScpfQ=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_regiter_Inquiry_Inquiries_list1" columns="Inquiries_list_id" ref-table="Inquiries_list" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_regiter_Inquiry_Inquiries_list1_idx" unique="false" columns="Inquiries_list_id"/>
+    </table>
+    <table name="subscription_plans" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="path_to_fie" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="target_audience" sqlType="ENUM" length="7" precision="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_billing_info_subscription_plans1" table="billing_info" schema="" catalog="mygreenbilldb" columns="subscription_plans_id"/>
+    </table>
+    <table name="unregiter_Inquiry" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="recived_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="sunject" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="context" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="unregiter_Inquirycol" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="phone_number" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="status" sqlType="ENUM" length="7" precision="0" nullable="true" jdbcType="1"/>
+      <column name="Inquiries_list_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_unregiter_Inquiry_Inquiries_list1" columns="Inquiries_list_id" ref-table="Inquiries_list" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_unregiter_Inquiry_Inquiries_list1_idx" unique="false" columns="Inquiries_list_id"/>
+    </table>
+    <table name="user" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="hmail_account_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="billing_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,email"/>
+      <foreign-key name="fk_user_billing_info1" columns="billing_info_id" ref-table="billing_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_table1_user1" table="incoming_massages" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
+      <exported-key name="fk_user_has_company_user1" table="user_client_of_company" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
+      <exported-key name="fk_user_has_address_user1" table="user_has_address" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
+      <exported-key name="fk_user_has_log_in_event_user1" table="user_has_log_in_event" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
+      <exported-key name="fk_month_stats_user1" table="user_month_stats" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
+      <index name="id_UNIQUE" unique="true" columns="id"/>
+      <index name="fk_user_billing_info1_idx" unique="false" columns="billing_info_id"/>
+    </table>
+    <table name="user_client_of_company" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id,user_email,company_id,company_email"/>
+      <foreign-key name="fk_user_has_company_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_user_has_company_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_user_has_company_company1_idx" unique="false" columns="company_id,company_email"/>
+      <index name="fk_user_has_company_user1_idx" unique="false" columns="user_id,user_email"/>
+    </table>
+    <table name="user_has_address" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="address_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="user_id,user_email,address_id"/>
+      <foreign-key name="fk_user_has_address_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_user_has_address_address1" columns="address_id" ref-table="address" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_user_has_address_address1_idx" unique="false" columns="address_id"/>
+      <index name="fk_user_has_address_user1_idx" unique="false" columns="user_id,user_email"/>
+    </table>
+    <table name="user_has_log_in_event" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="log_in_event_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="user_id,user_email,log_in_event_id"/>
+      <foreign-key name="fk_user_has_log_in_event_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_user_has_log_in_event_log_in_event1" columns="log_in_event_id" ref-table="log_in_event" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_user_has_log_in_event_log_in_event1_idx" unique="false" columns="log_in_event_id"/>
+      <index name="fk_user_has_log_in_event_user1_idx" unique="false" columns="user_id,user_email"/>
+    </table>
+    <table name="user_month_stats" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="month_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="start_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="end_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="num_of_log_in" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="massage_recived" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="massage_failed" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="massage_panding" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="massage_success" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,user_id,user_email"/>
+      <foreign-key name="fk_month_stats_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_month_stats_user1_idx" unique="false" columns="user_id,user_email"/>
+    </table>
     <table name="columns_priv" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Db" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="User" sqlType="CHAR" length="16" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Table_name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Column_name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
-      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="Column_priv" sqlType="SET" length="31" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="Host,Db,User,Table_name,Column_name"/>
     </table>
     <table name="db" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3361,6 +3711,8 @@
       <column name="Execute_priv" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
       <column name="Event_priv" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
       <column name="Trigger_priv" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
+      <primary-key name="PRIMARY" columns="Host,Db,User"/>
+      <index name="User" unique="false" columns="User"/>
     </table>
     <table name="event" schema="" catalog="mysql" type="TABLE">
       <column name="db" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3370,7 +3722,7 @@
       <column name="execute_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
       <column name="interval_value" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="interval_field" sqlType="ENUM" length="18" precision="0" nullable="true" jdbcType="1"/>
-      <column name="created" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="created" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="modified" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="last_executed" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
       <column name="starts" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
@@ -3385,15 +3737,17 @@
       <column name="collation_connection" sqlType="CHAR" length="32" precision="0" nullable="true" jdbcType="1"/>
       <column name="db_collation" sqlType="CHAR" length="32" precision="0" nullable="true" jdbcType="1"/>
       <column name="body_utf8" sqlType="LONGBLOB" length="2147483647" precision="0" nullable="true" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="db,name"/>
     </table>
     <table name="func" schema="" catalog="mysql" type="TABLE">
       <column name="name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="ret" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="dl" sqlType="CHAR" length="128" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="type" sqlType="ENUM" length="9" precision="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="name"/>
     </table>
     <table name="general_log" schema="" catalog="mysql" type="TABLE">
-      <column name="event_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="event_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="user_host" sqlType="MEDIUMTEXT" length="16777215" precision="0" nullable="false" jdbcType="-1"/>
       <column name="thread_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="server_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -3405,14 +3759,19 @@
       <column name="name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1"/>
       <column name="parent_category_id" sqlType="SMALLINT UNSIGNED" length="5" precision="0" nullable="true" jdbcType="5"/>
       <column name="url" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="help_category_id"/>
+      <index name="name" unique="true" columns="name"/>
     </table>
     <table name="help_keyword" schema="" catalog="mysql" type="TABLE">
       <column name="help_keyword_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="help_keyword_id"/>
+      <index name="name" unique="true" columns="name"/>
     </table>
     <table name="help_relation" schema="" catalog="mysql" type="TABLE">
       <column name="help_topic_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="help_keyword_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="help_keyword_id,help_topic_id"/>
     </table>
     <table name="help_topic" schema="" catalog="mysql" type="TABLE">
       <column name="help_topic_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -3421,6 +3780,8 @@
       <column name="description" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
       <column name="example" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
       <column name="url" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="help_topic_id"/>
+      <index name="name" unique="true" columns="name"/>
     </table>
     <table name="host" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3443,6 +3804,7 @@
       <column name="Alter_routine_priv" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
       <column name="Execute_priv" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
       <column name="Trigger_priv" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
+      <primary-key name="PRIMARY" columns="Host,Db"/>
     </table>
     <table name="ndb_binlog_index" schema="" catalog="mysql" type="TABLE">
       <column name="Position" sqlType="BIGINT UNSIGNED" length="20" precision="0" nullable="false" jdbcType="-5"/>
@@ -3452,10 +3814,12 @@
       <column name="updates" sqlType="BIGINT UNSIGNED" length="20" precision="0" nullable="false" jdbcType="-5"/>
       <column name="deletes" sqlType="BIGINT UNSIGNED" length="20" precision="0" nullable="false" jdbcType="-5"/>
       <column name="schemaops" sqlType="BIGINT UNSIGNED" length="20" precision="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="epoch"/>
     </table>
     <table name="plugin" schema="" catalog="mysql" type="TABLE">
       <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="dl" sqlType="VARCHAR" length="128" precision="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="name"/>
     </table>
     <table name="proc" schema="" catalog="mysql" type="TABLE">
       <column name="db" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3470,7 +3834,7 @@
       <column name="returns" sqlType="LONGBLOB" length="2147483647" precision="0" nullable="false" jdbcType="-4"/>
       <column name="body" sqlType="LONGBLOB" length="2147483647" precision="0" nullable="false" jdbcType="-4"/>
       <column name="definer" sqlType="CHAR" length="77" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
-      <column name="created" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="created" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="modified" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="sql_mode" sqlType="SET" length="478" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="comment" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
@@ -3478,6 +3842,7 @@
       <column name="collation_connection" sqlType="CHAR" length="32" precision="0" nullable="true" jdbcType="1"/>
       <column name="db_collation" sqlType="CHAR" length="32" precision="0" nullable="true" jdbcType="1"/>
       <column name="body_utf8" sqlType="LONGBLOB" length="2147483647" precision="0" nullable="true" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="db,name,type"/>
     </table>
     <table name="procs_priv" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3487,7 +3852,9 @@
       <column name="Routine_type" sqlType="ENUM" length="9" precision="0" nullable="false" jdbcType="1"/>
       <column name="Grantor" sqlType="CHAR" length="77" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Proc_priv" sqlType="SET" length="27" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
-      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="Host,Db,User,Routine_name,Routine_type"/>
+      <index name="Grantor" unique="false" columns="Grantor"/>
     </table>
     <table name="proxies_priv" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3496,7 +3863,9 @@
       <column name="Proxied_user" sqlType="CHAR" length="16" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="With_grant" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="Grantor" sqlType="CHAR" length="77" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
-      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="Host,User,Proxied_host,Proxied_user"/>
+      <index name="Grantor" unique="false" columns="Grantor"/>
     </table>
     <table name="servers" schema="" catalog="mysql" type="TABLE">
       <column name="Server_name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3508,9 +3877,10 @@
       <column name="Socket" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Wrapper" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Owner" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="Server_name"/>
     </table>
     <table name="slow_log" schema="" catalog="mysql" type="TABLE">
-      <column name="start_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="start_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="user_host" sqlType="MEDIUMTEXT" length="16777215" precision="0" nullable="false" jdbcType="-1"/>
       <column name="query_time" sqlType="TIME" length="8" precision="0" nullable="false" jdbcType="92"/>
       <column name="lock_time" sqlType="TIME" length="8" precision="0" nullable="false" jdbcType="92"/>
@@ -3528,26 +3898,32 @@
       <column name="User" sqlType="CHAR" length="16" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Table_name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Grantor" sqlType="CHAR" length="77" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
-      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="Timestamp" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
       <column name="Table_priv" sqlType="SET" length="98" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Column_priv" sqlType="SET" length="31" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="Host,Db,User,Table_name"/>
+      <index name="Grantor" unique="false" columns="Grantor"/>
     </table>
     <table name="time_zone" schema="" catalog="mysql" type="TABLE">
       <column name="Time_zone_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Use_leap_seconds" sqlType="ENUM" length="2" precision="0" nullable="false" jdbcType="1" def="J04n"/>
+      <primary-key name="PRIMARY" columns="Time_zone_id"/>
     </table>
     <table name="time_zone_leap_second" schema="" catalog="mysql" type="TABLE">
       <column name="Transition_time" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
       <column name="Correction" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Transition_time"/>
     </table>
     <table name="time_zone_name" schema="" catalog="mysql" type="TABLE">
       <column name="Name" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1"/>
       <column name="Time_zone_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Name"/>
     </table>
     <table name="time_zone_transition" schema="" catalog="mysql" type="TABLE">
       <column name="Time_zone_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Transition_time" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5"/>
       <column name="Transition_type_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Time_zone_id,Transition_time"/>
     </table>
     <table name="time_zone_transition_type" schema="" catalog="mysql" type="TABLE">
       <column name="Time_zone_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -3555,6 +3931,7 @@
       <column name="Offset" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="Is_DST" sqlType="TINYINT UNSIGNED" length="3" precision="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="Abbreviation" sqlType="CHAR" length="8" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="Time_zone_id,Transition_type_id"/>
     </table>
     <table name="user" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -3599,6 +3976,7 @@
       <column name="max_user_connections" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="plugin" sqlType="CHAR" length="64" precision="0" nullable="true" jdbcType="1" def="Jyc="/>
       <column name="authentication_string" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="Host,User"/>
     </table>
     <table name="cond_instances" schema="" catalog="performance_schema" type="TABLE">
       <column name="NAME" sqlType="VARCHAR" length="128" precision="0" nullable="false" jdbcType="12"/>
@@ -3739,5 +4117,283 @@
       <column name="PROCESSLIST_ID" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="NAME" sqlType="VARCHAR" length="128" precision="0" nullable="false" jdbcType="12"/>
     </table>
+    <procedure name="AddCompany" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="company_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="pass" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="subscription_plan" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="5"/>
+        <parameter name="rank" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="street" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="7"/>
+        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="8"/>
+        <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="9"/>
+        <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="10"/>
+        <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="11"/>
+      </prototype>
+    </procedure>
+    <procedure name="AddContactToCompany" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="position" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="phone_number" sqlType="VARCHAR" length="12" precision="12" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="office_number" sqlType="VARCHAR" length="12" precision="12" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="fax_number" sqlType="VARCHAR" length="12" precision="12" nullable="true" jdbcType="12" type="1" index="7"/>
+      </prototype>
+    </procedure>
+    <procedure name="AddMonthlyStatForCompany" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="3"/>
+      </prototype>
+    </procedure>
+    <procedure name="AddMonthlyStatForUser" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="3"/>
+      </prototype>
+    </procedure>
+    <procedure name="AddSubscriptionPlan" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="plan_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="plan_description" sqlType="TEXT" length="65535" precision="65535" nullable="true" jdbcType="-1" type="1" index="2"/>
+        <parameter name="input_path_to_file" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="input_target_audience" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+      </prototype>
+    </procedure>
+    <procedure name="AddUser" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="first_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="last_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="pass" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="subscription_plan" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
+        <parameter name="rank" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="7"/>
+        <parameter name="street" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="8"/>
+        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
+        <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="10"/>
+        <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="11"/>
+        <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="12"/>
+        <parameter name="hmail_account" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="13"/>
+      </prototype>
+    </procedure>
+    <procedure name="AddUserLoginEvent" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="CreateNewAddress" schema="" catalog="mygreenbilldb" type="2">
+      <prototype>
+        <parameter name="street" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="CreateNewInvoice" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="table_target" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="amount" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+        <parameter name="issue_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="5"/>
+        <parameter name="due_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="6"/>
+        <parameter name="content" sqlType="TEXT" length="65535" precision="65535" nullable="true" jdbcType="-1" type="1" index="7"/>
+        <parameter name="is_paid" sqlType="BOOLEAN" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="8"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllCompanyContacts" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllCompanyOutgoingMassages" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllCompanyOutgoingMassagesToCostumer" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllLogInEventAtDay" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="input_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllMailTemplatesFor" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="target" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllMonthlyStatsForCompany" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllMonthlyStatsForUser" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllNewCompanysBetween" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="1"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllNewUsersBetween" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="1"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllUserIncomingMassages" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllUserIncomingMassagesFromCompany" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllUserInvoices" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllUsersOfCompany" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetCompanyAddress" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetCompanyLogins" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetCompanyLoginsBetweenDates" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="3"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetCompanyUnpaidInvoices" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetMailTemplateManagedBy" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetSubsciptionPlanFor" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="target_audience" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetUserAddress" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetUserInvoiceFromDate" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="3"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetUserLogins" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetUserLoginsBetweenDates" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="start_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="2"/>
+        <parameter name="end_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="3"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetUserUnpaidInvoices" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="NewMassage" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="from_email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="from_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="to_email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="to_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+        <parameter name="cc" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="subject" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="content" sqlType="TEXT" length="65535" precision="65535" nullable="true" jdbcType="-1" type="1" index="7"/>
+        <parameter name="status" sqlType="VARCHAR" length="15" precision="15" nullable="true" jdbcType="12" type="1" index="8"/>
+        <parameter name="file_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="9"/>
+        <parameter name="path_to_file" sqlType="VARCHAR" length="2048" precision="2048" nullable="true" jdbcType="12" type="1" index="10"/>
+      </prototype>
+    </procedure>
+    <procedure name="UpdateCompanyAddress" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="street" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="6"/>
+      </prototype>
+    </procedure>
+    <procedure name="UpdateUserAddress" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="street" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="6"/>
+      </prototype>
+    </procedure>
+    <procedure name="isCompanyIdExist" schema="" catalog="mygreenbilldb" type="2">
+      <prototype>
+        <parameter name="idToCheck" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="isUserExistsAndActive" schema="" catalog="mygreenbilldb" type="2">
+      <prototype>
+        <parameter name="idToCheck" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="isUserIdExist" schema="" catalog="mygreenbilldb" type="2">
+      <prototype>
+        <parameter name="idToCheck" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
   </data-source>
 </component>
