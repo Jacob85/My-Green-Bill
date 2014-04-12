@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.Date;
 /**
  * Created by Jacob on 3/16/14.
  */
-public class SimpleIdentityValidationResponse
+public class SimpleIdentityValidationResponse  implements Serializable
 {
     private String id;
     private String firstName;
@@ -37,13 +38,17 @@ public class SimpleIdentityValidationResponse
            this.fatherName = jsonObject.getString("father_name");
            this.addressString = jsonObject.getString("address");
            this.birthDate = parseDate(jsonObject.getString("birth_date"));
-           this.isAlive = Boolean.parseBoolean(jsonObject.getString("is_alive"));
+           this.isAlive = jsonObject.getString("is_alive").equals("1") ? true : false;
            this.deathDate = parseDate(jsonObject.getString("death_date"));
        } catch (JSONException e)
        {
            LOGGER.error("Could not parse the Json identity: " + jsonObject.toString(), e);
            throw new CorruptIdentityParameter(e.getMessage());
        }
+    }
+
+    public SimpleIdentityValidationResponse()
+    {
     }
 
     private Date parseDate(String toParse) throws CorruptIdentityParameter
