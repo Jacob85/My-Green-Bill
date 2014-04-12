@@ -59,11 +59,11 @@ public class MainFrame extends JFrame
             {
                 try
                 {
+                    startButton.setEnabled(false);
                     textArea.setText("");
                     LOGGER.info("App started at: " + getCurrentTime());
 
                     ConnectionManager connectionManager = ConnectionManager.getInstance();
-                    startButton.setEnabled(false);
                 }
                 catch (InitException e)
                 {
