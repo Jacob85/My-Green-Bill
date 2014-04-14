@@ -65,7 +65,7 @@ public class ConnectionManager
         //todo yaki - move the hard coded configuration to file
         jdbcPoolProperties = new PoolProperties();
 
-        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":"+ databasePort +"/" + databaseName);
+        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":"+ databasePort +"/" + databaseName + "?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
         jdbcPoolProperties.setDriverClassName("com.mysql.jdbc.Driver");
         jdbcPoolProperties.setUsername(databaseUser);
         jdbcPoolProperties.setPassword(databasePassword);
