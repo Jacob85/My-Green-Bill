@@ -56,6 +56,11 @@
                 <input type="text" class="form-control" id="second_validation_question" name="second_validation_question" placeholder="Second Question">
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </div>
     </form>
 </body>
 </html>

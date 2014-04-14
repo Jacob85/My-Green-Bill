@@ -4,6 +4,7 @@ import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.Exceptions.UserIdentityException;
 import com.mygreenbill.common.ConnectionManager;
 import com.mygreenbill.common.GeneralUtilities;
+import com.mygreenbill.common.Question;
 import com.mygreenbill.common.Status;
 import com.mygreenbill.database.DatabaseHandler;
 import org.apache.log4j.Logger;
@@ -59,8 +60,21 @@ public class RegistrationManager implements IRegistration
     @Override
     public boolean areAnswersValid(RegistrationRequestAbstract request, String answer1, String answer2)
     {
-        //todo yaki - implement the method
-        return false;
+        if (request == null || answer1 == null || answer2 == null)
+        {
+            LOGGER.info(String.format("Cannot validate the answers (%s, %s) for request (%s)", answer1, answer2, request));
+            return false;
+        }
+        Question question1 = request.getFirstValidationQuestion();
+        Question question2 = request.getSecondValidationQuestion();
+
+        if (question1 == null || question2 == null)
+        {
+            LOGGER.info(String.format("Cannot validate the answers (%s, %s) for questions (%s, %s)", answer1, answer2, question1, question2));
+            return false;
+        }
+
+        return  question1.getAnswer().equalsIgnoreCase(answer1) && question2.getAnswer().equalsIgnoreCase(answer2);
     }
 
     @Override
