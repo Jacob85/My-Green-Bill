@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Error </title>
+    <title>Error</title>
 </head>
 <body>
-
+    <p>
+        <%= request.getSession().getAttribute("message") %>
+    </p>
 </body>
 </html>

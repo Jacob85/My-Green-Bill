@@ -159,7 +159,7 @@ public class ConnectionManager
             connection = datasource.getConnection();
         } catch (SQLException e)
         {
-            LOGGER.error("Unable to get new  connection from connection pool: " + e.getMessage(),e);
+            LOGGER.error("Unable to get new  connection from connection pool: " + e.getMessage(), e);
             throw new DatabaseException("Unable to get new connection from connection pool", e.getCause());
         }
         return connection;

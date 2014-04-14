@@ -1,9 +1,11 @@
 package com.mygreenbill.common;
 
+import java.io.Serializable;
+
 /**
  * Created by Jacob on 3/16/14.
  */
-public class Question
+public class Question implements Serializable
 {
     private String question;
     private String answer;

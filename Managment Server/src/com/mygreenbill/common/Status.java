@@ -8,6 +8,7 @@ public class Status
     private OperationStatus operationStatus;
     private String description;     //mainly for logging peruses
 
+
     public Status()
     {
     }
@@ -17,6 +18,7 @@ public class Status
         this.operationStatus = operationStatus;
         this.description = description;
     }
+
 
     public OperationStatus getOperationStatus()
     {

@@ -15,5 +15,6 @@ public interface IRegistration
     public boolean areAnswersValid(RegistrationRequestAbstract request, String answer1, String answer2);
     public Status RegisterUser(RegistrationRequestAbstract request);
     public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request);
+    public Status processRegistrationRequest(RegistrationRequestAbstract registrationRequest);
 
 }

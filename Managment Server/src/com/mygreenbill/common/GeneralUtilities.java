@@ -1,5 +1,7 @@
 package com.mygreenbill.common;
 
+import com.mygreenbill.registration.SimpleIdentityValidationResponse;
+
 /**
  * Created by Jacob on 3/29/14.
  */
@@ -29,5 +31,16 @@ public class GeneralUtilities
         if (!id.matches("[0-9]+") || id.length() < 8)
             return false;
         return true;
+    }
+
+    /**
+     * If the "is_alive" field set to false return false
+     * If the user is dead return false
+     * @param response the response from the ministry of interior
+     * @return true if valid else false
+     */
+    public static boolean isValidationResponseValid(SimpleIdentityValidationResponse response)
+    {
+        return (response != null && response.isAlive());
     }
 }
