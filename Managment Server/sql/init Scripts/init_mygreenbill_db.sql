@@ -472,8 +472,8 @@ ENGINE = InnoDB;
 -- Table `mygreenbilldb`.`user_has_address`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mygreenbilldb`.`user_has_address` ;
-
-CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_has_address` (
+/* remove this table we do not need it any more */
+/*CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_has_address` (
   `user_id` INT NOT NULL,
   `user_email` VARCHAR(45) NOT NULL,
   `address_id` INT NOT NULL,
@@ -490,7 +490,7 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_has_address` (
     REFERENCES `mygreenbilldb`.`address` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
 
 
 -- -----------------------------------------------------
@@ -817,12 +817,13 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `mygreenbilldb`.`user_has_address`
 -- -----------------------------------------------------
-START TRANSACTION;
+/*Remove the inserts to the table as well*/
+/*START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`user_has_address` (`user_id`, `user_email`, `address_id`) VALUES (038054664, 'yaki.ams@gmail.com', 1);
 INSERT INTO `mygreenbilldb`.`user_has_address` (`user_id`, `user_email`, `address_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 2);
 
-COMMIT;
+COMMIT;*/
 
 
 -- -----------------------------------------------------
