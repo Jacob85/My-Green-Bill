@@ -7,9 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java" afterPath="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="My Green Bill.iws" />
@@ -84,7 +84,9 @@
         <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="35" column="45" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="795">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,22 +100,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java">
+      <file leaf-file-name="MailServerHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="170" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1815">
+            <state line="32" column="11" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="2670" max-vertical-offset="5655">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mygreenbilldb.file" pinned="false" current="true" current-in-tab="true">
-        <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..file">
-          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+      <file leaf-file-name="JsonMessageHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="33" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.40243903" vertical-offset="465" max-vertical-offset="2565">
               <folding />
             </state>
           </provider>
@@ -131,8 +130,12 @@
       <file leaf-file-name="EmlFolderHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/EmlFolderHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="34" selection-start="5077" selection-end="5077" vertical-scroll-proportion="0.0" vertical-offset="2730" max-vertical-offset="2865">
-              <folding />
+            <state line="182" column="34" selection-start="5077" selection-end="5077" vertical-scroll-proportion="0.0" vertical-offset="2382" max-vertical-offset="2715">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2422#2423#0" expanded="false" />
+                <element signature="e#2450#2451#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,12 +170,10 @@
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/ssh/ConnectionHandler.java" />
         <option value="$PROJECT_DIR$/Managment Server/sql/functions/isUserExistsAndActive.txt" />
         <option value="$PROJECT_DIR$/Managment Server/sql/Stored Procedures/AddUser.txt" />
-        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/conf/configuration.properties" />
         <option value="$PROJECT_DIR$/Mail Server/src/log4j.properties" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConfigurationManager.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/gui/MainFrame.java" />
-        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/Main.java" />
@@ -183,9 +184,11 @@
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/CopyAttachmentHandler.java" />
         <option value="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_store_procedures.sql" />
         <option value="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql" />
-        <option value="db-console:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/database/DatabaseHandler.java" />
+        <option value="db-console:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/" />
+        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java" />
+        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" />
       </list>
     </option>
   </component>
@@ -204,8 +207,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1280" />
-    <option name="height" value="726" />
+    <option name="width" value="1600" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -241,7 +244,78 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mail Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mail Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mail Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mygreenbill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mail Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mygreenbill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
@@ -737,7 +811,7 @@
       <workItem from="1397216081851" duration="3996000" />
       <workItem from="1397223449502" duration="5609000" />
       <workItem from="1397231460815" duration="37923000" />
-      <workItem from="1397322817921" duration="1721000" />
+      <workItem from="1397322817921" duration="2689000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -811,23 +885,27 @@
       <created>1397322653393</created>
       <updated>1397322653393</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Update ConnectionManager to work with UTF-8">
+      <created>1397324954483</created>
+      <updated>1397324954483</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74753000" />
+    <option name="totallyTimeSpent" value="75721000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="726" extended-state="0" />
+    <frame x="0" y="22" width="1600" height="826" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41009465" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35422343" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3303685" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37102923" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22374798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17779204" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56782335" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -836,14 +914,14 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.51096493" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23990306" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.190629" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12776025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -914,7 +992,8 @@
     <MESSAGE value="CopyToDB &amp; Database handler update" />
     <MESSAGE value="Database handler copy into Mail Server module" />
     <MESSAGE value="Update DB on incoming mails" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update DB on incoming mails" />
+    <MESSAGE value="Update ConnectionManager to work with UTF-8" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update ConnectionManager to work with UTF-8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -997,11 +1076,6 @@
         <state line="70" column="41" selection-start="1912" selection-end="1912" vertical-scroll-proportion="0.3857143" vertical-offset="846" max-vertical-offset="1350" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="11" selection-start="976" selection-end="976" vertical-scroll-proportion="-1.1320754" vertical-offset="840" max-vertical-offset="5655" />
-      </provider>
-    </entry>
     <entry file="dbDummy://dbprocedure:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..GetAllLogInEventAtDay">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375" />
@@ -1022,11 +1096,6 @@
         <state line="8" column="70" selection-start="652" selection-end="652" vertical-scroll-proportion="13.344828" vertical-offset="507" max-vertical-offset="870" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="55" selection-start="2260" selection-end="2260" vertical-scroll-proportion="1.5430017" vertical-offset="0" max-vertical-offset="2700" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/test/test/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="225" selection-end="225" vertical-scroll-proportion="0.17326732" vertical-offset="0" max-vertical-offset="606" />
@@ -1044,12 +1113,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/Status.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915" />
+        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GeneralUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585" />
+        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/log4j.properties">
@@ -1059,17 +1132,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConfigurationManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="12" selection-start="827" selection-end="827" vertical-scroll-proportion="0.5714286" vertical-offset="140" max-vertical-offset="1275" />
+        <state line="30" column="12" selection-start="827" selection-end="827" vertical-scroll-proportion="0.5714286" vertical-offset="140" max-vertical-offset="1275">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/gui/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="21" selection-start="181" selection-end="181" vertical-scroll-proportion="0.12647554" vertical-offset="0" max-vertical-offset="1905" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="48" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.40472177" vertical-offset="30" max-vertical-offset="5025" />
+        <state line="5" column="21" selection-start="181" selection-end="181" vertical-scroll-proportion="0.12647554" vertical-offset="0" max-vertical-offset="1905">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/database/DatabaseHandler.java">
@@ -1079,7 +1151,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="12" selection-start="4170" selection-end="4170" vertical-scroll-proportion="0.80944353" vertical-offset="1245" max-vertical-offset="4245" />
+        <state line="127" column="12" selection-start="4170" selection-end="4170" vertical-scroll-proportion="0.80944353" vertical-offset="1245" max-vertical-offset="4245">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/Exceptions/ConfigurationException.java">
@@ -1096,7 +1170,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="35" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37128714" vertical-offset="0" max-vertical-offset="606" />
+        <state line="20" column="35" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37128714" vertical-offset="0" max-vertical-offset="606">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/sql/PHP Files/UpdateUserAddress.php">
@@ -1126,13 +1202,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.40106952" vertical-offset="150" max-vertical-offset="945" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/EmlFolderHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="34" selection-start="5077" selection-end="5077" vertical-scroll-proportion="0.0" vertical-offset="2214" max-vertical-offset="2820">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/sql/PHP Files/NewMassage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="35" selection-start="474" selection-end="490" vertical-scroll-proportion="-8.24" vertical-offset="94" max-vertical-offset="675" />
@@ -1146,13 +1215,6 @@
     <entry file="file://$PROJECT_DIR$/Managment Server/sql/PHP Files/addNewCompany.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="23" selection-start="338" selection-end="338" vertical-scroll-proportion="0.42979944" vertical-offset="120" max-vertical-offset="675" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="0" selection-end="37376" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12645">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/sql/init Scripts/init_functions.sql">
@@ -1169,9 +1231,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/CopyAttachmentHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="3273" selection-end="3273" vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="1425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="0" selection-end="37376" vertical-scroll-proportion="0.3739612" vertical-offset="150" max-vertical-offset="12645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="dbDummy://db-console:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1250" column="11" selection-start="0" selection-end="47781" vertical-scroll-proportion="0.93950176" vertical-offset="18486" max-vertical-offset="18840">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="294">
           <folding />
         </state>
       </provider>
@@ -1179,13 +1255,43 @@
     <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="45" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="795">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/EmlFolderHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="34" selection-start="5077" selection-end="5077" vertical-scroll-proportion="0.0" vertical-offset="2214" max-vertical-offset="2820">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2422#2423#0" expanded="false" />
+            <element signature="e#2450#2451#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="107" selection-start="2104" selection-end="2104" vertical-scroll-proportion="0.58064514" vertical-offset="600" max-vertical-offset="5025">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/CopyAttachmentHandler.java">
+    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="3273" selection-end="3273" vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="1425">
+        <state line="44" column="107" selection-start="1338" selection-end="1338" vertical-scroll-proportion="0.24193548" vertical-offset="480" max-vertical-offset="1815">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..file">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <folding />
         </state>
       </provider>
@@ -1197,19 +1303,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java">
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="170" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1815">
+        <state line="32" column="11" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="2670" max-vertical-offset="5655">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..file">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="33" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.40243903" vertical-offset="465" max-vertical-offset="2565">
           <folding />
         </state>
       </provider>

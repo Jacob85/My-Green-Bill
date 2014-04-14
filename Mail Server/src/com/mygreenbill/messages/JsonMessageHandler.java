@@ -50,6 +50,7 @@ public class JsonMessageHandler
             ConnectionManager connectionManager = ConnectionManager.getInstance();
             connectionManager.sendToTrafficBlade(ackJson);
 
+            // Now handling the inner JSON
             handleMessage(innerJson);
         }
         catch (JSONException e)

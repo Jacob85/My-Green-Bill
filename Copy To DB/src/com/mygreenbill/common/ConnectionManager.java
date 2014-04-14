@@ -42,7 +42,7 @@ public class ConnectionManager
     {
         jdbcPoolProperties = new PoolProperties();
 
-        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":"+ databasePort +"/" + databaseName+"?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
+        jdbcPoolProperties.setUrl("jdbc:mysql://" + databaseHost + ":"+ databasePort +"/" + databaseName + "?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8");
         jdbcPoolProperties.setDriverClassName("com.mysql.jdbc.Driver");
         jdbcPoolProperties.setUsername(databaseUser);
         jdbcPoolProperties.setPassword(databasePassword);
