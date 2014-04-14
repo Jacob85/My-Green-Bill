@@ -225,9 +225,15 @@ public class DatabaseHandler
 
     }
 
+    /**
+     *
+     * @param registrationRequest
+     * @return
+     */
     public Status registerUser(RegistrationRequestAbstract registrationRequest)
     {
-        // todo yaki - implement registerUser method
+        //call add new user stored procedure
+        //String addUserQuery = "call "
         return null;
     }
 

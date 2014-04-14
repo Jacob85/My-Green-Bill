@@ -142,8 +142,6 @@ public class ConnectionManager
         {
             LOGGER.info("Received null message to send to client... do nothing");
         }
-
-
         // create new JsonRequest Object and add it to the sentMap -> then interrupt the thread
         RequestJson newRequestJson = new RequestJson(prepareJsonMessageToDeliver(jsonMessage), 0, jsonRequestID.getAndIncrement());
         sentJsonRequestsMap.put(String.valueOf(newRequestJson.getMessageId()), newRequestJson);

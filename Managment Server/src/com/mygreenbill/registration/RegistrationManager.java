@@ -7,7 +7,14 @@ import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.Question;
 import com.mygreenbill.common.Status;
 import com.mygreenbill.database.DatabaseHandler;
+import com.mygreenbill.messages.JsonMessageHandler;
+import com.mygreenbill.security.EncryptionType;
+import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Jacob on 3/17/14.
@@ -78,10 +85,61 @@ public class RegistrationManager implements IRegistration
     }
 
     @Override
-    public Status RegisterUser(RegistrationRequestAbstract request)
+    public Status registerUser(RegistrationRequestAbstract request)
     {
-        //todo yaki - implement the method
+        if (request != null)
+        {
+            if (request instanceof FullRegistrationRequest)
+            {
+                FullRegistrationRequest registrationRequest = (FullRegistrationRequest) request;
+
+                // create new user in the database
+                LOGGER.info(String.format("Adding the user %s %s to the database", registrationRequest.getValidationResponse().getFirstName(),
+                                                                                   registrationRequest.getValidationResponse().getLastName()));
+                Status addToDbStatus = DatabaseHandler.getInstance().registerUser(request);
+                if (addToDbStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
+                {
+                    LOGGER.info("User was added to Database, start to compose Json request and send it to Mil server");
+                    // send message to the Mail server to open new account
+                    sendRegistrationMessage(registrationRequest);
+                    return new Status(Status.OperationStatus.SUCCESS, "user was successfully register");
+                }
+                else
+                {
+                    // failed to add user to database
+                    return addToDbStatus;
+                }
+            }
+            else
+            {
+                // registration by app
+                //todo yaki - implement same procedure for registration by app
+            }
+
+        }
         return null;
+    }
+
+    private void sendRegistrationMessage(FullRegistrationRequest registrationRequest)
+    {
+        Map<String, String> messageFiled = new HashMap<String, String>();
+        messageFiled.put("MessageType", String.valueOf(JsonMessageHandler.MessageType.ADD_USER));
+        messageFiled.put("userId", registrationRequest.getId());
+        messageFiled.put("accountName", EncryptionUtil.encryptString(registrationRequest.getEmail(), EncryptionType.MD5));
+        messageFiled.put("password", registrationRequest.getEncriptPassword(EncryptionType.MD5));
+        messageFiled.put("address", registrationRequest.getEmail());
+        JSONObject message = new JSONObject(messageFiled);
+        LOGGER.info("Finished to construct json request : " + message.toString());
+        LOGGER.info("Sending message to mail server");
+        try
+        {
+            ConnectionManager.getInstance().sendToTrafficBlade(new JSONObject(messageFiled));
+
+        } catch (InitException e)
+        {
+            LOGGER.info("Failed to send message to mail server");
+            LOGGER.error(e);
+        }
     }
 
     @Override

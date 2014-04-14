@@ -13,7 +13,7 @@ public interface IRegistration
     public String getFirstValidationQuestion(RegistrationRequestAbstract request);
     public String getSecondValidationQuestion(RegistrationRequestAbstract request);
     public boolean areAnswersValid(RegistrationRequestAbstract request, String answer1, String answer2);
-    public Status RegisterUser(RegistrationRequestAbstract request);
+    public Status registerUser(RegistrationRequestAbstract request);
     public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request);
     public Status processRegistrationRequest(RegistrationRequestAbstract registrationRequest);
 

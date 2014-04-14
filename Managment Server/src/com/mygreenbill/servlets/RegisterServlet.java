@@ -1,12 +1,9 @@
 package com.mygreenbill.servlets;
 
-import com.jcraft.jsch.Session;
 import com.mygreenbill.common.Status;
-import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Properties;
 
 /**
  * Created by Jacob on 3/15/14.
@@ -70,6 +65,9 @@ public class RegisterServlet extends HttpServlet
             request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
         // answers are valid create new user and forward to dashboard
+        //todo yaki - if we will want to let the user choose companies this is the phase to do it at the moment we create new user with all companies
+        LOGGER.info("User validation phase is finished - creating new user in hte database");
+        registrationManager.registerUser(registrationRequest);
 
 
 
