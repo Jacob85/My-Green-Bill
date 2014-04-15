@@ -86,6 +86,9 @@ public class JsonMessageHandler
                 case SET_NEW_FORWARD_ADDRESS:
                     setNewForwardAddress(innerJson.getString("accountName"), innerJson.getString("newAddress"));
                     break;
+                default:
+                    LOGGER.info("Message with ID: " + innerJson.getString("messageId") + " has no valid MessageType -> " + innerJson.getString("MessageType"));
+                    break;
             }
         }
         catch (JSONException e)
@@ -111,13 +114,19 @@ public class JsonMessageHandler
         try
         {
             JSONObject innerJson = json.getJSONObject("Message");
-            id = innerJson.getInt("messageID"); // Getting the message ID
+            id = innerJson.getInt("messageId"); // Getting the message ID
             String messageMD5 = getMD5(innerJson.toString()); // Checking the MD5 of the incoming message
 
             if (messageMD5.equals(json.getString("CheckSum"))) // If the MD5 field is equal to the MD5 of the message return true
             {
-                LOGGER.info("Message with ID: " + id + "was fully received");
+                LOGGER.info("Message with ID: " + id + " was fully received :)");
                 return true;
+            }
+            else
+            {
+                LOGGER.info("Message with ID: " + id + " was not fully received :(");
+                LOGGER.info("Message MD5: " + json.getString("CheckSum"));
+                LOGGER.info("Message received MD5: " + messageMD5);
             }
         }
         catch (JSONException e)
@@ -126,7 +135,6 @@ public class JsonMessageHandler
             LOGGER.error(e.getMessage());
         }
 
-        LOGGER.info("Message with ID: " + id + "was not fully received");
         return false;
     }
 

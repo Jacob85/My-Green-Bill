@@ -58,7 +58,6 @@ public class ConnectionHandler
         try
         {
             channelSftp.mkdir(folderPath);
-            LOGGER.info("New folder was created " + folderPath);
         }
         catch (SftpException e)
         {
