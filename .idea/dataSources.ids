@@ -3395,7 +3395,6 @@
       <column name="postal_code" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_company_has_address_address1" table="company_has_address" schema="" catalog="mygreenbilldb" columns="address_id"/>
-      <exported-key name="fk_user_has_address_address1" table="user_has_address" schema="" catalog="mygreenbilldb" columns="address_id"/>
     </table>
     <table name="admin" schema="" catalog="mygreenbilldb" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -3423,7 +3422,6 @@
       <foreign-key name="fk_billing_info_subscription_plans1" columns="subscription_plans_id" ref-table="subscription_plans" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_company_billing_info1" table="company" schema="" catalog="mygreenbilldb" columns="billing_info_id"/>
       <exported-key name="fk_invoice_info_billing_info1" table="invoice_info" schema="" catalog="mygreenbilldb" columns="billing_info_id"/>
-      <exported-key name="fk_user_billing_info1" table="user" schema="" catalog="mygreenbilldb" columns="billing_info_id"/>
       <index name="fk_billing_info_subscription_plans1_idx" unique="false" columns="subscription_plans_id"/>
     </table>
     <table name="company" schema="" catalog="mygreenbilldb" type="TABLE">
@@ -3620,16 +3618,12 @@
       <column name="hmail_account_name" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
       <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
       <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
-      <column name="billing_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id,email"/>
-      <foreign-key name="fk_user_billing_info1" columns="billing_info_id" ref-table="billing_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_table1_user1" table="incoming_massages" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_user_has_company_user1" table="user_client_of_company" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
-      <exported-key name="fk_user_has_address_user1" table="user_has_address" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_user_has_log_in_event_user1" table="user_has_log_in_event" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_month_stats_user1" table="user_month_stats" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <index name="id_UNIQUE" unique="true" columns="id"/>
-      <index name="fk_user_billing_info1_idx" unique="false" columns="billing_info_id"/>
     </table>
     <table name="user_client_of_company" schema="" catalog="mygreenbilldb" type="TABLE">
       <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -3641,16 +3635,6 @@
       <foreign-key name="fk_user_has_company_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
       <index name="fk_user_has_company_company1_idx" unique="false" columns="company_id,company_email"/>
       <index name="fk_user_has_company_user1_idx" unique="false" columns="user_id,user_email"/>
-    </table>
-    <table name="user_has_address" schema="" catalog="mygreenbilldb" type="TABLE">
-      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
-      <column name="address_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="user_id,user_email,address_id"/>
-      <foreign-key name="fk_user_has_address_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
-      <foreign-key name="fk_user_has_address_address1" columns="address_id" ref-table="address" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-      <index name="fk_user_has_address_address1_idx" unique="false" columns="address_id"/>
-      <index name="fk_user_has_address_user1_idx" unique="false" columns="user_id,user_email"/>
     </table>
     <table name="user_has_log_in_event" schema="" catalog="mygreenbilldb" type="TABLE">
       <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>

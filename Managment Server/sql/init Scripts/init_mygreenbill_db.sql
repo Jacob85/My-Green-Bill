@@ -53,15 +53,8 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user` (
   `hmail_account_name` VARCHAR(45) NULL,
   `is_active` TINYINT(1) NULL,
   `join_date` DATE NULL,
-  `billing_info_id` INT NOT NULL,
   PRIMARY KEY (`id`, `email`),
-  INDEX `fk_user_billing_info1_idx` (`billing_info_id` ASC),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  CONSTRAINT `fk_user_billing_info1`
-    FOREIGN KEY (`billing_info_id`)
-    REFERENCES `mygreenbilldb`.`billing_info` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
@@ -607,8 +600,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `billing_info_id`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 'ABCD', 1, '2013-09-21', 1);
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `billing_info_id`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '123', 'ipeleg', 1, '2013-09-16', 2);
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 'ABCD', 1, '2013-09-21');
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '123', 'ipeleg', 1, '2013-09-16');
 
 COMMIT;
 
