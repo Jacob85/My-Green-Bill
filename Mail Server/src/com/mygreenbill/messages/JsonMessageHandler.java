@@ -42,10 +42,10 @@ public class JsonMessageHandler
         try
         {
             JSONObject innerJson = json.getJSONObject("Message"); // Getting the inner JSON object
-            int id = innerJson.getInt("messageID"); // Getting the message ID
+            int id = innerJson.getInt("messageId"); // Getting the message ID
 
             // Sending back the ACK json the the management blade
-            JSONObject ackJson = new JSONObject("{messageID: "+ id +", MessageType: ACK}");
+            JSONObject ackJson = new JSONObject("{messageId: "+ id +", MessageType: ACK}");
             LOGGER.info("Sending ACK on message ID: " + id);
             ConnectionManager connectionManager = ConnectionManager.getInstance();
             connectionManager.sendToTrafficBlade(ackJson);
@@ -80,7 +80,7 @@ public class JsonMessageHandler
             switch (MessageType.valueOf(messageType))
             {
                 case ADD_USER:
-                    addNewAccount(innerJson.getString("userId"), innerJson.getString("accountName"), innerJson.getString("password"), innerJson.getString("address"));
+                    addNewAccount(innerJson.getString("accountName"), innerJson.getString("password"), innerJson.getString("address"));
                     break;
 
                 case SET_NEW_FORWARD_ADDRESS:
@@ -152,19 +152,18 @@ public class JsonMessageHandler
     
     /**
      * Creating new account in the hMailServer
-     * @param userId The user ID number
      * @param accountName The account name
      * @param address The email of the new account to which email will be forwarded
      * @param password The new account password
      */
-    public void addNewAccount(String userId, String accountName, String password, String address)
+    public void addNewAccount(String accountName, String password, String address)
     {
         try
         {
             mailServerHandler.createNewAccount(accountName, password, address);
 
             // Set the user as active after creating an account
-            databaseHandler.runUpdateQuery("UPDATE user SET is_active='1' WHERE id='" + userId +"';" );
+            databaseHandler.runUpdateQuery("UPDATE user SET is_active='1' WHERE hmail_account_name='" + accountName +"';" );
         }
         catch (DatabaseException e)
         {
