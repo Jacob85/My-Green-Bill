@@ -11,7 +11,6 @@ public interface IRegistration
 {
 
     public boolean isUserExists(RegistrationRequestAbstract request);
-    public boolean validateIdentity(RegistrationRequestAbstract request);
     public String getFirstValidationQuestion(RegistrationRequestAbstract request);
     public String getSecondValidationQuestion(RegistrationRequestAbstract request);
     public boolean areAnswersValid(RegistrationRequestAbstract request, String answer1, String answer2);

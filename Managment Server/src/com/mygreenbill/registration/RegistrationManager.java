@@ -38,15 +38,8 @@ public class RegistrationManager implements IRegistration
     @Override
     public boolean isUserExists(RegistrationRequestAbstract request)
     {
-        //todo yaki - implement the method
-        return false;
-    }
-
-    @Override
-    public boolean validateIdentity(RegistrationRequestAbstract request)
-    {
-        //todo yaki - implement the method
-        return false;
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        return databaseHandler.isUserExist(request.getId(), false);
     }
 
     @Override
@@ -173,8 +166,7 @@ public class RegistrationManager implements IRegistration
         }
 
         // check in the DB that the user does not exists
-        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
-        boolean exists = databaseHandler.isUserExist(registrationRequest.getId(), false);
+        boolean exists =  isUserExists(registrationRequest);
         if(exists)
         {
             LOGGER.info("User already exists!");
