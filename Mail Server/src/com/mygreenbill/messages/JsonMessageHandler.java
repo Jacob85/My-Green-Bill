@@ -5,6 +5,7 @@ import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.IMailServerHandler;
 import com.mygreenbill.MailServerHandler;
 import com.mygreenbill.common.ConnectionManager;
+import com.mygreenbill.common.MessageType;
 import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;
@@ -15,7 +16,6 @@ import org.json.JSONObject;
 public class JsonMessageHandler
 {
     // ENUM which represent all the possible messages types
-    public enum MessageType {ADD_USER, SET_NEW_FORWARD_ADDRESS}
     
     private final Logger LOGGER = Logger.getLogger(JsonMessageHandler.class);
     private IMailServerHandler mailServerHandler;

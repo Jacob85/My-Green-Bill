@@ -1,4 +1,4 @@
-package com.mygreenbill.common;
+package com.mygreenbill.interfaces;
 
 /**
  * Created by Jacob on 3/28/14.

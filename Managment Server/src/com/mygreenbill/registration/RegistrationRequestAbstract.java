@@ -14,19 +14,31 @@ import java.util.List;
 public abstract class RegistrationRequestAbstract implements Serializable
 {
     protected String id;
+    protected String email;
     protected SimpleIdentityValidationResponse validationResponse;
     protected Question firstValidationQuestion;
     protected Question secondValidationQuestion;
     protected List<Integer> companiesToAdd = new ArrayList<Integer>();
 
 
-    protected RegistrationRequestAbstract(String id)
+    protected RegistrationRequestAbstract(String id, String email)
     {
         this.id = id;
+        this.email = email;
     }
 
     protected RegistrationRequestAbstract()
     {
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
     }
 
     public String getId()

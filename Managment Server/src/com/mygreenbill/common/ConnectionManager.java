@@ -1,6 +1,8 @@
 package com.mygreenbill.common;
 
 import com.mygreenbill.Exceptions.*;
+import com.mygreenbill.interfaces.GreenBillClient;
+import com.mygreenbill.interfaces.GreenBillServer;
 import com.mygreenbill.registration.SimpleIdentityValidationResponse;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;

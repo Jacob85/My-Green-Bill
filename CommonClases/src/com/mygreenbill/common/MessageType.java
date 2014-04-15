@@ -5,6 +5,7 @@ package com.mygreenbill.common;
  */
 public enum MessageType
 {
+    // ENUM which represent all the possible messages types
     ADD_USER, SET_NEW_FORWARD_ADDRESS
 
 }

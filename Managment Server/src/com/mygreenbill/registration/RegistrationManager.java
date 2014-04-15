@@ -110,7 +110,7 @@ public class RegistrationManager implements IRegistration
         return null;
     }
 
-    private void sendRegistrationMessage(FullRegistrationRequest registrationRequest)
+    private void sendRegistrationMessage(RegistrationRequestAbstract registrationRequest)
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
         messageFiled.put("MessageType", String.valueOf(MessageType.ADD_USER));
@@ -145,14 +145,10 @@ public class RegistrationManager implements IRegistration
             LOGGER.info("Failed to update Current Session With User Info the request or the session is null");
             return new Status(Status.OperationStatus.FAILED, "Failed to update Current Session With User Info the request or the session is null");
         }
-        if (request instanceof FullRegistrationRequest)
-        {
-            GreenBillUser registeredUser = new GreenBillUser((FullRegistrationRequest) request);
-            currentSession.setAttribute("user", registeredUser);
-            return  new Status(Status.OperationStatus.SUCCESS, "Current Session Was Updated With User Info ");
-        }
+        GreenBillUser registeredUser = new GreenBillUser(request);
+        currentSession.setAttribute("user", registeredUser);
+        return  new Status(Status.OperationStatus.SUCCESS, "Current Session Was Updated With User Info ");
 
-        return null;
     }
 
     @Override

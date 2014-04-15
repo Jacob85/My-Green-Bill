@@ -10,13 +10,11 @@ import java.io.Serializable;
  */
 public class FullRegistrationRequest extends RegistrationRequestAbstract implements Serializable
 {
-    private String email;
     private String password;
 
     public FullRegistrationRequest(String id, String email, String password)
     {
-        super(id);
-        this.email = email;
+        super(id, email);
         /*The Password will be saved as unEncrypted format here and will be encrypt every time the user want to get the password*/
         /*This is because the user might want to Encrypt the password in different formats */
         this.password = password;
@@ -28,15 +26,6 @@ public class FullRegistrationRequest extends RegistrationRequestAbstract impleme
         this.password = password;
     }
 
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
 
     @Override
     public String getEncryptPassword(EncryptionType encryptionType)
