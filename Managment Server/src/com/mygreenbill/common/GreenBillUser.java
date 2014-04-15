@@ -1,6 +1,6 @@
 package com.mygreenbill.common;
 
-import com.mygreenbill.registration.FullRegistrationRequest;
+import com.mygreenbill.registration.RegistrationRequestAbstract;
 import com.mygreenbill.security.EncryptionType;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class GreenBillUser
         this.userCompanyList = userCompanyList;
     }
 
-    public GreenBillUser (FullRegistrationRequest fullRegistrationRequest)
+    public GreenBillUser (RegistrationRequestAbstract fullRegistrationRequest)
     {
         this.userId = fullRegistrationRequest.getId();
         this.password = fullRegistrationRequest.getEncryptPassword(EncryptionType.MD5);
