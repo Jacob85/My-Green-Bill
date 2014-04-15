@@ -121,7 +121,6 @@ public class RegistrationManager implements IRegistration
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
         messageFiled.put("MessageType", String.valueOf(MessageType.ADD_USER));
-        messageFiled.put("userId", registrationRequest.getId());
         messageFiled.put("accountName", EncryptionUtil.encryptString(registrationRequest.getEmail(), EncryptionType.MD5));
         messageFiled.put("password", registrationRequest.getEncryptPassword(EncryptionType.MD5));
         messageFiled.put("address", registrationRequest.getEmail());
