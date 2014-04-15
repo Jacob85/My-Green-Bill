@@ -1,4 +1,6 @@
-package com.mygreenbill.common;
+package com.mygreenbill.interfaces;
+
+import com.mygreenbill.common.RequestJson;
 
 /**
  * Created by Jacob on 3/28/14.
