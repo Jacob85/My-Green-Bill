@@ -35,21 +35,38 @@ public class RegisterServlet extends HttpServlet
         // if we are dealing with full registration
         if (uri.contains("/full"))
         {
-            // new Registration request
-            if (request.getSession().isNew())
+           /*
+                The Registration process is build of phases:
+                1. the first phase is when the user choose to register and submit its details (phase = 0 || phase = null)
+                2. second phase is after validation questions returned from the user with the answers (phase = 1)
+                3. we can add some more phases like choosing companies
+                4. we can add some more phases like validate email address
+
+                **IMPORTANT** - In the End of each method remember to ser the phase to be the next phase!
+            */
+            HttpSession session = request.getSession();
+            Integer registrationPhase = (Integer) session.getAttribute("phase");
+            if (registrationPhase == null)
             {
+                // new request
                 processNewSession(request, response);
             }
             else
             {
-                // processReturningRequest
-                processReturningRequest(request, response);
+                switch (registrationPhase)
+                {
+                    case 1:
+                        // process First Phase
+                        processFirstPhase(request, response);
+                        break;
+                    default:
+                        break;
+                }
             }
-
         }
     }
 
-    private void processReturningRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    private void processFirstPhase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession currentSession = request.getSession();
         String answer1 = request.getParameter("first_validation_question");
@@ -60,16 +77,26 @@ public class RegisterServlet extends HttpServlet
         boolean answersAreValid = registrationManager.areAnswersValid(registrationRequest, answer1, answer2);
         if (!answersAreValid)
         {
-            request.getSession().setAttribute("message", String.format("Failed to validate answers (%s, %s)", answer1, answer2));
-            LOGGER.error("Failed to validate answers, validation failed. forwarding to error.jsp");
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            forwardToErrorPage(request, response, String.format("Failed to validate answers (%s, %s)", answer1, answer2) );
+            return;
         }
         // answers are valid create new user and forward to dashboard
         //todo yaki - if we will want to let the user choose companies this is the phase to do it at the moment we create new user with all companies
         LOGGER.info("User validation phase is finished - creating new user in hte database");
-        registrationManager.registerUser(registrationRequest);
+        Status registerUserStatus = registrationManager.registerUser(registrationRequest);
+        // if operation failed forward to error page
+        if (registerUserStatus.getOperationStatus() == Status.OperationStatus.FAILED)
+        {
+            forwardToErrorPage(request, response, registerUserStatus.getDescription());
+            return;
+        }
+        //else the user was successfully added to the Database (Register successfully)
 
-
+        //todo yaki - at the moment just forward to success page with proper meaasge in the future to redirect the user to dashboard
+        registrationManager.updateCurrentSessionWithUserInfo(registrationRequest, currentSession);
+         /*end of phase 1 next phase is 2*/
+        request.getSession().setAttribute("phase", 2);
+        request.getRequestDispatcher("/success.jsp").forward(request, response);
 
     }
 
@@ -83,19 +110,29 @@ public class RegisterServlet extends HttpServlet
 
         RegistrationManager registrationManager = RegistrationManager.getInstance();
         Status status = registrationManager.processRegistrationRequest(registrationRequest);
+
         if (status.getOperationStatus() == Status.OperationStatus.FAILED)
         {
-            request.getSession().setAttribute("message", status.getDescription());
-            LOGGER.error(String.format("user validation failed. forwarding to error.jsp (%s)", status.getDescription()));
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            forwardToErrorPage(request, response, status.getDescription());
+            return;
         }
 
         // get validation from user success = return the questions to the user and attache the registration request to the current session
         request.getSession().setAttribute("question1", registrationManager.getFirstValidationQuestion(registrationRequest));
         request.getSession().setAttribute("question2", registrationManager.getSecondValidationQuestion(registrationRequest));
         request.getSession().setAttribute("registrationRequest", registrationRequest);
+        /*end of phase 0 next phase is 1*/
+        request.getSession().setAttribute("phase", 1);
+
         LOGGER.info("return the question to the user for validation");
         request.getRequestDispatcher("/validate.jsp").forward(request, response);
+    }
+
+    private void forwardToErrorPage(HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException
+    {
+        request.getSession().setAttribute("message", message);
+        LOGGER.error(String.format("Operation failed! forwarding to error.jsp (%s)", message));
+        request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -104,4 +141,5 @@ public class RegisterServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         out.println("Hello World " + this.getClass().getSimpleName());
     }
+
 }

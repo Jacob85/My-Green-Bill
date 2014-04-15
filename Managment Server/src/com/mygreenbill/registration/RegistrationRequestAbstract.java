@@ -4,6 +4,7 @@ import com.mygreenbill.common.Question;
 import com.mygreenbill.security.EncryptionType;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,8 @@ public abstract class RegistrationRequestAbstract implements Serializable
         //populate the questions
         if (firstValidationQuestion == null)
         {
-           firstValidationQuestion = new Question("What is your birth date?", validationResponse.getBirthDate().toString());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+           firstValidationQuestion = new Question("What is your birth date?", dateFormat.format(validationResponse.getBirthDate()));
         }
         if (secondValidationQuestion == null)
         {
@@ -86,6 +88,6 @@ public abstract class RegistrationRequestAbstract implements Serializable
     {
         this.companiesToAdd = companiesToAdd;
     }
-    public abstract String getEncriptPassword(EncryptionType encryptionType);
+    public abstract String getEncryptPassword(EncryptionType encryptionType);
     public abstract boolean isRequestValid();
 }

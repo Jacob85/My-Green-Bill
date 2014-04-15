@@ -6,8 +6,10 @@ import com.mygreenbill.common.ConnectionManager;
 import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
+import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationRequestAbstract;
-import net.sf.resultsetmapper.ResultSetMapper;
+import com.mygreenbill.security.EncryptionType;
+import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -161,7 +163,7 @@ public class DatabaseHandler
      * The new password in already encrypted
      * @param user The user to change the password to
      * @param newPassword The new encrypted password
-     * @return
+     * @return  {@link com.mygreenbill.common.Status} that represent the operation status
      */
     public Status changeUserPassword(GreenBillUser user, String newPassword)
     {
@@ -226,15 +228,55 @@ public class DatabaseHandler
     }
 
     /**
-     *
-     * @param registrationRequest
-     * @return
+     * Add new User record t the Db and update all the user tables:
+     * <ul>
+     *     <li>User Table</li>
+     *     <li>Add new login record</li>
+     * </ul>
+     * @param registrationRequest  The registration request
+     * @return  {@link com.mygreenbill.common.Status} that represent the operation status
      */
     public Status registerUser(RegistrationRequestAbstract registrationRequest)
     {
         //call add new user stored procedure
         //String addUserQuery = "call "
+        if (registrationRequest instanceof FullRegistrationRequest)
+        {
+            FullRegistrationRequest fullRegistrationRequest = (FullRegistrationRequest) registrationRequest;
+            return registerUserFullRequest(fullRegistrationRequest);
+        }
         return null;
+    }
+
+    private Status registerUserFullRequest(FullRegistrationRequest fullRegistrationRequest)
+    {
+        if (fullRegistrationRequest == null)
+        {
+            LOGGER.info("Cannot register user, the registration request is null");
+            return new Status(Status.OperationStatus.FAILED, "Cannot register user, the registration request is null");
+        }
+        if (!fullRegistrationRequest.isRequestValid())
+        {
+            LOGGER.info("Cannot register user, the registration request is not valid!");
+            return new Status(Status.OperationStatus.FAILED, "Cannot register user, the registration request is not valid!");
+        }
+        String addUserQuery = "call AddUser (" + fullRegistrationRequest.getId() + ", '" + fullRegistrationRequest.getEmail() +"', '" +
+                               fullRegistrationRequest.getValidationResponse().getFatherName() + "', '"+
+                               fullRegistrationRequest.getValidationResponse().getLastName() + "', '" +
+                               fullRegistrationRequest.getEncryptPassword(EncryptionType.MD5) + "', '"+
+                               EncryptionUtil.encryptString(fullRegistrationRequest.getEmail(), EncryptionType.MD5) + "' )";
+        LOGGER.debug("Add user query string was constructed: " + addUserQuery);
+        try
+        {
+            Status status =  runInsertQuery(addUserQuery);
+            if (status.getOperationStatus() == Status.OperationStatus.SUCCESS)
+                addSignInRecord(new GreenBillUser(fullRegistrationRequest));
+            return status;
+        } catch (DatabaseException e)
+        {
+            LOGGER.error("Filed to Add new user to db: ",e);
+            return new Status(Status.OperationStatus.FAILED, "Filed to Add new user to db: " +e.getMessage());
+        }
     }
 
     /**

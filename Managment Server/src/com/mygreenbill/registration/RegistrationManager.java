@@ -2,17 +2,14 @@ package com.mygreenbill.registration;
 
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.Exceptions.UserIdentityException;
-import com.mygreenbill.common.ConnectionManager;
-import com.mygreenbill.common.GeneralUtilities;
-import com.mygreenbill.common.Question;
-import com.mygreenbill.common.Status;
+import com.mygreenbill.common.*;
 import com.mygreenbill.database.DatabaseHandler;
-import com.mygreenbill.messages.JsonMessageHandler;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -123,10 +120,10 @@ public class RegistrationManager implements IRegistration
     private void sendRegistrationMessage(FullRegistrationRequest registrationRequest)
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
-        messageFiled.put("MessageType", String.valueOf(JsonMessageHandler.MessageType.ADD_USER));
+        messageFiled.put("MessageType", String.valueOf(MessageType.ADD_USER));
         messageFiled.put("userId", registrationRequest.getId());
         messageFiled.put("accountName", EncryptionUtil.encryptString(registrationRequest.getEmail(), EncryptionType.MD5));
-        messageFiled.put("password", registrationRequest.getEncriptPassword(EncryptionType.MD5));
+        messageFiled.put("password", registrationRequest.getEncryptPassword(EncryptionType.MD5));
         messageFiled.put("address", registrationRequest.getEmail());
         JSONObject message = new JSONObject(messageFiled);
         LOGGER.info("Finished to construct json request : " + message.toString());
@@ -142,10 +139,27 @@ public class RegistrationManager implements IRegistration
         }
     }
 
+    /**
+     * Create new Green bill user and add it to the current Session
+     * @param request the original registration request
+     * @param currentSession The current user Session
+     * @return {@link com.mygreenbill.common.Status} object representing the operation status
+     */
     @Override
-    public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request)
+    public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request, HttpSession currentSession)
     {
-        //todo yaki - implement the method
+        if (request == null || currentSession == null)
+        {
+            LOGGER.info("Failed to update Current Session With User Info the request or the session is null");
+            return new Status(Status.OperationStatus.FAILED, "Failed to update Current Session With User Info the request or the session is null");
+        }
+        if (request instanceof FullRegistrationRequest)
+        {
+            GreenBillUser registeredUser = new GreenBillUser((FullRegistrationRequest) request);
+            currentSession.setAttribute("user", registeredUser);
+            return  new Status(Status.OperationStatus.SUCCESS, "Current Session Was Updated With User Info ");
+        }
+
         return null;
     }
 

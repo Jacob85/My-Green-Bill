@@ -17,7 +17,10 @@ public class FullRegistrationRequest extends RegistrationRequestAbstract impleme
     {
         super(id);
         this.email = email;
-        this.password = EncryptionUtil.encryptString(password, EncryptionType.MD5);
+        /*The Password will be saved as unEncrypted format here and will be encrypt every time the user want to get the password*/
+        /*This is because the user might want to Encrypt the password in different formats */
+        this.password = password;
+       // this.password = EncryptionUtil.encryptString(password, EncryptionType.MD5);
     }
 
     public void setPassword(String password)
@@ -36,7 +39,7 @@ public class FullRegistrationRequest extends RegistrationRequestAbstract impleme
     }
 
     @Override
-    public String getEncriptPassword(EncryptionType encryptionType)
+    public String getEncryptPassword(EncryptionType encryptionType)
     {
          return EncryptionUtil.encryptString(this.password, encryptionType);
     }

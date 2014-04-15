@@ -2,6 +2,8 @@ package com.mygreenbill.registration;
 
 import com.mygreenbill.common.Status;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by Jacob on 3/18/14.
  */
@@ -14,7 +16,7 @@ public interface IRegistration
     public String getSecondValidationQuestion(RegistrationRequestAbstract request);
     public boolean areAnswersValid(RegistrationRequestAbstract request, String answer1, String answer2);
     public Status registerUser(RegistrationRequestAbstract request);
-    public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request);
+    public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request, HttpSession currentSession);
     public Status processRegistrationRequest(RegistrationRequestAbstract registrationRequest);
 
 }

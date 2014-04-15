@@ -1,5 +1,8 @@
 package com.mygreenbill.common;
 
+import com.mygreenbill.registration.FullRegistrationRequest;
+import com.mygreenbill.security.EncryptionType;
+
 import java.util.List;
 
 /**
@@ -7,6 +10,8 @@ import java.util.List;
  */
 public class GreenBillUser
 {
+    private String firstName;
+    private String lastName;
     private String userId;
     private String password;
     private String email;
@@ -14,6 +19,45 @@ public class GreenBillUser
 
     public GreenBillUser()
     {
+    }
+
+    public GreenBillUser(String firstName, String lastName, String userId, String password, String email, List<Integer> userCompanyList)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userId = userId;
+        this.password = password;
+        this.email = email;
+        this.userCompanyList = userCompanyList;
+    }
+
+    public GreenBillUser (FullRegistrationRequest fullRegistrationRequest)
+    {
+        this.userId = fullRegistrationRequest.getId();
+        this.password = fullRegistrationRequest.getEncryptPassword(EncryptionType.MD5);
+        this.email = fullRegistrationRequest.getEmail();
+        this.firstName = fullRegistrationRequest.getValidationResponse().getFirstName();
+        this.lastName = fullRegistrationRequest.getValidationResponse().getLastName();
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
     }
 
     public String getUserId()
