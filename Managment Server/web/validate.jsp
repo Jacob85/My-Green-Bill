@@ -47,7 +47,7 @@
         <div class="form-group">
             <label for="first_validation_question" class="control-label col-xs-2"><%=firstQuestion %></label>
             <div class="col-xs-10">
-                <input type="text" class="form-control" id="first_validation_question" name="first_validation_question" placeholder="First Question">
+                <input type="date" class="form-control" id="first_validation_question" name="first_validation_question" placeholder="First Question">
             </div>
         </div>
         <div class="form-group">
