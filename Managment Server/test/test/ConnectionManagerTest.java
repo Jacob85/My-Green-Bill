@@ -20,7 +20,7 @@ public class ConnectionManagerTest extends TestCase
         connectionManager.sendToTrafficBlade(new JSONObject("{message: hello World1111111}"));
         connectionManager.sendToTrafficBlade(new JSONObject("{message: hello World1111111wwwwwwwww}"));
 
-        connectionManager. processAckJson(new JSONObject("{messageID: 2, MessageType: ACK}"));
+       // connectionManager. processAckJson(new JSONObject("{messageID: 2, MessageType: ACK}"));
 
     }
 

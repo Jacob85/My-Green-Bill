@@ -13,7 +13,8 @@ public class ConfigurationManager
 {
     private static ConfigurationManager instance = null;
     private final Logger LOGGER = Logger.getLogger(ConfigurationManager.class);
-    private final String projectPath = "C:\\Users\\Jacob\\IdeaProjects\\Managment Server\\";
+    //todo yaki - replace the path to the real path on server
+    private final String projectPath = "C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\";
 
     private Properties properties = new Properties();
 
