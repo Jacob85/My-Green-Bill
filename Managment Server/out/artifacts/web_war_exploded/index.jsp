@@ -46,14 +46,14 @@
             <a class="navbar-brand" href="#">My Green Bill</a>
         </div>
         <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
+            <form id="login_form" class="navbar-form navbar-right" role="form" method="post" action="${pageContext.request.contextPath}/authenticate/login">
                 <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
+                    <input id="login_form_email" type="email" name="login_form_email" placeholder="login_form_email" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
+                    <input id="login_form_password" type="password" name="login_form_password" placeholder="login_form_password" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-success">Sign In</button>
+                <button type="submit" class="btn btn-success" onsubmit="return validateLoginForm()">Sign In</button>
                 <a data-toggle="modal" data-target="#full_registration" class="btn btn-primary">Sign Up</a>
             </form>
         </div><!--/.navbar-collapse -->
@@ -125,10 +125,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-10">
-                            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-                        </div>
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                     </div>
+                </div>
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-10">
                             <button class="btn btn-primary">Use Google</button>

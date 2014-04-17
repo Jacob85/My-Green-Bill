@@ -2,6 +2,7 @@ package test;
 
 import com.mygreenbill.Exceptions.UserIdentityException;
 import com.mygreenbill.common.ConnectionManager;
+import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.registration.SimpleIdentityValidationResponse;
 import junit.framework.TestCase;
 import org.json.JSONObject;
@@ -62,4 +63,6 @@ public class ConnectionManagerTest extends TestCase
 
 
     }
+
+
 }

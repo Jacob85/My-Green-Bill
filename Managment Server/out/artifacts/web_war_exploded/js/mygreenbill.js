@@ -10,6 +10,24 @@ function fullRegistration()
     $('#full_registration').modal('show');
 }
 
+
+function validateLoginForm ()
+{
+    var email = $('#login_form_email').value;
+    var password = $('#login_form_password').value;
+
+    if (email == null || email == "")
+    {
+        alert("Please enter email address");
+        return false;
+    }
+    if (password == null || password =="" || password.length < 6)
+    {
+        alert("Please enter a valid password (6 characters length)");
+        return false;
+    }
+    return true;
+}
 function validateFullRegistrationForm()
 {
     var email = $('#full_registration_inputEmail').val();
@@ -44,6 +62,27 @@ function isEmailAddressValid(email)
 }
 
 $(document).ready(function(){
+
+/*
+    $('#login_form').validate(
+        {
+            rules:{
+                login_form_email: {
+                    required: true,
+                    email: true
+                },
+                login_form_password: {
+                    required: true,
+                    minlength: 6
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').removeClass('success').addClass('error');
+            }
+        });
+
+*/
+
 
     $('#full_registration_form').validate(
         {

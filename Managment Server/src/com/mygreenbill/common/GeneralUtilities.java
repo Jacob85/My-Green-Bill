@@ -43,4 +43,20 @@ public class GeneralUtilities
     {
         return (response != null && response.isAlive());
     }
+
+    /**
+     * check if a string contains information in it and not null
+     * @param string the string to check
+     * @return false if null or if empty, true otherwise
+     */
+    public static boolean hasData(String string)
+    {
+        if (string == null)
+            return false;
+        if (string.equals(""))
+            return false;
+        if (string.isEmpty())
+            return false;
+        return true;
+    }
 }

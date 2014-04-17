@@ -9,10 +9,27 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.mygreenbill.servlets.RegisterServlet</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>AuthenticationServlet</servlet-name>
+        <servlet-class>com.mygreenbill.servlets.AuthenticationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.mygreenbill.servlets.DashboardServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AuthenticationServlet</servlet-name>
+        <url-pattern>/authenticate/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/dashboard/*</url-pattern>
     </servlet-mapping>
 </web-app>

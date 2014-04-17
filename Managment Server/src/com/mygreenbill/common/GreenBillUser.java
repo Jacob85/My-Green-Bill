@@ -2,20 +2,30 @@ package com.mygreenbill.common;
 
 import com.mygreenbill.registration.RegistrationRequestAbstract;
 import com.mygreenbill.security.EncryptionType;
+import org.omg.PortableInterceptor.ServerRequestInfo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jacob on 3/29/14.
  */
 public class GreenBillUser
 {
+    // private members
     private String firstName;
     private String lastName;
     private String userId;
     private String password;
     private String email;
     private List<Integer> userCompanyList;
+
+    //database filed
+    private final String emailKey = "email";
+    private final String firstNameKey = "first_name";
+    private final String idKey = "id";
+    private final String lastNameKey = "last_name";
+    private final String passwordKey = "password";
 
     public GreenBillUser()
     {
@@ -38,6 +48,15 @@ public class GreenBillUser
         this.email = fullRegistrationRequest.getEmail();
         this.firstName = fullRegistrationRequest.getValidationResponse().getFirstName();
         this.lastName = fullRegistrationRequest.getValidationResponse().getLastName();
+    }
+
+    public GreenBillUser(Map map)
+    {
+        this.email = (String) map.get(emailKey);
+        this.password = (String) map.get(passwordKey);
+        this.lastName = (String) map.get(lastNameKey);
+        this.firstName = (String) map.get(firstNameKey);
+        this.userId = String.valueOf( map.get(idKey));
     }
 
     public String getFirstName()

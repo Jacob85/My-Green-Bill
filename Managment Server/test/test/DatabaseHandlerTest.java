@@ -104,4 +104,11 @@ public class DatabaseHandlerTest extends TestCase
 
 
     }
+
+    public void testRetrieveUserInformation() throws Exception
+    {
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        databaseHandler.retrieveUserInformation("test@gmail.com");
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.mygreenbill.database;
 
+import com.mygreenbill.Exceptions.AuthenticationException;
 import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.common.ConnectionManager;
@@ -27,6 +28,8 @@ public class DatabaseHandler
     private final Logger LOGGER = Logger.getLogger(DatabaseHandler.class);
     private final String isUserExistsString = "select isUserIdExist(?);";
     private final String isUserExistsAndActiveString = "select isUserExistsAndActive(?);";
+    private final String selectUserPassword = "select user.password from mygreenbilldb.user where user.email = '?';";
+    private final String selectUserinformation = "select user.first_name, user.last_name, user.id, user.password, user.email from mygreenbilldb.user where user.email = '?';";
 
     // ENUM which represent all the possible messages status
     public enum MessageStatus {sent, pending, failed}
@@ -153,6 +156,58 @@ public class DatabaseHandler
         return null;
     }
 
+    public GreenBillUser loginUser(String email, String password) throws AuthenticationException
+    {
+        String getPasswordQuery;
+        getPasswordQuery = selectUserPassword.replace("?", email);
+        LOGGER.debug(String.format("Running query (%s)", getPasswordQuery));
+
+        try
+        {
+            List list = runGetQuery(getPasswordQuery);
+            Map map = (Map) list.get(0);
+            // get the first value
+            String returnedPassword = (String) map.values().toArray()[0];
+
+            if (GeneralUtilities.hasData(returnedPassword))
+            {
+                //compare the passwords
+                if (returnedPassword.equals(password))
+                {
+                    LOGGER.info(String.format("User password is correct, retrieve user information from db"));
+                    return retrieveUserInformation(email);
+                }
+                else
+                {
+                    LOGGER.debug(String.format("User password is not correct, login failed!"));
+                    throw new AuthenticationException("User password is not correct, login failed!");
+                }
+            }
+        } catch (DatabaseException e)
+        {
+            LOGGER.error(e);
+        }
+        return null;
+    }
+    public GreenBillUser retrieveUserInformation(String email)
+    {
+        String query = selectUserinformation.replace("?", email);
+        try
+        {
+            List list = runGetQuery(query);
+            if (list != null)
+            {
+                Map map = (Map) list.get(0);
+                return new GreenBillUser(map);
+            }
+
+        } catch (DatabaseException e)
+        {
+            LOGGER.error(e);
+        }
+        return null;
+
+    }
     public Status runUpdateQuery(String query) throws DatabaseException
     {
         return runInsertQuery(query);
@@ -261,7 +316,7 @@ public class DatabaseHandler
             return new Status(Status.OperationStatus.FAILED, "Cannot register user, the registration request is not valid!");
         }
         String addUserQuery = "call AddUser (" + fullRegistrationRequest.getId() + ", '" + fullRegistrationRequest.getEmail() +"', '" +
-                               fullRegistrationRequest.getValidationResponse().getFatherName() + "', '"+
+                               fullRegistrationRequest.getValidationResponse().getFirstName() + "', '"+
                                fullRegistrationRequest.getValidationResponse().getLastName() + "', '" +
                                fullRegistrationRequest.getEncryptPassword(EncryptionType.MD5) + "', '"+
                                EncryptionUtil.encryptString(fullRegistrationRequest.getEmail(), EncryptionType.MD5) + "' )";
