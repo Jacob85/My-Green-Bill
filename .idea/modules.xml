@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CommonClases/Common Clases.iml" filepath="$PROJECT_DIR$/CommonClases/Common Clases.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CommonClasses/Common Classes.iml" filepath="$PROJECT_DIR$/CommonClasses/Common Classes.iml" />
       <module fileurl="file://$PROJECT_DIR$/Copy To DB/Copy To DB.iml" filepath="$PROJECT_DIR$/Copy To DB/Copy To DB.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mail Server/Mail Server.iml" filepath="$PROJECT_DIR$/Mail Server/Mail Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Managment Server/Managment Server.iml" filepath="$PROJECT_DIR$/Managment Server/Managment Server.iml" />

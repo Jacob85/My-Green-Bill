@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Mail Server:jar" />
+      <artifact name="Copy To DB:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/Common Clases.iml" afterPath="$PROJECT_DIR$/CommonClasses/Common Classes.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/lib/org.json-20120521.jar" afterPath="$PROJECT_DIR$/CommonClasses/lib/org.json-20120521.jar" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/MessageType.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/MessageType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/RequestJson.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/RequestJson.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/Status.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/Status.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/interfaces/GreenBillClient.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/interfaces/GreenBillClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/interfaces/GreenBillServer.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/interfaces/GreenBillServer.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/Status.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Copy To DB/Copy To DB.iml" afterPath="$PROJECT_DIR$/Copy To DB/Copy To DB.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Copy_To_DB_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Copy_To_DB_jar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Mail_Server_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Mail_Server_jar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="My Green Bill.iws" />
@@ -93,10 +91,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseHandler.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="268" column="51" selection-start="8713" selection-end="8713" vertical-scroll-proportion="0.5286458" vertical-offset="3637" max-vertical-offset="4230">
+            <state line="268" column="51" selection-start="8713" selection-end="8713" vertical-scroll-proportion="0.0" vertical-offset="3637" max-vertical-offset="4230">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/database/DatabaseHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="7" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.48958334" vertical-offset="307" max-vertical-offset="2955">
               <folding />
             </state>
           </provider>
@@ -142,7 +149,6 @@
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConfigurationManager.java" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/EmlFolderHandler.java" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/CopyAttachmentHandler.java" />
-        <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/database/DatabaseHandler.java" />
         <option value="db-console:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/Main.java" />
@@ -152,6 +158,7 @@
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/ssh/ConnectionHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/database/DatabaseHandler.java" />
       </list>
     </option>
   </component>
@@ -222,7 +229,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Mail Server" />
+              <option name="myItemId" value="Copy To DB" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -243,7 +250,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Copy To DB/conf" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25974026" />
     <property name="dynamic.classpath" value="false" />
@@ -726,7 +733,7 @@
       <workItem from="1397593270134" duration="2523000" />
       <workItem from="1397597684070" duration="466000" />
       <workItem from="1397995795887" duration="27000" />
-      <workItem from="1397995862223" duration="659000" />
+      <workItem from="1397995862223" duration="1414000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -824,15 +831,19 @@
       <created>1397996468349</created>
       <updated>1397996468349</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="CommonClases updated name to CommonClasses">
+      <created>1397996552659</created>
+      <updated>1397996552659</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85555000" />
+    <option name="totallyTimeSpent" value="86310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="726" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3303685" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -856,7 +867,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29886913" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29886913" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31388012" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -901,7 +912,8 @@
     <MESSAGE value="ADD_USER JSON update" />
     <MESSAGE value="Small update" />
     <MESSAGE value="Mail Server module updated to use CommonClasses" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mail Server module updated to use CommonClasses" />
+    <MESSAGE value="CommonClases updated name to CommonClasses" />
+    <option name="LAST_COMMIT_MESSAGE" value="CommonClases updated name to CommonClasses" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -997,11 +1009,6 @@
         <state line="5" column="13" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="238" selection-end="238" vertical-scroll-proportion="0.33447686" vertical-offset="0" max-vertical-offset="915" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="35" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37128714" vertical-offset="0" max-vertical-offset="606" />
@@ -1073,11 +1080,6 @@
     <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="65" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="795" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="53" selection-start="1787" selection-end="1787" vertical-scroll-proportion="-0.2572899" vertical-offset="855" max-vertical-offset="2955" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/EmlFolderHandler.java">
@@ -1335,7 +1337,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="51" selection-start="8713" selection-end="8713" vertical-scroll-proportion="0.5286458" vertical-offset="3637" max-vertical-offset="4230">
+        <state line="268" column="51" selection-start="8713" selection-end="8713" vertical-scroll-proportion="0.0" vertical-offset="3637" max-vertical-offset="4230">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="7" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.48958334" vertical-offset="307" max-vertical-offset="2955">
           <folding />
         </state>
       </provider>
@@ -1394,7 +1403,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Mail Server</last-edited>
+          <last-edited>Copy To DB</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

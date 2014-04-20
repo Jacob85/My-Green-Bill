@@ -16,7 +16,7 @@
         <element id="dir-copy" path="$PROJECT_DIR$/Mail Server/conf" />
       </element>
       <element id="extracted-dir" path="$PROJECT_DIR$/Mail Server/lib/mysql-connector-java-5.0.8-bin.jar" path-in-jar="/" />
-      <element id="module-output" name="Common Clases" />
+      <element id="module-output" name="Common Classes" />
     </root>
   </artifact>
 </component>
