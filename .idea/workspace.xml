@@ -6,18 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="Small update">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CommonClases/lib/org.json-20120521.jar" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Managment_Server_Database.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GreenBillClient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GreenBillServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/Status.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CommonClases/Common Clases.iml" afterPath="$PROJECT_DIR$/CommonClases/Common Clases.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/Managment Server.iml" afterPath="$PROJECT_DIR$/Managment Server/Managment Server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Managment_Server_war_exploded2.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Managment_Server_war_exploded2.xml" />
+    <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/Common Clases.iml" afterPath="$PROJECT_DIR$/CommonClasses/Common Classes.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/lib/org.json-20120521.jar" afterPath="$PROJECT_DIR$/CommonClasses/lib/org.json-20120521.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/MessageType.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/MessageType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/RequestJson.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/RequestJson.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/Status.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/Status.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/interfaces/GreenBillClient.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/interfaces/GreenBillClient.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CommonClases/src/com/mygreenbill/interfaces/GreenBillServer.java" afterPath="$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/interfaces/GreenBillServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="My Green Bill.iws" />
@@ -100,7 +96,7 @@
       <file leaf-file-name="DatabaseHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="286" column="5" selection-start="9245" selection-end="9245" vertical-scroll-proportion="1.2317709" vertical-offset="3637" max-vertical-offset="4230">
+            <state line="268" column="51" selection-start="8713" selection-end="8713" vertical-scroll-proportion="0.5286458" vertical-offset="3637" max-vertical-offset="4230">
               <folding />
             </state>
           </provider>
@@ -730,7 +726,7 @@
       <workItem from="1397593270134" duration="2523000" />
       <workItem from="1397597684070" duration="466000" />
       <workItem from="1397995795887" duration="27000" />
-      <workItem from="1397995862223" duration="554000" />
+      <workItem from="1397995862223" duration="659000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -824,11 +820,15 @@
       <created>1397597648664</created>
       <updated>1397597648664</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Mail Server module updated to use CommonClasses">
+      <created>1397996468349</created>
+      <updated>1397996468349</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85450000" />
+    <option name="totallyTimeSpent" value="85555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="726" extended-state="6" />
@@ -900,7 +900,8 @@
     <MESSAGE value="Removed Billing info from user table, Store procedure updated as well" />
     <MESSAGE value="ADD_USER JSON update" />
     <MESSAGE value="Small update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small update" />
+    <MESSAGE value="Mail Server module updated to use CommonClasses" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mail Server module updated to use CommonClasses" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1283,7 +1284,7 @@
         <state line="59" column="42" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.519802" vertical-offset="510" max-vertical-offset="1545" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/RequestJson.java">
+    <entry file="file://$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/RequestJson.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="27" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="870">
           <folding />
@@ -1334,7 +1335,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="286" column="5" selection-start="9245" selection-end="9245" vertical-scroll-proportion="1.2317709" vertical-offset="3637" max-vertical-offset="4230">
+        <state line="268" column="51" selection-start="8713" selection-end="8713" vertical-scroll-proportion="0.5286458" vertical-offset="3637" max-vertical-offset="4230">
           <folding />
         </state>
       </provider>

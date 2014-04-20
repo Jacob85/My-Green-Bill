@@ -5,7 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Managment Server" />
-          <element id="module-output" name="Common Clases" />
+          <element id="module-output" name="Common Classes" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="log4j-1.2.16" />

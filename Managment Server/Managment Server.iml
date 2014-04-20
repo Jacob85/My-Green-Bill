@@ -40,7 +40,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="module" module-name="Common Clases" />
+    <orderEntry type="module" module-name="Common Classes" />
   </component>
 </module>
 
