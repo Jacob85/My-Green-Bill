@@ -18,7 +18,6 @@
           </element>
         </element>
       </element>
-      <element id="library" level="project" name="lib1" />
       <element id="dir-copy" path="$PROJECT_DIR$/Managment Server/web" />
     </root>
   </artifact>

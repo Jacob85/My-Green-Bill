@@ -285,5 +285,4 @@ public class DatabaseHandler
 
         return columnNames;
     }
-
 }

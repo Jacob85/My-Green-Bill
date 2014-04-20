@@ -1,5 +1,7 @@
 package com.mygreenbill.common;
 
+import com.mygreenbill.interfaces.GreenBillClient;
+import com.mygreenbill.interfaces.GreenBillServer;
 import com.mygreenbill.messages.JsonMessageHandler;
 import com.mygreenbill.Exceptions.*;
 import org.apache.log4j.Logger;

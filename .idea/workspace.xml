@@ -6,11 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="">
+    <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="Small update">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CommonClases/lib/org.json-20120521.jar" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Managment_Server_Database.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GreenBillClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GreenBillServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/Status.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CommonClases/Common Clases.iml" afterPath="$PROJECT_DIR$/CommonClases/Common Clases.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/ssh/ConnectionHandler.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/ssh/ConnectionHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/Managment Server.iml" afterPath="$PROJECT_DIR$/Managment Server/Managment Server.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Managment_Server_war_exploded2.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Managment_Server_war_exploded2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="My Green Bill.iws" />
@@ -81,37 +88,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MailServerHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
+      <file leaf-file-name="GeneralUtilities.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GeneralUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="11" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="2820" max-vertical-offset="5655">
+            <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonMessageHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="45" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.0" vertical-offset="1434" max-vertical-offset="2670">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionManager.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="209" column="42" selection-start="7766" selection-end="7766" vertical-scroll-proportion="2.6947722" vertical-offset="1312" max-vertical-offset="5025">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CopyAttachmentHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/CopyAttachmentHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="0" selection-start="3273" selection-end="3273" vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="1635">
+            <state line="286" column="5" selection-start="9245" selection-end="9245" vertical-scroll-proportion="1.2317709" vertical-offset="3637" max-vertical-offset="4230">
               <folding />
             </state>
           </provider>
@@ -152,7 +141,6 @@
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConfigurationManager.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/gui/MainFrame.java" />
         <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/database/DatabaseHandler.java" />
-        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/Main.java" />
         <option value="$PROJECT_DIR$/Copy To DB/conf/configuration.properties" />
         <option value="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/common/ConfigurationManager.java" />
@@ -167,6 +155,7 @@
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/ssh/ConnectionHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
+        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java" />
       </list>
     </option>
   </component>
@@ -221,6 +210,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -240,85 +230,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My Green Bill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mail Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My Green Bill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mail Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mygreenbill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My Green Bill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mail Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mygreenbill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ssh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="My Green Bill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mail Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mygreenbill" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,7 +247,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Copy To DB/conf" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25974026" />
     <property name="dynamic.classpath" value="false" />
@@ -348,142 +261,15 @@
       <recent name="com.mygreenbill.database" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CommonClases/lib" />
       <recent name="$PROJECT_DIR$/Copy To DB/lib" />
       <recent name="$PROJECT_DIR$/Copy To DB/src/com/mygreenbill" />
       <recent name="$PROJECT_DIR$/Mail Server/lib" />
       <recent name="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common" />
-      <recent name="C:\Users\Jacob\IdeaProjects\My Green Bill\Managment Server\out\artifacts\web_war_exploded" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jacob\IdeaProjects\My Green Bill\Managment Server\sql\Stored Procedures" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/artifacts/Managment_Server_war_exploded2.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources.ids</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/modules.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/Managment Server.iml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConnectionManager.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/GreenBillUser.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/database/DatabaseHandler.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/registration/FullRegistrationRequest.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/registration/IRegistration.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/registration/RegistrationManager.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/registration/RegistrationRequestAbstract.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/src/com/mygreenbill/servlets/RegisterServlet.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/CommonClases/Common Clases.iml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/MessageType.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Managment Server/web/success.jsp</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="DatabaseHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -751,12 +537,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -774,6 +554,12 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Unnamed" type="JUnit" factoryName="JUnit">
@@ -941,7 +727,10 @@
       <workItem from="1397322817921" duration="4002000" />
       <workItem from="1397473811441" duration="4586000" />
       <workItem from="1397558952048" duration="260000" />
-      <workItem from="1397593270134" duration="2479000" />
+      <workItem from="1397593270134" duration="2523000" />
+      <workItem from="1397597684070" duration="466000" />
+      <workItem from="1397995795887" duration="27000" />
+      <workItem from="1397995862223" duration="554000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -1031,21 +820,26 @@
       <created>1397559190311</created>
       <updated>1397559190311</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Small update">
+      <created>1397597648664</created>
+      <updated>1397597648664</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84359000" />
+    <option name="totallyTimeSpent" value="85450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="726" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3303685" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37102923" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22374798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1055,55 +849,22 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.51096493" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23990306" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29886913" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31388012" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41009465" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3303685" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22374798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4205845" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3280757" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23990306" sideWeight="0.4890351" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31388012" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41009465" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37102923" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56782335" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.51096493" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1138,7 +899,8 @@
     <MESSAGE value="Comment update" />
     <MESSAGE value="Removed Billing info from user table, Store procedure updated as well" />
     <MESSAGE value="ADD_USER JSON update" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD_USER JSON update" />
+    <MESSAGE value="Small update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1154,16 +916,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/gui/JTextAreaAppender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="41" selection-start="113" selection-end="113" vertical-scroll-proportion="0.077186964" vertical-offset="0" max-vertical-offset="840" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbfunction:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..isUserIdExist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560" />
-      </provider>
-    </entry>
     <entry file="dbDummy://dbprocedure:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..GetAllMonthlyStatsForUser">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="537" />
@@ -1219,34 +971,14 @@
         <state line="10" column="13" selection-start="225" selection-end="225" vertical-scroll-proportion="0.17326732" vertical-offset="0" max-vertical-offset="606" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="-0.38613862" vertical-offset="309" max-vertical-offset="915" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/test/test/DatabaseHandlerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="102" column="47" selection-start="3474" selection-end="3474" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1620" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GeneralUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="1" selection-start="572" selection-end="572" vertical-scroll-proportion="0.48994976" vertical-offset="0" max-vertical-offset="398" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConfigurationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="12" selection-start="827" selection-end="827" vertical-scroll-proportion="0.5714286" vertical-offset="140" max-vertical-offset="1275" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/gui/MainFrame.java">
@@ -1257,11 +989,6 @@
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/database/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="268" column="26" selection-start="8826" selection-end="8826" vertical-scroll-proportion="0.7470489" vertical-offset="3367" max-vertical-offset="4320" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="12" selection-start="4170" selection-end="4170" vertical-scroll-proportion="0.80944353" vertical-offset="1245" max-vertical-offset="4245" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Copy To DB/src/com/mygreenbill/Exceptions/ConfigurationException.java">
@@ -1276,9 +1003,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="35" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37128714" vertical-offset="0" max-vertical-offset="606">
-          <folding />
-        </state>
+        <state line="20" column="35" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37128714" vertical-offset="0" max-vertical-offset="606" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/sql/PHP Files/UpdateUserAddress.php">
@@ -1332,11 +1057,11 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..file">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100" />
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/registration/RegistrationManager.java">
@@ -1372,17 +1097,17 @@
           <nodes>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.COLLATION_CHARACTER_SET_APPLICABILITY</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_BUFFER_POOL_STATS</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TABLE_PRIVILEGES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.mutex_instances</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TABLE_PRIVILEGES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.file_summary_by_instance</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_whitelist</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.threads</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_whitelist</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.CHARACTER_SETS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.REFERENTIAL_CONSTRAINTS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.subscription_plans</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TABLESPACES</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.COLUMNS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_blocked_attachments</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.COLUMNS</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TABLESPACES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.PLUGINS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_CMP_RESET</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.ROUTINES</node>
@@ -1394,14 +1119,14 @@
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.setup_instruments</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.GLOBAL_STATUS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_logon_failures</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.GLOBAL_VARIABLES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.address</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_imapfolders</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.GLOBAL_VARIABLES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_fetchaccounts</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_dnsbl</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_imapfolders</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.massage_info</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_routeaddresses</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_dnsbl</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.time_zone_leap_second</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_routeaddresses</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_rules</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.file_instances</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_group_members</node>
@@ -1416,8 +1141,8 @@
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.user</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.user_client_of_company</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.file</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_surblservers</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_routes</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_surblservers</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.outgoing_massages</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.cond_instances</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.contact_info</node>
@@ -1466,48 +1191,48 @@
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.STATISTICS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.tables_priv</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.regiter_Inquiry</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.PROCESSLIST</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.SCHEMA_PRIVILEGES</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.PROCESSLIST</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.ENGINES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.func</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TABLES</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_CMPMEM</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.KEY_COLUMN_USAGE</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_dbversion</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_BUFFER_PAGE</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_domains</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.PARTITIONS</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_domains</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_BUFFER_PAGE</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TABLE_CONSTRAINTS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.user_has_log_in_event</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.invoice_info</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.host</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.company</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.admin_manage_mail_template</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.company</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.host</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.company_has_log_in_event</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.company_has_address</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.TRIGGERS</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.general_log</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.db</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.admin</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.general_log</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.servers</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.admin</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_BUFFER_PAGE_LRU</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.events_waits_summary_by_thread_by_event_name</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.INNODB_LOCK_WAITS</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.events_waits_current</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.slow_log</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:performance_schema.events_waits_current</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_incoming_relays</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.proc</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_accounts</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.COLLATIONS</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_accounts</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.proc</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.VIEWS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_distributionlistsrecipients</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_tcpipports</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mygreenbilldb.unregiter_Inquiry</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.COLUMN_PRIVILEGES</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_messages</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.time_zone_transition</node>
-            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.PARAMETERS</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_messages</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_sslcertificates</node>
+            <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:information_schema.PARAMETERS</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:mysql.help_topic</node>
             <node x="" y="">5a0824dc-39e9-41b3-b059-025ce97c84e7.table:hMailServer.hm_acl</node>
           </nodes>
@@ -1546,39 +1271,70 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..user">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="45" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.0" vertical-offset="1434" max-vertical-offset="2670">
-          <folding />
-        </state>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/ssh/ConnectionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="42" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.519802" vertical-offset="510" max-vertical-offset="1545">
+        <state line="59" column="42" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.519802" vertical-offset="510" max-vertical-offset="1545" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommonClases/src/com/mygreenbill/common/RequestJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="27" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="45" selection-start="4806" selection-end="4806" vertical-scroll-proportion="-0.2782462" vertical-offset="1920" max-vertical-offset="2655">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="11" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="2820" max-vertical-offset="5655">
+        <state line="32" column="11" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="5655">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="209" column="42" selection-start="7766" selection-end="7766" vertical-scroll-proportion="2.6947722" vertical-offset="1312" max-vertical-offset="5025">
+        <state line="24" column="13" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5025">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConfigurationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="12" selection-start="827" selection-end="827" vertical-scroll-proportion="0.37099496" vertical-offset="140" max-vertical-offset="1275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GreenBillUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.17326732" vertical-offset="0" max-vertical-offset="750">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/GeneralUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="286" column="5" selection-start="9245" selection-end="9245" vertical-scroll-proportion="1.2317709" vertical-offset="3637" max-vertical-offset="4230">
           <folding />
         </state>
       </provider>
@@ -1589,7 +1345,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Copy To DB:jar</last-edited>
+          <last-edited>Mail Server:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1637,7 +1393,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Copy To DB</last-edited>
+          <last-edited>Mail Server</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1661,7 +1417,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>lib</last-edited>
+          <last-edited>untitled2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

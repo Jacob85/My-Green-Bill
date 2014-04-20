@@ -24,7 +24,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="lib2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="lib1" level="project" />
     <orderEntry type="library" name="log4j-1.2.16" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.0.8-bin" level="project" />
     <orderEntry type="library" name="org.json-20120521" level="project" />
