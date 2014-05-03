@@ -303,6 +303,7 @@ public class MailServerHandler implements IMailServerHandler
         return true;
     }
 
+    // THIS METHOD IS NOT USED AND WILL BE DELETED!!!
     public void getAccountAllAttachments(String accountName)
     {
         prepareMailServer(); // Connect to the hMailServer

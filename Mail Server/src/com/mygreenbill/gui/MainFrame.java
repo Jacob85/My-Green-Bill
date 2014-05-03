@@ -115,6 +115,7 @@ public class MainFrame extends JFrame
 
         // Creating the text area
         textArea = new JTextArea("Hello,\nplease click the start button in order to start the application.");
+        textArea.setLineWrap(true);
         textArea.setEditable(false);
 
         scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

@@ -26,8 +26,8 @@ public class JsonMessageHandler
 
     private CacheManager cacheManager;
     private Cache msgCache;
-    private long cacheTtlSeconds = 60 * 5;
-    private final String cacheName = "IncomingMessagesCache";
+    private long cacheTtlSeconds = 60 * 5; // The TTL in seconds for each element in the cache
+    private final String cacheName = "IncomingMessagesCache"; // The name of the cache
     
     public JsonMessageHandler()
     {
@@ -65,7 +65,7 @@ public class JsonMessageHandler
             if (isMessageAlreadyReceived(messageId))
                 return;
 
-            handleMessage(innerJson); // Handling the inner JSON
+            handleMessage(innerJson); // Handling the inner JSON (The Message)
         }
         catch (JSONException e)
         {
@@ -95,6 +95,11 @@ public class JsonMessageHandler
                 case SET_NEW_FORWARD_ADDRESS:
                     setNewForwardAddress(innerJson.getString("accountName"), innerJson.getString("newAddress"));
                     break;
+
+                case SEND_MAIL_TO_COSTUMER:
+                    sendMessageToCostumer(innerJson.getString("To"), innerJson.getString("Subject"), innerJson.getString("MessageContent"));
+                    break;
+
                 default:
                     LOGGER.info("Message with ID: " + innerJson.getString("messageId") + " has no valid MessageType -> " + innerJson.getString("MessageType"));
                     break;
@@ -130,6 +135,12 @@ public class JsonMessageHandler
         }
     }
 
+    /**
+     * Checking if the message id is already exist in the local cache, if not the message is new and will be added
+     * to the local cache
+     * @param messageId The message ID to check
+     * @return True if the message already exist, false otherwise
+     */
     public boolean isMessageAlreadyReceived(int messageId)
     {
         Element newElement = new Element(messageId, messageId);
@@ -175,7 +186,7 @@ public class JsonMessageHandler
             else
             {
                 LOGGER.info("Message with ID: " + id + " was not fully received :(");
-                LOGGER.info("Message MD5: " + json.getString("CheckSum"));
+                LOGGER.info("Message MD5 CheckSum filed: " + json.getString("CheckSum"));
                 LOGGER.info("Message received MD5: " + messageMD5 + " String: " + innerJson.toString());
             }
         }
@@ -228,5 +239,10 @@ public class JsonMessageHandler
             LOGGER.error("DatabaseException in addNewAccount");
             LOGGER.error(e.getMessage());
         }
+    }
+
+    public void sendMessageToCostumer(String toEmail, String subject, String messageContent)
+    {
+        mailServerHandler.sendMessage(toEmail, subject, messageContent);
     }
 }
