@@ -116,10 +116,10 @@ public class AuthenticationManager
     private void sendMailToCustomer(GreenBillUser user, String emailString)
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
-        messageFiled.put("MessageType", String.valueOf(MessageType.SEND_MAIL_TO_COSTUMER));
-        messageFiled.put("To", user.getEmail());
-        messageFiled.put("Subject", "Welcome");
-        messageFiled.put("MessageContent", emailString);
+        messageFiled.put(JsonRequestFields.MESSAGE_TYPE.field(), String.valueOf(MessageType.SEND_MAIL_TO_COSTUMER));
+        messageFiled.put(JsonRequestFields.EMAIL_SEND_TO.field(), user.getEmail());
+        messageFiled.put(JsonRequestFields.EMAIL_SUBJECT.field(), "Welcome");
+        messageFiled.put(JsonRequestFields.MESSAGE_CONTENT.field(), emailString);
         JSONObject message = new JSONObject(messageFiled);
         LOGGER.info(String.format("Finished to create Json request from type %s, sending message to mail server", MessageType.SEND_MAIL_TO_COSTUMER));
 
@@ -179,10 +179,10 @@ public class AuthenticationManager
     private void sendActivationMessage(GreenBillUser greenBillUser)
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
-        messageFiled.put("MessageType", String.valueOf(MessageType.ADD_USER));
-        messageFiled.put("accountName", EncryptionUtil.encryptString(greenBillUser.getEmail(), EncryptionType.MD5));
-        messageFiled.put("password", greenBillUser.getPassword());
-        messageFiled.put("address", greenBillUser.getEmail());
+        messageFiled.put(JsonRequestFields.MESSAGE_TYPE.field(), String.valueOf(MessageType.ADD_USER));
+        messageFiled.put(JsonRequestFields.ACCOUNT_NAME.field(), EncryptionUtil.encryptString(greenBillUser.getEmail(), EncryptionType.MD5));
+        messageFiled.put(JsonRequestFields.PASSWORD.field(), greenBillUser.getPassword());
+        messageFiled.put(JsonRequestFields.EMAIL_ADDRESS.field(), greenBillUser.getEmail());
         JSONObject message = new JSONObject(messageFiled);
         LOGGER.info("Finished to construct json request : " + message.toString());
         LOGGER.info("Sending message to mail server");

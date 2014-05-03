@@ -5,6 +5,7 @@ import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.IMailServerHandler;
 import com.mygreenbill.MailServerHandler;
 import com.mygreenbill.common.ConnectionManager;
+import com.mygreenbill.common.JsonRequestFields;
 import com.mygreenbill.common.MessageType;
 import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.security.EncryptionType;
@@ -82,7 +83,7 @@ public class JsonMessageHandler
         try
         {
             // Getting the message type
-            String messageType = innerJson.getString("MessageType");
+            String messageType = innerJson.getString(JsonRequestFields.MESSAGE_TYPE.field());
 
             // Preform an action according to message type
             switch (MessageType.valueOf(messageType))
