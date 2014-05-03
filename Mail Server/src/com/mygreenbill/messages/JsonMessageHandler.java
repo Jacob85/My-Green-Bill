@@ -9,22 +9,37 @@ import com.mygreenbill.common.MessageType;
 import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JsonMessageHandler
 {
-    // ENUM which represent all the possible messages types
-    
     private final Logger LOGGER = Logger.getLogger(JsonMessageHandler.class);
+
     private IMailServerHandler mailServerHandler;
     private DatabaseHandler databaseHandler;
+
+    private CacheManager cacheManager;
+    private Cache msgCache;
+    private long cacheTtlSeconds = 60 * 5;
+    private final String cacheName = "IncomingMessagesCache";
     
     public JsonMessageHandler()
     {
     	mailServerHandler = new MailServerHandler();
         databaseHandler = DatabaseHandler.getInstance();
+        cacheManager = CacheManager.getInstance();
+
+        // Checking if the cache already exist
+        if (!cacheManager.cacheExists(cacheName))
+        {
+            msgCache = new Cache(cacheName, 1000, false, false, cacheTtlSeconds, cacheTtlSeconds);
+            cacheManager.addCache(msgCache);
+        }
     }
     
     /**
@@ -42,27 +57,20 @@ public class JsonMessageHandler
         try
         {
             JSONObject innerJson = json.getJSONObject("Message"); // Getting the inner JSON object
-            int id = innerJson.getInt("messageId"); // Getting the message ID
+            int messageId = innerJson.getInt("messageId"); // Getting the message ID
+            sendAckMessage(messageId); // Sending back ACK message for every incoming message
 
-            // Sending back the ACK json the the management blade
-            JSONObject ackJson = new JSONObject("{messageId: "+ id +", MessageType: ACK}");
-            LOGGER.info("Sending ACK on message ID: " + id);
-            ConnectionManager connectionManager = ConnectionManager.getInstance();
-            connectionManager.sendToTrafficBlade(ackJson);
+            // If the message was already received return
+            if (isMessageAlreadyReceived(messageId))
+                return;
 
-            // Now handling the inner JSON
-            handleMessage(innerJson);
+            handleMessage(innerJson); // Handling the inner JSON
         }
         catch (JSONException e)
         {
             LOGGER.error("JSONException in processJson");
             LOGGER.error(e.getMessage());
         }
-        catch (InitException e)
-		{
-        	LOGGER.error("InitException in processJson");
-            LOGGER.error(e.getMessage());
-		}
     }
 
     /**
@@ -99,6 +107,47 @@ public class JsonMessageHandler
     }
 
     /**
+     * Sending ACK message for the given ID
+     * @param messageId The ID of the message to send ACK on
+     */
+    public void sendAckMessage(int messageId)
+    {
+        try
+        {
+            JSONObject ackJson = new JSONObject("{messageId: "+ messageId +", MessageType: ACK}");
+            LOGGER.info("Sending ACK on message ID: " + messageId);
+            ConnectionManager connectionManager = ConnectionManager.getInstance();
+            connectionManager.sendToTrafficBlade(ackJson);
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        catch (InitException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isMessageAlreadyReceived(int messageId)
+    {
+        Element newElement = new Element(messageId, messageId);
+
+        // If the newElement was found the message already received, else the message is new
+        if (msgCache.get(messageId) != null)
+        {
+            LOGGER.info("The message with ID: " + messageId + " was already received");
+            return true;
+        }
+        else
+        {
+            LOGGER.info("Adding message ID: " + messageId + " to cache");
+            msgCache.put(newElement); // Adding the message to cache
+            return false;
+        }
+    }
+
+    /**
      * Method for checking the MD5 of the message
      * @param json The all message JSON which include the MD5 and the inner JSON (inner message)
      * @return true if the MD5 is equal and the message was fully received, false otherwise
@@ -115,7 +164,7 @@ public class JsonMessageHandler
         {
             JSONObject innerJson = json.getJSONObject("Message");
             id = innerJson.getInt("messageId"); // Getting the message ID
-            String messageMD5 = getMD5(innerJson.toString()); // Checking the MD5 of the incoming message
+            String messageMD5 = getMD5(String.valueOf(innerJson.toString().length())); // Checking the MD5 of the incoming message
 
             if (messageMD5.equals(json.getString("CheckSum"))) // If the MD5 field is equal to the MD5 of the message return true
             {
@@ -126,7 +175,7 @@ public class JsonMessageHandler
             {
                 LOGGER.info("Message with ID: " + id + " was not fully received :(");
                 LOGGER.info("Message MD5: " + json.getString("CheckSum"));
-                LOGGER.info("Message received MD5: " + messageMD5);
+                LOGGER.info("Message received MD5: " + messageMD5 + " String: " + innerJson.toString());
             }
         }
         catch (JSONException e)

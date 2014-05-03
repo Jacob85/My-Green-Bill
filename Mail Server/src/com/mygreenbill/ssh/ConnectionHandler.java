@@ -64,6 +64,8 @@ public class ConnectionHandler
             LOGGER.error("SftpException in createNewFolder");
             LOGGER.error(e.getMessage());
         }
+
+        LOGGER.info("New folder in MySQL machine " + folderPath);
     }
 
     public void changeFolderOnRemote(String folderPath)

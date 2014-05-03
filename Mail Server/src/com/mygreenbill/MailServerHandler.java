@@ -187,8 +187,6 @@ public class MailServerHandler implements IMailServerHandler
         connectionHandler.createConnection(prop.getProperty("mysql_username"), prop.getProperty("mysql_password"), prop.getProperty("mysql_ip"));
         connectionHandler.createNewFolder(prop.getProperty("mysql_path") + accountName);
         connectionHandler.closeConnection();
-
-        LOGGER.info("New folder in MySQL machine was created for " + accountName);
     }
 
     @Override

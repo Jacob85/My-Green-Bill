@@ -227,6 +227,7 @@ public class ConnectionManager
                 {
                     Map.Entry<String, RequestJson> pairs = iterator.next();
                     RequestJson toResend =  pairs.getValue();
+
                     if (toResend.getNumberOfResendingAttempts() < maxNumberOfResendAttempts)
                     {
                         sendMessage(toResend);
@@ -242,7 +243,7 @@ public class ConnectionManager
                 }
 
                 //after all is sent... sleep for the sleep time
-                this.LOGGER.info("All Requests sent.. sleeping for: " + threadSleepTime + " ms");
+                this.LOGGER.info("All Requests sent, sleeping for: " + threadSleepTime + " ms");
                 try
                 {
                     Thread.sleep(threadSleepTime);
