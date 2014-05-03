@@ -1,6 +1,7 @@
 package test;
 
 import com.mygreenbill.common.GreenBillUser;
+import com.mygreenbill.common.MailTemplate;
 import com.mygreenbill.common.Status;
 import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.security.EncryptionType;
@@ -110,5 +111,13 @@ public class DatabaseHandlerTest extends TestCase
         DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
         databaseHandler.retrieveUserInformation("test@gmail.com");
 
+    }
+
+    public void testGetEmailTemplate()
+    {
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        String emailTemplate = databaseHandler.getEmailTemplate(MailTemplate.WELCOME);
+        assertNotNull(emailTemplate);
+        System.out.println(emailTemplate);
     }
 }

@@ -18,6 +18,7 @@ public class GreenBillUser
     private String userId;
     private String password;
     private String email;
+    private boolean isActive;
     private List<Integer> userCompanyList;
 
     //database filed
@@ -26,6 +27,7 @@ public class GreenBillUser
     private final String idKey = "id";
     private final String lastNameKey = "last_name";
     private final String passwordKey = "password";
+    private final String isActiveKey = "is_active";
 
     public GreenBillUser()
     {
@@ -57,6 +59,17 @@ public class GreenBillUser
         this.lastName = (String) map.get(lastNameKey);
         this.firstName = (String) map.get(firstNameKey);
         this.userId = String.valueOf( map.get(idKey));
+        this.isActive = (Boolean) map.get(isActiveKey);
+    }
+
+    public boolean isActive()
+    {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive)
+    {
+        this.isActive = isActive;
     }
 
     public String getFirstName()

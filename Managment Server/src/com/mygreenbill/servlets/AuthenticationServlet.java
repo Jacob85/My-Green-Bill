@@ -20,6 +20,7 @@ public class AuthenticationServlet extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        doPost(request, response);
     }
 
     private void processLoginRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -54,7 +55,27 @@ public class AuthenticationServlet extends HttpServlet
             processLoginRequest(request, response);
             return;
         }
+        else if (uri.contains("accountActivation"))
+        {
+            processAccountActivation(request, response);
+            return;
+        }
 
+
+    }
+
+    private void processAccountActivation(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        String email = request.getParameter("email");
+        String hash = request.getParameter("hash");
+
+        AuthenticationManager  authenticationManager = AuthenticationManager.getInstance();
+        Status activationStatus = authenticationManager.processActivationRequest(email, hash, request.getSession());
+        if (activationStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
+        {
+            LOGGER.info("User was successfully activate, forwarding to dashboard");
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
+        }
 
     }
 

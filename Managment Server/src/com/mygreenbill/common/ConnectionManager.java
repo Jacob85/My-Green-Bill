@@ -276,10 +276,11 @@ public class ConnectionManager
             return null;
         try
         {
-            originalJsonMessage.put("messageID", this.jsonRequestID.get());
+            originalJsonMessage.put("messageId", this.jsonRequestID.get());
             JSONObject toReturn = new JSONObject();
             toReturn.put("Message", originalJsonMessage);
-            toReturn.put("CheckSum", EncryptionUtil.encryptString(originalJsonMessage.toString(), EncryptionType.MD5));
+            LOGGER.debug(originalJsonMessage.toString());
+            toReturn.put("CheckSum", EncryptionUtil.encryptString(String.valueOf(originalJsonMessage.toString().length()), EncryptionType.MD5));
             LOGGER.info("Composed Json request message: " + toReturn.toString());
             return toReturn;
         } catch (JSONException e)

@@ -89,9 +89,11 @@ public class RegistrationManager implements IRegistration
                 Status addToDbStatus = DatabaseHandler.getInstance().registerUser(request);
                 if (addToDbStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
                 {
-                    LOGGER.info("User was added to Database, start to compose Json request and send it to Mil server");
+                    LOGGER.info("User was added to Database, start to compose Json request and send it to Mail server");
+
+                    // this part was removed to after user activate his account
                     // send message to the Mail server to open new account
-                    sendRegistrationMessage(registrationRequest);
+                    //sendRegistrationMessage(registrationRequest);
                     return new Status(Status.OperationStatus.SUCCESS, "user was successfully register");
                 }
                 else
@@ -110,26 +112,7 @@ public class RegistrationManager implements IRegistration
         return null;
     }
 
-    private void sendRegistrationMessage(RegistrationRequestAbstract registrationRequest)
-    {
-        Map<String, String> messageFiled = new HashMap<String, String>();
-        messageFiled.put("MessageType", String.valueOf(MessageType.ADD_USER));
-        messageFiled.put("accountName", EncryptionUtil.encryptString(registrationRequest.getEmail(), EncryptionType.MD5));
-        messageFiled.put("password", registrationRequest.getEncryptPassword(EncryptionType.MD5));
-        messageFiled.put("address", registrationRequest.getEmail());
-        JSONObject message = new JSONObject(messageFiled);
-        LOGGER.info("Finished to construct json request : " + message.toString());
-        LOGGER.info("Sending message to mail server");
-        try
-        {
-            ConnectionManager.getInstance().sendToTrafficBlade(new JSONObject(messageFiled));
 
-        } catch (InitException e)
-        {
-            LOGGER.info("Failed to send message to mail server");
-            LOGGER.error(e);
-        }
-    }
 
     /**
      * Create new Green bill user and add it to the current Session

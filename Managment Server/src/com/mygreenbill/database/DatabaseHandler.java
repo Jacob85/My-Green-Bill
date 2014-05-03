@@ -3,10 +3,8 @@ package com.mygreenbill.database;
 import com.mygreenbill.Exceptions.AuthenticationException;
 import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
-import com.mygreenbill.common.ConnectionManager;
-import com.mygreenbill.common.GeneralUtilities;
-import com.mygreenbill.common.GreenBillUser;
-import com.mygreenbill.common.Status;
+import com.mygreenbill.authentication.LoginStatus;
+import com.mygreenbill.common.*;
 import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationRequestAbstract;
 import com.mygreenbill.security.EncryptionType;
@@ -29,8 +27,8 @@ public class DatabaseHandler
     private final String isUserExistsString = "select isUserIdExist(?);";
     private final String isUserExistsAndActiveString = "select isUserExistsAndActive(?);";
     private final String selectUserPassword = "select user.password from mygreenbilldb.user where user.email = '?';";
-    private final String selectUserinformation = "select user.first_name, user.last_name, user.id, user.password, user.email from mygreenbilldb.user where user.email = '?';";
-
+    private final String selectUserinformation = "select user.first_name, user.last_name, user.id, user.password, user.email, user.is_active from mygreenbilldb.user where user.email = '?';";
+    private final String selectMailTemplate = "select context from mygreenbilldb.mail_template where mail_template.name = '?'";
     // ENUM which represent all the possible messages status
     public enum MessageStatus {sent, pending, failed}
 
@@ -156,7 +154,7 @@ public class DatabaseHandler
         return null;
     }
 
-    public GreenBillUser loginUser(String email, String password) throws AuthenticationException
+    public LoginStatus loginUser(String email, String password)
     {
         String getPasswordQuery;
         getPasswordQuery = selectUserPassword.replace("?", email);
@@ -175,12 +173,24 @@ public class DatabaseHandler
                 if (returnedPassword.equals(password))
                 {
                     LOGGER.info(String.format("User password is correct, retrieve user information from db"));
-                    return retrieveUserInformation(email);
+                    //todo yaki - check if the user is active or not -> if not ask the user to captivate his account
+                    GreenBillUser greenBillUser = retrieveUserInformation(email);
+
+                    if (greenBillUser != null && greenBillUser.isActive())
+                    {
+                        // user is exist and active return success
+                        return new LoginStatus(greenBillUser, LoginStatus.LoginOperationStatus.SUCCESS);
+                    }
+                    else if (greenBillUser != null && !greenBillUser.isActive())
+                    {
+                        // user is exist but not active
+                        return new LoginStatus(greenBillUser, LoginStatus.LoginOperationStatus.FAILED_USER_IS_NOT_ACTIVE);
+                    }
                 }
                 else
                 {
                     LOGGER.debug(String.format("User password is not correct, login failed!"));
-                    throw new AuthenticationException("User password is not correct, login failed!");
+                    return new LoginStatus(null, LoginStatus.LoginOperationStatus.FAILED_WRONG_PASSWORD);
                 }
             }
         } catch (DatabaseException e)
@@ -301,6 +311,33 @@ public class DatabaseHandler
             return registerUserFullRequest(fullRegistrationRequest);
         }
         return null;
+    }
+
+    public String getEmailTemplate(MailTemplate mailTemplate)
+    {
+        if (mailTemplate == null)
+        {
+            LOGGER.info("Cannot get email template by name for name: " + mailTemplate);
+            return null;
+        }
+        String query = selectMailTemplate.replace("?", mailTemplate.getDataBaseName());
+
+        try
+        {
+            List list =runGetQuery(query);
+            Map map = (Map) list.get(0);
+            // get the first value
+            String firstValue = (String) map.values().toArray()[0];
+            //return the first value
+            LOGGER.debug("Mail Template retrieved from DB is: " + firstValue);
+            LOGGER.info(String.format("Mail Template %s was successfully retrieved from DB", mailTemplate.getDataBaseName()));
+            return  firstValue;
+
+        } catch (DatabaseException e)
+        {
+           LOGGER.error(e);
+           return null;
+        }
     }
 
     private Status registerUserFullRequest(FullRegistrationRequest fullRegistrationRequest)

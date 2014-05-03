@@ -1,5 +1,7 @@
 package com.mygreenbill.servlets;
 
+import com.mygreenbill.authentication.AuthenticationManager;
+import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
 import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationManager;
@@ -94,6 +96,12 @@ public class RegisterServlet extends HttpServlet
 
         //todo yaki - at the moment just forward to success page with proper meaasge in the future to redirect the user to dashboard
         registrationManager.updateCurrentSessionWithUserInfo(registrationRequest, currentSession);
+
+        GreenBillUser greenBillUser = (GreenBillUser) currentSession.getAttribute("user");
+        LOGGER.info("Composing Welcome and Validation email for the user " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName());
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
+        authenticationManager.composeAndSendAuthenticationEmail(greenBillUser);
+
          /*end of phase 1 next phase is 2*/
         request.getSession().setAttribute("phase", 2);
         request.getRequestDispatcher("/success.jsp").forward(request, response);

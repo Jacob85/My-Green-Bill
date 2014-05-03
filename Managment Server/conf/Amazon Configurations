@@ -1,0 +1,6 @@
+log in to the Management server:
+ssh -i idan-key-pair.pem ubuntu@54.72.32.127
+
+
+locate the code in:
+/var/www

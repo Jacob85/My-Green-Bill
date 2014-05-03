@@ -117,6 +117,14 @@ $(document).ready(function(){
         });
 
    // jQuery.noConflict();
+
+    // set the content of the front page
+    $('#marketing_text').text("Tired of losing your monthly bills? " +
+        "The bills went lost by the post office again? " +
+        "Finding it hard to keep track on your household expenses? " +
+        "If the answer is yes, let us help you... check out this video...");
+
+
 }); // end document.ready
 
 function openPopUp()

@@ -144,8 +144,59 @@
     </div>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<div class="container">
 
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>Join Us Today!</h1>
+        <p id="marketing_text"> The text will come from the javascript </p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2013</p>
+    </footer>
+  </div>
+
+<div id="main">
+    <div data-page-name="Home" class="section-unit hero">
+        <div class="container">
+            <div class="row-fluid">
+                <h1>Clean up your inbox</h1>
+
+                <h2 class="followon">Save time on email with Unroll.me <a href="/video">
+                    Watch our video</a></h2><a href="/signup" data-track=":Signup|Signup" class=
+                    "btn btn-primary icon-chevron-right">Get started now</a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
