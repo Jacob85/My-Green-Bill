@@ -57,8 +57,8 @@ public class JsonMessageHandler
 
         try
         {
-            JSONObject innerJson = json.getJSONObject("Message"); // Getting the inner JSON object
-            int messageId = innerJson.getInt("messageId"); // Getting the message ID
+            JSONObject innerJson = json.getJSONObject(JsonRequestFields.MESSAGE.field()); // Getting the inner JSON object
+            int messageId = innerJson.getInt(JsonRequestFields.MESSAGE_ID.field()); // Getting the message ID
             sendAckMessage(messageId); // Sending back ACK message for every incoming message
 
             // If the message was already received return
@@ -89,19 +89,19 @@ public class JsonMessageHandler
             switch (MessageType.valueOf(messageType))
             {
                 case ADD_USER:
-                    addNewAccount(innerJson.getString("accountName"), innerJson.getString("password"), innerJson.getString("address"));
+                    addNewAccount(innerJson.getString(JsonRequestFields.ACCOUNT_NAME.field()), innerJson.getString(JsonRequestFields.PASSWORD.field()), innerJson.getString(JsonRequestFields.EMAIL_ADDRESS.field()));
                     break;
 
                 case SET_NEW_FORWARD_ADDRESS:
-                    setNewForwardAddress(innerJson.getString("accountName"), innerJson.getString("newAddress"));
+                    setNewForwardAddress(innerJson.getString(JsonRequestFields.ACCOUNT_NAME.field()), innerJson.getString(JsonRequestFields.EMAIL_ADDRESS.field()));
                     break;
 
                 case SEND_MAIL_TO_COSTUMER:
-                    sendMessageToCostumer(innerJson.getString("To"), innerJson.getString("Subject"), innerJson.getString("MessageContent"));
+                    sendMessageToCostumer(innerJson.getString(JsonRequestFields.EMAIL_SEND_TO.field()), innerJson.getString(JsonRequestFields.EMAIL_SUBJECT.field()), innerJson.getString(JsonRequestFields.MESSAGE_CONTENT.field()));
                     break;
 
                 default:
-                    LOGGER.info("Message with ID: " + innerJson.getString("messageId") + " has no valid MessageType -> " + innerJson.getString("MessageType"));
+                    LOGGER.info("Message with ID: " + innerJson.getString(JsonRequestFields.MESSAGE_ID.field()) + " has no valid MessageType -> " + innerJson.getString(JsonRequestFields.MESSAGE_TYPE.field()));
                     break;
             }
         }
@@ -174,11 +174,11 @@ public class JsonMessageHandler
 
         try
         {
-            JSONObject innerJson = json.getJSONObject("Message");
-            id = innerJson.getInt("messageId"); // Getting the message ID
+            JSONObject innerJson = json.getJSONObject(JsonRequestFields.MESSAGE.field());
+            id = innerJson.getInt(JsonRequestFields.MESSAGE_ID.field()); // Getting the message ID
             String messageMD5 = getMD5(String.valueOf(innerJson.toString().length())); // Checking the MD5 of the incoming message
 
-            if (messageMD5.equals(json.getString("CheckSum"))) // If the MD5 field is equal to the MD5 of the message return true
+            if (messageMD5.equals(json.getString(JsonRequestFields.CHECK_SUM.field()))) // If the MD5 field is equal to the MD5 of the message return true
             {
                 LOGGER.info("Message with ID: " + id + " was fully received :)");
                 return true;
@@ -186,7 +186,7 @@ public class JsonMessageHandler
             else
             {
                 LOGGER.info("Message with ID: " + id + " was not fully received :(");
-                LOGGER.info("Message MD5 CheckSum filed: " + json.getString("CheckSum"));
+                LOGGER.info("Message MD5 CheckSum filed: " + json.getString(JsonRequestFields.CHECK_SUM.field()));
                 LOGGER.info("Message received MD5: " + messageMD5 + " String: " + innerJson.toString());
             }
         }

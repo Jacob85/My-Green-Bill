@@ -5,6 +5,8 @@ package com.mygreenbill.common;
  */
 public enum JsonRequestFields
 {
+    MESSAGE("Message"),
+    CHECK_SUM("CheckSum"),
     MESSAGE_TYPE("MessageType"),
     ACCOUNT_NAME("accountName"),
     PASSWORD("password"),
