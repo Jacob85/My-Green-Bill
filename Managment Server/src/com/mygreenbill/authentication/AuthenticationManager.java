@@ -1,6 +1,5 @@
 package com.mygreenbill.authentication;
 
-import com.mygreenbill.Exceptions.AuthenticationException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.common.*;
 import com.mygreenbill.database.DatabaseHandler;
@@ -102,7 +101,7 @@ public class AuthenticationManager
             LOGGER.debug("replaced the template parameters with real user information: " + emailString);
 
             //sending message to mail server
-            sendJsonRequestToMailServer(user, emailString);
+            sendMailToCustomer(user, emailString);
             return new Status(Status.OperationStatus.SUCCESS, "");
 
         }
@@ -114,7 +113,7 @@ public class AuthenticationManager
         }
     }
 
-    private void sendJsonRequestToMailServer(GreenBillUser user, String emailString)
+    private void sendMailToCustomer(GreenBillUser user, String emailString)
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
         messageFiled.put("MessageType", String.valueOf(MessageType.SEND_MAIL_TO_COSTUMER));
@@ -139,7 +138,7 @@ public class AuthenticationManager
             return null;
 
         // The hush validation is 2 times MD5 on the user email.
-        return "http://mygreenbill.com/authenticate/accountActivation?email=" +user.getEmail() +
+        return "http://mygreenbill.com/greenbill/authenticate/accountActivation?email=" +user.getEmail() +
                 "&hash=" + EncryptionUtil.encryptString(EncryptionUtil.encryptString(user.getEmail(), EncryptionType.MD5), EncryptionType.MD5);
     }
 
