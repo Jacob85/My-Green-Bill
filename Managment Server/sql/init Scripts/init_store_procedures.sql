@@ -928,20 +928,19 @@ BEGIN
 declare company_email varchar(45);
 select company.email into company_email from company where company.id = company_id;
 
-select 
-	user.first_name,
-	user.last_name,
-	massage_info.send_to,
-	massage_info.send_from,
-	massage_info.subject,
-	massage_info.content,
-	file.name,
-	file.path
-from user
-join incoming_massages on user.id = incoming_massages.user_id
-join massage_info on incoming_massages.massage_info_id = massage_info.id
-left join file on massage_info.id = file.massage_id
-where user.id = user_id && massage_info.send_from = company_email;
+  select
+    mygreenbilldb.company.name,
+    mygreenbilldb.massage_info.subject,
+    mygreenbilldb.massage_info.content,
+    mygreenbilldb.massage_info.date,
+    mygreenbilldb.file.name,
+    mygreenbilldb.file.path
+  from mygreenbilldb.user
+    join mygreenbilldb.incoming_massages on mygreenbilldb.user.id = mygreenbilldb.incoming_massages.user_id
+    join mygreenbilldb.massage_info on mygreenbilldb.incoming_massages.massage_info_id = mygreenbilldb.massage_info.id
+    join mygreenbilldb.company on mygreenbilldb.massage_info.send_from = mygreenbilldb.company.email
+    left join mygreenbilldb.file on mygreenbilldb.massage_info.id = mygreenbilldb.file.massage_id
+  where user.id = user_id && massage_info.send_from = company_email;
 
 END $$
 DELIMITER ;
@@ -966,20 +965,19 @@ if isExist = 0
 		SIGNAL error_msg
 		SET MESSAGE_TEXT = @message_text;
 	else
-	select 
-		user.first_name,
-		user.last_name,
-		massage_info.send_to,
-		massage_info.send_from,
-		massage_info.subject,
-		massage_info.content,
-		file.name,
-		file.path
-	from user
-	join incoming_massages on user.id = incoming_massages.user_id
-	join massage_info on incoming_massages.massage_info_id = massage_info.id
-	left join file on massage_info.id = file.massage_id
-	where user.id = user_id;
+    select
+      mygreenbilldb.company.name,
+      mygreenbilldb.massage_info.subject,
+      mygreenbilldb.massage_info.content,
+      mygreenbilldb.massage_info.date,
+      mygreenbilldb.file.name,
+      mygreenbilldb.file.path
+    from mygreenbilldb.user
+      join mygreenbilldb.incoming_massages on mygreenbilldb.user.id = mygreenbilldb.incoming_massages.user_id
+      join mygreenbilldb.massage_info on mygreenbilldb.incoming_massages.massage_info_id = mygreenbilldb.massage_info.id
+      join mygreenbilldb.company on mygreenbilldb.massage_info.send_from = mygreenbilldb.company.email
+      left join mygreenbilldb.file on mygreenbilldb.massage_info.id = mygreenbilldb.file.massage_id
+	  where user.id = user_id;
 END if;
 END $$
 DELIMITER ;
