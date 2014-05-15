@@ -43,6 +43,7 @@
     <link href="assets/css/layout2.css" rel="stylesheet" />
     <link href="assets/plugins/flot/examples/examples.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/plugins/timeline/timeline.css" />
+    <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- END PAGE LEVEL  STYLES -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -106,7 +107,7 @@
         </li>
 
         <li class="panel ">
-            <a href="" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+            <a href="#/User/Bills" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                 <i class="icon-tasks"> </i> <%=properties.getProperty("my_bills")%>
                         <span class="pull-right">
                           <i class="icon-angle-left"></i>
@@ -181,11 +182,14 @@
     <script src="assets/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/plugins/morris/morris.js"></script>
     <script src="assets/plugins/morris/morris-demo.js"></script>
+    <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <script src="assets/AngularJS/app.js"></script>
     <script src="assets/AngularJS/controllers/UserProfileController.js"></script>
     <script src="assets/AngularJS/controllers/UserStatisticsController.js"></script>
     <script src="assets/AngularJS/controllers/UserDashboardController.js"></script>
+    <script src="assets/AngularJS/controllers/UserBillsController.js"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
 </body>

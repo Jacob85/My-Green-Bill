@@ -5,7 +5,8 @@ var app = angular.module('app', [
     'ngRoute',
     'userProfileController',
     'userStatisticsController',
-    'userDashboardController'
+    'userDashboardController',
+    'userBillsController'
 ]);
 
 app.config(['$routeProvider',  function ($routeProvider) {
@@ -29,6 +30,11 @@ app.config(['$routeProvider',  function ($routeProvider) {
         {
             controller: 'StatisticsController',
             templateUrl: 'AngularViews/userStatistics.jsp'
+        })
+        .when('/User/Bills',
+        {
+            controller: 'BillsController',
+            templateUrl: 'AngularViews/userBills.jsp'
         })
 
     $routeProvider.otherwise({
