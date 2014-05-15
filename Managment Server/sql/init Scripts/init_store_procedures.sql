@@ -1236,3 +1236,35 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserLoginEvent`(IN id INT,IN ema
 
   END$$
 DELIMITER ;
+
+drop procedure if exists `GetAllCompaniesOfUser`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompaniesOfUser`(IN id INT)
+  BEGIN
+    DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+    DECLARE isExist INT;
+
+    SELECT isUserIdExist(id) INTO isExist;
+
+    if isExist = 1 then
+      SELECT
+        mygreenbilldb.company.name as company_name,
+        mygreenbilldb.company.email AS company_email,
+        mygreenbilldb.company.id as company_id
+      FROM mygreenbilldb.user
+        JOIN mygreenbilldb.user_client_of_company ON mygreenbilldb.user_client_of_company.user_id = mygreenbilldb.user.id
+        JOIN mygreenbilldb.company ON mygreenbilldb.user_client_of_company.company_id = mygreenbilldb.company.id
+      WHERE mygreenbilldb.user.id = 038054664;
+
+    else
+      SET @message_text = CONCAT('A user with the ID: ', user_id, ' does not exist.');
+      SIGNAL error_msg
+      SET MESSAGE_TEXT = @message_text;
+    end if;
+
+  END$$
+DELIMITER ;

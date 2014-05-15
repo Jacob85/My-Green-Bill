@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="pdfbox-app-1.8.51">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/pdfbox-app-1.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/preflight-app-1.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/pdfbox-lucene-1.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Managment Server/web/WEB-INF/lib/lucene-core-3.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -42,6 +42,7 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module" module-name="Common Classes" />
     <orderEntry type="library" name="jersey-server-1.8" level="project" />
+    <orderEntry type="library" name="pdfbox-app-1.8.51" level="project" />
     <orderEntry type="library" name="angularjs-DefinitelyTyped" level="application" />
   </component>
 </module>

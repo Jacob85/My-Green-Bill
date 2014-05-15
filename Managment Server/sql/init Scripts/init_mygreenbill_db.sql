@@ -600,7 +600,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'Aa123456', 'ABCD', 1, '2013-09-21');
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'afdd0b4ad2ec172c586e2150770fbf9e', 'ABCD', 1, '2013-09-21');
 INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '123', 'ipeleg', 1, '2013-09-16');
 
 COMMIT;
