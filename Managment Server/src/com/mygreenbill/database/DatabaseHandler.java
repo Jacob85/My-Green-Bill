@@ -1,6 +1,5 @@
 package com.mygreenbill.database;
 
-import com.mygreenbill.Exceptions.AuthenticationException;
 import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.authentication.LoginStatus;
@@ -29,6 +28,7 @@ public class DatabaseHandler
     private final String selectUserPassword = "select user.password from mygreenbilldb.user where user.email = '?';";
     private final String selectUserinformation = "select user.first_name, user.last_name, user.id, user.password, user.email, user.is_active from mygreenbilldb.user where user.email = '?';";
     private final String selectMailTemplate = "select context from mygreenbilldb.mail_template where mail_template.name = '?'";
+    private final String selectUserCompanies = "call mygreenbilldb.getallcompaniesofuser(?);";
     // ENUM which represent all the possible messages status
     public enum MessageStatus {sent, pending, failed}
 
@@ -208,7 +208,9 @@ public class DatabaseHandler
             if (list != null)
             {
                 Map map = (Map) list.get(0);
-                return new GreenBillUser(map);
+                GreenBillUser greenBillUserToReturn = new GreenBillUser(map);
+                retrieveUserCompanies(greenBillUserToReturn);
+                return greenBillUserToReturn;
             }
 
         } catch (DatabaseException e)
@@ -218,6 +220,33 @@ public class DatabaseHandler
         return null;
 
     }
+
+    private void retrieveUserCompanies(GreenBillUser greenBillUserToReturn)
+    {
+
+        LOGGER.info("Getting all companies list for user " + greenBillUserToReturn.getFirstName() +  " " + greenBillUserToReturn.getLastName());
+        String query = selectUserCompanies.replace("?", greenBillUserToReturn.getUserId());
+
+        try
+        {
+            List companies = runGetQuery(query);
+            if (companies.size() > 0)
+            {
+                for (int i =0 ; i < companies.size(); i++)
+                {
+                    Map currMap = (Map) companies.get(i);
+                    GreenBillCompany currGreenBillCompany = new GreenBillCompany(currMap);
+                    greenBillUserToReturn.addCompany(currGreenBillCompany);
+                }
+            }
+
+        } catch (DatabaseException e)
+        {
+            LOGGER.info("Failed to run query: " + query);
+        }
+
+    }
+
     public Status runUpdateQuery(String query) throws DatabaseException
     {
         return runInsertQuery(query);

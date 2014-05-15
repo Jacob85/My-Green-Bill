@@ -4,6 +4,7 @@ import com.mygreenbill.registration.RegistrationRequestAbstract;
 import com.mygreenbill.security.EncryptionType;
 import org.omg.PortableInterceptor.ServerRequestInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class GreenBillUser
     private String password;
     private String email;
     private boolean isActive;
-    private List<Integer> userCompanyList;
+    private List<GreenBillCompany> userCompanyList;
 
     //database filed
     private final String emailKey = "email";
@@ -33,7 +34,7 @@ public class GreenBillUser
     {
     }
 
-    public GreenBillUser(String firstName, String lastName, String userId, String password, String email, List<Integer> userCompanyList)
+    public GreenBillUser(String firstName, String lastName, String userId, String password, String email, List<GreenBillCompany> userCompanyList)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -122,12 +123,12 @@ public class GreenBillUser
         this.email = email;
     }
 
-    public List<Integer> getUserCompanyList()
+    public List<GreenBillCompany> getUserCompanyList()
     {
         return userCompanyList;
     }
 
-    public void setUserCompanyList(List<Integer> userCompanyList)
+    public void setUserCompanyList(List<GreenBillCompany> userCompanyList)
     {
         this.userCompanyList = userCompanyList;
     }
@@ -139,6 +140,14 @@ public class GreenBillUser
                 email != null &&
                 (needCompanyList ? userCompanyList != null : true);
 
+    }
+
+    public void addCompany(GreenBillCompany toAdd)
+    {
+        if (userCompanyList == null)
+            userCompanyList = new ArrayList<GreenBillCompany>();
+
+        userCompanyList.add(toAdd);
     }
 
 }

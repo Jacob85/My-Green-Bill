@@ -4141,14 +4141,7 @@
         <parameter name="first_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
         <parameter name="last_name" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="4"/>
         <parameter name="pass" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="5"/>
-        <parameter name="subscription_plan" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
-        <parameter name="rank" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="7"/>
-        <parameter name="street" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="8"/>
-        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
-        <parameter name="city" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="10"/>
-        <parameter name="postal_code" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="11"/>
-        <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="12"/>
-        <parameter name="hmail_account" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="13"/>
+        <parameter name="hmail_account" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="6"/>
       </prototype>
     </procedure>
     <procedure name="AddUserLoginEvent" schema="" catalog="mygreenbilldb" type="1">
@@ -4177,6 +4170,11 @@
         <parameter name="due_date" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="6"/>
         <parameter name="content" sqlType="TEXT" length="65535" precision="65535" nullable="true" jdbcType="-1" type="1" index="7"/>
         <parameter name="is_paid" sqlType="BOOLEAN" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="8"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetAllCompaniesOfUser" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
     <procedure name="GetAllCompanyContacts" schema="" catalog="mygreenbilldb" type="1">

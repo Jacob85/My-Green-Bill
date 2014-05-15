@@ -23,6 +23,15 @@ public class DatabaseHandlerTest extends TestCase
 
     }
 
+    public void testRetrieveUserInformation() throws Exception
+    {
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        GreenBillUser yaki = databaseHandler.retrieveUserInformation("yaki.ams@gmail.com");
+
+        assertNotNull(yaki);
+        assertNotNull(yaki.getUserCompanyList());
+    }
+
     public void testIsUserExist() throws Exception
     {
         DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
@@ -106,12 +115,7 @@ public class DatabaseHandlerTest extends TestCase
 
     }
 
-    public void testRetrieveUserInformation() throws Exception
-    {
-        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
-        databaseHandler.retrieveUserInformation("test@gmail.com");
 
-    }
 
     public void testGetEmailTemplate()
     {
