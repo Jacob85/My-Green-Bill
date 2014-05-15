@@ -14,15 +14,18 @@ import java.io.IOException;
 public class DashboardServlet extends HttpServlet
 {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        GreenBillUser user = (GreenBillUser) req.getSession().getAttribute("user");
-        resp.getWriter().write("hello " + user.getFirstName() + "you are in dashboard!");
+        String uri = request.getRequestURI();
+        if (uri.contains("/dashboard"))
+        {
+            request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        super.doPost(req, resp);
+        super.doPost(request, response);
     }
 }

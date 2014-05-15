@@ -1,9 +1,7 @@
-<%@ page import="java.util.Properties" %>
 <%@ page import="java.io.FileInputStream" %>
 <%@ page import="com.mygreenbill.common.GreenBillUser" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="com.mygreenbill.common.GreenBillCompany" %>
+<%@ page import="java.util.*" %>
 <%--
   Created by IntelliJ IDEA.
   User: Jacob
@@ -18,9 +16,12 @@
     <%
         Properties properties = new Properties();
         //todo yaki - replace with the relative path on the server
-        FileInputStream inputStream = new FileInputStream("/Users/ipeleg/IdeaProjects/My-Green-Bill/Managment Server/web/WEB-INF/properties/dashboard.properties");
-        //FileInputStream inputStream = new FileInputStream("C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\web\\WEB-INF\\properties\\dashboard.properties");
+        //FileInputStream inputStream = new FileInputStream("/Users/ipeleg/IdeaProjects/My-Green-Bill/Managment Server/web/WEB-INF/properties/dashboard.properties");
+        FileInputStream inputStream = new FileInputStream("C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\web\\WEB-INF\\properties\\dashboard.properties");
         properties.load(inputStream);
+
+        GreenBillUser user = (GreenBillUser) session.getAttribute("user");
+
     %>
     <title><%=properties.getProperty("title")%></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -65,7 +66,7 @@
                 <ul class="nav navbar-top-links navbar-right">
 
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="">
                             <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
                         </a>
 
@@ -78,14 +79,6 @@
                 </ul>
             </nav>
         </div>
-
-        <%
-            //todo yaki - remove the demo user and take the data from the ssesion only
-            GreenBillUser user = (GreenBillUser) session.getAttribute("user");
-            user = new GreenBillUser("Idan", "Peleg", "038054664", "decececec", "ipeleg@gmail.com", new ArrayList<Integer>(5));
-
-
-        %>
         <!-- MENU SECTION -->
         <div id="left" >
         <div class="media user-media well-small">
@@ -122,10 +115,10 @@
             </a>
             <ul class="collapse" id="component-nav">
                 <%
-                    String[] companies = new String[]{"Bezeq", "Paz Gaz", "Migdal", "Harel", "Orange", "Raanana Water"};
-                    for(String company : companies)
+                    List<GreenBillCompany> companies = user.getUserCompanyList();
+                    for(GreenBillCompany company : companies)
                     {
-                        out.write("<li class=\"\"><a href=\"#\"><i class=\"icon-angle-right\"></i> " + company +"</a></li>");
+                        out.write("<li class=\"\"><a href=\"#\"><i class=\"icon-angle-right\"></i> " + company.getName() +"</a></li>");
                     }
                 %>
             </ul>
@@ -144,7 +137,7 @@
 
                     for(Map.Entry<String, String> entry : attributes.entrySet())
                     {
-                        out.write("<li><a href='#" + entry.getValue() + "'><i class='icon-angle-right'></i> " + entry.getKey() +"</a></li>");
+                        out.write("<li><a href='" + entry.getValue() + "'><i class='icon-angle-right'></i> " + entry.getKey() +"</a></li>");
                     }
                 %>
             </ul>
@@ -153,7 +146,6 @@
         <li>
             <a href="#/User/Statistics"><i class="icon-bar-chart"></i> <%= properties.getProperty("statistics")%></a>
         </li>
-
         </ul>
 
         </div>
@@ -164,7 +156,7 @@
             <div class="inner">
 
                 <!-- Place holder for the views -->
-                <div ng-view="">
+                <div ng-view>
 
                 </div>
             </div>

@@ -60,8 +60,20 @@ public class AuthenticationServlet extends HttpServlet
             processAccountActivation(request, response);
             return;
         }
+        else if (uri.contains("logout"))
+        {
+            processLogoutRequest(request, response);
+            return;
+        }
 
 
+    }
+
+
+    private void processLogoutRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        request.getSession().invalidate();
+        response.sendRedirect("/greenbill");
     }
 
     private void processAccountActivation(HttpServletRequest request, HttpServletResponse response) throws IOException

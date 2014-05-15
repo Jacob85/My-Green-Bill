@@ -6,6 +6,6 @@ angular.module('userDashboardController',[])
     .controller('DashboardController', ['$scope', '$http',
         function userDashboard($scope, $http)
         {
-
+            $scope.title = 'IDAN';
         }
     ]);

@@ -1,3 +1,4 @@
+<%@ page import="com.mygreenbill.common.GreenBillUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: ipeleg
@@ -8,12 +9,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%GreenBillUser greenbillUser = (GreenBillUser) request.getSession().getAttribute("user");%>
     <title></title>
 </head>
 <body>
     <div class="row">
         <div class="col-lg-12">
             <h2>THIS IS USER DASHBOARD PAGE</h2>
+            <h2>{{ title }}</h2>
         </div>
     </div>
 
