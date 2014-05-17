@@ -28,10 +28,22 @@
       <div class="panel panel-default">
       <div class="panel-heading">
           All <%=user != null ? user.getFirstName() + " " + user.getLastName() : ""%> Bills
+          <br>
+          Filter the table:
+          <input type="text" ng-model="searchstr" placeholder="filter the table.." />
+          <select id="selectedFilter">
+             <option value="date">{{ date }}</option>
+             <option value="companyName" selected>{{ companyName }}</option>
+             <option value="subject">{{ subject }}</option>
+             <option value="content">{{ content }}</option>
+
+          </select>
       </div>
       <div class="panel-body">
       <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
       <thead>
       <tr>
           <th>{{ date }}</th>
@@ -42,7 +54,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="bill in bills" class="gradeA">
+      <tr ng-repeat="bill in bills | sercher:searchstr" class="gradeA">
           <td>{{bill.date}}</td>
           <td>{{bill.company_name}}</td>
           <td>{{bill.message_subject}}</td>
