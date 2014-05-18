@@ -1243,12 +1243,12 @@ drop procedure if exists `GetAllCompaniesOfUser`;
 -- Note: comments before and after the routine body will not be stored by the server
 -- --------------------------------------------------------------------------------
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompaniesOfUser`(IN id INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompaniesOfUser`(IN userId INT)
   BEGIN
     DECLARE error_msg CONDITION FOR SQLSTATE '45000';
     DECLARE isExist INT;
 
-    SELECT isUserIdExist(id) INTO isExist;
+    SELECT isUserIdExist(userId) INTO isExist;
 
     if isExist = 1 then
       SELECT
@@ -1258,12 +1258,60 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompaniesOfUser`(IN id INT)
       FROM mygreenbilldb.user
         JOIN mygreenbilldb.user_client_of_company ON mygreenbilldb.user_client_of_company.user_id = mygreenbilldb.user.id
         JOIN mygreenbilldb.company ON mygreenbilldb.user_client_of_company.company_id = mygreenbilldb.company.id
-      WHERE mygreenbilldb.user.id = 038054664;
+      WHERE mygreenbilldb.user.id = userId;
 
     else
-      SET @message_text = CONCAT('A user with the ID: ', user_id, ' does not exist.');
+      SET @message_text = CONCAT('A user with the ID: ', userId, ' does not exist.');
       SIGNAL error_msg
       SET MESSAGE_TEXT = @message_text;
+    end if;
+
+  END$$
+DELIMITER ;
+
+drop procedure if exists `AddCompanyToUser`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompanyToUser`(IN userId INT, in companyId int)
+  BEGIN
+    DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+    DECLARE isUserExist INT;
+    DECLARE isCompanyExist INT;
+    DECLARE userEmail VARCHAR(45);
+    DECLARE companyEmail VARCHAR(45);
+
+    /* Checking if the user exist */
+    SELECT isUserIdExist(userId) INTO isUserExist;
+    if isUserExist = 0 then
+      SET @message_text = CONCAT('A user with the ID: ', userId, ' does not exist.');
+      SIGNAL error_msg
+      SET MESSAGE_TEXT = @message_text;
+    end if;
+
+    /* Checking if the company exist */
+    select isCompanyIdExist(companyId) into isCompanyExist;
+    if isCompanyExist = 0 then
+      SET @message_text = CONCAT('A company with the ID: ', companyId, ' does not exist.');
+      SIGNAL error_msg
+      SET MESSAGE_TEXT = @message_text;
+    end if;
+
+    /* If both user and company exist */
+    if isUserExist = 1 and isCompanyExist = 1 then
+      SELECT
+        mygreenbilldb.company.email INTO companyEmail
+      FROM mygreenbilldb.company
+      WHERE mygreenbilldb.company.id = companyId;
+
+      SELECT
+        mygreenbilldb.user.email INTO userEmail
+      FROM mygreenbilldb.user
+      WHERE mygreenbilldb.user.id = userId;
+
+      INSERT INTO `mygreenbilldb`.`user_client_of_company` ( `user_id`, `user_email`, `company_id`, `company_email`) VALUES (userId, userEmail, companyId, companyEmail);
     end if;
 
   END$$

@@ -28,16 +28,17 @@
       <div class="panel panel-default">
       <div class="panel-heading">
           All <%=user != null ? user.getFirstName() + " " + user.getLastName() : ""%> Bills
-          <br>
-          Filter the table:
-          <input type="text" ng-model="searchstr" placeholder="filter the table.." />
-          <select id="selectedFilter">
-             <option value="date">{{ date }}</option>
-             <option value="companyName" selected>{{ companyName }}</option>
-             <option value="subject">{{ subject }}</option>
-             <option value="content">{{ content }}</option>
+          <div style="float: right;">
+              Filter the table:
+              <input type="text" ng-model="searchstr" placeholder="filter the table..." />
+              <select id="selectedFilter">
+                 <option value="date">{{ date }}</option>
+                 <option value="companyName" selected>{{ companyName }}</option>
+                 <option value="subject">{{ subject }}</option>
+                 <option value="content">{{ content }}</option>
 
-          </select>
+              </select>
+          </div>
       </div>
       <div class="panel-body">
       <div class="table-responsive">

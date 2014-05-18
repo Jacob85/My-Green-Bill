@@ -140,11 +140,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mygreenbilldb`.`user_client_of_company` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_client_of_company` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `user_email` VARCHAR(45) NOT NULL,
   `company_id` INT NOT NULL,
   `company_email` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`user_id`, `user_email`, `company_id`, `company_email`),
+  PRIMARY KEY (`id`),
   INDEX `fk_user_has_company_company1_idx` (`company_id` ASC, `company_email` ASC),
   INDEX `fk_user_has_company_user1_idx` (`user_id` ASC, `user_email` ASC),
   CONSTRAINT `fk_user_has_company_user1`
@@ -601,7 +602,7 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'afdd0b4ad2ec172c586e2150770fbf9e', 'ABCD', 1, '2013-09-21');
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '123', 'ipeleg', 1, '2013-09-16');
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '81dc9bdb52d04dc20036dbd8313ed055', 'ipeleg', 1, '2013-09-16');
 
 COMMIT;
 
@@ -661,7 +662,6 @@ START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054664, 'yaki.ams@gmail.com', 123456789, 'ipeleg@hotmail.com');
 INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054665, 'ipeleg@mygreenbill.com', 123456789, 'ipeleg@hotmail.com');
-INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054664, 'yaki.ams@gmail.com', 12345678, 'company@mail.com');
 INSERT INTO `mygreenbilldb`.`user_client_of_company` (`user_id`, `user_email`, `company_id`, `company_email`) VALUES (038054665, 'ipeleg@mygreenbill.com', 12345678, 'company@mail.com');
 
 COMMIT;

@@ -2,9 +2,6 @@
  * Created by Jacob on 5/15/14.
  */
 
-
-
-
 var application = angular.module('userBillsController',[]);
 
     application.controller('BillsController', ['$scope', '$http',

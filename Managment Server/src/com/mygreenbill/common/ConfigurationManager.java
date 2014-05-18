@@ -14,7 +14,8 @@ public class ConfigurationManager
     private static ConfigurationManager instance = null;
     private final Logger LOGGER = Logger.getLogger(ConfigurationManager.class);
     //todo yaki - replace the path to the real path on server
-    private final String projectPath = "C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\";
+    //private final String projectPath = "C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\";
+    private final String projectPath = "/Users/ipeleg/IdeaProjects/My-Green-Bill/Managment Server/";
 
     private Properties properties = new Properties();
 
@@ -31,7 +32,7 @@ public class ConfigurationManager
 
         try
         {
-            inputStream = new FileInputStream(projectPath + "conf\\configuration.properties");
+            inputStream = new FileInputStream(projectPath + "conf/configuration.properties");
             properties.load(inputStream);
         } catch (FileNotFoundException e)
         {

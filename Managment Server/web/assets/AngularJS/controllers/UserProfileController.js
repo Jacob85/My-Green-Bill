@@ -4,8 +4,13 @@
 
 angular.module('userProfileController',[])
     .controller('CompaniesController', ['$scope', '$http',
-        function userCompaniesList($scope, $http)
+        function getUserCompaniesList($scope, $http)
         {
-
+            $http.get('http://localhost:8080/greenbill/rest/company/forUser')
+                .success(function (response)
+                {
+                    console.log(response);
+                    $scope.companies  = response;
+                });
         }
     ]);

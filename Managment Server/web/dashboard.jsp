@@ -16,8 +16,8 @@
     <%
         Properties properties = new Properties();
         //todo yaki - replace with the relative path on the server
-        //FileInputStream inputStream = new FileInputStream("/Users/ipeleg/IdeaProjects/My-Green-Bill/Managment Server/web/WEB-INF/properties/dashboard.properties");
-        FileInputStream inputStream = new FileInputStream("C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\web\\WEB-INF\\properties\\dashboard.properties");
+        FileInputStream inputStream = new FileInputStream("/Users/ipeleg/IdeaProjects/My-Green-Bill/Managment Server/web/WEB-INF/properties/dashboard.properties");
+        //FileInputStream inputStream = new FileInputStream("C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\web\\WEB-INF\\properties\\dashboard.properties");
         properties.load(inputStream);
 
         GreenBillUser user = (GreenBillUser) session.getAttribute("user");
@@ -112,7 +112,7 @@
                         <span class="pull-right">
                           <i class="icon-angle-left"></i>
                         </span>
-                &nbsp; <span class="label label-success"><%=/*user.getUserCompanyList().size()*/ 5%></span>&nbsp;
+                &nbsp; <span class="label label-success"><%=/*user.getUserCompanyList().size()*/ 2%></span>&nbsp;
             </a>
             <ul class="collapse" id="component-nav">
                 <%
@@ -138,7 +138,7 @@
 
                     for(Map.Entry<String, String> entry : attributes.entrySet())
                     {
-                        out.write("<li><a href='" + entry.getValue() + "'><i class='icon-angle-right'></i> " + entry.getKey() +"</a></li>");
+                        out.write("<li><a href='#" + entry.getValue() + "'><i class='icon-angle-right'></i> " + entry.getKey() +"</a></li>");
                     }
                 %>
             </ul>

@@ -4101,6 +4101,12 @@
         <parameter name="country" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="11"/>
       </prototype>
     </procedure>
+    <procedure name="AddCompanyToUser" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="userId" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="companyId" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+      </prototype>
+    </procedure>
     <procedure name="AddContactToCompany" schema="" catalog="mygreenbilldb" type="1">
       <prototype>
         <parameter name="company_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
@@ -4174,7 +4180,7 @@
     </procedure>
     <procedure name="GetAllCompaniesOfUser" schema="" catalog="mygreenbilldb" type="1">
       <prototype>
-        <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="userId" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
     <procedure name="GetAllCompanyContacts" schema="" catalog="mygreenbilldb" type="1">

@@ -1,3 +1,4 @@
+<%@ page import="com.mygreenbill.common.GreenBillUser" %>
 <%-- Created by IntelliJ IDEA. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -31,6 +32,7 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
