@@ -6,27 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="Added companies list">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/sql/Stored Procedures/AddCompanyToUser" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/restful/CompanyResource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/sql/Stored Procedures/GetAllCompaniesOfUser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConfigurationManager.class" afterPath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConfigurationManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConnectionManager.class" afterPath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConnectionManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" afterPath="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserBillsController.js" afterPath="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserBillsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserDashboardController.js" afterPath="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserDashboardController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserProfileController.js" afterPath="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserProfileController.js" />
+    <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/dashboard.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/dashboard.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/index.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql" afterPath="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_store_procedures.sql" afterPath="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_store_procedures.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/ipeleg.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/ipeleg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/AngularViews/userDashboard.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/AngularViews/userDashboard.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="My Green Bill.iws" />
@@ -109,7 +90,7 @@
       <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="116" selection-start="4351" selection-end="4392" vertical-scroll-proportion="-59.375" vertical-offset="0" max-vertical-offset="3135">
+            <state line="95" column="116" selection-start="4351" selection-end="4392" vertical-scroll-proportion="-37.5" vertical-offset="525" max-vertical-offset="3135">
               <folding />
             </state>
           </provider>
@@ -144,10 +125,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.jsp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/dashboard.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="98" selection-start="5197" selection-end="5197" vertical-scroll-proportion="-8.75" vertical-offset="1500" max-vertical-offset="3030">
+            <state line="114" column="92" selection-start="5191" selection-end="5191" vertical-scroll-proportion="0.6539509" vertical-offset="1470" max-vertical-offset="3030">
               <folding />
             </state>
           </provider>
@@ -173,10 +154,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userCompanies.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="userCompanies.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="26" selection-start="1416" selection-end="1420" vertical-scroll-proportion="0.35327634" vertical-offset="611" max-vertical-offset="1170">
+            <state line="54" column="68" selection-start="1703" selection-end="1703" vertical-scroll-proportion="-13.291667" vertical-offset="491" max-vertical-offset="1170">
               <folding />
             </state>
           </provider>
@@ -232,7 +213,6 @@
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userAccountSettings.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserDashboardController.js" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userDashboard.jsp" />
-        <option value="$PROJECT_DIR$/Managment Server/web/dashboard.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp" />
         <option value="db-console:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/" />
         <option value="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_store_procedures.sql" />
@@ -246,6 +226,7 @@
         <option value="$PROJECT_DIR$/Managment Server/web/index.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/servlets/AuthenticationServlet.java" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp" />
+        <option value="$PROJECT_DIR$/Managment Server/web/dashboard.jsp" />
       </list>
     </option>
   </component>
@@ -1053,7 +1034,7 @@
       <workItem from="1399125998632" duration="1600000" />
       <workItem from="1399920844248" duration="25907000" />
       <workItem from="1400397512018" duration="21000" />
-      <workItem from="1400399944928" duration="23446000" />
+      <workItem from="1400399944928" duration="24173000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -1175,11 +1156,15 @@
       <created>1400017133147</created>
       <updated>1400017133147</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added companies list">
+      <created>1400444523493</created>
+      <updated>1400444523493</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150806000" />
+    <option name="totallyTimeSpent" value="151533000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1203,7 +1188,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="726" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40851736" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1220,7 +1205,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30872914" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32649842" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3280757" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22213247" sideWeight="0.5114679" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3785489" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1228,7 +1213,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24313408" sideWeight="0.4885321" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2823344" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2823344" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1613,13 +1598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/dashboard.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="98" selection-start="5197" selection-end="5197" vertical-scroll-proportion="-8.75" vertical-offset="1500" max-vertical-offset="3030">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userAccountSettings.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="50" selection-start="336" selection-end="369" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="420">
@@ -1668,7 +1646,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="29355">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1680,16 +1658,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/index.jsp">
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="116" selection-start="4351" selection-end="4392" vertical-scroll-proportion="-59.375" vertical-offset="0" max-vertical-offset="3135">
+        <state line="54" column="68" selection-start="1703" selection-end="1703" vertical-scroll-proportion="-13.291667" vertical-offset="491" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp">
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="26" selection-start="1416" selection-end="1420" vertical-scroll-proportion="0.35327634" vertical-offset="611" max-vertical-offset="1170">
+        <state line="95" column="116" selection-start="4351" selection-end="4392" vertical-scroll-proportion="-37.5" vertical-offset="525" max-vertical-offset="3135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/dashboard.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="92" selection-start="5191" selection-end="5191" vertical-scroll-proportion="0.6539509" vertical-offset="1470" max-vertical-offset="3030">
           <folding />
         </state>
       </provider>
