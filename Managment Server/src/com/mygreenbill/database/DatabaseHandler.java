@@ -9,12 +9,10 @@ import com.mygreenbill.registration.RegistrationRequestAbstract;
 import com.mygreenbill.security.EncryptionType;
 import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
+import sun.util.logging.resources.logging_de;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by Jacob on 3/29/14.
@@ -110,7 +108,7 @@ public class DatabaseHandler
         return null;
     }
 
-    public List runGetQuery(String query) throws DatabaseException
+    public List<Map<String, Object>> runGetQuery(String query) throws DatabaseException
     {
         if (query == null)
         {
@@ -162,8 +160,13 @@ public class DatabaseHandler
 
         try
         {
-            List list = runGetQuery(getPasswordQuery);
-            Map map = (Map) list.get(0);
+            List<Map<String, Object>> list = runGetQuery(getPasswordQuery);
+            if (!GeneralUtilities.hasData(list))
+            {
+                LOGGER.info(String.format("User %s was not found in DB, login failed", email));
+                return new LoginStatus(null, LoginStatus.LoginOperationStatus.USER_DOES_NOT_EXISTS);
+            }
+            Map<String, Object> map = list.get(0);
             // get the first value
             String returnedPassword = (String) map.values().toArray()[0];
 
@@ -173,7 +176,6 @@ public class DatabaseHandler
                 if (returnedPassword.equals(password))
                 {
                     LOGGER.info(String.format("User password is correct, retrieve user information from db"));
-                    //todo yaki - check if the user is active or not -> if not ask the user to captivate his account
                     GreenBillUser greenBillUser = retrieveUserInformation(email);
 
                     if (greenBillUser != null && greenBillUser.isActive())
@@ -204,13 +206,17 @@ public class DatabaseHandler
         String query = selectUserinformation.replace("?", email);
         try
         {
-            List list = runGetQuery(query);
-            if (list != null)
+            List<Map<String, Object>> list = runGetQuery(query);
+            if (GeneralUtilities.hasData(list))
             {
-                Map map = (Map) list.get(0);
+                Map<String, Object> map = list.get(0);
                 GreenBillUser greenBillUserToReturn = new GreenBillUser(map);
                 retrieveUserCompanies(greenBillUserToReturn);
                 return greenBillUserToReturn;
+            }
+            else
+            {
+                LOGGER.info("Failed to get the user information for user email: " + email);
             }
 
         } catch (DatabaseException e)
@@ -229,16 +235,18 @@ public class DatabaseHandler
 
         try
         {
-            List companies = runGetQuery(query);
-            if (companies.size() > 0)
+            List<Map<String, Object>> companies = runGetQuery(query);
+            if (companies != null && companies.size() > 0)
             {
-                for (int i =0 ; i < companies.size(); i++)
+                LOGGER.debug("getting the user companies from DB, the user has: " +companies.size() + " companies");
+                for (Map<String, Object> company : companies)
                 {
-                    Map currMap = (Map) companies.get(i);
-                    GreenBillCompany currGreenBillCompany = new GreenBillCompany(currMap);
+                    GreenBillCompany currGreenBillCompany = new GreenBillCompany(company);
                     greenBillUserToReturn.addCompany(currGreenBillCompany);
                 }
             }
+            else
+                LOGGER.info("The user does not have anu companies related to him");
 
         } catch (DatabaseException e)
         {
@@ -304,20 +312,25 @@ public class DatabaseHandler
         }
         try
         {
-            List list = runGetQuery(queryString);
-            Map map = (Map) list.get(0);
-            // get the first value
-            Integer firstValue = (Integer) map.values().toArray()[0];
-            //return the first value
-            return firstValue == 1 ? true : false;
-
+            List<Map<String, Object>> list = runGetQuery(queryString);
+            if (GeneralUtilities.hasData(list))
+            {
+                Map<String, Object> map = list.get(0);
+                // get the first value
+                Integer firstValue = (Integer) map.values().toArray()[0];
+                //return the first value
+                return firstValue == 1 ? true : false;
+            }
+            else
+            {
+                LOGGER.info("no user was found for id: " + id);
+                return false;
+            }
         } catch (DatabaseException e)
         {
             LOGGER.error(e);
             return false;
         }
-
-       // return true;
 
     }
 
@@ -353,15 +366,22 @@ public class DatabaseHandler
 
         try
         {
-            List list =runGetQuery(query);
-            Map map = (Map) list.get(0);
-            // get the first value
-            String firstValue = (String) map.values().toArray()[0];
-            //return the first value
-            LOGGER.debug("Mail Template retrieved from DB is: " + firstValue);
-            LOGGER.info(String.format("Mail Template %s was successfully retrieved from DB", mailTemplate.getDataBaseName()));
-            return  firstValue;
-
+            List<Map<String, Object>> list = runGetQuery(query);
+            if (GeneralUtilities.hasData(list))
+            {
+                Map<String, Object> map = list.get(0);
+                // get the first value
+                String firstValue = (String) map.values().toArray()[0];
+                //return the first value
+                LOGGER.debug("Mail Template retrieved from DB is: " + firstValue);
+                LOGGER.info(String.format("Mail Template %s was successfully retrieved from DB", mailTemplate.getDataBaseName()));
+                return  firstValue;
+            }
+            else
+            {
+                LOGGER.info(String.format("could not retrieved mail template %s from db", mailTemplate.getDataBaseName()));
+                return null;
+            }
         } catch (DatabaseException e)
         {
            LOGGER.error(e);
@@ -406,9 +426,9 @@ public class DatabaseHandler
      * @return list of maps, one per row, with column name as the key
      * @throws SQLException if the connection fails
      */
-    private  final List toList(ResultSet rs) throws SQLException
+    private  final List<Map<String, Object>> toList(ResultSet rs) throws SQLException
     {
-        List wantedColumnNames = getColumnNames(rs);
+        List<String> wantedColumnNames = getColumnNames(rs);
 
         return toList(rs, wantedColumnNames);
     }
@@ -419,18 +439,16 @@ public class DatabaseHandler
      * @return list of maps, one per column row, with column names as keys
      * @throws SQLException if the connection fails
      */
-    public final List toList(ResultSet rs, List wantedColumnNames) throws SQLException
+    public final List<Map<String, Object>> toList(ResultSet rs, List<String> wantedColumnNames) throws SQLException
     {
-        List rows = new ArrayList();
+        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
 
-        int numWantedColumns = wantedColumnNames.size();
         while (rs.next())
         {
-            Map row = new TreeMap();
+            Map<String, Object> row = new TreeMap<String, Object>();
 
-            for (int i = 0; i < numWantedColumns; ++i)
+            for (String columnName : wantedColumnNames)
             {
-                String columnName = (String)wantedColumnNames.get(i);
                 Object value = rs.getObject(columnName);
                 row.put(columnName, value);
             }
@@ -447,9 +465,9 @@ public class DatabaseHandler
      * @return list of column name strings
      * @throws SQLException if the query fails
      */
-    public final List getColumnNames(ResultSet rs) throws SQLException
+    public final List<String> getColumnNames(ResultSet rs) throws SQLException
     {
-        List columnNames = new ArrayList();
+        List<String> columnNames = new ArrayList<String>();
 
         ResultSetMetaData meta = rs.getMetaData();
 

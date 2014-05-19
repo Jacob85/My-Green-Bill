@@ -53,7 +53,7 @@ public class GreenBillUser
         this.lastName = fullRegistrationRequest.getValidationResponse().getLastName();
     }
 
-    public GreenBillUser(Map map)
+    public GreenBillUser(Map<String, Object> map)
     {
         this.email = (String) map.get(emailKey);
         this.password = (String) map.get(passwordKey);

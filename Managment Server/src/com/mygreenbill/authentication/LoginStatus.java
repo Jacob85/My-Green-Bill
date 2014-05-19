@@ -54,7 +54,8 @@ public class LoginStatus extends Status
     {
         SUCCESS("Success"),
         FAILED_WRONG_PASSWORD("Failed to login, Wrong Password"),
-        FAILED_USER_IS_NOT_ACTIVE("Failed to login, User is not active");
+        FAILED_USER_IS_NOT_ACTIVE("Failed to login, User is not active"),
+        USER_DOES_NOT_EXISTS("User does not exists");
 
         private String description;
         LoginOperationStatus(String description)

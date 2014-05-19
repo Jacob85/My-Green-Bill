@@ -1,6 +1,7 @@
 package com.mygreenbill.restful;
 
 import com.mygreenbill.Exceptions.DatabaseException;
+import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.database.DatabaseHandler;
 import org.apache.log4j.Logger;
@@ -44,13 +45,13 @@ public class BillResource
         String queryString = getAllUserBills.replace("?", greenBillUser.getUserId());
         try
         {
-            List bills = databaseHandler.runGetQuery(queryString);
-            if (bills != null && bills.size() > 0)
+            List<Map<String, Object>> bills = databaseHandler.runGetQuery(queryString);
+            if (GeneralUtilities.hasData(bills))
             {
                 JSONArray jsonBills = new JSONArray();
-                for (int i=0 ; i < bills.size(); i++)
+                for (Map<String, Object> bill : bills)
                 {
-                    jsonBills.put(new JSONObject((Map)bills.get(i)));
+                    jsonBills.put(new JSONObject(bill));
                 }
                 return jsonBills.toString();
             }
@@ -91,13 +92,13 @@ public class BillResource
 
         try
         {
-            List bills = databaseHandler.runGetQuery(queryString);
-            if (bills != null && bills.size() > 0)
+            List<Map<String, Object>> bills = databaseHandler.runGetQuery(queryString);
+            if (GeneralUtilities.hasData(bills))
             {
                 JSONArray jsonBills = new JSONArray();
-                for (int i=0 ; i < bills.size(); i++)
+                for (Map<String, Object> bill : bills)
                 {
-                    jsonBills.put(new JSONObject((Map)bills.get(i)));
+                    jsonBills.put(new JSONObject(bill));
                 }
                 return jsonBills.toString();
             }

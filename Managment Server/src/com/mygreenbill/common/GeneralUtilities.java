@@ -2,6 +2,9 @@ package com.mygreenbill.common;
 
 import com.mygreenbill.registration.SimpleIdentityValidationResponse;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Jacob on 3/29/14.
  */
@@ -56,6 +59,15 @@ public class GeneralUtilities
         if (string.equals(""))
             return false;
         if (string.isEmpty())
+            return false;
+        return true;
+    }
+
+    public static boolean hasData(List<?> list)
+    {
+        if (list == null)
+            return false;
+        if (list.size() == 0)
             return false;
         return true;
     }

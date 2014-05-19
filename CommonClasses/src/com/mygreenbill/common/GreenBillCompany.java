@@ -26,7 +26,7 @@ public class GreenBillCompany
     {
     }
 
-    public GreenBillCompany(Map currMap)
+    public GreenBillCompany(Map<String, Object> currMap)
     {
         this.id = Integer.parseInt(String.valueOf(currMap.get(companyIdDatabaseKey)));
         this.email = String.valueOf(currMap.get(companyEmailDatabaseKey));
