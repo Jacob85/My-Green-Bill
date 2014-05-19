@@ -112,7 +112,7 @@
                         <span class="pull-right">
                           <i class="icon-angle-left"></i>
                         </span>
-                &nbsp; <span class="label label-success"><%=/*user.getUserCompanyList().size()*/ 2%></span>&nbsp;
+                &nbsp; <span class="label label-success"><%=user.getUserCompanyList().size()%></span>&nbsp;
             </a>
             <ul class="collapse" id="component-nav">
                 <%
