@@ -12,6 +12,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="assets/plugins/magic/magic.css" />
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -48,59 +50,68 @@
             <a class="navbar-brand" href="#">My Green Bill</a>
         </div>
         <div class="navbar-collapse collapse">
-            <form id="login_form" class="navbar-form navbar-right" role="form" method="post" action="${pageContext.request.contextPath}/authenticate/login">
-                <div class="form-group">
-                    <input id="login_form_email" type="email" name="login_form_email" placeholder="login_form_email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input id="login_form_password" type="password" name="login_form_password" placeholder="login_form_password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success" onsubmit="return validateLoginForm()">Sign In</button>
-                <a data-toggle="modal" data-target="#full_registration" class="btn btn-primary">Sign Up</a>
+            <form id="login_form" class="navbar-form navbar-right" role="form">
+                <a data-toggle="modal" data-target="#full_registration" href="#login" class="btn btn-success">Sign In</a>
+                <a data-toggle="modal" data-target="#full_registration" href="#signup" class="btn btn-primary">Sign Up</a>
             </form>
         </div><!--/.navbar-collapse -->
     </div>
 </div>
-
-<%-- canceled at the moment - the default model will be full regster with butons to google and facebook login --%>
-<%--
-<!-- Sign up Popup -->
-<div class="modal fade" id="sign_up_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Sign Up For My Green Bill Service</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Welcome to My Green Bill registration form
-                    You may register using Facebook, Google or Full Registration
-                </p>
-                <button class="btn btn-primary">Use Facebook</button>
-                <br/>
-                <button class="btn btn-primary">Use Google</button>
-                <br/>
-                <button class="btn btn-primary" data-dismiss="modal" onclick="fullRegistration()">Use Full Registration</button>
-                <br/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>--%>
-
-
 <!-- Full Registration Model -->
 <div class="modal fade" id="full_registration" tabindex="-1" role="dialog" aria-labelledby="full_registration_label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="full_registration_label">Full Registration</h4>
+                <h4 class="modal-title" id="full_registration_label">Login/Register</h4>
             </div>
             <div class="modal-body">
+                <div class="tab-content">
+                    <div id="login" class="tab-pane active">
+                        <form  class="form-signin" method="post" action="${pageContext.request.contextPath}/authenticate/login">
+                            <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                                Enter your username and password
+                            </p>
+                            <input type="text" placeholder="Username" class="form-control" />
+                            <input type="password" placeholder="Password" class="form-control" />
+                            <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
+                        </form>
+                    </div>
+                    <div id="forgot" class="tab-pane">
+                        <form action="index.html" class="form-signin">
+                            <p class="text-muted text-center btn-block btn btn-primary btn-rect">Enter your valid e-mail</p>
+                            <input type="email"  required="required" placeholder="Your E-mail"  class="form-control" />
+                            <br />
+                            <button class="btn text-muted text-center btn-success" type="submit">Recover Password</button>
+                        </form>
+                    </div>
+                    <div id="signup" class="tab-pane">
+                        <form action="${pageContext.request.contextPath}/register/full" class="form-signin" id="full_registration_form" method="post">
+                            <p class="text-muted text-center btn-block btn btn-primary btn-rect">Please Fill Details To Register</p>
+                            <input type="email" placeholder="Your E-mail" class="form-control" id="full_registration_inputEmail" name="full_registration_inputEmail"/>
+                            <input type="password" placeholder="password" class="form-control" id="full_registration_inputPassword" name="full_registration_inputPassword"/>
+                            <input type="password" placeholder="Re type password" class="form-control" id="full_registration_confirmPassword" name="full_registration_confirmPassword"/>
+                            <input type="text" placeholder="Id" class="form-control" id="full_registration_inputId" name="full_registration_inputId" >
+                            <button class="btn text-muted text-center btn-success" type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <ul class="list-inline">
+                        <li><a class="btn" href="#login" data-toggle="tab">Login</a></li>
+                        <li><a class="btn" href="#forgot" data-toggle="tab">Forgot Password</a></li>
+                        <li><a class="btn" href="#signup" data-toggle="tab">Signup</a></li>
+                    </ul>
+                </div>
+
+
+
+
+
+
+
+
+<%--
                 <form class="form-horizontal" method="post" id="full_registration_form" action="${pageContext.request.contextPath}/register/full" onsubmit="return validateFullRegistrationForm()">
                     <div class="form-group">
                         <label for="full_registration_inputEmail" class="control-label col-xs-2">Email</label>
@@ -138,6 +149,7 @@
                         </div>
                     </div>
                 </form>
+--%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
