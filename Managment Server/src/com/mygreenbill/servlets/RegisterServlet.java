@@ -140,7 +140,7 @@ public class RegisterServlet extends HttpServlet
     {
         request.getSession().setAttribute("message", message);
         LOGGER.error(String.format("Operation failed! forwarding to error.jsp (%s)", message));
-        request.getRequestDispatcher("/error.jsp").forward(request, response);
+        response.sendRedirect("/greenbill/error.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
