@@ -72,8 +72,8 @@
                             <p class="text-muted text-center btn-block btn btn-primary btn-rect">
                                 Enter your username and password
                             </p>
-                            <input type="text" placeholder="Username" class="form-control" />
-                            <input type="password" placeholder="Password" class="form-control" />
+                            <input type="text" placeholder="Username" class="form-control" name="login_form_email"/>
+                            <input type="password" placeholder="Password" class="form-control" name="login_form_password"/>
                             <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
                         </form>
                     </div>

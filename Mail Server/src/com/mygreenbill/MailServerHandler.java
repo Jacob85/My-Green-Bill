@@ -283,7 +283,7 @@ public class MailServerHandler implements IMailServerHandler
         {
             // Preparing the message for sending
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username + "@mygreenbill.com"));
+            message.setFrom(new InternetAddress(username + "@mygreenbill.com", "MyGreenBill"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
 
             message.setSubject(subject);
@@ -295,6 +295,13 @@ public class MailServerHandler implements IMailServerHandler
         {
             e.printStackTrace();
             LOGGER.error("MessagingException in sendMessage");
+            LOGGER.error(e.getMessage());
+            return false;
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+            LOGGER.error("UnsupportedEncodingException in sendMessage");
             LOGGER.error(e.getMessage());
             return false;
         }

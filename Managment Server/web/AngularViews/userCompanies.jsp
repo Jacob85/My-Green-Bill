@@ -12,11 +12,29 @@
 <head>
     <title></title>
 
-    <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <style type="text/css">
+        .modal-dialog {
+            margin: 0 auto;
+        }
+    </style>
 
-    <script src="../js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        console.log( "document test" );
+        $( document ).ready(function()
+        {
+            console.log( "document loaded" );
+        });
+    </script>
+
 </head>
 <body>
     <%
@@ -67,6 +85,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>

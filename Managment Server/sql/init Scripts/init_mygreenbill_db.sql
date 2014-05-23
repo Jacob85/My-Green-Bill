@@ -565,6 +565,27 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company_month_stats` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `mygreenbilldb`.`user_analytics`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mygreenbilldb`.`user_analytics` ;
+
+CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_analytics` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `user_email` VARCHAR(45) NOT NULL,
+  `category` VARCHAR(45) NULL,
+  `recieved_date` DATE NULL,
+  `amount` INT(11) NULL,
+  PRIMARY KEY (`id`, `user_id`, `user_email`),
+  INDEX `fk_analytics_user1_idx` (`user_id` ASC, `user_email` ASC),
+  CONSTRAINT `fk_analytics_user1`
+  FOREIGN KEY (`user_id` , `user_email`)
+  REFERENCES `mygreenbilldb`.`user` (`id` , `email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

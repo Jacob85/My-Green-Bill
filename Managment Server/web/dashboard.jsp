@@ -177,7 +177,7 @@
     <script src="assets/plugins/flot/jquery.flot.js"></script>
     <script src="assets/plugins/flot/jquery.flot.resize.js"></script>
     <script src="assets/plugins/flot/jquery.flot.time.js"></script>
-    <script  src="assets/plugins/flot/jquery.flot.stack.js"></script>
+    <script src="assets/plugins/flot/jquery.flot.stack.js"></script>
     <script src="assets/js/for_index.js"></script>
     <script src="assets/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/plugins/morris/morris.js"></script>
