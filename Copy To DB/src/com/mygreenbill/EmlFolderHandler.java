@@ -148,7 +148,7 @@ public class EmlFolderHandler
     }
 
     /**
-     * Getting the "SUBJECT" header from the EML file which the account name is part of
+     * Getting the content (BODY) from the EML file which the account name is part of
      * @return Return the SUBJECT header from the EML file
      */
     public String getEmailContent()

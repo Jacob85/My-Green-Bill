@@ -82,7 +82,7 @@ public class CopyAttachmentHandler
             String TO_ID = String.valueOf(result.get(0).get("id"));
 
             String SUBJECT = emlParser.getSubjectHeader();
-            String CONTENT = "TESTING CONTENT"; //emlParser.getEmailContent();
+            String CONTENT = emlParser.getEmailContent();
             String PATH = configurationManager.getProperty("mysql_path") + accountName + "/" + file.getName();
 
             databaseHandler.runInsertQuery("CALL NewMassage('" + FROM + "','" + FROM_ID + "','" + TO + "','" + TO_ID + "','" + null + "','" + SUBJECT + "','" + CONTENT + "','" + MessageStatus.sent + "','" + file.getName() + "','" + PATH +"');");

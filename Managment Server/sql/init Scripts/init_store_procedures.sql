@@ -1316,3 +1316,28 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompanyToUser`(IN userId INT, in
 
   END$$
 DELIMITER ;
+
+drop procedure if exists `AddUserAnalytic`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserAnalytic`(IN user_id INT,IN email VARCHAR(45),
+                                                              IN category VARCHAR(45), IN amount INT)
+  BEGIN
+    DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+    DECLARE isExist INT;
+
+/* check if the company exists */
+    SELECT isUserIdExist(user_id) INTO isExist;
+    IF isExist = 0 THEN
+      SET @message_text = CONCAT('A user with the ID: ', user_id, ' does not exist.');
+      SIGNAL error_msg
+      SET MESSAGE_TEXT = @message_text;
+    ELSE
+      INSERT INTO user_analytics(user_id, user_email, category, recieved_date, amount)
+      VALUES (user_id, email, category, CURDATE(), amount);
+    END IF;
+  END$$
+DELIMITER ;
