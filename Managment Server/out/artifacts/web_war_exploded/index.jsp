@@ -78,9 +78,9 @@
                         </form>
                     </div>
                     <div id="forgot" class="tab-pane">
-                        <form action="index.html" class="form-signin">
+                        <form action="${pageContext.request.contextPath}/authenticate/restorePassword" class="form-signin">
                             <p class="text-muted text-center btn-block btn btn-primary btn-rect">Enter your valid e-mail</p>
-                            <input type="email"  required="required" placeholder="Your E-mail"  class="form-control" />
+                            <input type="email"  required="required" placeholder="Your E-mail"  class="form-control" id="email" name="email" />
                             <br />
                             <button class="btn text-muted text-center btn-success" type="submit">Recover Password</button>
                         </form>

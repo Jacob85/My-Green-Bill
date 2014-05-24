@@ -65,8 +65,18 @@ public class AuthenticationServlet extends HttpServlet
             processLogoutRequest(request, response);
             return;
         }
+        else if (uri.contains("restorePassword"))
+        {
+        processRestorePasswordRequest(request, response);
+        return;
+    }
 
 
+    }
+
+    private void processRestorePasswordRequest(HttpServletRequest request, HttpServletResponse response)
+    {
+        //todo yaki - implement this part
     }
 
 

@@ -20,6 +20,7 @@ import java.util.*;
 public class DatabaseHandler
 {
     private static DatabaseHandler instance;
+
     private final Logger LOGGER = Logger.getLogger(DatabaseHandler.class);
     private final String isUserExistsString = "select isUserIdExist(?);";
     private final String isUserExistsAndActiveString = "select isUserExistsAndActive(?);";
