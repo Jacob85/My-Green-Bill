@@ -22,7 +22,8 @@
     <div class="row">
         <div class="col-lg-8">
             <h2>THIS IS USER COMPANIES PAGE</h2>
-            <a href="#/User/Companies/Select" class="btn btn-primary">Add Company</a>
+            <a href="#/User/Companies/Select" class="btn btn-primary">Add Companies</a>
+            <a href="#/User/Companies/Remove" class="btn btn-primary">Remove Companies</a>
         </div>
     </div>
 
@@ -35,7 +36,7 @@
                     {{ company.name }}
                 </div>
                 <div class="panel-body">
-                    {{ company.id }}
+                    Company Logo
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
 <script src="assets/plugins/jquery-2.0.3.min.js"></script>
 
 <script language="javascript" type="text/javascript">
-    $("#selectCompanyForm").submit(function(e)
+    $("#removeCompanyForm").submit(function(e)
     {
         var postData = $(this).serializeArray();
         var formURL = $(this).attr("action");
@@ -35,27 +35,27 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h2>THIS IS USER SELECT COMPANIES PAGE</h2>
+        <h2>THIS IS USER REMOVE COMPANIES PAGE</h2>
     </div>
 </div>
 
 <hr />
 
 <div class="row">
-    <form id="selectCompanyForm" method="post" action="rest/company/addUserCompanies">
+    <form id="removeCompanyForm" method="post" action="rest/company/removeUserCompanies">
         <input style="margin-left: 15px" type="submit" value="Save" class="btn btn-primary"><br><br>
 
-            <div ng-repeat="company in otherCompanies" class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <input type="checkbox" name="company" value={{company.id}}>
-                        {{ company.name }}
-                    </div>
-                    <div class="panel-body">
-                        Company Logo
-                    </div>
+        <div ng-repeat="company in companies" class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <input type="checkbox" name="company" value={{company.id}} checked>
+                    {{ company.name }}
+                </div>
+                <div class="panel-body">
+                    Company Logo
                 </div>
             </div>
+        </div>
 
     </form>
 </div>

@@ -22,7 +22,12 @@
         properties.load(inputStream);
 
         GreenBillUser user = (GreenBillUser) session.getAttribute("user");
-
+        if (user == null)
+        {
+            System.out.println(user);
+            response.sendRedirect("authenticate/login");
+            return;
+        }
     %>
     <title><%=properties.getProperty("title")%></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -193,6 +198,7 @@
     <script src="assets/AngularJS/controllers/UserDashboardController.js"></script>
     <script src="assets/AngularJS/controllers/UserBillsController.js"></script>
     <script src="assets/AngularJS/controllers/UserSelectCompaniesController.js"></script>
+    <script src="assets/AngularJS/controllers/UserRemoveCompaniesController.js"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
 </body>

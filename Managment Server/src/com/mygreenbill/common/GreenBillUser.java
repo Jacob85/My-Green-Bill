@@ -150,4 +150,13 @@ public class GreenBillUser
         userCompanyList.add(toAdd);
     }
 
+    public boolean isCompanyAlreadyExist(String companyId)
+    {
+        for (GreenBillCompany company : userCompanyList)
+        {
+            if (String.valueOf(company.getId()).equals(companyId))
+                return true;
+        }
+        return false;
+    }
 }

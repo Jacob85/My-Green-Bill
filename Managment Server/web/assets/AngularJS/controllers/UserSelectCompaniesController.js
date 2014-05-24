@@ -6,10 +6,10 @@ angular.module('userSelectCompaniesController',[])
     .controller('SelectCompaniesController', ['$scope', '$http',
         function getCompaniesList ($scope, $http)
         {
-            $http.get('http://localhost:8080/greenbill/rest/company/all')
+            $http.get('http://localhost:8080/greenbill/rest/company/allOtherCompanies')
                 .success(function (response)
                 {
-                    $scope.companies  = response;
+                    $scope.otherCompanies  = response;
                 });
         }
     ]);
