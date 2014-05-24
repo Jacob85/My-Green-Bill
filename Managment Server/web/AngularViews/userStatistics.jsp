@@ -21,7 +21,7 @@
                     {{currMonthName}} Total Expenses
                 </div>
                 <div class="panel-body">
-                    <h1 class="text-center"> {{ currentMonthTotalExpenses }} ש"ח</h1>
+                    <h1 class="text-center"> ש"ח {{ currentMonthTotalExpenses }}</h1>
                 </div>
             </div>
         </div>
@@ -80,19 +80,4 @@
             // chart.
             labels: ['Value']
         });
-
-        new Morris.Donut({
-            element: 'donut-example',
-            data: [
-                {label: "Download Sales", value: 12},
-                {label: "In-Store Sales", value: 30},
-                {label: "Mail-Order Sales", value: 20}
-            ],
-            colors: [
-                '#0BA462',
-                '#39B580',
-                '#67C69D'
-            ]
-        });
-
     </script>

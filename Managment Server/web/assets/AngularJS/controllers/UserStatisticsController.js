@@ -37,6 +37,14 @@ angular.module('userStatisticsController',[])
 
 function generateDounatForCurrentMonthByCategory(dataToPlot)
 {
+    console.log("Array before sorting: " + dataToPlot);
+
+    dataToPlot.sort(function(a,b){
+        return b["value"] - a["value"]
+    });
+
+    console.log("Array After Sorting: " + dataToPlot);
+
     new Morris.Donut({
         element: 'donut-example',
         data: dataToPlot
