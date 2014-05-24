@@ -850,3 +850,39 @@ INSERT INTO `mygreenbilldb`.`company_has_address` (`company_id`, `company_email`
 
 COMMIT;
 
+start transaction;
+use `mygreenbilldb`;
+/*Dummy Data for Electric (6 month)*/
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'ELECTRIC', '2014-01-01', 120);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'ELECTRIC', '2014-02-01', 330);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'ELECTRIC', '2014-03-01', 420);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'ELECTRIC', '2014-04-01', 170);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'ELECTRIC', '2014-05-01', 245);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'ELECTRIC', '2014-06-01', 168);
+
+/*Dummy Data for Communication (6 month)*/
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'COMMUNICATION', '2014-01-01', 90);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'COMMUNICATION', '2014-02-01', 120);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'COMMUNICATION', '2014-03-01', 67);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'COMMUNICATION', '2014-04-01', 84);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'COMMUNICATION', '2014-05-01', 78);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'COMMUNICATION', '2014-06-01', 55);
+
+/*Dummy Data for Gas (6 month)*/
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'GAS', '2014-01-01', 30);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'GAS', '2014-02-01', 19);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'GAS', '2014-03-01', 26);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'GAS', '2014-04-01', 27);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'GAS', '2014-05-01', 25);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'GAS', '2014-06-01', 30);
+
+/*Dummy Data for Water (6 month)*/
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'WATER', '2014-01-01', 55);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'WATER', '2014-02-01', 69);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'WATER', '2014-03-01', 42);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'WATER', '2014-04-01', 36);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'WATER', '2014-05-01', 129);
+insert into `mygreenbilldb`.`user_analytics`(`user_id`,`user_email`, `category`, `recieved_date`, `amount`) values (38054664, 'yaki.ams@gmail.com', 'WATER', '2014-06-01', 40);
+
+commit ;
+
