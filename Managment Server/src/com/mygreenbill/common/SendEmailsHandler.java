@@ -63,7 +63,7 @@ public class SendEmailsHandler
         }
 
         DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
-        String emailString = databaseHandler.getEmailTemplate(MailTemplate.UNREGISTER_COSTUMER);
+        String emailString = databaseHandler.getEmailTemplate(MailTemplate.UNREGISTER_CUSTOMER);
         if (GeneralUtilities.hasData(emailString))
         {
             // replace the email parameters with the real user data
@@ -74,7 +74,7 @@ public class SendEmailsHandler
             LOGGER.debug("replaced the template parameters with real user information: " + emailString);
 
             //sending message to mail server
-            sendMail(company.getEmail(), emailString, String.valueOf(MailTemplate.UNREGISTER_COSTUMER));
+            sendMail(company.getEmail(), emailString, String.valueOf(MailTemplate.UNREGISTER_CUSTOMER));
             return new Status(Status.OperationStatus.SUCCESS, "");
 
         }
@@ -102,7 +102,7 @@ public class SendEmailsHandler
         }
 
         DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
-        String emailString = databaseHandler.getEmailTemplate(MailTemplate.REGISTER_COSTUMER);
+        String emailString = databaseHandler.getEmailTemplate(MailTemplate.REGISTER_CUSTOMER‏);
         if (GeneralUtilities.hasData(emailString))
         {
             // replace the email parameters with the real user data
@@ -113,7 +113,7 @@ public class SendEmailsHandler
             LOGGER.debug("replaced the template parameters with real user information: " + emailString);
 
             //sending message to mail server
-            sendMail(company.getEmail(), emailString, String.valueOf(MailTemplate.REGISTER_COSTUMER));
+            sendMail(company.getEmail(), emailString, String.valueOf(MailTemplate.REGISTER_CUSTOMER‏));
             return new Status(Status.OperationStatus.SUCCESS, "");
 
         }

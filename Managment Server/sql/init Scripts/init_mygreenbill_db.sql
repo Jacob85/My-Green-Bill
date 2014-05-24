@@ -366,10 +366,10 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`mail_template` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`mail_template` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
+  `name` VARCHAR(256) NULL,
+  `description` VARCHAR(1024) NULL,
   `context` TEXT NULL,
-  `path_to_file` VARCHAR(45) NULL,
+  `path_to_file` VARCHAR(256) NULL,
   `create_date` DATE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -646,7 +646,8 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (12345678, 'company@mail.com', 'Bank Leumi', '1234', '2013-09-15', 3);
-INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank poaalim', '1234', '2013-09-16', 4);
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank Hapolaim', '1234', '2013-09-16', 4);
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (1234567, 'yaki.ams@gmail.com', 'Electric Company', '1234', '2013-09-16', 4);
 
 COMMIT;
 
@@ -736,7 +737,8 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (1, 'John Roberts', 'Mailing Manager', 123456789, 'ipeleg@hotmail.com');
-INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (2, 'Daina Cohen', 'Marketing Manager', 123456789, 'ipeleg@hotmail.com');
+INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (2, 'Daina Cohen', 'Marketing Manager', 12345678, 'company@mail.com');
+INSERT INTO `mygreenbilldb`.`contact_person` (`id`, `name`, `position`, `company_id`, `company_email`) VALUES (3, 'Rob Williams', 'Marketing Manager', 1234567, 'yaki.ams@gmail.com');
 
 COMMIT;
 
@@ -769,8 +771,10 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (1, 'Welcome', 'Welcome to any new user', 'Hello $first_name $last_name \r\n Thank you for Joining My green Bill! to Access the Dashboard please activate your account by clicking the following link: $link', 'path/to/file.png', '2013-08-01');
-INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (2, 'Password Reset', 'Resrt the user password', 'Please press the following link to reset your password', 'path/to/file.png', '2013-08-02');
-INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (3, 'Monthly update', 'Display the nmonthly update to the user', 'your mkonthly update is... bla bla bla ', 'path/to/update.txt', '2013-08-03');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (2, 'Password Reset', 'Reset the user password', 'Please press the following link to reset your password', 'path/to/file.png', '2013-08-02');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (3, 'Monthly update', 'Display the monthly update to the user', 'your monthly update is... bla bla bla ', 'path/to/update.txt', '2013-08-03');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (4, 'Unregister Customer', 'Message company to unregister a user', 'Hello $company_name\r\nPlease remove the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nfrom your mailing list.', 'path/to/update.txt', '2013-08-03');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (5, 'Register Customer', 'Message company to register a user', 'Hello $company_name\r\nPlease add the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nto your mailing list.', 'path/to/update.txt', '2013-08-03');
 
 COMMIT;
 

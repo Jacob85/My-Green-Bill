@@ -8,8 +8,8 @@ public enum MailTemplate
     WELCOME("Welcome"),
     PASSWORD_RESET("Password Reset"),
     MONTHLY_UPDATE("Monthly update"),
-    UNREGISTER_COSTUMER("Unregister Costumer"),
-    REGISTER_COSTUMER("Register Costumer");
+    UNREGISTER_CUSTOMER("Unregister Customer"),
+    REGISTER_CUSTOMER‏("Register Customer");
 
     private String dataBaseName;
 
