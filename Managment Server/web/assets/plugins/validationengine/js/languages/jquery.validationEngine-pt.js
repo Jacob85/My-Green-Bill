@@ -20,7 +20,7 @@
                 "dateRange": {
                     "regex": "none",
                     "alertText": "* Inválido ",
-                    "alertText2": "Date Range"
+                    "alertText2": "Date DateRange"
                 },
                 "dateTimeRange": {
                     "regex": "none",

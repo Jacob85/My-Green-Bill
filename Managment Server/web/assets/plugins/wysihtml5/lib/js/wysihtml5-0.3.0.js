@@ -184,7 +184,7 @@ window['rangy'] = (function() {
         }
 
         if (!implementsDomRange && !implementsTextRange) {
-            fail("Neither Range nor TextRange are implemented");
+            fail("Neither DateRange nor TextRange are implemented");
         }
 
         api.initialized = true;
@@ -346,7 +346,7 @@ rangy.createModule("DomUtil", function(api, module) {
         module.fail("Incomplete Element implementation");
     }
 
-    // innerHTML is required for Range's createContextualFragment method
+    // innerHTML is required for DateRange's createContextualFragment method
     if (!util.isHostProperty(el, "innerHTML")) {
         module.fail("Element is missing innerHTML property");
     }
@@ -523,7 +523,7 @@ rangy.createModule("DomUtil", function(api, module) {
     }
 
     function comparePoints(nodeA, offsetA, nodeB, offsetB) {
-        // See http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Comparing
+        // See http://www.w3.org/TR/DOM-Level-2-Traversal-DateRange/ranges.html#Level-2-DateRange-Comparing
         var nodeC, root, childA, childB, n;
         if (nodeA == nodeB) {
 
@@ -774,8 +774,8 @@ rangy.createModule("DomUtil", function(api, module) {
         for (var node, subRangeIterator; node = rangeIterator.next(); ) {
             //log.debug("iterateSubtree, partially selected: " + rangeIterator.isPartiallySelectedSubtree(), nodeToString(node));
             if (rangeIterator.isPartiallySelectedSubtree()) {
-                // The node is partially selected by the Range, so we can use a new RangeIterator on the portion of the
-                // node selected by the Range.
+                // The node is partially selected by the DateRange, so we can use a new RangeIterator on the portion of the
+                // node selected by the DateRange.
                 if (func(node) === false) {
                     iteratorState.stop = true;
                     return;
@@ -1118,7 +1118,7 @@ rangy.createModule("DomUtil", function(api, module) {
         if (isOrphan(range.startContainer) || isOrphan(range.endContainer) ||
                 !isValidOffset(range.startContainer, range.startOffset) ||
                 !isValidOffset(range.endContainer, range.endOffset)) {
-            throw new Error("Range error: Range is no longer valid after DOM mutation (" + range.inspect() + ")");
+            throw new Error("DateRange error: DateRange is no longer valid after DOM mutation (" + range.inspect() + ")");
         }
     }
 
@@ -1246,7 +1246,7 @@ rangy.createModule("DomUtil", function(api, module) {
                 throw new DOMException("HIERARCHY_REQUEST_ERR");
             }
 
-            // No check for whether the container of the start of the Range is of a type that does not allow
+            // No check for whether the container of the start of the DateRange is of a type that does not allow
             // children of the type of node: the browser's DOM implementation should do this for us when we attempt
             // to add the node
 
@@ -2102,7 +2102,7 @@ rangy.createModule("DomUtil", function(api, module) {
     /*----------------------------------------------------------------------------------------------------------------*/
 
     if (api.features.implementsDomRange && (!api.features.implementsTextRange || !api.config.preferTextRange)) {
-        // This is a wrapper around the browser's native DOM Range. It has two aims:
+        // This is a wrapper around the browser's native DOM DateRange. It has two aims:
         // - Provide workarounds for specific browser bugs
         // - provide convenient extensions, which are inherited from Rangy's DomRange
 
@@ -2144,7 +2144,7 @@ rangy.createModule("DomUtil", function(api, module) {
 
             WrappedRange = function(range) {
                 if (!range) {
-                    throw new Error("Range must be specified");
+                    throw new Error("DateRange must be specified");
                 }
                 this.nativeRange = range;
                 updateRangeProperties(this);
@@ -2215,7 +2215,7 @@ rangy.createModule("DomUtil", function(api, module) {
 
             /*--------------------------------------------------------------------------------------------------------*/
 
-            // Test for Firefox 2 bug that prevents moving the start of a Range to a point after its current end and
+            // Test for Firefox 2 bug that prevents moving the start of a DateRange to a point after its current end and
             // correct for it
 
             range.setStart(testTextNode, 0);
@@ -2358,7 +2358,7 @@ rangy.createModule("DomUtil", function(api, module) {
             return doc.createRange();
         };
     } else if (api.features.implementsTextRange) {
-        // This is a wrapper around a TextRange, providing full DOM Range functionality using rangy's DomRange as a
+        // This is a wrapper around a TextRange, providing full DOM DateRange functionality using rangy's DomRange as a
         // prototype
 
         WrappedRange = function(textRange) {
@@ -2388,7 +2388,7 @@ rangy.createModule("DomUtil", function(api, module) {
 
         DomRange.copyComparisonConstants(WrappedRange);
 
-        // Add WrappedRange as the Range property of the global object to allow expression like Range.END_TO_END to work
+        // Add WrappedRange as the DateRange property of the global object to allow expression like DateRange.END_TO_END to work
         var globalObj = (function() { return this; })();
         if (typeof globalObj.Range == "undefined") {
             globalObj.Range = WrappedRange;
@@ -2455,7 +2455,7 @@ rangy.createModule("DomUtil", function(api, module) {
         doc = win = null;
     });
 });rangy.createModule("WrappedSelection", function(api, module) {
-    // This will create a selection object wrapper that follows the Selection object found in the WHATWG draft DOM Range
+    // This will create a selection object wrapper that follows the Selection object found in the WHATWG draft DOM DateRange
     // spec (http://html5.org/specs/dom-range.html)
 
     api.requireModules( ["DomUtil", "DomRange", "WrappedRange"] );
@@ -2484,7 +2484,7 @@ rangy.createModule("DomUtil", function(api, module) {
         return (winParam || window).document.selection;
     }
 
-    // Test for the Range/TextRange and Selection features required
+    // Test for the DateRange/TextRange and Selection features required
     // Test for ability to retrieve selection
     var implementsWinGetSelection = api.util.isHostMethod(window, "getSelection"),
         implementsDocSelection = api.util.isHostObject(document, "selection");
@@ -2667,7 +2667,7 @@ rangy.createModule("DomUtil", function(api, module) {
     }
 
     function updateFromTextRange(sel, range) {
-        // Create a Range from the selected TextRange
+        // Create a DateRange from the selected TextRange
         var wrappedRange = new WrappedRange(range);
         sel._ranges = [wrappedRange];
 
@@ -2716,7 +2716,7 @@ rangy.createModule("DomUtil", function(api, module) {
         try {
             newControlRange.add(rangeElement);
         } catch (ex) {
-            throw new Error("addRange(): Element within the specified Range could not be added to control selection (does it have layout?)");
+            throw new Error("addRange(): Element within the specified DateRange could not be added to control selection (does it have layout?)");
         }
         newControlRange.select();
 
@@ -2934,7 +2934,7 @@ rangy.createModule("DomUtil", function(api, module) {
             }
         };
     } else {
-        module.fail("No means of selecting a Range or TextRange was found");
+        module.fail("No means of selecting a DateRange or TextRange was found");
         return false;
     }
 
@@ -2998,7 +2998,7 @@ rangy.createModule("DomUtil", function(api, module) {
             }
         };
     } else {
-        module.fail("No means of obtaining a Range or TextRange from the user's selection was found");
+        module.fail("No means of obtaining a DateRange or TextRange from the user's selection was found");
         return false;
     }
 
@@ -3027,7 +3027,7 @@ rangy.createModule("DomUtil", function(api, module) {
             if (removed || range !== ranges[i]) {
                 sel.addRange(ranges[i]);
             } else {
-                // According to the draft WHATWG Range spec, the same range may be added to the selection multiple
+                // According to the draft WHATWG DateRange spec, the same range may be added to the selection multiple
                 // times. removeRange should only remove the first instance, so the following ensures only the first
                 // instance is removed
                 removed = true;
@@ -3092,7 +3092,7 @@ rangy.createModule("DomUtil", function(api, module) {
     }
 
     // Selection text
-    // This is conformant to the new WHATWG DOM Range draft spec but differs from WebKit and Mozilla's implementation
+    // This is conformant to the new WHATWG DOM DateRange draft spec but differs from WebKit and Mozilla's implementation
     selProto.toString = function() {
 
         var rangeTexts = [];
@@ -6486,7 +6486,7 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
       return false;
     },
 
-    // Normalizes nodes after applying a CSS class to a Range.
+    // Normalizes nodes after applying a CSS class to a DateRange.
     postApply: function(textNodes, range) {
       var firstNode = textNodes[0], lastNode = textNodes[textNodes.length - 1];
 

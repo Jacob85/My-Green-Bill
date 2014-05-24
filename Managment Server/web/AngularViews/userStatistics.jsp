@@ -18,20 +18,20 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Area Chart
+                    {{currMonthName}} Total Expenses
                 </div>
                 <div class="panel-body">
-                    <div id="area-example"></div>
+                    <h1 class="text-center"> {{ currentMonthTotalExpenses }} ש"ח</h1>
                 </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Bar Chart
+                    {{lastMonthName}} Total Expenses
                 </div>
                 <div class="panel-body">
-                    <div id="bar-example"></div>
+                    <h1 class="text-center"> {{ lastMonthTotalExpenses }} ש"ח</h1>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Donut Chart
+                    {{currMonthName}} Expenses By Category
                 </div>
                 <div class="panel-body">
                     <div id="donut-example"></div>
@@ -93,38 +93,6 @@
                 '#39B580',
                 '#67C69D'
             ]
-        });
-
-        new Morris.Bar({
-            element: 'bar-example',
-            data: [
-                { y: '2006', a: 100, b: 90 },
-                { y: '2007', a: 75,  b: 65 },
-                { y: '2008', a: 50,  b: 40 },
-                { y: '2009', a: 75,  b: 65 },
-                { y: '2010', a: 50,  b: 40 },
-                { y: '2011', a: 75,  b: 65 },
-                { y: '2012', a: 100, b: 90 }
-            ],
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Series A', 'Series B']
-        });
-
-        new Morris.Area({
-            element: 'area-example',
-            data: [
-                { y: '2006', a: 100, b: 90 },
-                { y: '2007', a: 75,  b: 65 },
-                { y: '2008', a: 50,  b: 40 },
-                { y: '2009', a: 75,  b: 65 },
-                { y: '2010', a: 50,  b: 40 },
-                { y: '2011', a: 75,  b: 65 },
-                { y: '2012', a: 100, b: 90 }
-            ],
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Series A', 'Series B']
         });
 
     </script>

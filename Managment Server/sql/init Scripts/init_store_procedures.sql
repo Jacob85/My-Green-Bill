@@ -1363,3 +1363,32 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompanies`()
 
   END$$
 DELIMITER ;
+
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+drop procedure if exists `GetUserStatsBetweenDates`;
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserStatsBetweenDates`(in user_id int, in start_date date, in end_date date)
+  BEGIN
+
+    DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+    declare isExist int;
+
+    select isUserIdExist(user_id) into isExist;
+    if isExist = 0
+    then
+      SET @message_text = CONCAT('A User with the ID: ', user_id, ' does not exist.');
+      SIGNAL error_msg
+      SET MESSAGE_TEXT = @message_text;
+    else
+      select *
+      from user_analytics
+      where user_analytics.user_id = user_id && mygreenbilldb.user_analytics.recieved_date between start_date and end_date;
+    end if;
+
+  END $$
+DELIMITER ;

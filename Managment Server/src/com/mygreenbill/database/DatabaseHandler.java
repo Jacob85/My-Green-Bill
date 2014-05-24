@@ -69,6 +69,7 @@ public class DatabaseHandler
             // close resources
             statement.close();
 
+
             return returnStatus;
 
         } catch (DatabaseException e)
@@ -89,6 +90,7 @@ public class DatabaseHandler
                 connectionManager.closeDatabaseConnection(connection);
         }
         return returnStatus;
+
 
     }
 

@@ -20,12 +20,12 @@
                 "dateRange": {
                     "regex": "none",
                     "alertText": "* Invalid ",
-                    "alertText2": "Date Range"
+                    "alertText2": "Date DateRange"
                 },
                 "dateTimeRange": {
                     "regex": "none",
                     "alertText": "* Invalid ",
-                    "alertText2": "Date Time Range"
+                    "alertText2": "Date Time DateRange"
                 },
                 "minSize": {
                     "regex": "none",

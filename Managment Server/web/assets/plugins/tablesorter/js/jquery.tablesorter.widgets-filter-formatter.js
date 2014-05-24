@@ -239,7 +239,7 @@ $.tablesorter.filterFormatter = {
 	},
 
 	/*************************\
-	jQuery UI Range Slider (2 handles)
+	jQuery UI DateRange Slider (2 handles)
 	\*************************/
 	uiRange: function($cell, indx, rangeDef) {
 		var o = $.extend({

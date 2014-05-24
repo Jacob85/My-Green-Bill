@@ -2,8 +2,7 @@ package com.mygreenbill.common;
 
 import com.mygreenbill.registration.SimpleIdentityValidationResponse;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Jacob on 3/29/14.
@@ -70,5 +69,78 @@ public class GeneralUtilities
         if (list.size() == 0)
             return false;
         return true;
+    }
+
+    public static DateRange getLastMonthDateRange()
+    {
+        Date begining, end;
+
+        {
+            Calendar calendar = getCalendarForLastMonth();
+            calendar.set(Calendar.DAY_OF_MONTH,
+                    calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+            setTimeToBeginningOfDay(calendar);
+            begining = calendar.getTime();
+        }
+
+        {
+            Calendar calendar = getCalendarForLastMonth();
+            calendar.set(Calendar.DAY_OF_MONTH,
+                    calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            setTimeToEndofDay(calendar);
+            end = calendar.getTime();
+        }
+
+        return new DateRange(begining, end);
+
+    }
+
+
+    public static DateRange getCurrentMonthDateRange() {
+        Date begining, end;
+
+        {
+            Calendar calendar = getCalendarForNow();
+            calendar.set(Calendar.DAY_OF_MONTH,
+                    calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+            setTimeToBeginningOfDay(calendar);
+            begining = calendar.getTime();
+        }
+
+        {
+            Calendar calendar = getCalendarForNow();
+            calendar.set(Calendar.DAY_OF_MONTH,
+                    calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            setTimeToEndofDay(calendar);
+            end = calendar.getTime();
+        }
+
+        return new DateRange(begining, end);
+    }
+
+    private static Calendar getCalendarForNow() {
+    Calendar calendar = GregorianCalendar.getInstance();
+    calendar.setTime(new Date());
+    return calendar;
+    }
+    private static Calendar getCalendarForLastMonth() {
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.MONTH, -1);
+        return calendar;
+    }
+
+    private static void setTimeToBeginningOfDay(Calendar calendar) {
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+    }
+
+    private static void setTimeToEndofDay(Calendar calendar) {
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MILLISECOND, 999);
     }
 }
