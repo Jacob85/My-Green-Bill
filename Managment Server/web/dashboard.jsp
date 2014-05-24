@@ -12,6 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html ng-app="app">
 <head>
+    <script src="assets/plugins/jquery-2.0.3.min.js"></script>
     <meta charset="UTF-8" />
     <%
         Properties properties = new Properties();
@@ -162,10 +163,11 @@
                 </div>
             </div>
         </div>
+
     <%--end wrap div --%>
     </div>
+
     <!-- GLOBAL SCRIPTS -->
-    <script src="assets/plugins/jquery-2.0.3.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
@@ -186,10 +188,11 @@
     <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <script src="assets/AngularJS/app.js"></script>
-    <script src="assets/AngularJS/controllers/UserProfileController.js"></script>
+    <script src="assets/AngularJS/controllers/UserCompaniesController.js"></script>
     <script src="assets/AngularJS/controllers/UserStatisticsController.js"></script>
     <script src="assets/AngularJS/controllers/UserDashboardController.js"></script>
     <script src="assets/AngularJS/controllers/UserBillsController.js"></script>
+    <script src="assets/AngularJS/controllers/UserSelectCompaniesController.js"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
 </body>

@@ -1,16 +1,18 @@
 package com.mygreenbill.restful;
 
+import com.mygreenbill.Exceptions.DatabaseException;
+import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.GreenBillCompany;
 import com.mygreenbill.common.GreenBillUser;
+import com.mygreenbill.database.DatabaseHandler;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -24,6 +26,9 @@ public class CompanyResource
 {
     private final static Logger LOGGER = Logger.getLogger(CompanyResource.class);
 
+    private final String getAllCompanies = "call mygreenbilldb.GetAllCompanies();";
+    private final String addCompanyToUser = "call mygreenbilldb.AddCompanyToUser(?, ?);";
+
     /**
      * This rest will return for the current user (the logged in one) the comanies list
      * which the user is registered for electronic mailing service
@@ -33,7 +38,7 @@ public class CompanyResource
     @GET
     @Path("/forUser")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllBills(@Context HttpServletRequest request)
+    public String getCompanyForUser(@Context HttpServletRequest request)
     {
         HttpSession session = request.getSession();
         GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
@@ -57,6 +62,91 @@ public class CompanyResource
         }
 
         return jsonCompanies.toString();
+    }
+
+    /**
+     * This rest will return all the companies we work with
+     * which the user is registered for electronic mailing service
+     * @param request
+     * @return
+     */
+    @GET
+    @Path("/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllCompanies(@Context HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+        GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
+        if (greenBillUser == null)
+        {
+            LOGGER.info("Cannot get user companies, user need to login again");
+            return errorJson("Please login again");
+        }
+
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        try
+        {
+            List<Map<String, Object>> companies = databaseHandler.runGetQuery(getAllCompanies);
+            if (GeneralUtilities.hasData(companies))
+            {
+                JSONArray jsonCompanies = new JSONArray();
+                for (int i=0 ; i < companies.size(); i++)
+                {
+                    jsonCompanies.put(new JSONObject(companies.get(i)));
+                }
+
+                return jsonCompanies.toString();
+            }
+            else
+            {
+                return errorJson("user has no messages");
+            }
+
+        }
+        catch (DatabaseException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * This rest will return all the companies we work with
+     * which the user is registered for electronic mailing service
+     * @param request
+     * @return
+     */
+    @POST
+    @Path("/updateUserCompanies")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateUserCompanies(@Context HttpServletRequest request, @FormParam("company") List<String> companies)
+    {
+        HttpSession session = request.getSession();
+        GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
+        if (greenBillUser == null)
+        {
+            LOGGER.info("Cannot get user companies, user need to login again");
+            return errorJson("Please login again");
+        }
+
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+
+        try
+        {
+            for (String companyId : companies)
+            {
+                String queryString = addCompanyToUser.replaceFirst("\\?", greenBillUser.getUserId());
+                queryString = queryString.replaceFirst("\\?", companyId);
+                databaseHandler.runUpdateQuery(queryString);
+                databaseHandler.retrieveUserCompanies(greenBillUser); // Updating the current user companies
+            }
+        }
+        catch (DatabaseException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private String errorJson(String message)

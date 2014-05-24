@@ -1341,3 +1341,25 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserAnalytic`(IN user_id INT,IN 
     END IF;
   END$$
 DELIMITER ;
+
+drop procedure if exists `GetAllCompanies`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompanies`()
+  BEGIN
+    DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+    DECLARE isExist INT;
+
+
+    SELECT
+      mygreenbilldb.company.name AS `name`,
+      mygreenbilldb.company.email AS `email`,
+      mygreenbilldb.company.id as `id`
+    FROM mygreenbilldb.company;
+
+  END$$
+DELIMITER ;

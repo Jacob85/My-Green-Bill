@@ -3,10 +3,11 @@
  */
 var app = angular.module('app', [
     'ngRoute',
-    'userProfileController',
+    'userCompaniesController',
     'userStatisticsController',
     'userDashboardController',
-    'userBillsController'
+    'userBillsController',
+    'userSelectCompaniesController'
 ]);
 
 app.config(['$routeProvider',  function ($routeProvider) {
@@ -20,6 +21,11 @@ app.config(['$routeProvider',  function ($routeProvider) {
         {
             controller: 'CompaniesController',
             templateUrl: 'AngularViews/userCompanies.jsp'
+        })
+        .when('/User/Companies/Select',
+        {
+            controller: 'SelectCompaniesController',
+            templateUrl: 'AngularViews/userSelectCompanies.jsp'
         })
         .when('/User/Settings',
         {

@@ -2383,7 +2383,7 @@
     <procedure name="test_multi_sets" schema="" catalog="test" type="1"/>
   </data-source>
   <data-source source="LOCAL" name="MySQL - @54.72.109.83 Remote Amazon" uuid="5a0824dc-39e9-41b3-b059-025ce97c84e7">
-    <database-info product="MySQL" version="5.5.34" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )">
+    <database-info product="MySQL" version="5.5.37" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
@@ -3605,17 +3605,30 @@
       <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
       <primary-key name="PRIMARY" columns="id,email"/>
       <exported-key name="fk_table1_user1" table="incoming_massages" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
+      <exported-key name="fk_analytics_user1" table="user_analytics" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_user_has_company_user1" table="user_client_of_company" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_user_has_log_in_event_user1" table="user_has_log_in_event" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_month_stats_user1" table="user_month_stats" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <index name="id_UNIQUE" unique="true" columns="id"/>
     </table>
+    <table name="user_analytics" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="category" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="recieved_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="amount" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,user_id,user_email"/>
+      <foreign-key name="fk_analytics_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_analytics_user1_idx" unique="false" columns="user_id,user_email"/>
+    </table>
     <table name="user_client_of_company" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="user_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
       <column name="company_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="company_email" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="user_id,user_email,company_id,company_email"/>
+      <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_user_has_company_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
       <foreign-key name="fk_user_has_company_company1" columns="company_id,company_email" ref-table="company" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
       <index name="fk_user_has_company_company1_idx" unique="false" columns="company_id,company_email"/>
@@ -4150,6 +4163,14 @@
         <parameter name="hmail_account" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="6"/>
       </prototype>
     </procedure>
+    <procedure name="AddUserAnalytic" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="user_id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="email" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="category" sqlType="VARCHAR" length="45" precision="45" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="amount" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+      </prototype>
+    </procedure>
     <procedure name="AddUserLoginEvent" schema="" catalog="mygreenbilldb" type="1">
       <prototype>
         <parameter name="id" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
@@ -4178,6 +4199,7 @@
         <parameter name="is_paid" sqlType="BOOLEAN" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="8"/>
       </prototype>
     </procedure>
+    <procedure name="GetAllCompanies" schema="" catalog="mygreenbilldb" type="1"/>
     <procedure name="GetAllCompaniesOfUser" schema="" catalog="mygreenbilldb" type="1">
       <prototype>
         <parameter name="userId" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>

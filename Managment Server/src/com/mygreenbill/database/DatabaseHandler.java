@@ -227,11 +227,14 @@ public class DatabaseHandler
 
     }
 
-    private void retrieveUserCompanies(GreenBillUser greenBillUserToReturn)
+    public void retrieveUserCompanies(GreenBillUser greenBillUserToReturn)
     {
 
         LOGGER.info("Getting all companies list for user " + greenBillUserToReturn.getFirstName() +  " " + greenBillUserToReturn.getLastName());
         String query = selectUserCompanies.replace("?", greenBillUserToReturn.getUserId());
+
+        if (greenBillUserToReturn.getUserCompanyList() != null)
+            greenBillUserToReturn.getUserCompanyList().clear(); // Clearing the user list
 
         try
         {
@@ -246,7 +249,10 @@ public class DatabaseHandler
                 }
             }
             else
-                LOGGER.info("The user does not have anu companies related to him");
+            {
+                greenBillUserToReturn.setUserCompanyList(new ArrayList<GreenBillCompany>());
+                LOGGER.info("The user does not have any companies related to him");
+            }
 
         } catch (DatabaseException e)
         {

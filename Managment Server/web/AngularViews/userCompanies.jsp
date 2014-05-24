@@ -8,44 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.mygreenbill.common.GreenBillUser" %>
 
-<html>
-<head>
-    <title></title>
-
-    <style type="text/css">
-        .modal-dialog {
-            margin: 0 auto;
-        }
-    </style>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-    <script src="js/bootstrap.min.js"></script>
-
     <script>
         console.log( "document test" );
-        $( document ).ready(function()
+        $(document).ready(function()
         {
             console.log( "document loaded" );
         });
     </script>
-
-</head>
-<body>
     <%
         // Getting the user object from the current session
         GreenBillUser user = (GreenBillUser) request.getSession().getAttribute("user");
-        System.out.println(user.getUserCompanyList());
     %>
     <div class="row">
         <div class="col-lg-8">
             <h2>THIS IS USER COMPANIES PAGE</h2>
-            <a data-toggle="modal" data-target="#add_company_dialog" class="btn btn-primary">Add Company</a>
+            <a href="#/User/Companies/Select" class="btn btn-primary">Add Company</a>
         </div>
     </div>
 
@@ -63,27 +40,3 @@
             </div>
         </div>
     </div>
-
-    <!-- Add Company Modal -->
-    <div class="modal fade" id="add_company_dialog" role="dialog" aria-labelledby="add_company_label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="add_company_label">Add Company</h4>
-                </div>
-
-                <div class="modal-body">
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</body>
-</html>

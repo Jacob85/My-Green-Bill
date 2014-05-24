@@ -16,7 +16,6 @@ var application = angular.module('userBillsController',[]);
             $http.get('http://localhost:8080/greenbill/rest/bills/all')
                 .success(function (response)
                 {
-                    console.log(response);
                     $scope.bills  = response;
                 });
 

@@ -20,7 +20,7 @@ label.valid {
 }
 label.error {
     font-weight: bold;
-    color: red;
+    color: #FF0000;
     padding: 2px 8px;
     margin-top: 2px;
 }
@@ -30,4 +30,7 @@ label.error {
 }
 
 .lemesh {
+}
+#add_company_dialog{
+    float: left;
 }
