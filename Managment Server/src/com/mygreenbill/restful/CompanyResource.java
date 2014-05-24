@@ -4,6 +4,7 @@ import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.common.GeneralUtilities;
 import com.mygreenbill.common.GreenBillCompany;
 import com.mygreenbill.common.GreenBillUser;
+import com.mygreenbill.common.SendEmailsHandler;
 import com.mygreenbill.database.DatabaseHandler;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -29,6 +30,7 @@ public class CompanyResource
     private final String getAllOtherCompanies = "call mygreenbilldb.GetAllOtherCompaniesOfUser(?);";
     private final String addCompanyToUser = "call mygreenbilldb.AddCompanyToUser(?, ?);";
     private final String deleteUserFromCompany = "call mygreenbilldb.DeleteUserFromCompany(?, ?);";
+    private final String getCompany = "call mygreenbilldb.GetCompany(?);";
 
     /**
      * This rest will return for the current user (the logged in one) the comanies list
@@ -179,6 +181,7 @@ public class CompanyResource
             return errorJson("Please login again");
         }
 
+        SendEmailsHandler sendEmailsHandler = SendEmailsHandler.getInstance();
         DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
         try
@@ -192,6 +195,12 @@ public class CompanyResource
                 String queryString = addCompanyToUser.replaceFirst("\\?", greenBillUser.getUserId());
                 queryString = queryString.replaceFirst("\\?", companyId);
                 databaseHandler.runUpdateQuery(queryString);
+
+                queryString = getCompany.replaceFirst("\\?", String.valueOf(companyId));
+                databaseHandler.runGetQuery(queryString);
+                GreenBillCompany greenBillCompany = new GreenBillCompany(databaseHandler.runGetQuery(queryString).get(0));
+
+                sendEmailsHandler.sendRegisterMailToCompany(greenBillUser, greenBillCompany); // Send email to the company for registering the user
             }
             databaseHandler.retrieveUserCompanies(greenBillUser); // Updating the current user companies
         }
@@ -222,6 +231,7 @@ public class CompanyResource
             return errorJson("Please login again");
         }
 
+        SendEmailsHandler sendEmailsHandler = SendEmailsHandler.getInstance();
         DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
         try
@@ -234,6 +244,8 @@ public class CompanyResource
                 String queryString = deleteUserFromCompany.replaceFirst("\\?", greenBillUser.getUserId());
                 queryString = queryString.replaceFirst("\\?", String.valueOf(company.getId()));
                 databaseHandler.runUpdateQuery(queryString);
+
+                sendEmailsHandler.sendUnregisterMailToCompany(greenBillUser, company); // Send email to the company for unregistering the user
             }
 
             databaseHandler.retrieveUserCompanies(greenBillUser); // Updating the current user companies

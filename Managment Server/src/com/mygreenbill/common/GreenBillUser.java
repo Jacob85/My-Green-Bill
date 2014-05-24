@@ -159,4 +159,13 @@ public class GreenBillUser
         }
         return false;
     }
+
+    public GreenBillCompany getCompanyById(String companyId)
+    {
+        for (GreenBillCompany company : userCompanyList)
+            if (companyId.equals(String.valueOf(company.getId())))
+                return company;
+
+        return null;
+    }
 }

@@ -45,6 +45,10 @@
     <form id="removeCompanyForm" method="post" action="rest/company/removeUserCompanies">
         <input style="margin-left: 15px" type="submit" value="Save" class="btn btn-primary"><br><br>
 
+        <div class="col-lg-8" ng-if="companies == 0" >
+            <h3>You are not subscribed to any company</h3>
+        </div>
+
         <div ng-repeat="company in companies" class="col-lg-3">
             <div class="panel panel-default">
                 <div class="panel-heading">

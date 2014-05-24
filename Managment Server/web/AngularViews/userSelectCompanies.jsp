@@ -45,17 +45,21 @@
     <form id="selectCompanyForm" method="post" action="rest/company/addUserCompanies">
         <input style="margin-left: 15px" type="submit" value="Save" class="btn btn-primary"><br><br>
 
-            <div ng-repeat="company in otherCompanies" class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <input type="checkbox" name="company" value={{company.id}}>
-                        {{ company.name }}
-                    </div>
-                    <div class="panel-body">
-                        Company Logo
-                    </div>
+        <div class="col-lg-8" ng-if="otherCompanies == 0" >
+            <h3>You are not subscribed to any company</h3>
+        </div>
+
+        <div ng-repeat="company in otherCompanies" class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <input type="checkbox" name="company" value={{company.id}}>
+                    {{ company.name }}
+                </div>
+                <div class="panel-body">
+                    Company Logo
                 </div>
             </div>
+        </div>
 
     </form>
 </div>

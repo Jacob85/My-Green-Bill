@@ -1363,3 +1363,22 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompanies`()
 
   END$$
 DELIMITER ;
+
+drop procedure if exists `GetCompany`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCompany`(IN companyId INT)
+  BEGIN
+    SELECT
+      mygreenbilldb.company.name as company_name,
+      mygreenbilldb.company.email AS company_email,
+      mygreenbilldb.company.id as company_id
+    FROM mygreenbilldb.company
+    WHERE mygreenbilldb.company.id = companyId;
+
+  END$$
+DELIMITER ;
