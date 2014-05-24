@@ -150,7 +150,7 @@ public class GreenBillUser
         userCompanyList.add(toAdd);
     }
 
-    public boolean isCompanyAlreadyExist(String companyId)
+    public boolean isUserRegisteredToCompany(String companyId)
     {
         for (GreenBillCompany company : userCompanyList)
         {

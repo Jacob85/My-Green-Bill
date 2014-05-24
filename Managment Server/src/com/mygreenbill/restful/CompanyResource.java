@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
@@ -187,7 +186,7 @@ public class CompanyResource
             for (String companyId : companies)
             {
                 // Don't add the company if the user is already subscribed to
-                if (greenBillUser.isCompanyAlreadyExist(companyId))
+                if (greenBillUser.isUserRegisteredToCompany(companyId))
                     continue;
 
                 String queryString = addCompanyToUser.replaceFirst("\\?", greenBillUser.getUserId());
@@ -213,7 +212,7 @@ public class CompanyResource
     @Path("/removeUserCompanies")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public String removeUserCompanies(@Context HttpServletRequest request, @FormParam("company") List<String> companies)
+    public String removeUserCompanies(@Context HttpServletRequest request, @FormParam("company") List<String> companiesToKeep)
     {
         HttpSession session = request.getSession();
         GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
@@ -229,7 +228,7 @@ public class CompanyResource
         {
             for (GreenBillCompany company : greenBillUser.getUserCompanyList())
             {
-                if (companies.contains(company.getId()))
+                if (companiesToKeep.contains(String.valueOf(company.getId())))
                     continue;
 
                 String queryString = deleteUserFromCompany.replaceFirst("\\?", greenBillUser.getUserId());
