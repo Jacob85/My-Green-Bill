@@ -77,9 +77,12 @@ public class CopyAttachmentHandler
             result = databaseHandler.runGetQuery("SELECT id FROM company WHERE email='" + FROM + "';");
             String FROM_ID = String.valueOf(result.get(0).get("id"));
 
-            String TO = emlParser.getToHeader();
-            result = databaseHandler.runGetQuery("SELECT id FROM user WHERE hmail_account_name='" + accountName + "';");
+            LOGGER.info("Email was sent to: " + emlParser.getToHeader());
+            result = databaseHandler.runGetQuery("SELECT id,email FROM user WHERE hmail_account_name='" + accountName + "';");
+
+            String TO = String.valueOf(result.get(0).get("email"));
             String TO_ID = String.valueOf(result.get(0).get("id"));
+
 
             String SUBJECT = emlParser.getSubjectHeader();
             String CONTENT = emlParser.getEmailContent();

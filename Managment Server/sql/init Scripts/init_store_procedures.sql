@@ -8,7 +8,7 @@ drop procedure if exists `AddUser`;
 drop procedure if exists `CreateNewInvoice`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateNewInvoice`(IN table_target VARCHAR(45), IN id INT(11), IN email VARCHAR(45),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateNewInvoice`(IN table_target VARCHAR(128), IN id INT(11), IN email VARCHAR(128),
 										IN amount INT(11), IN issue_date DATE, IN due_date DATE,
 										IN content TEXT, IN is_paid BOOLEAN)
 BEGIN
@@ -168,15 +168,15 @@ DELIMITER ;
 drop procedure if exists `NewMassage`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `NewMassage`(in from_email varchar(45),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NewMassage`(in from_email varchar(128),
 								in from_id int,
-								in to_email varchar(45),
+								in to_email varchar(128),
 								in to_id int,
-								in cc varchar(45),
-								in subject varchar(45),
+								in cc varchar(128),
+								in subject varchar(128),
 								in content text,
 								in status varchar(15),
-								in file_name varchar(45),
+								in file_name varchar(128),
 								in path_to_file varchar(2048))
 BEGIN
 
@@ -229,9 +229,9 @@ DELIMITER ;
 drop procedure if exists `UpdateCompanyAddress`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateCompanyAddress`(IN id INT, IN street VARCHAR(45), IN house_number INT,
-							IN city VARCHAR(45), IN postal_code VARCHAR(45),
-							IN country VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateCompanyAddress`(IN id INT, IN street VARCHAR(128), IN house_number INT,
+							IN city VARCHAR(128), IN postal_code VARCHAR(128),
+							IN country VARCHAR(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -263,9 +263,9 @@ DELIMITER ;
 drop procedure if exists `UpdateUserAddress`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateUserAddress`(IN id INT, IN street VARCHAR(45), IN house_number INT,
-							IN city VARCHAR(45), IN postal_code VARCHAR(45),
-							IN country VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateUserAddress`(IN id INT, IN street VARCHAR(128), IN house_number INT,
+							IN city VARCHAR(128), IN postal_code VARCHAR(128),
+							IN country VARCHAR(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -297,11 +297,11 @@ DELIMITER ;
 drop procedure if exists `AddCompany`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompany`(IN id INT,IN email varchar(45), IN company_name varchar(45),
-							IN pass varchar(45), IN subscription_plan INT, IN rank varchar(45),
-							IN street VARCHAR(45), IN house_number INT,
-							IN city VARCHAR(45), IN postal_code VARCHAR(45),
-							IN country VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompany`(IN id INT,IN email varchar(128), IN company_name varchar(128),
+							IN pass varchar(128), IN subscription_plan INT, IN rank varchar(128),
+							IN street VARCHAR(128), IN house_number INT,
+							IN city VARCHAR(128), IN postal_code VARCHAR(128),
+							IN country VARCHAR(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -336,8 +336,8 @@ DELIMITER ;
 drop procedure if exists `AddUser`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUser`(IN id INT,IN email varchar(45), IN first_name varchar(45),
-							IN last_name varchar(45), IN pass varchar(45), IN hmail_account VARCHAR(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUser`(IN id INT,IN email varchar(128), IN first_name varchar(128),
+							IN last_name varchar(128), IN pass varchar(128), IN hmail_account VARCHAR(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -378,7 +378,7 @@ declare recivedMassages int;
 declare failedMassages int;
 declare sucssessMassages int;
 declare pendingMassages int;
-declare userEmail varchar(45);
+declare userEmail varchar(128);
 
 /* check if the company exists */ 
 select isUserIdExist(user_id) into isExist;
@@ -472,7 +472,7 @@ declare sentMassages int;
 declare failedMassages int;
 declare sucssessMassages int;
 declare pendingMassages int;
-declare companyEmail varchar(45);
+declare companyEmail varchar(128);
 
 /* check if the company exists */ 
 select isCompanyIdExist(company_id) into isExist;
@@ -632,7 +632,7 @@ DELIMITER ;
 drop procedure if exists `GetAllMailTemplatesFor`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllMailTemplatesFor`(IN target varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllMailTemplatesFor`(IN target varchar(128))
 BEGIN
 	IF (target = 'All') THEN
 		SELECT * FROM mail_template;
@@ -650,7 +650,7 @@ DELIMITER ;
 drop procedure if exists `GetAllUsersOfCompany`;
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUsersOfCompany`(IN company_id INT, IN email varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUsersOfCompany`(IN company_id INT, IN email varchar(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -688,7 +688,7 @@ drop procedure if exists `GetUserAddress`;
 -- --------------------------------------------------------------------------------
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserAddress`(IN user_id INT, IN email varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserAddress`(IN user_id INT, IN email varchar(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -727,7 +727,7 @@ drop procedure if exists `GetCompanyAddress`;
 -- --------------------------------------------------------------------------------
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCompanyAddress`(IN company_id INT, IN email varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCompanyAddress`(IN company_id INT, IN email varchar(128))
 BEGIN
 	DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 	DECLARE isExist INT;
@@ -806,7 +806,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompanyOutgoingMassagesToCostumer`(in company_id int, in user_id int)
 BEGIN
 
-declare user_email varchar(45);
+declare user_email varchar(128);
 DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 DECLARE isCompanyExist INT;
 declare isUserExist int;
@@ -884,9 +884,9 @@ drop procedure if exists `AddContactToCompany`;
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddContactToCompany`(in company_id int,
-																	in name varchar(45),
-																	in position varchar(45),
-																	in email varchar(45),
+																	in name varchar(128),
+																	in position varchar(128),
+																	in email varchar(128),
 																	in phone_number varchar(12),
 																	in office_number varchar(12),
 																	in fax_number varchar(12))
@@ -894,7 +894,7 @@ BEGIN
 
 DECLARE error_msg CONDITION FOR SQLSTATE '45000';
 declare isExist int;
-declare company_email varchar (45);
+declare company_email varchar (128);
 
 select isCompanyIdExist(company_id) into isExist;
 
@@ -925,7 +925,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserIncomingMassagesFromCompany`(in user_id int, in company_id int)
 BEGIN
 
-declare company_email varchar(45);
+declare company_email varchar(128);
 select company.email into company_email from company where company.id = company_id;
 
   select
@@ -1154,7 +1154,7 @@ drop procedure if exists `GetSubsciptionPlanFor`;
 -- --------------------------------------------------------------------------------
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetSubsciptionPlanFor`(IN target_audience varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetSubsciptionPlanFor`(IN target_audience varchar(128))
 BEGIN
 	if (target_audience = 'All') then
 		select * from subscription_plans;
@@ -1171,10 +1171,10 @@ drop procedure if exists `AddSubscriptionPlan`;
 -- --------------------------------------------------------------------------------
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddSubscriptionPlan`(IN plan_name varchar(45)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddSubscriptionPlan`(IN plan_name varchar(128)
 																	,IN plan_description text
-																	,IN input_path_to_file varchar(45)
-																	,IN input_target_audience varchar(45))
+																	,IN input_path_to_file varchar(128)
+																	,IN input_target_audience varchar(128))
 BEGIN	
 
 	insert into subscription_plans (name, description, path_to_fie, target_audience)
@@ -1216,7 +1216,7 @@ drop procedure if exists `AddUserLoginEvent`;
 -- Note: comments before and after the routine body will not be stored by the server
 -- --------------------------------------------------------------------------------
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserLoginEvent`(IN id INT,IN email varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserLoginEvent`(IN id INT,IN email varchar(128))
   BEGIN
     DECLARE error_msg CONDITION FOR SQLSTATE '45000';
     DECLARE isExist INT;
@@ -1280,8 +1280,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompanyToUser`(IN userId INT, in
     DECLARE error_msg CONDITION FOR SQLSTATE '45000';
     DECLARE isUserExist INT;
     DECLARE isCompanyExist INT;
-    DECLARE userEmail VARCHAR(45);
-    DECLARE companyEmail VARCHAR(45);
+    DECLARE userEmail VARCHAR(128);
+    DECLARE companyEmail VARCHAR(128);
 
     /* Checking if the user exist */
     SELECT isUserIdExist(userId) INTO isUserExist;
@@ -1323,8 +1323,8 @@ drop procedure if exists `AddUserAnalytic`;
 -- Note: comments before and after the routine body will not be stored by the server
 -- --------------------------------------------------------------------------------
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserAnalytic`(IN user_id INT,IN email VARCHAR(45),
-                                                              IN category VARCHAR(45), IN amount INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserAnalytic`(IN user_id INT,IN email VARCHAR(128),
+                                                              IN category VARCHAR(128), IN amount INT)
   BEGIN
     DECLARE error_msg CONDITION FOR SQLSTATE '45000';
     DECLARE isExist INT;

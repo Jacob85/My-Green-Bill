@@ -4,6 +4,8 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Part;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.util.ArrayList;
@@ -149,7 +151,7 @@ public class EmlFolderHandler
 
     /**
      * Getting the content (BODY) from the EML file which the account name is part of
-     * @return Return the SUBJECT header from the EML file
+     * @return Return the CONTENT header from the EML file
      */
     public String getEmailContent()
     {
@@ -157,7 +159,13 @@ public class EmlFolderHandler
 
         try
         {
-            CONTENT = String.valueOf(emlFile.getContent());
+            Multipart mp = (Multipart)emlFile.getContent();
+            for (int i = 0; i < mp.getCount(); i++)
+            {
+                Part bp = mp.getBodyPart(i);
+                if (bp.isMimeType("text/plain") || bp.isMimeType("text/html"))
+                    CONTENT = (String) bp.getContent();
+            }
         }
         catch (MessagingException e)
         {

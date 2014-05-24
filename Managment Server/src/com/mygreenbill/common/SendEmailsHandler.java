@@ -2,6 +2,8 @@ package com.mygreenbill.common;
 
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.database.DatabaseHandler;
+import com.mygreenbill.security.EncryptionType;
+import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
@@ -71,6 +73,7 @@ public class SendEmailsHandler
             emailString = emailString.replace("$first_name", user.getFirstName());
             emailString = emailString.replace("$last_name", user.getLastName());
             emailString = emailString.replace("$user_id", user.getUserId());
+            emailString = emailString.replace("$user_email", EncryptionUtil.encryptString(user.getEmail(), EncryptionType.MD5) + "@mygreenbill.com");
             LOGGER.debug("replaced the template parameters with real user information: " + emailString);
 
             //sending message to mail server
@@ -110,6 +113,7 @@ public class SendEmailsHandler
             emailString = emailString.replace("$first_name", user.getFirstName());
             emailString = emailString.replace("$last_name", user.getLastName());
             emailString = emailString.replace("$user_id", user.getUserId());
+            emailString = emailString.replace("$user_email", EncryptionUtil.encryptString(user.getEmail(), EncryptionType.MD5) + "@mygreenbill.com");
             LOGGER.debug("replaced the template parameters with real user information: " + emailString);
 
             //sending message to mail server

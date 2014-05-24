@@ -12,9 +12,9 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`subscription_plans` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`subscription_plans` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
+  `name` VARCHAR(128) NULL,
   `description` TEXT NULL,
-  `path_to_fie` VARCHAR(45) NULL,
+  `path_to_fie` VARCHAR(128) NULL,
   `target_audience` ENUM('user','company') NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -46,11 +46,11 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user` (
   `id` INT NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `first_name` VARCHAR(45) NULL,
-  `last_name` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `hmail_account_name` VARCHAR(45) NULL,
+  `email` VARCHAR(128) NOT NULL,
+  `first_name` VARCHAR(128) NULL,
+  `last_name` VARCHAR(128) NULL,
+  `password` VARCHAR(128) NULL,
+  `hmail_account_name` VARCHAR(128) NULL,
   `is_active` TINYINT(1) NULL,
   `join_date` DATE NULL,
   PRIMARY KEY (`id`, `email`),
@@ -65,11 +65,11 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`address` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`address` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `country` VARCHAR(45) NULL,
-  `city` VARCHAR(45) NULL,
-  `street_name` VARCHAR(45) NULL,
+  `country` VARCHAR(128) NULL,
+  `city` VARCHAR(128) NULL,
+  `street_name` VARCHAR(128) NULL,
   `house_number` INT NULL,
-  `postal_code` VARCHAR(45) NULL,
+  `postal_code` VARCHAR(128) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -81,9 +81,9 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`company` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company` (
   `id` INT NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `email` VARCHAR(128) NOT NULL,
+  `name` VARCHAR(128) NULL,
+  `password` VARCHAR(128) NULL,
   `join_date` DATE NULL,
   `billing_info_id` INT NOT NULL,
   PRIMARY KEY (`id`, `email`),
@@ -103,11 +103,11 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`massage_info` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`massage_info` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `send_to` VARCHAR(45) NULL,
-  `send_from` VARCHAR(45) NULL,
-  `subject` VARCHAR(45) NULL,
+  `send_to` VARCHAR(128) NULL,
+  `send_from` VARCHAR(128) NULL,
+  `subject` VARCHAR(128) NULL,
   `content` TEXT NULL,
-  `cc` VARCHAR(45) NULL,
+  `cc` VARCHAR(128) NULL,
   `date` DATE NULL,
   `status` ENUM('sent','pending','failed') NULL,
   PRIMARY KEY (`id`))
@@ -122,7 +122,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`file` ;
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`file` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `path` VARCHAR(2048) NULL,
-  `name` VARCHAR(45) NULL,
+  `name` VARCHAR(128) NULL,
   `massage_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_file_massage1_idx` (`massage_id` ASC),
@@ -142,9 +142,9 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`user_client_of_company` ;
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_client_of_company` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
-  `user_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(128) NOT NULL,
   `company_id` INT NOT NULL,
-  `company_email` VARCHAR(45) NOT NULL,
+  `company_email` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_has_company_company1_idx` (`company_id` ASC, `company_email` ASC),
   INDEX `fk_user_has_company_user1_idx` (`user_id` ASC, `user_email` ASC),
@@ -168,7 +168,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`incoming_massages` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`incoming_massages` (
   `user_id` INT NOT NULL,
-  `user_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(128) NOT NULL,
   `massage_info_id` INT NOT NULL,
   INDEX `fk_table1_user1_idx` (`user_id` ASC, `user_email` ASC),
   INDEX `fk_incoming_massages_massage_info1_idx` (`massage_info_id` ASC),
@@ -194,7 +194,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`outgoing_massages` ;
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`outgoing_massages` (
   `massage_info_id` INT NOT NULL,
   `company_id` INT NOT NULL,
-  `company_email` VARCHAR(45) NOT NULL,
+  `company_email` VARCHAR(128) NOT NULL,
   INDEX `fk_incoming_massages_massage_info1_idx` (`massage_info_id` ASC),
   INDEX `fk_outcoming_massages_company1_idx` (`company_id` ASC, `company_email` ASC),
   PRIMARY KEY (`massage_info_id`, `company_email`, `company_id`),
@@ -241,10 +241,10 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`contact_person` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`contact_person` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `position` VARCHAR(45) NULL,
+  `name` VARCHAR(128) NULL,
+  `position` VARCHAR(128) NULL,
   `company_id` INT NOT NULL,
-  `company_email` VARCHAR(45) NOT NULL,
+  `company_email` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_contact_person_company1_idx` (`company_id` ASC, `company_email` ASC),
   CONSTRAINT `fk_contact_person_company1`
@@ -262,10 +262,10 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`contact_info` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`contact_info` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `phone_number` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `fax_number` VARCHAR(45) NULL,
-  `office_number` VARCHAR(45) NULL,
+  `phone_number` VARCHAR(128) NULL,
+  `email` VARCHAR(128) NULL,
+  `fax_number` VARCHAR(128) NULL,
+  `office_number` VARCHAR(128) NULL,
   `contact_person_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_contact_info_contact_person1_idx` (`contact_person_id` ASC),
@@ -284,9 +284,9 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`admin` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`admin` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `name` VARCHAR(45) NULL,
+  `email` VARCHAR(128) NULL,
+  `password` VARCHAR(128) NULL,
+  `name` VARCHAR(128) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -317,10 +317,10 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`regiter_Inquiry` ;
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`regiter_Inquiry` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `recieved_date` DATE NULL,
-  `subject` VARCHAR(45) NULL,
+  `subject` VARCHAR(128) NULL,
   `context` TEXT NULL,
   `status` ENUM('Opend','InProcess','Closed') NULL,
-  `regiter_Inquirycol` VARCHAR(45) NULL,
+  `regiter_Inquirycol` VARCHAR(128) NULL,
   `Inquiries_list_id` INT NOT NULL,
   `user_type` ENUM('user','company') NULL COMMENT 'user_type = company or user {ENUM(\'user\',\'company\')}',
   PRIMARY KEY (`id`),
@@ -340,13 +340,13 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`unregiter_Inquiry` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`unregiter_Inquiry` (
   `id` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
+  `name` VARCHAR(128) NULL,
   `recived_date` DATE NULL,
-  `sunject` VARCHAR(45) NULL,
+  `sunject` VARCHAR(128) NULL,
   `context` TEXT NULL,
-  `unregiter_Inquirycol` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `phone_number` VARCHAR(45) NULL,
+  `unregiter_Inquirycol` VARCHAR(128) NULL,
+  `email` VARCHAR(128) NULL,
+  `phone_number` VARCHAR(128) NULL,
   `status` ENUM('user','company') NULL,
   `Inquiries_list_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -366,10 +366,10 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`mail_template` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`mail_template` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(256) NULL,
+  `name` VARCHAR(128) NULL,
   `description` VARCHAR(1024) NULL,
   `context` TEXT NULL,
-  `path_to_file` VARCHAR(256) NULL,
+  `path_to_file` VARCHAR(128) NULL,
   `create_date` DATE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -419,7 +419,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`user_has_log_in_event` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_has_log_in_event` (
   `user_id` INT NOT NULL,
-  `user_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(128) NOT NULL,
   `log_in_event_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `user_email`, `log_in_event_id`),
   INDEX `fk_user_has_log_in_event_log_in_event1_idx` (`log_in_event_id` ASC),
@@ -444,7 +444,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`company_has_log_in_event` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company_has_log_in_event` (
   `company_id` INT NOT NULL,
-  `company_email` VARCHAR(45) NOT NULL,
+  `company_email` VARCHAR(128) NOT NULL,
   `log_in_event_id` INT NOT NULL,
   PRIMARY KEY (`company_id`, `company_email`, `log_in_event_id`),
   INDEX `fk_company_has_log_in_event_log_in_event1_idx` (`log_in_event_id` ASC),
@@ -469,7 +469,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`user_has_address` ;
 /* remove this table we do not need it any more */
 /*CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_has_address` (
   `user_id` INT NOT NULL,
-  `user_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(128) NOT NULL,
   `address_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `user_email`, `address_id`),
   INDEX `fk_user_has_address_address1_idx` (`address_id` ASC),
@@ -494,7 +494,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`company_has_address` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company_has_address` (
   `company_id` INT NOT NULL,
-  `company_email` VARCHAR(45) NOT NULL,
+  `company_email` VARCHAR(128) NOT NULL,
   `address_id` INT NOT NULL,
   PRIMARY KEY (`company_id`, `company_email`, `address_id`),
   INDEX `fk_company_has_address_address1_idx` (`address_id` ASC),
@@ -520,8 +520,8 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`user_month_stats` ;
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_month_stats` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
-  `user_email` VARCHAR(45) NOT NULL,
-  `month_name` VARCHAR(45) NULL,
+  `user_email` VARCHAR(128) NOT NULL,
+  `month_name` VARCHAR(128) NULL,
   `start_date` DATE NULL,
   `end_date` DATE NULL,
   `num_of_log_in` INT NULL,
@@ -546,7 +546,7 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`company_month_stats` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company_month_stats` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `month_name` VARCHAR(45) NULL,
+  `month_name` VARCHAR(128) NULL,
   `start_date` DATE NULL,
   `end_date` DATE NULL,
   `num_of_log_in` INT NULL,
@@ -555,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company_month_stats` (
   `num_of_sucsses_massages_sent` INT NULL,
   `num_of_pending_massages` INT NULL,
   `company_id` INT NOT NULL,
-  `company_email` VARCHAR(45) NOT NULL,
+  `company_email` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`id`, `company_id`, `company_email`),
   INDEX `fk_company_month_stats_company1_idx` (`company_id` ASC, `company_email` ASC),
   CONSTRAINT `fk_company_month_stats_company1`
@@ -573,8 +573,8 @@ DROP TABLE IF EXISTS `mygreenbilldb`.`user_analytics` ;
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user_analytics` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NOT NULL,
-  `user_email` VARCHAR(45) NOT NULL,
-  `category` VARCHAR(45) NULL,
+  `user_email` VARCHAR(128) NOT NULL,
+  `category` VARCHAR(128) NULL,
   `recieved_date` DATE NULL,
   `amount` INT(11) NULL,
   PRIMARY KEY (`id`, `user_id`, `user_email`),
@@ -622,7 +622,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'afdd0b4ad2ec172c586e2150770fbf9e', 'ABCD', 1, '2013-09-21');
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'afdd0b4ad2ec172c586e2150770fbf9e', 'e0df4b0c1f6105a4e2834251eddd8507', 1, '2013-09-21');
 INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '81dc9bdb52d04dc20036dbd8313ed055', 'ipeleg', 1, '2013-09-16');
 
 COMMIT;
@@ -773,8 +773,8 @@ USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (1, 'Welcome', 'Welcome to any new user', 'Hello $first_name $last_name \r\n Thank you for Joining My green Bill! to Access the Dashboard please activate your account by clicking the following link: $link', 'path/to/file.png', '2013-08-01');
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (2, 'Password Reset', 'Reset the user password', 'Please press the following link to reset your password', 'path/to/file.png', '2013-08-02');
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (3, 'Monthly update', 'Display the monthly update to the user', 'your monthly update is... bla bla bla ', 'path/to/update.txt', '2013-08-03');
-INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (4, 'Unregister Customer', 'Message company to unregister a user', 'Hello $company_name\r\nPlease remove the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nfrom your mailing list.', 'path/to/update.txt', '2013-08-03');
-INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (5, 'Register Customer', 'Message company to register a user', 'Hello $company_name\r\nPlease add the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nto your mailing list.', 'path/to/update.txt', '2013-08-03');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (4, 'Unregister Customer', 'Message company to unregister a user', 'Hello $company_name\r\nPlease remove the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nE-Mail: $user_email\r\nfrom your mailing list.', 'path/to/update.txt', '2013-08-03');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (5, 'Register Customer', 'Message company to register a user', 'Hello $company_name\r\nPlease add the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nE-Mail: $user_email\r\nto your mailing list.', 'path/to/update.txt', '2013-08-03');
 
 COMMIT;
 
