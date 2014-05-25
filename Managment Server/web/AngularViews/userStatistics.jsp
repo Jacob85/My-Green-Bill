@@ -21,7 +21,7 @@
                 {{currMonthName}} Total Expenses
             </div>
             <div class="panel-body">
-                <h1 class="text-center">{{ currentMonthTotalExpenses }} ₪</h1>
+                <h1 class="text-center"> ש"ח {{ currentMonthTotalExpenses }}</h1>
             </div>
         </div>
     </div>
@@ -31,19 +31,19 @@
                 {{lastMonthName}} Total Expenses
             </div>
             <div class="panel-body">
-                <h1 class="text-center">{{ lastMonthTotalExpenses }} ₪</h1>
+                <h1 class="text-center"> {{ lastMonthTotalExpenses }} ש"ח</h1>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                   Year Stats
-                </div>
-                <div class="panel-body">
-                    <div id="year-stats"></div>
-                </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Year Stats
+            </div>
+            <div class="panel-body">
+                <div id="year-stats"></div>
             </div>
         </div>
     </div>
