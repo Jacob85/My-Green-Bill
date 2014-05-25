@@ -19,6 +19,7 @@
         // Getting the user object from the current session
         GreenBillUser user = (GreenBillUser) request.getSession().getAttribute("user");
     %>
+
     <div class="row">
         <div class="col-lg-8">
             <h2>THIS IS USER COMPANIES PAGE</h2>

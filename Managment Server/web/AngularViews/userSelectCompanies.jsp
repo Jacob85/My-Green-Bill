@@ -5,10 +5,12 @@
   Time: 8:22 PM
   To change this template use File | Settings | File Templates.
 --%>
-
+<script src="assets/css/jquery-ui.css"></script>
 <script src="assets/plugins/jquery-2.0.3.min.js"></script>
 
+
 <script language="javascript" type="text/javascript">
+
     $("#selectCompanyForm").submit(function(e)
     {
         var postData = $(this).serializeArray();
@@ -31,7 +33,6 @@
         e.unbind(); //unbind. to stop multiple form submit.
     });
 </script>
-
 
 <div class="row">
     <div class="col-lg-8">
