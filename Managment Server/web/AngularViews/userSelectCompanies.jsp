@@ -11,6 +11,21 @@
 
 <script language="javascript" type="text/javascript">
 
+    $("#selectAll").click(function(event) {  //on click
+        if(this.checked)
+        { // check select status
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"
+            });
+        }
+        else
+        {
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"
+            });
+        }
+    });
+
     $("#selectCompanyForm").submit(function(e)
     {
         var postData = $(this).serializeArray();
@@ -44,7 +59,8 @@
 
 <div class="row">
     <form id="selectCompanyForm" method="post" action="rest/company/addUserCompanies">
-        <input style="margin-left: 15px" type="submit" value="Save" class="btn btn-primary"><br><br>
+        <input id="submitButton" style="margin-left: 15px" type="submit" value="Save" class="btn btn-primary">
+        <input id="selectAll" type="checkbox" style="margin-left: 15px"> Select All?<br><br>
 
         <div class="col-lg-8" ng-if="otherCompanies == 0" >
             <h3>You are not subscribed to any company</h3>
@@ -53,7 +69,7 @@
         <div ng-repeat="company in otherCompanies" class="col-lg-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <input type="checkbox" name="company" value={{company.id}}>
+                    <input class="checkbox1" type="checkbox" name="company" value={{company.id}}>
                     {{ company.name }}
                 </div>
                 <div class="panel-body">
