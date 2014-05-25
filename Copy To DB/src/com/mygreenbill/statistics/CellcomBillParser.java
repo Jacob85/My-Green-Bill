@@ -13,6 +13,7 @@ import java.io.IOException;
 public class CellcomBillParser implements BillParser
 {
     private static Logger LOGGER = Logger.getLogger(CellcomBillParser.class);
+
     @Override
     public double parseTotalAmountToPayFromPdf(String pathToFile)
     {
