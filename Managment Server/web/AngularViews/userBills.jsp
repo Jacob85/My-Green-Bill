@@ -60,7 +60,7 @@
           <td>{{bill.company_name}}</td>
           <td>{{bill.message_subject}}</td>
           <td>{{bill.message_content}}</td>
-          <td> <a href=""> pdf </a></td>
+          <td> <a ng-attr-href="${pageContext.request.contextPath}/dashboard/downloadBill?path={{bill.fie_path}}" target="_blank"> pdf </a></td>
       </tr>
 
       </tbody>
