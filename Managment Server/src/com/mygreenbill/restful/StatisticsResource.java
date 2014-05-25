@@ -174,7 +174,7 @@ public class StatisticsResource
                     }
                 }
                 LOGGER.debug("After aggregating the Stats: " + toReturn);
-                JSONArray jsonArray = new JSONArray();
+               /* JSONArray jsonArray = new JSONArray();
                 JSONObject currObject = null;
                 for (String key: toReturn.keySet())
                 {
@@ -182,9 +182,10 @@ public class StatisticsResource
                     currObject.put("Month", key);
                     currObject.put("Value", toReturn.get(key));
                     jsonArray.put(currObject);
-                }
-                LOGGER.info("Returning Json: " + jsonArray.toString());
-                return jsonArray.toString();
+                }*/
+                //LOGGER.info("Returning Json: " + jsonArray.toString());
+
+                return sortResponseByTimeLine(toReturn);
             }
             else
             {
@@ -196,12 +197,49 @@ public class StatisticsResource
         } catch (ParseException e)
         {
             LOGGER.error(e.getMessage(), e);
+        }/* catch (JSONException e)
+        {
+            LOGGER.error(e.getMessage(), e);
+        }*/
+        return null;
+    }
+
+    private String sortResponseByTimeLine(Map<String, Integer> stats)
+    {
+        int NUMBER_OF_MONTH = 12;
+        try
+        {
+            Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+            JSONArray jsonArray = new JSONArray();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM");
+            JSONObject currObject = null;
+            for (int i =0 ; i < NUMBER_OF_MONTH ; i++ )
+            {
+                calendar.add(Calendar.MONTH, - i);
+                String monthAsKey =  dateFormat.format(calendar.getTime());
+
+                if (stats.containsKey(monthAsKey))  //if stats exists
+                {
+                    currObject = new JSONObject();
+                    currObject.put("Month", monthAsKey);
+                    currObject.put("Value", stats.get(monthAsKey));
+                }
+                else
+                {
+                    //enter empty json
+                    currObject = new JSONObject();
+                    currObject.put("Month", monthAsKey);
+                    currObject.put("Value", 0);
+                }
+                jsonArray.put(NUMBER_OF_MONTH -1 -i, currObject);
+                //reset the calendar to current date;
+                calendar = Calendar.getInstance(TimeZone.getDefault());
+            }
+            return jsonArray.toString();
         } catch (JSONException e)
         {
             LOGGER.error(e.getMessage(), e);
         }
-
-
         return null;
     }
 
