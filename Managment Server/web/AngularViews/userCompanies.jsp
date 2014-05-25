@@ -37,7 +37,7 @@
                     {{ company.name }}
                 </div>
                 <div class="panel-body">
-                    Company Logo
+                    <img class="company-logo" src={{company.logo_path}} />
                 </div>
             </div>
         </div>

@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company` (
   `password` VARCHAR(128) NULL,
   `join_date` DATE NULL,
   `billing_info_id` INT NOT NULL,
+  `logo_path` VARCHAR(128) NULL,
   PRIMARY KEY (`id`, `email`),
   INDEX `fk_company_billing_info1_idx` (`billing_info_id` ASC),
   CONSTRAINT `fk_company_billing_info1`
@@ -645,9 +646,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (12345678, 'company@mail.com', 'Bank Leumi', '1234', '2013-09-15', 3);
-INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank Hapolaim', '1234', '2013-09-16', 4);
-INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`) VALUES (1234567, 'yaki.ams@gmail.com', 'Electric Company', '1234', '2013-09-16', 4);
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (12345678, 'company@mail.com', 'Bank Leumi', '1234', '2013-09-15', 3, 'assets/img/CompaniesLogo/leumi.png');
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank Hapolaim', '1234', '2013-09-16', 4, 'assets/img/CompaniesLogo/hapoalim.png');
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (1234567, 'yaki.ams@gmail.com', 'Electric Company', '1234', '2013-09-16', 4, 'assets/img/CompaniesLogo/eci.png');
 
 COMMIT;
 

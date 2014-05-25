@@ -5435,6 +5435,7 @@ a.list-group-item:focus {
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
+  text-align: center;
 }
 
 .panel-title {

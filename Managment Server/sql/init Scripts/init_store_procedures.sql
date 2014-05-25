@@ -298,7 +298,7 @@ drop procedure if exists `AddCompany`;
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompany`(IN id INT,IN email varchar(128), IN company_name varchar(128),
-							IN pass varchar(128), IN subscription_plan INT, IN rank varchar(128),
+							IN pass varchar(128), IN subscription_plan INT, IN rank varchar(128), IN logo_path VARCHAR(128),
 							IN street VARCHAR(128), IN house_number INT,
 							IN city VARCHAR(128), IN postal_code VARCHAR(128),
 							IN country VARCHAR(128))
@@ -316,7 +316,7 @@ BEGIN
 		VALUES(subscription_plan, rank);
 
 		INSERT INTO company
-		VALUES(id, email, company_name, pass, CURDATE(), LAST_INSERT_ID());
+		VALUES(id, email, company_name, pass, CURDATE(), LAST_INSERT_ID(), logo_path);
 
 		INSERT INTO company_has_address
 		VALUES(id, email, addressId);
@@ -1254,7 +1254,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllCompaniesOfUser`(IN userId IN
       SELECT
         mygreenbilldb.company.name as company_name,
         mygreenbilldb.company.email AS company_email,
-        mygreenbilldb.company.id as company_id
+        mygreenbilldb.company.id as company_id,
+        mygreenbilldb.company.logo_path as logo_path
       FROM mygreenbilldb.user
         JOIN mygreenbilldb.user_client_of_company ON mygreenbilldb.user_client_of_company.user_id = mygreenbilldb.user.id
         JOIN mygreenbilldb.company ON mygreenbilldb.user_client_of_company.company_id = mygreenbilldb.company.id
@@ -1376,7 +1377,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCompany`(IN companyId INT)
     SELECT
       mygreenbilldb.company.name as company_name,
       mygreenbilldb.company.email AS company_email,
-      mygreenbilldb.company.id as company_id
+      mygreenbilldb.company.id as company_id,
+      mygreenbilldb.company.logo_path as logo_path
     FROM mygreenbilldb.company
     WHERE mygreenbilldb.company.id = companyId;
 
@@ -1408,5 +1410,45 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserStatsBetweenDates`(in user_i
       where user_analytics.user_id = user_id && mygreenbilldb.user_analytics.recieved_date between start_date and end_date ORDER BY user_analytics.recieved_date;
     end if;
 
+  END $$
+DELIMITER ;
+
+
+drop procedure if exists `GetAllOtherCompaniesOfUser`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllOtherCompaniesOfUser`(IN userId INT)
+  BEGIN
+    DECLARE error_msg CONDITION FOR SQLSTATE '45000';
+    DECLARE isExist INT;
+
+    SELECT isUserIdExist(userId) INTO isExist;
+
+    if isExist = 1 then
+      SELECT
+        mygreenbilldb.company.name as name,
+        mygreenbilldb.company.email AS email,
+        mygreenbilldb.company.id as id,
+        mygreenbilldb.company.logo_path as logo_path
+      FROM
+        mygreenbilldb.company
+      WHERE 	company.id NOT IN
+             (
+               SELECT
+                 mygreenbilldb.company.id
+               FROM mygreenbilldb.user
+                 JOIN mygreenbilldb.user_client_of_company ON mygreenbilldb.user_client_of_company.user_id = mygreenbilldb.user.id
+                 JOIN mygreenbilldb.company ON mygreenbilldb.user_client_of_company.company_id = mygreenbilldb.company.id
+               WHERE mygreenbilldb.user.id = userId
+             );
+    ELSE
+      SET @message_text = CONCAT('A user with the ID: ', userId, ' does not exist.');
+      SIGNAL error_msg
+      SET MESSAGE_TEXT = @message_text;
+    END IF;
   END $$
 DELIMITER ;

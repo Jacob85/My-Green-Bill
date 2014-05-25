@@ -28,8 +28,11 @@ label.error {
 {
     color: limegreen;
 }
-
-.lemesh {
+.company-logo {
+    margin: 0 auto;
+    display: block;
+    height: 88px;
+    width: 120px
 }
 #add_company_dialog{
     float: left;
