@@ -23,13 +23,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Jacob on 5/13/14.
@@ -133,6 +132,78 @@ public class StatisticsResource
 
     }
 
+    @GET @Path("/pastYear")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPastYearStats(@Context HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+        GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
+        if (greenBillUser == null)
+        {
+            LOGGER.info("Cannot get user bills, user need to login again");
+            return errorJson("Please login again");
+        }
+        DateRange dateRange = GeneralUtilities.getPastYearDateRange();
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String queryString = getCurrentMonthStats.replaceFirst("\\?", greenBillUser.getUserId());
+        queryString = queryString.replaceFirst("\\?", "'" + dateFormat.format(dateRange.getStartDate()) + "'");
+        queryString = queryString.replace("?", "'" + dateFormat.format(dateRange.getEndDate()) + "'");
+
+        try
+        {
+            List<Map<String, Object>> stats = databaseHandler.runGetQuery(queryString);
+            if (GeneralUtilities.hasData(stats))
+            {
+                Map<String, Integer> toReturn = new HashMap<String, Integer>();
+                Date currDate = null;
+                SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
+                for (Map<String, Object> statRaw : stats)
+                {
+                    currDate = dateFormat.parse((String) statRaw.get("recieved_date").toString());
+                    Calendar calendar = new GregorianCalendar();
+                    calendar.setTime(currDate);
+                    // current month
+                    if (toReturn.containsKey(monthFormat.format(calendar.getTime())))
+                    {
+                        toReturn.put(monthFormat.format(calendar.getTime()), toReturn.get(monthFormat.format(calendar.getTime())) + (Integer)statRaw.get("amount"));
+                    }
+                    else
+                    {
+                        toReturn.put(monthFormat.format(calendar.getTime()), (Integer)statRaw.get("amount"));
+                    }
+                }
+                LOGGER.debug("After aggregating the Stats: " + toReturn);
+                JSONArray jsonArray = new JSONArray();
+                JSONObject currObject = null;
+                for (String key: toReturn.keySet())
+                {
+                    currObject = new JSONObject();
+                    currObject.put("Month", key);
+                    currObject.put("Value", toReturn.get(key));
+                    jsonArray.put(currObject);
+                }
+                LOGGER.info("Returning Json: " + jsonArray.toString());
+                return jsonArray.toString();
+            }
+            else
+            {
+                return new JSONObject().toString();         //if no stats available, return empty json
+            }
+        } catch (DatabaseException e)
+        {
+            LOGGER.error(e.getMessage(), e);
+        } catch (ParseException e)
+        {
+            LOGGER.error(e.getMessage(), e);
+        } catch (JSONException e)
+        {
+            LOGGER.error(e.getMessage(), e);
+        }
+
+
+        return null;
+    }
 
     private String getStatsBetweenDates(DateRange dateRange, GreenBillUser greenBillUser)
     {

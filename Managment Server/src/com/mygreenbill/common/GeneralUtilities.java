@@ -118,6 +118,28 @@ public class GeneralUtilities
         return new DateRange(begining, end);
     }
 
+    public static DateRange getPastYearDateRange()
+    {
+        Date begining, end;
+
+        {
+            Calendar calendar = getCalendarForLastYear();
+            calendar.set(Calendar.DAY_OF_MONTH,
+                    calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+            setTimeToBeginningOfDay(calendar);
+            begining = calendar.getTime();
+        }
+
+        {
+            Calendar calendar = getCalendarForNow();
+            calendar.set(Calendar.DAY_OF_MONTH,
+                    calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            setTimeToEndofDay(calendar);
+            end = calendar.getTime();
+        }
+
+        return new DateRange(begining, end);
+    }
     private static Calendar getCalendarForNow() {
     Calendar calendar = GregorianCalendar.getInstance();
     calendar.setTime(new Date());
@@ -127,6 +149,13 @@ public class GeneralUtilities
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.MONTH, -1);
+        return calendar;
+    }
+    private static Calendar getCalendarForLastYear()
+    {
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.YEAR, -1);
         return calendar;
     }
 

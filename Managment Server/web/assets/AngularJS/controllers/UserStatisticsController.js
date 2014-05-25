@@ -30,10 +30,83 @@ angular.module('userStatisticsController',[])
                     $scope.dataToDounatPlot  = response;
                     generateDounatForCurrentMonthByCategory($scope.dataToDounatPlot);
                 });
-
-
+            /* bar Chart - 1 year*/
+            $http.get('http://localhost:8080/greenbill/rest/stats/pastYear')
+                .success(function (response)
+                {
+                    $scope.dataToBarPlot  = response;
+                    generateBarChart($scope.dataToBarPlot);
+                });
         }
     ]);
+
+function generateBarChart(dataToBarPlot)
+{
+    finalData = new Array();
+    finalData[0] = {Month: "Jan", Value: 0};
+    finalData[1] = {Month: "Feb", Value: 0};
+    finalData[2] = {Month: "Mar", Value: 0};
+    finalData[3] = {Month: "Apr", Value: 0};
+    finalData[4] = {Month: "May", Value: 0};
+    finalData[5] = {Month: "Jun", Value: 0};
+    finalData[6] = {Month: "Jul", Value: 0};
+    finalData[7] = {Month: "Aug", Value: 0};
+    finalData[8] = {Month: "Sep", Value: 0};
+    finalData[9] = {Month: "Oct", Value: 0};
+    finalData[10] = {Month: "Nov", Value: 0};
+    finalData[11] = {Month: "Dec", Value: 0};
+
+    dataToBarPlot.forEach(function(entry){
+        switch (entry["Month"])
+        {
+            case "Jan":
+                finalData[0] = entry;
+                break;
+            case "Feb":
+                finalData[1] = entry;
+                break;
+            case "Mar":
+                finalData[2] = entry;
+                break;
+            case "Apr":
+                finalData[3] = entry;
+                break;
+            case "May":
+                finalData[4] = entry;
+                break;
+            case "Jun":
+                finalData[5] = entry;
+                break;
+            case "Jul":
+                finalData[6] = entry;
+                break;
+            case "Aug":
+                finalData[7] = entry;
+                break;
+            case "Sep":
+                finalData[8] = entry;
+                break;
+            case "Oct":
+                finalData[9] = entry;
+                break;
+            case "Nov":
+                finalData[10] = entry;
+                break;
+            case "Dec":
+                finalData[11] = entry;
+                break;
+
+        }
+    });
+
+    Morris.Bar({
+        element: 'year-stats',
+        data: finalData,
+        xkey: 'Month',
+        ykeys: ['Value'],
+        labels: ['Series A', 'Series B']
+    });
+}
 
 function generateDounatForCurrentMonthByCategory(dataToPlot)
 {
