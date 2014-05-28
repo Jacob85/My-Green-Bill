@@ -36,13 +36,14 @@ public class DashboardServlet extends HttpServlet
         }
     }
 
-    private void processBillDownload(HttpServletRequest request, HttpServletResponse response)
+    private void processBillDownload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String serverPrefix = "http://54.72.109.83";
         String path = request.getParameter("path");
         if (!GeneralUtilities.hasData(path))
         {
-            //todo yaki - forward to 404 not found page;
+            LOGGER.info("unable to get the user path, forward to 404 not found");
+            forwardTo404(request, response);
         }
         else
         {
@@ -70,12 +71,11 @@ public class DashboardServlet extends HttpServlet
             } catch (MalformedURLException e)
             {
                 LOGGER.error(e.getMessage(), e);
-                //todo yaki - forward to 404 not found page;
+                forwardTo404(request, response);
             } catch (IOException e)
             {
-                e.printStackTrace();
                 LOGGER.error(e.getMessage(), e);
-                //todo yaki - forward to 404 not found page;
+                forwardTo404(request, response);
             }
         }
 
@@ -85,5 +85,11 @@ public class DashboardServlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         super.doPost(request, response);
+    }
+
+    private void forwardTo404(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        response.sendRedirect("/greenbill/error404.jsp");
+        return;
     }
 }
