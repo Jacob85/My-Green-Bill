@@ -648,12 +648,13 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (12345678, 'company@mail.com', 'Bank Leumi', '1234', '2013-09-15', 3, 'assets/img/CompaniesLogo/leumi.png');
-INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank Hapolaim', '1234', '2013-09-16', 4, 'assets/img/CompaniesLogo/hapoalim.png');
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (123456789, 'ipeleg@hotmail.com', 'Bank Hapolaim', '1234', '2013-09-16', 4, 'assets/img/CompaniesLogo/hapohalim.png');
 INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`) VALUES (1234567, 'yaki.ams@gmail.com', 'Electric Company', '1234', '2013-09-16', 4, 'assets/img/CompaniesLogo/eci.png');
 
-/*Orange and cellcom*/
+/* Orange, Cellcom and Yad2 */
 INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`, `parser_name`) VALUES (12121212, 'cellcom.mygreenbill@gmail.com', 'Cellcom LTD', '1234', '2014-05-16', 4, 'assets/img/CompaniesLogo/cellcom.png', 'CellcomBillParser');
 INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`, `parser_name`) VALUES (12445272, 'orange.mygreenbill@gmail.com', 'Orange LTD', '1234', '2014-05-16', 4, 'assets/img/CompaniesLogo/orange.png', 'OrangeBillParser');
+INSERT INTO `mygreenbilldb`.`company` (`id`, `email`, `name`, `password`, `join_date`, `billing_info_id`, `logo_path`, `parser_name`) VALUES (12445, 'yad2.mygreenbill@gmail.com', 'Yad2 LTD', '1234', '2014-05-16', 4, 'assets/img/CompaniesLogo/yad2.png', 'Yad2BillParser');
 
 COMMIT;
 

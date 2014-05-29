@@ -86,7 +86,7 @@ public class DatabaseHandler
 
     }
 
-    public List runGetQuery(String query) throws DatabaseException
+    public List<Map> runGetQuery(String query) throws DatabaseException
     {
         if (query == null)
         {
@@ -108,7 +108,7 @@ public class DatabaseHandler
             LOGGER.info("Get query: " + query + " was execute!");
 
             // extract the result from the result set into list
-            List toReturn = toList(resultSet);
+            List<Map> toReturn = toList(resultSet);
             // close resources
             statement.close();
             return toReturn;

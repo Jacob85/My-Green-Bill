@@ -298,7 +298,7 @@ drop procedure if exists `AddCompany`;
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddCompany`(IN id INT,IN email varchar(128), IN company_name varchar(128),
-							IN pass varchar(128), IN subscription_plan INT, IN rank varchar(128), IN logo_path VARCHAR(128),
+							IN pass varchar(128), IN subscription_plan INT, IN rank varchar(128), IN logo_path VARCHAR(128), IN parser_name VARCHAR(128),
 							IN street VARCHAR(128), IN house_number INT,
 							IN city VARCHAR(128), IN postal_code VARCHAR(128),
 							IN country VARCHAR(128))
@@ -316,7 +316,7 @@ BEGIN
 		VALUES(subscription_plan, rank);
 
 		INSERT INTO company
-		VALUES(id, email, company_name, pass, CURDATE(), LAST_INSERT_ID(), logo_path);
+		VALUES(id, email, company_name, pass, CURDATE(), LAST_INSERT_ID(), logo_path, parser_name);
 
 		INSERT INTO company_has_address
 		VALUES(id, email, addressId);

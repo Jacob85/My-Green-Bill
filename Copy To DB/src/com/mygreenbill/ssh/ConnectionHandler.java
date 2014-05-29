@@ -59,8 +59,20 @@ public class ConnectionHandler
         }
         catch (SftpException e)
         {
-            LOGGER.error("SftpException in changeFolderOnRemote");
-            LOGGER.error(e.getMessage());
+            try
+            {
+                LOGGER.error("An exception was thrown, could be the folder does not exist and need to be created");
+                // If there is an exception is might be the folder still not exist then create it cd to it
+                LOGGER.info("Making sure folder exist " + folderPath);
+                channelSftp.mkdir(folderPath);
+                LOGGER.info("Changing folder to " + folderPath);
+                channelSftp.cd(folderPath);
+            }
+            catch (SftpException exception)
+            {
+                LOGGER.error("SftpException in changeFolderOnRemote");
+                LOGGER.error(e.getMessage());
+            }
         }
     }
 

@@ -17,15 +17,15 @@ public class BillParserTest extends TestCase
     {
         System.out.println(new File(".").getAbsolutePath());
         BillParser billParser = new Yad2BillParser();
-        double amount = billParser.parseTotalAmountToPayFromPdf("./Copy To DB/conf/bills/yad2.pdf");
+        double amount = billParser.parseTotalAmountToPayFromPdf(new File("./Copy To DB/conf/bills/yad2.pdf"));
         assertEquals(amount, 12.0);
 
         billParser = new CellcomBillParser();
-        amount = billParser.parseTotalAmountToPayFromPdf("./Copy To DB/conf/bills/cellcom.pdf");
+        amount = billParser.parseTotalAmountToPayFromPdf(new File("./Copy To DB/conf/bills/cellcom.pdf"));
         assertEquals(amount, 112.0);
 
         billParser = new OrangeBillParser();
-        amount = billParser.parseTotalAmountToPayFromPdf("./Copy To DB/conf/bills/orange.pdf");
+        amount = billParser.parseTotalAmountToPayFromPdf(new File("./Copy To DB/conf/bills/orange.pdf"));
         assertEquals(amount, 173.0);
     }
 }

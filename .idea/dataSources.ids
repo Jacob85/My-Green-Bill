@@ -3417,6 +3417,7 @@
       <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
       <column name="billing_info_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="logo_path" sqlType="VARCHAR" length="128" precision="0" nullable="true" jdbcType="12"/>
+      <column name="parser_name" sqlType="VARCHAR" length="128" precision="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id,email"/>
       <foreign-key name="fk_company_billing_info1" columns="billing_info_id" ref-table="billing_info" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_company_has_address_company1" table="company_has_address" schema="" catalog="mygreenbilldb" columns="company_id,company_email"/>
@@ -4109,11 +4110,12 @@
         <parameter name="subscription_plan" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="5"/>
         <parameter name="rank" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="6"/>
         <parameter name="logo_path" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="7"/>
-        <parameter name="street" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="8"/>
-        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
-        <parameter name="city" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="10"/>
-        <parameter name="postal_code" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="11"/>
-        <parameter name="country" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="12"/>
+        <parameter name="parser_name" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="8"/>
+        <parameter name="street" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="9"/>
+        <parameter name="house_number" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="10"/>
+        <parameter name="city" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="11"/>
+        <parameter name="postal_code" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="12"/>
+        <parameter name="country" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="13"/>
       </prototype>
     </procedure>
     <procedure name="AddCompanyToUser" schema="" catalog="mygreenbilldb" type="1">

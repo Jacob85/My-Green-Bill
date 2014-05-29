@@ -12,17 +12,19 @@ import java.io.IOException;
  */
 public class OrangeBillParser implements BillParser
 {
+    private String category = "Communication";
     private Logger LOGGER =Logger.getLogger(OrangeBillParser.class);
 
     @Override
-    public double parseTotalAmountToPayFromPdf(String pathToFile)
+    public double parseTotalAmountToPayFromPdf(File file)
     {
         try
         {
+            LOGGER.info("Starting to parse " + file.getName());
             // the first line is for debugging
             //Document luceneDocument = LucenePDFDocument.getDocument(new File("C:\\Users\\Jacob\\Downloads\\2014-04-07.cycle2_0.pdf"));
-            Document luceneDocument = LucenePDFDocument.getDocument(new File(pathToFile));
-            LOGGER.info("File" + pathToFile + " as a String \r\n " + luceneDocument.toString());
+            Document luceneDocument = LucenePDFDocument.getDocument(file);
+            //LOGGER.info("File" + file.getAbsolutePath() + " as a String \r\n " + luceneDocument.toString());
             String summery = luceneDocument.get("summary");
 
             LOGGER.debug("Summery:" + summery);
@@ -31,7 +33,7 @@ public class OrangeBillParser implements BillParser
             System.out.println("looping...........");
             for(String str : splited)
             {
-                if (str.contains("כולל"))
+                if (str.contains("ללוכ") || str.contains("כולל"))
                 {
                     System.out.println(str);
                     str = str.replaceAll("[^\\d.]", "");
@@ -46,9 +48,15 @@ public class OrangeBillParser implements BillParser
 
         } catch (IOException e)
         {
-            LOGGER.error("Error While reading PDF : " + pathToFile, e);
+            LOGGER.error("Error While reading PDF : " + file.getPath() + file.getName(), e);
         }
 
          return 0;
+    }
+
+    @Override
+    public String getCategory()
+    {
+        return category;
     }
 }

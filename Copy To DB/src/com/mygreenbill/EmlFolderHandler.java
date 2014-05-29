@@ -94,8 +94,11 @@ public class EmlFolderHandler
 
         try
         {
+            LOGGER.info(String.valueOf(emlFile.getRecipients(Message.RecipientType.TO)[0]));
             TO = String.valueOf(emlFile.getRecipients(Message.RecipientType.TO)[0]);
-            TO = TO.substring(TO.indexOf("<")+1, TO.lastIndexOf(">"));
+
+            if (TO.contains("<") || TO.contains(">"))
+                TO = TO.substring(TO.indexOf("<")+1, TO.lastIndexOf(">"));
         }
         catch (MessagingException e)
         {
@@ -117,7 +120,9 @@ public class EmlFolderHandler
         try
         {
             FROM = String.valueOf(emlFile.getFrom()[0]);
-            FROM = FROM.substring(FROM.indexOf("<")+1, FROM.lastIndexOf(">"));
+
+            if (FROM.contains("<") || FROM.contains(">"))
+                FROM = FROM.substring(FROM.indexOf("<")+1, FROM.lastIndexOf(">"));
         }
         catch (MessagingException e)
         {
