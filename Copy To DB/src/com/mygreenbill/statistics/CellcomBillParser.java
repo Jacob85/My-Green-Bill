@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class CellcomBillParser implements BillParser
 {
-    private String category = "Communication";
+    private String category = "COMMUNICATION";
     private static Logger LOGGER = Logger.getLogger(CellcomBillParser.class);
 
     @Override
@@ -25,28 +25,31 @@ public class CellcomBillParser implements BillParser
             luceneDocument = LucenePDFDocument.getDocument(file);
             //LOGGER.info("File" + file.getAbsolutePath() + " as a String \r\n " + luceneDocument.toString());
             String summery = luceneDocument.get("summary");
-            LOGGER.info("Summery:" + summery);
+            //LOGGER.info("Summery:" + summery);
             String[] splited = summery.split("\r\n");
 
-            System.out.println("looping...........");
             for(String str : splited)
             {
                 if (str.contains("ללוכ") || str.contains("כולל"))
                 {
-                    System.out.println(str);
+                    LOGGER.info("1: " + str);
                     str = str.replaceAll("[^\\d.]", "");
-                    System.out.println(str);
-                    str = new StringBuilder(str).reverse().toString();
-                    String[] split = str.split("\\.");
+                    LOGGER.info("2: " + str);
+                    //str = new StringBuilder(str).reverse().toString();
+                    //String[] split = str.split("\\.");
 
-                    double num = Double.parseDouble(new StringBuilder(split[0]).reverse().toString());
+                    //double num = Double.parseDouble(new StringBuilder(split[0]).reverse().toString());
+                    double num = Double.parseDouble(str);
                     LOGGER.info("The Value parsed is: " + num);
                     return num;
                 }
             }
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
-            e.printStackTrace();
+            LOGGER.error("Error While reading PDF : " + file.getPath() + file.getName());
+            LOGGER.error("IOException in parseTotalAmountToPayFromPdf");
+            LOGGER.error(e.getMessage());
         }
 
         return 0;

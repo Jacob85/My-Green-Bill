@@ -35,7 +35,7 @@
                  <option value="date">{{ date }}</option>
                  <option value="companyName" selected>{{ companyName }}</option>
                  <option value="subject">{{ subject }}</option>
-                 <option value="content">{{ content }}</option>
+                 <!-- <option value="content">{{ content }}</option> -->
 
               </select>
           </div>
@@ -50,7 +50,7 @@
           <th>{{ date }}</th>
           <th>{{ companyName }}</th>
           <th>{{ subject}}</th>
-          <th>{{ content }}</th>
+          <!-- <th>{{ content }}</th> -->
           <th>{{ download }}</th>
       </tr>
       </thead>
@@ -59,7 +59,7 @@
           <td>{{bill.date}}</td>
           <td>{{bill.company_name}}</td>
           <td>{{bill.message_subject}}</td>
-          <td>{{bill.message_content}}</td>
+          <!-- <td>{{bill.message_content}}</td> -->
           <td> <a ng-attr-href="${pageContext.request.contextPath}/dashboard/downloadBill?path={{bill.fie_path}}" target="_blank"> pdf </a></td>
       </tr>
 

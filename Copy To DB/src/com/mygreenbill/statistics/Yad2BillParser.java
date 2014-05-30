@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Yad2BillParser implements BillParser
 {
-    private String category = "LifeStyle";
+    private String category = "LIFE-STYLE";
     private static Logger LOGGER = Logger.getLogger(Yad2BillParser.class);
 
     @Override
@@ -34,13 +34,14 @@ public class Yad2BillParser implements BillParser
             {
                 if (str.contains("לתשלום") || str.contains("םולשתל") )
                 {
-                    System.out.println(str);
+                    LOGGER.info(str);
                     str = str.replaceAll("[^\\d.]", "");
-                    System.out.println(str);
-                    str = new StringBuilder(str).reverse().toString();
-                    String[] split = str.split("\\.");
+                    LOGGER.info(str);
+                    //str = new StringBuilder(str).reverse().toString();
+                    //String[] split = str.split("\\.");
 
-                    double num = Double.parseDouble(new StringBuilder(split[0]).reverse().toString());
+                    //double num = Double.parseDouble(new StringBuilder(split[0]).reverse().toString());
+                    double num = Double.parseDouble(str);
                     LOGGER.info("The Value parsed is: " + num);
                     return num;
                 }
@@ -48,9 +49,9 @@ public class Yad2BillParser implements BillParser
         }
         catch (IOException e)
         {
+            LOGGER.error("Error While reading PDF : " + file.getPath() + file.getName());
             LOGGER.error("IOException in parseTotalAmountToPayFromPdf");
-            LOGGER.error(e.getLocalizedMessage());
-            LOGGER.error(e.getStackTrace());
+            LOGGER.error(e.getMessage());
         }
 
         return 0;

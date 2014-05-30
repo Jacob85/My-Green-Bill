@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class OrangeBillParser implements BillParser
 {
-    private String category = "Communication";
+    private String category = "COMMUNICATION";
     private Logger LOGGER =Logger.getLogger(OrangeBillParser.class);
 
     @Override
@@ -35,20 +35,24 @@ public class OrangeBillParser implements BillParser
             {
                 if (str.contains("ללוכ") || str.contains("כולל"))
                 {
-                    System.out.println(str);
+                    LOGGER.info(str);
                     str = str.replaceAll("[^\\d.]", "");
-                    System.out.println(str);
-                    String[] split = str.split("\\.");
+                    LOGGER.info(str);
+                    //String[] split = str.split("\\.");
 
-                    double num = Double.parseDouble(new StringBuilder(split[0]).reverse().toString());
+                    //double num = Double.parseDouble(new StringBuilder(split[0]).reverse().toString());
+                    double num = Double.parseDouble(str.substring(str.indexOf(".") + 1));
                     LOGGER.info("The Value parsed is: " + num);
                     return num;
                 }
             }
 
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
-            LOGGER.error("Error While reading PDF : " + file.getPath() + file.getName(), e);
+            LOGGER.error("Error While reading PDF : " + file.getPath() + file.getName());
+            LOGGER.error("IOException in parseTotalAmountToPayFromPdf");
+            LOGGER.error(e.getMessage());
         }
 
          return 0;
