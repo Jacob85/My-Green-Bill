@@ -97,7 +97,8 @@ public class StatisticsResource
                 {
                     if (toReturn.containsKey(stat.get("category")))
                     {
-                        toReturn.put((String)stat.get("category"), toReturn.get("category") + (Integer)stat.get("amount"));
+                        int currentAmount = toReturn.get(stat.get("category")); // Getting the current amount
+                        toReturn.put((String)stat.get("category"), currentAmount + (Integer)stat.get("amount")); // Adding the new sub total
                     }
                     else
                     {
