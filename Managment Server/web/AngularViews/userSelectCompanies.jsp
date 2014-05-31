@@ -6,7 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <script src="assets/css/jquery-ui.css"></script>
+<link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+
 <script src="assets/plugins/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/pnotify.custom.min.js"></script>
 
 
 <script language="javascript" type="text/javascript">
@@ -26,27 +29,49 @@
         }
     });
 
-    $("#selectCompanyForm").submit(function(e)
+    function reloadPage()
     {
-        var postData = $(this).serializeArray();
-        var formURL = $(this).attr("action");
-        $.ajax(
+        window.location.reload();
+    }
+
+    $("#submitButton").click(function(e)
+    {
+        PNotify.prototype.options.styling = "bootstrap3";
+        (new PNotify({
+            title: 'Confirmation Needed',
+            text: 'Are you sure?',
+            icon: 'glyphicon glyphicon-question-sign',
+            hide: false,
+            confirm: {
+                confirm: true
+            },
+            buttons: {
+                closer: false,
+                sticker: false
+            },
+            history: {
+                history: false
+            }
+        })).get().on('pnotify.confirm', function()
                 {
-                    url : formURL,
-                    type: "POST",
-                    data : postData,
-                    success:function(data, textStatus, jqXHR)
-                    {
-                        window.location.reload(true); // Reloading the page from the server
-                    },
-                    error: function(jqXHR, textStatus, errorThrown)
-                    {
-                        //if fails
-                    }
+                    document.getElementById("selectCompanyForm").submit();
+                    new PNotify({
+                        title: 'Thank You!',
+                        text: 'Your changes were made and the companies were notified.',
+                        type: 'success'
+                    });
+
+                    window.setTimeout(reloadPage,2500) // Wait for 2.5s and reload the page
+                }).on('pnotify.cancel', function()
+                {
+                    new PNotify({
+                        title: 'Cancel',
+                        text: 'No changes were made.',
+                        type: 'info'
+                    });
                 });
-        e.preventDefault(); //STOP default action
-        e.unbind(); //unbind. to stop multiple form submit.
     });
+
 </script>
 
 <div class="row">
@@ -58,10 +83,12 @@
 <hr />
 
 <div class="row">
-    <form id="selectCompanyForm" method="post" action="rest/company/addUserCompanies">
-        <input id="submitButton" style="margin-left: 15px" type="submit" value="Save" class="btn btn-primary">
-        <input id="selectAll" type="checkbox" style="margin-left: 15px"> Select All?<br><br>
 
+    <Button id="submitButton" style='margin-left: 15px' class="btn btn-primary"> Save </Button>
+
+    Select All? <input id="selectAll" type="checkbox"><br><br>
+
+    <form id="selectCompanyForm" method="post" action="rest/company/addUserCompanies">
         <div class="col-lg-8" ng-if="otherCompanies == 0" >
             <h3>You are not subscribed to any company</h3>
         </div>
@@ -69,8 +96,10 @@
         <div ng-repeat="company in otherCompanies" class="col-lg-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <input class="checkbox1" type="checkbox" name="company" value={{company.id}}>
-                    {{ company.name }}
+                    <label>
+                        <input class="checkbox1" type="checkbox" name="company" value={{company.id}}>
+                        {{ company.name }}
+                    </label>
                 </div>
                 <div class="panel-body">
                     <img class="company-logo" src={{company.logo_path}} />
