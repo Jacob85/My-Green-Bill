@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/web/css/pnotify.custom.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/web/js/pnotify.custom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/css/style.css" afterPath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/css/style.css" afterPath="$PROJECT_DIR$/Managment Server/web/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/AngularViews/userRemoveCompanies.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/AngularViews/userRemoveCompanies.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="My Green Bill.iws" />
@@ -86,7 +81,7 @@
       <file leaf-file-name="userBills.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="129" selection-start="2100" selection-end="2115" vertical-scroll-proportion="-17.5" vertical-offset="510" max-vertical-offset="1365">
+            <state line="62" column="129" selection-start="2100" selection-end="2115" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1365">
               <folding />
             </state>
           </provider>
@@ -95,10 +90,8 @@
       <file leaf-file-name="StatisticsResource.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/restful/StatisticsResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="21" selection-start="4236" selection-end="4236" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="3930">
-              <folding>
-                <element signature="e#3780#3797#0" expanded="true" />
-              </folding>
+            <state line="101" column="21" selection-start="4236" selection-end="4236" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="4335">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,7 +99,7 @@
       <file leaf-file-name="userSelectCompanies.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="2127" selection-end="2317" vertical-scroll-proportion="-18.125" vertical-offset="555" max-vertical-offset="1785">
+            <state line="66" column="0" selection-start="2127" selection-end="2317" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -115,7 +108,7 @@
       <file leaf-file-name="userRemoveCompanies.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userRemoveCompanies.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="36" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.579646" vertical-offset="642" max-vertical-offset="1785">
+            <state line="56" column="62" selection-start="1720" selection-end="1720" vertical-scroll-proportion="0.25773194" vertical-offset="690" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -208,8 +201,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -367,6 +361,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Managment Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Managment Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="init Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -391,7 +417,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
@@ -782,12 +808,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -805,6 +825,12 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Unnamed" type="JUnit" factoryName="JUnit">
@@ -992,7 +1018,8 @@
       <workItem from="1401301498316" duration="165000" />
       <workItem from="1401357683872" duration="603000" />
       <workItem from="1401376587168" duration="28922000" />
-      <workItem from="1401550247682" duration="4235000" />
+      <workItem from="1401550247682" duration="4413000" />
+      <workItem from="1401611639258" duration="347000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -1186,11 +1213,15 @@
       <created>1401528928320</created>
       <updated>1401528928320</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Added confirmation pop-up before adding / removing company using pnotify">
+      <created>1401555356817</created>
+      <updated>1401555356817</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256707000" />
+    <option name="totallyTimeSpent" value="257232000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1213,7 +1244,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="726" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1237,8 +1268,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2552504" sideWeight="0.48820326" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4082192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2552504" sideWeight="0.48820326" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40694007" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40851736" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1260,7 +1291,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3785489" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2552504" sideWeight="0.48820326" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4082192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40694007" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40851736" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1292,7 +1323,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Small update" />
     <MESSAGE value="Mail Server module updated to use CommonClasses" />
     <MESSAGE value="CommonClases updated name to CommonClasses" />
     <MESSAGE value="Copy To DB module updated to use CommonClasses" />
@@ -1317,7 +1347,8 @@
     <MESSAGE value="Added parsers to Copy2DB" />
     <MESSAGE value="Fixed parsers, Removed content column from My Bills" />
     <MESSAGE value="Fixed CurrMonthByCategory rest bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed CurrMonthByCategory rest bug" />
+    <MESSAGE value="Added confirmation pop-up before adding / removing company using pnotify" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added confirmation pop-up before adding / removing company using pnotify" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1582,7 +1613,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="129" selection-start="2100" selection-end="2115" vertical-scroll-proportion="-17.5" vertical-offset="510" max-vertical-offset="1365">
+        <state line="62" column="129" selection-start="2100" selection-end="2115" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1365">
           <folding />
         </state>
       </provider>
@@ -1590,29 +1621,25 @@
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/restful/StatisticsResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="21" selection-start="4236" selection-end="4236" vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="3930">
-          <folding>
-            <element signature="e#3780#3797#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="14" selection-start="613" selection-end="613" vertical-scroll-proportion="0.7051282" vertical-offset="0" max-vertical-offset="702">
-          <folding />
-        </state>
+        <state line="33" column="14" selection-start="613" selection-end="613" vertical-scroll-proportion="0.7051282" vertical-offset="0" max-vertical-offset="702" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="2127" selection-end="2317" vertical-scroll-proportion="-18.125" vertical-offset="555" max-vertical-offset="1785">
+        <state line="66" column="0" selection-start="2127" selection-end="2317" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1785">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userRemoveCompanies.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="36" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.579646" vertical-offset="642" max-vertical-offset="1785">
+        <state line="56" column="62" selection-start="1720" selection-end="1720" vertical-scroll-proportion="0.25773194" vertical-offset="690" max-vertical-offset="1785">
           <folding />
         </state>
       </provider>

@@ -54,7 +54,7 @@
             }
         })).get().on('pnotify.confirm', function()
                 {
-                    document.getElementById("selectCompanyForm").submit();
+                    document.getElementById("removeCompanyForm").submit();
                     new PNotify({
                         title: 'Thank You!',
                         text: 'Your changes were made and the companies were notified.',
