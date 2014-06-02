@@ -94,7 +94,6 @@ public class RegisterServlet extends HttpServlet
         }
         //else the user was successfully added to the Database (Register successfully)
 
-        //todo yaki - at the moment just forward to success page with proper meaasge in the future to redirect the user to dashboard
         registrationManager.updateCurrentSessionWithUserInfo(registrationRequest, currentSession);
 
         GreenBillUser greenBillUser = (GreenBillUser) currentSession.getAttribute("user");
@@ -104,7 +103,7 @@ public class RegisterServlet extends HttpServlet
 
          /*end of phase 1 next phase is 2*/
         request.getSession().setAttribute("phase", 2);
-        request.getRequestDispatcher("/success.jsp").forward(request, response);
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/success.jsp"));
 
     }
 

@@ -1,6 +1,7 @@
 package com.mygreenbill.servlets;
 
 import com.mygreenbill.authentication.AuthenticationManager;
+import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
 import org.apache.log4j.Logger;
 
@@ -53,25 +54,44 @@ public class AuthenticationServlet extends HttpServlet
         if (uri.contains("login"))
         {
             processLoginRequest(request, response);
-            return;
         }
         else if (uri.contains("accountActivation"))
         {
             processAccountActivation(request, response);
-            return;
         }
         else if (uri.contains("logout"))
         {
             processLogoutRequest(request, response);
-            return;
         }
         else if (uri.contains("restorePassword"))
         {
-        processRestorePasswordRequest(request, response);
-        return;
+            processRestorePasswordRequest(request, response);
+        }
+        else if (uri.contains("resendActivationEmail"))
+        {
+            processResendActivationEmail(request, response);
+        }
+
+
+
     }
 
+    private void processResendActivationEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        GreenBillUser greenBillUser = (GreenBillUser) request.getSession().getAttribute("user");
+        if (greenBillUser == null)
+        {
+            LOGGER.info("Session Timeout, User has to reconnect again..");
+            processLogoutRequest(request, response);
+            return;
+        }
+        // else - user is still logged in
+        LOGGER.info("Composing Welcome and Validation email for the user " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName());
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
+        authenticationManager.composeAndSendAuthenticationEmail(greenBillUser);
 
+        request.getSession().setAttribute("resendEmail", "true");
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/success.jsp"));
     }
 
     private void processRestorePasswordRequest(HttpServletRequest request, HttpServletResponse response)
