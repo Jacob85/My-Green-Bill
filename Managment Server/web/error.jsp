@@ -6,7 +6,7 @@
   Time: 1:29 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isErrorPage="true" contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -48,6 +48,7 @@
         <div class="logo">
             <h1>Error :( </h1>          </div>
         <p class="lead text-muted"><%= request.getSession().getAttribute("message") %></p>
+        <p class="lead text-muted"><%= exception != null ? exception.getMessage(): "" %></p>
         <div class="clearfix"></div>
         <br />
         <div class="col-lg-6  col-lg-offset-3">
