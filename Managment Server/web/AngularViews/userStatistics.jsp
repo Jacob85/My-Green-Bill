@@ -1,3 +1,4 @@
+<%@ page import="com.mygreenbill.common.GreenBillUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: ipeleg
@@ -8,7 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="row">
     <div class="col-lg-12">
-        <h2>THIS IS USER STATISTICS PAGE</h2>
+        <%
+            GreenBillUser user = (GreenBillUser) session.getAttribute("user");
+        %>
+        <h2><%=user!= null? user.getFirstName() + " " + user.getLastName() : "" +" Statistics"%></h2>
     </div>
 </div>
 
@@ -16,9 +20,9 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                {{currMonthName}} Total Expenses
+                <h3>{{currMonthName}} Total Expenses </h3>
             </div>
             <div class="panel-body">
                 <h1 class="text-center"> {{ currentMonthTotalExpenses }} ₪</h1>
@@ -26,9 +30,9 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                {{lastMonthName}} Total Expenses
+                <h3>{{lastMonthName}} Total Expenses</h3>
             </div>
             <div class="panel-body">
                 <h1 class="text-center"> {{ lastMonthTotalExpenses }} ₪</h1>
@@ -38,9 +42,9 @@
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                Year Stats
+                <h3>  Year Stats</h3>
             </div>
             <div class="panel-body">
                 <div id="year-stats"></div>
@@ -48,9 +52,9 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                {{currMonthName}} Expenses By Category
+                <h3>{{currMonthName}} Expenses By Category </h3>
             </div>
             <div class="panel-body">
                 <div id="donut-example"></div>

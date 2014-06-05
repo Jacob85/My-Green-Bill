@@ -59,8 +59,8 @@
 <body class="padTop53">
 
     <div id="wrap">
-        <div id="top">
-            <nav class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 10px">
+        <div>
+            <%--<nav class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 10px">
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
                     <a href="#" class="navbar-brand brand" style="color: limegreen">
@@ -82,7 +82,29 @@
                         </ul>
                     </li>
                 </ul>
-            </nav>
+            </nav>--%>
+
+                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container">
+                        <header class="navbar-header">
+                            <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
+                        </header>
+                        <ul class="nav navbar-top-links navbar-right">
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                    <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#"><i class="icon-user"></i><%=properties.getProperty("user_profile")%> </a> </li>
+                                    <li class="divider"></li>
+                                    <li><a href="${pageContext.request.contextPath}/authenticate/logout"><i class="icon-signout"></i><%=properties.getProperty("logout")%> </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
         </div>
         <!-- MENU SECTION -->
         <div id="left" >
@@ -123,7 +145,7 @@
                     List<GreenBillCompany> companies = user.getUserCompanyList();
                     for(GreenBillCompany company : companies)
                     {
-                        out.write("<li class=\"\"><a href=\"#\"><i class=\"icon-angle-right\"></i> " + company.getName() +"</a></li>");
+                        out.write("<li class=\"\"><a href=\"#/User/Bills?companyId="+company.getId()+"&companyName="+company.getName()+"\"><i class=\"icon-angle-right\"></i> " + company.getName() +"</a></li>");
                     }
                 %>
             </ul>

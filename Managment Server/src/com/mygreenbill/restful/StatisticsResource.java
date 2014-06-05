@@ -277,7 +277,7 @@ public class StatisticsResource
     }
     private String errorJson(String message)
     {
-        return "{error: " + message + "," +
-                "redirect: http://www.mygreenbill.com}";
+        return "{\"error\": \"" + message + "\"," +
+                "\"redirect\": \"http://www.mygreenbill.com\"}";
     }
 }

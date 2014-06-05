@@ -20,14 +20,14 @@
   <div class="inner">
       <div class="row">
           <div class="col-lg-12">
-              <h2> All Bills </h2>
+              <h2 class="ti"> {{title}} </h2>
           </div>
       </div>
       <div class="row">
       <div class="col-lg-12">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
       <div class="panel-heading">
-          All <%=user != null ? user.getFirstName() + " " + user.getLastName() : ""%> Bills
+         <h3 style="display: inline"> <%=user != null ? user.getFirstName() + " " + user.getLastName() : ""%> Bills </h3>
           <div style="float: right;">
               Filter the table:
               <input type="text" ng-model="searchstr" placeholder="filter the table..." />
