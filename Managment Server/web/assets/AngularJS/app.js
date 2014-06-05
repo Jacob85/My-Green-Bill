@@ -8,10 +8,11 @@ var app = angular.module('app', [
     'userDashboardController',
     'userBillsController',
     'userSelectCompaniesController',
-    'userRemoveCompaniesController'
+    'userRemoveCompaniesController',
+    'userSettingsController'
 ]);
 
-app.config(['$routeProvider',  function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/',
         {
@@ -35,7 +36,7 @@ app.config(['$routeProvider',  function ($routeProvider) {
         })
         .when('/User/Settings',
         {
-            controller: 'CompaniesController',
+            controller: 'SettingsController',
             templateUrl: 'AngularViews/userAccountSettings.jsp'
         })
         .when('/User/Statistics',
