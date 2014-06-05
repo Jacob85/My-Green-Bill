@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="my_green_bill" default="all">
+  
+  
+  <property file="my_green_bill.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.jersey-server-1.8.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/asm-3.1.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/jersey-core-1.8.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/jersey-server-1.8.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${basedir}/Mail Server/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.lib2.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/annotations-api.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/catalina-ant.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/catalina-ha.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/catalina-tribes.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/ecj-4.3.1.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/el-api.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/jasper-el.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/jasper.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/jsp-api.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/log4j-1.2.16.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/org.json-20120521.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/resultsetmapper.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/servlet-api.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/slf4j-log4j12-1.5.6.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-api.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-coyote.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-dbcp.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-i18n-es.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-i18n-fr.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-i18n-ja.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-jdbc.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-juli-7.0.16.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-util.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat7-websocket.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/websocket-api.jar"/>
+  </path>
+  
+  <path id="library.log4j-1.2.16.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/log4j-1.2.16.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/slf4j-log4j12-1.5.6.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-5.0.8-bin.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
+  </path>
+  
+  <path id="library.org.json-20120521.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/org.json-20120521.jar"/>
+  </path>
+  
+  <path id="library.pdfbox-app-1.8.51.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/lucene-core-3.0.1.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/pdfbox-app-1.8.5.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/pdfbox-lucene-1.8.5.jar"/>
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/preflight-app-1.8.5.jar"/>
+  </path>
+  
+  <path id="library.resultsetmapper.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/resultsetmapper.jar"/>
+  </path>
+  
+  <path id="library.tomcat-juli-7.0.16.classpath">
+    <pathelement location="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-juli-7.0.16.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <path id="library.tomcat_7.0.30.classpath">
+    <pathelement location="C:/xampp/tomcat/lib/jsp-api.jar"/>
+    <pathelement location="C:/xampp/tomcat/lib/servlet-api.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/CommonClasses/module_common_classes.xml"/>
+  
+  <import file="${basedir}/Copy To DB/module_copy_to_db.xml"/>
+  
+  <import file="${basedir}/Mail Server/module_mail_server.xml"/>
+  
+  <import file="${basedir}/Managment Server/module_managment_server.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.common_classes, clean.module.copy_to_db, clean.module.mail_server, clean.module.managment_server, clean.artifact.managment_server:war_exploded2, clean.artifact.unnamed" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.common_classes, compile.module.copy_to_db, compile.module.mail_server, compile.module.managment_server" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.copy_to_db:jar" value="${basedir}/out/artifacts/Copy_To_DB_jar"/>
+    <property name="artifact.output.mail_server:jar" value="${basedir}/out/artifacts/Mail_Server_jar"/>
+    <property name="artifact.output.managment_server:war_exploded2" value="${basedir}/Managment Server/out/artifacts/web_war_exploded"/>
+    <property name="artifact.output.unnamed" value="${basedir}/out/artifacts/unnamed"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.CopyToDB.jar" value="${artifacts.temp.dir}/CopyToDB.jar"/>
+    <property name="temp.jar.path.Mail Server.jar" value="${artifacts.temp.dir}/Mail Server.jar"/>
+  </target>
+  
+  <target name="clean.artifact.managment_server:war_exploded2" description="clean Managment Server:war exploded2 artifact output">
+    <delete dir="${artifact.output.managment_server:war_exploded2}"/>
+  </target>
+  
+  <target name="clean.artifact.unnamed" description="clean unnamed artifact output">
+    <delete dir="${artifact.output.unnamed}"/>
+  </target>
+  
+  <target name="artifact.copy_to_db:jar" depends="init.artifacts, compile.module.copy_to_db, compile.module.common_classes" description="Build &#39;Copy To DB:jar&#39; artifact">
+    <property name="artifact.temp.output.copy_to_db:jar" value="${artifacts.temp.dir}/Copy_To_DB_jar"/>
+    <mkdir dir="${artifact.temp.output.copy_to_db:jar}"/>
+    <jar destfile="${temp.jar.path.CopyToDB.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${copy_to_db.output.dir}"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/commons-io-2.4.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/log4j-1.2.16.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/javax.mail.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/jsch-0.1.50.jar"/>
+      <zipfileset dir="${basedir}/Copy To DB/conf" prefix="conf"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/mysql-connector-java-5.0.8-bin.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/org.json-20120521.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/tomcat-jdbc.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/tomcat-juli-7.0.16.jar"/>
+      <zipfileset dir="${common_classes.output.dir}"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/apache-lucene.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/pdfbox-lucene-1.7.1.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/pdfbox-1.2.0.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/commons-logging-1.1.3.jar"/>
+      <zipfileset src="${basedir}/Copy To DB/lib/fontbox-1.3.1.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.CopyToDB.jar}" tofile="${artifact.temp.output.copy_to_db:jar}/CopyToDB.jar"/>
+  </target>
+  
+  <target name="artifact.mail_server:jar" depends="init.artifacts, compile.module.mail_server, compile.module.common_classes" description="Build &#39;Mail Server:jar&#39; artifact">
+    <property name="artifact.temp.output.mail_server:jar" value="${artifacts.temp.dir}/Mail_Server_jar"/>
+    <mkdir dir="${artifact.temp.output.mail_server:jar}"/>
+    <jar destfile="${temp.jar.path.Mail Server.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${mail_server.output.dir}"/>
+      <zipfileset src="${basedir}/Mail Server/lib/org.json-20120521.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/jsch-0.1.50.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/tomcat-jdbc.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/tomcat-juli-7.0.16.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/commons-io-2.4.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/jawin.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/log4j-1.2.16.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/jawin-stubs.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/javax.mail.jar"/>
+      <zipfileset dir="${basedir}/Mail Server/conf" prefix="conf"/>
+      <zipfileset src="${basedir}/Mail Server/lib/mysql-connector-java-5.0.8-bin.jar"/>
+      <zipfileset dir="${common_classes.output.dir}"/>
+      <zipfileset src="${basedir}/Mail Server/lib/slf4j-api-1.6.6.jar"/>
+      <zipfileset src="${basedir}/Mail Server/lib/ehcache-2.8.2.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.Mail Server.jar}" tofile="${artifact.temp.output.mail_server:jar}/Mail Server.jar"/>
+  </target>
+  
+  <target name="artifact.managment_server:war_exploded2" depends="init.artifacts, compile.module.managment_server, compile.module.common_classes" description="Build &#39;Managment Server:war exploded2&#39; artifact">
+    <mkdir dir="${artifact.output.managment_server:war_exploded2}"/>
+    <mkdir dir="${artifact.output.managment_server:war_exploded2}/WEB-INF"/>
+    <mkdir dir="${artifact.output.managment_server:war_exploded2}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.managment_server:war_exploded2}/WEB-INF/classes">
+      <fileset dir="${managment_server.output.dir}"/>
+    </copy>
+    <copy todir="${artifact.output.managment_server:war_exploded2}/WEB-INF/classes">
+      <fileset dir="${common_classes.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/log4j-1.2.16.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/log4j-1.2.16.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/slf4j-api-1.5.8.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/slf4j-log4j12-1.5.6.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/slf4j-log4j12-1.5.6.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/org.json-20120521.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/org.json-20120521.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/resultsetmapper.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/resultsetmapper.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/tomcat-juli-7.0.16.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/tomcat-juli-7.0.16.jar"/>
+    <mkdir dir="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/conf"/>
+    <copy todir="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/conf">
+      <fileset dir="${basedir}/Managment Server/conf"/>
+    </copy>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/jersey-server-1.8.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/jersey-server-1.8.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/jersey-core-1.8.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/jersey-core-1.8.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/jsr311-api-1.1.1.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+    <copy file="${basedir}/Managment Server/web/WEB-INF/lib/asm-3.1.jar" tofile="${artifact.output.managment_server:war_exploded2}/WEB-INF/lib/asm-3.1.jar"/>
+    <copy todir="${artifact.output.managment_server:war_exploded2}">
+      <fileset dir="${basedir}/Managment Server/web"/>
+    </copy>
+  </target>
+  
+  <target name="artifact.unnamed" depends="init.artifacts, compile.module.managment_server" description="Build &#39;unnamed&#39; artifact">
+    <mkdir dir="${artifact.output.unnamed}"/>
+    <copy todir="${artifact.output.unnamed}">
+      <fileset dir="${managment_server.output.dir}"/>
+    </copy>
+  </target>
+
+  <target name="build.all.artifacts" depends="artifact.copy_to_db:jar, artifact.mail_server:jar, artifact.managment_server:war_exploded2, artifact.unnamed" description="Build all artifacts">
+    <mkdir dir="${artifact.output.copy_to_db:jar}"/>
+    <copy todir="${artifact.output.copy_to_db:jar}">
+      <fileset dir="${artifact.temp.output.copy_to_db:jar}"/>
+    </copy>
+    <mkdir dir="${artifact.output.mail_server:jar}"/>
+    <copy todir="${artifact.output.mail_server:jar}">
+      <fileset dir="${artifact.temp.output.mail_server:jar}"/>
+    </copy>
+
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+
+    <target name="fully.deploy.web.server.to.amazon" depends="artifact.managment_server:war_exploded2, management.copy.conf">
+        <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill"
+             trust="true"
+             keyfile="idan-key-pair.pem">
+            <fileset dir="Managment Server/out/artifacts/web_war_exploded"/>
+        </scp>
+    </target>
+    <target name="fully.deploy.web.server.to.amazon.exclude.plugins" depends="artifact.managment_server:war_exploded2, management.copy.conf">
+        <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill"
+             trust="true"
+             keyfile="idan-key-pair.pem">
+            <fileset dir="Managment Server/out/artifacts/web_war_exploded">
+                <exclude name="**/plugins/**"/>
+            </fileset>
+
+        </scp>
+    </target>    <target name="management.server.deploy.classes.to.amazon" depends="management.copy.conf, artifact.managment_server:war_exploded2">
+        <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill/WEB-INF/classes"
+             trust="true"
+             keyfile="idan-key-pair.pem">
+            <fileset dir="Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes"/>
+        </scp>
+    </target>
+
+    <target name="management.server.deploy.jsp.files.to.amazon" depends="management.copy.conf, artifact.managment_server:war_exploded2">
+        <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill/"
+             trust="true"
+             keyfile="idan-key-pair.pem">
+            <fileset dir="Managment Server/out/artifacts/web_war_exploded/">
+                <include name="*.jsp"/>
+            </fileset>
+        </scp>
+    </target>
+
+
+    <target name="management.copy.conf">
+        <scp todir="ubuntu@54.72.32.127:/home/ubuntu/greenbill/conf"
+             trust="true"
+             keyfile="idan-key-pair.pem">
+            <fileset dir="Managment Server/conf">
+                <include name="*.properties"/>
+            </fileset>
+        </scp>
+    </target>
+
+
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+
+
+</project>
+

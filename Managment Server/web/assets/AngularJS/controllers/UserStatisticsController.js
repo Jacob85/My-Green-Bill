@@ -10,28 +10,28 @@ angular.module('userStatisticsController',[])
             $scope.lastMonthName = getLastMonthName();
 
             /* Get all monthly Stats fot the user */
-            $http.get('http://localhost:8080/greenbill/rest/stats/currentMonth')
+            $http.get('/greenbill/rest/stats/currentMonth')
                 .success(function (response)
                 {
                     $scope.currentMonthStats  = response;
                     $scope.currentMonthTotalExpenses =  getCurrentMonthTotalExpenses($scope.currentMonthStats);
                 });
 
-            $http.get('http://localhost:8080/greenbill/rest/stats/lastMonth')
+            $http.get('/greenbill/rest/stats/lastMonth')
                 .success(function (response)
                 {
                     $scope.lastMonthStats  = response;
                     $scope.lastMonthTotalExpenses =  getCurrentMonthTotalExpenses($scope.lastMonthStats);
                 });
             /*Dounat Chart*/
-            $http.get('http://localhost:8080/greenbill/rest/stats/CurrMonthByCategory')
+            $http.get('/greenbill/rest/stats/CurrMonthByCategory')
                 .success(function (response)
                 {
                     $scope.dataToDounatPlot  = response;
                     generateDounatForCurrentMonthByCategory($scope.dataToDounatPlot);
                 });
             /* bar Chart - 1 year*/
-            $http.get('http://localhost:8080/greenbill/rest/stats/pastYear')
+            $http.get('/greenbill/rest/stats/pastYear')
                 .success(function (response)
                 {
                     $scope.dataToBarPlot  = response;

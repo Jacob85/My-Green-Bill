@@ -6,7 +6,7 @@ angular.module('userSelectCompaniesController',[])
     .controller('SelectCompaniesController', ['$scope', '$http',
         function getCompaniesList ($scope, $http)
         {
-            $http.get('http://localhost:8080/greenbill/rest/company/allOtherCompanies')
+            $http.get('/greenbill/rest/company/allOtherCompanies')
                 .success(function (response)
                 {
                     console.log(response);

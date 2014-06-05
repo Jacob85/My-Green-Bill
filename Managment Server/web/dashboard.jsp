@@ -16,10 +16,8 @@
     <meta charset="UTF-8" />
     <%
         Properties properties = new Properties();
-        //todo yaki - replace with the relative path on the server
-        //FileInputStream inputStream = new FileInputStream("/Users/ipeleg/IdeaProjects/My-Green-Bill/Managment Server/web/WEB-INF/properties/dashboard.properties");
-        FileInputStream inputStream = new FileInputStream("C:\\Users\\Jacob\\IdeaProjects\\My Green Bill\\Managment Server\\web\\WEB-INF\\properties\\dashboard.properties");
-        properties.load(inputStream);
+
+        properties.load(pageContext.getServletContext().getResourceAsStream("/WEB-INF/dashboard.properties"));
 
         GreenBillUser user = (GreenBillUser) session.getAttribute("user");
         if (user == null)

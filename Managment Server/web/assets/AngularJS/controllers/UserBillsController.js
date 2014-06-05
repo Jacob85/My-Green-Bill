@@ -13,7 +13,7 @@ var application = angular.module('userBillsController',[]);
             $scope.content = "Content";
             $scope.download = "Download File";
 
-            $http.get('http://localhost:8080/greenbill/rest/bills/all')
+            $http.get('greenbill/rest/bills/all')
                 .success(function (response)
                 {
                     $scope.bills  = response;
