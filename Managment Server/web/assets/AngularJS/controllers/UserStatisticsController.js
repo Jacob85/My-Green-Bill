@@ -9,6 +9,7 @@ angular.module('userStatisticsController',[])
             $scope.currMonthName = getCurrentMonthName();
             $scope.lastMonthName = getLastMonthName();
 
+
             /* Get all monthly Stats fot the user */
             $http.get('/greenbill/rest/stats/currentMonth')
                 .success(function (response)
@@ -28,7 +29,13 @@ angular.module('userStatisticsController',[])
                 .success(function (response)
                 {
                     $scope.dataToDounatPlot  = response;
+
                     generateDounatForCurrentMonthByCategory($scope.dataToDounatPlot);
+                    response.sort(function(a,b){
+                        return b["value"] - a["value"]
+                    });
+                    var category = response[0];
+                    $scope.topCategorySpent = category["label"];
                 });
             /* bar Chart - 1 year*/
             $http.get('/greenbill/rest/stats/pastYear')
@@ -42,34 +49,48 @@ angular.module('userStatisticsController',[])
 
 function generateBarChart(dataToBarPlot)
 {
-    Morris.Bar({
-        element: 'year-stats',
-        data: dataToBarPlot,
-        xkey: 'Month',
-        ykeys: ['Value'],
-        labels: ['Expenses ', 'Series B']
-    });
+    if ($('#year-stats').length)
+    {
+        Morris.Bar({
+            element: 'year-stats',
+            data: dataToBarPlot,
+            xkey: 'Month',
+            ykeys: ['Value'],
+            labels: ['Expenses ', 'Series B']
+        });
+    }
+    else
+    {
+        console.log("Element year-stats does not exists does not genrate bar chart ");
+    }
 }
 
 function generateDounatForCurrentMonthByCategory(dataToPlot)
 {
-    console.log("Array before sorting: " + dataToPlot);
+    if ($('#donut-example').length)
+    {
+        console.log("Array before sorting: " + dataToPlot);
 
-    dataToPlot.sort(function(a,b){
-        return b["value"] - a["value"]
-    });
+        dataToPlot.sort(function(a,b){
+            return b["value"] - a["value"]
+        });
 
-    console.log("Array After Sorting: " + dataToPlot);
+        console.log("Array After Sorting: " + dataToPlot);
 
-    new Morris.Donut({
-        element: 'donut-example',
-        data: dataToPlot
-/*        colors: [
-            '#0BA462',
-            '#39B580',
-            '#67C69D'
-        ]*/
-    });
+        new Morris.Donut({
+            element: 'donut-example',
+            data: dataToPlot
+            /*        colors: [
+             '#0BA462',
+             '#39B580',
+             '#67C69D'
+             ]*/
+        });
+    }
+    else
+    {
+        console.log("Element donut-example does not exists does not genrate bar chart ");
+    }
 }
 function getCurrentMonthTotalExpenses(currentMonthStats)
 {
