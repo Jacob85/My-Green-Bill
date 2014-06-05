@@ -1,3 +1,4 @@
+<%@ page import="com.mygreenbill.common.GreenBillUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: ipeleg
@@ -8,7 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="row">
     <div class="col-lg-12">
-        <h2>THIS IS USER STATISTICS PAGE</h2>
+        <%
+            GreenBillUser user = (GreenBillUser) session.getAttribute("user");
+        %>
+        <h2><%=user!= null? user.getFirstName() + " " + user.getFirstName() : "" +" Statistics"%></h2>
     </div>
 </div>
 
@@ -16,7 +20,7 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 {{currMonthName}} Total Expenses
             </div>
@@ -26,7 +30,7 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 {{lastMonthName}} Total Expenses
             </div>
@@ -38,7 +42,7 @@
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 Year Stats
             </div>
@@ -48,7 +52,7 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 {{currMonthName}} Expenses By Category
             </div>

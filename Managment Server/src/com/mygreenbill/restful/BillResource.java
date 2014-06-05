@@ -108,7 +108,7 @@ public class BillResource
             }
         } catch (DatabaseException e)
         {
-            e.printStackTrace();
+            LOGGER.error("DatabaseException " + e.getMessage(), e);
         }
 
         return null;
@@ -116,7 +116,7 @@ public class BillResource
 
     private String errorJson(String message)
     {
-        return "{error: " + message + "," +
-                "redirect: http://www.mygreenbill.com}";
+        return "{\"error\": \"" + message + "\"," +
+                "\"redirect\": \"http://www.mygreenbill.com\"}";
     }
 }
