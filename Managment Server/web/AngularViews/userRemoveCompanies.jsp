@@ -97,7 +97,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <label>
-                        <input class="checkbox1" type="checkbox" name="company" value={{company.id}} checked>
+                        <input class="checkbox1" type="checkbox" name="company" value={{company.id}}>
                         {{ company.name }}
                     </label>
                 </div>
