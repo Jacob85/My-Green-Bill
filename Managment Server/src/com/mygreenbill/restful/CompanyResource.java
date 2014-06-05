@@ -221,7 +221,7 @@ public class CompanyResource
     @Path("/removeUserCompanies")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public String removeUserCompanies(@Context HttpServletRequest request, @FormParam("company") List<String> companiesToKeep)
+    public String removeUserCompanies(@Context HttpServletRequest request, @FormParam("company") List<String> companiesToRemove)
     {
         HttpSession session = request.getSession();
         GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
@@ -236,16 +236,17 @@ public class CompanyResource
 
         try
         {
-            for (GreenBillCompany company : greenBillUser.getUserCompanyList())
+            for (String companyId : companiesToRemove)
             {
-                if (companiesToKeep.contains(String.valueOf(company.getId())))
-                    continue;
+                String queryString = getCompany.replaceFirst("\\?", String.valueOf(companyId));
+                databaseHandler.runGetQuery(queryString);
+                GreenBillCompany greenBillCompany = new GreenBillCompany(databaseHandler.runGetQuery(queryString).get(0));
 
-                String queryString = deleteUserFromCompany.replaceFirst("\\?", greenBillUser.getUserId());
-                queryString = queryString.replaceFirst("\\?", String.valueOf(company.getId()));
+                queryString = deleteUserFromCompany.replaceFirst("\\?", greenBillUser.getUserId());
+                queryString = queryString.replaceFirst("\\?", String.valueOf(greenBillCompany.getId()));
                 databaseHandler.runUpdateQuery(queryString);
 
-                sendEmailsHandler.sendUnregisterMailToCompany(greenBillUser, company); // Send email to the company for unregistering the user
+                sendEmailsHandler.sendUnregisterMailToCompany(greenBillUser, greenBillCompany); // Send email to the company for unregistering the user
             }
 
             databaseHandler.retrieveUserCompanies(greenBillUser); // Updating the current user companies

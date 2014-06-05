@@ -6,7 +6,6 @@
         <entry path="file://$USER_HOME$/Downloads/jsch-0.1.51.jar" />
       </additionalClassPath>
     </buildFile>
-    <buildFile url="file://$PROJECT_DIR$/Managment Server/module_managment_server.xml" />
     <buildFile url="file://$PROJECT_DIR$/my_green_bill.xml" />
   </component>
 </project>
