@@ -4,7 +4,7 @@
 
 angular.module('userSettingsController',[])
     .controller('SettingsController', ['$scope', '$http',
-        function ($scope, $http)
+        function initUserSettings ($scope, $http)
         {
 
         }

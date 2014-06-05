@@ -25,7 +25,7 @@ public class DatabaseHandler
     private final String isUserExistsString = "select isUserIdExist(?);";
     private final String isUserExistsAndActiveString = "select isUserExistsAndActive(?);";
     private final String selectUserPassword = "select user.password from mygreenbilldb.user where user.email = '?';";
-    private final String selectUserinformation = "select user.first_name, user.last_name, user.id, user.password, user.email, user.is_active from mygreenbilldb.user where user.email = '?';";
+    private final String selectUserinformation = "select * from mygreenbilldb.user where user.email = '?';";
     private final String selectMailTemplate = "select context from mygreenbilldb.mail_template where mail_template.name = '?'";
     private final String selectUserCompanies = "call mygreenbilldb.getallcompaniesofuser(?);";
     // ENUM which represent all the possible messages status

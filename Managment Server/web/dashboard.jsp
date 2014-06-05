@@ -88,7 +88,7 @@
         <div id="left" >
         <div class="media user-media well-small">
             <a class="user-link" href="#">
-                <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif" />
+                <img class="media-object img-thumbnail user-img" alt="User Picture" src="img/logo.png" />
             </a>
             <br />
             <div class="media-body">
@@ -197,6 +197,7 @@
     <script src="assets/AngularJS/controllers/UserBillsController.js"></script>
     <script src="assets/AngularJS/controllers/UserSelectCompaniesController.js"></script>
     <script src="assets/AngularJS/controllers/UserRemoveCompaniesController.js"></script>
+    <script src="assets/AngularJS/controllers/UserSettingsController.js"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
 </body>

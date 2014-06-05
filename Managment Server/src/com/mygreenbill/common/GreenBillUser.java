@@ -19,6 +19,7 @@ public class GreenBillUser
     private String userId;
     private String password;
     private String email;
+    private String forwardEmail;
     private boolean isActive;
     private List<GreenBillCompany> userCompanyList;
 
@@ -29,6 +30,7 @@ public class GreenBillUser
     private final String lastNameKey = "last_name";
     private final String passwordKey = "password";
     private final String isActiveKey = "is_active";
+    private final String forwardEmailKey = "forward_email";
 
     public GreenBillUser()
     {
@@ -61,6 +63,17 @@ public class GreenBillUser
         this.firstName = (String) map.get(firstNameKey);
         this.userId = String.valueOf( map.get(idKey));
         this.isActive = (Boolean) map.get(isActiveKey);
+        this.forwardEmail = (String) map.get(forwardEmailKey);
+    }
+
+    public String getForwardEmail()
+    {
+        return forwardEmail;
+    }
+
+    public void setForwardEmail(String forward_email)
+    {
+        this.forwardEmail = forward_email;
     }
 
     public boolean isActive()

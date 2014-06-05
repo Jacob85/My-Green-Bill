@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`user` (
   `hmail_account_name` VARCHAR(128) NULL,
   `is_active` TINYINT(1) NULL,
   `join_date` DATE NULL,
+  `forward_email` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`id`, `email`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
@@ -624,8 +625,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mygreenbilldb`;
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'afdd0b4ad2ec172c586e2150770fbf9e', 'e0df4b0c1f6105a4e2834251eddd8507', 1, '2013-09-21');
-INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '81dc9bdb52d04dc20036dbd8313ed055', 'ipeleg', 1, '2013-09-16');
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `forward_email`) VALUES (038054664, 'yaki.ams@gmail.com', 'Jacob', 'Amsalem', 'afdd0b4ad2ec172c586e2150770fbf9e', 'e0df4b0c1f6105a4e2834251eddd8507', 1, '2013-09-21', 'yaki.ams@gmail.com');
+INSERT INTO `mygreenbilldb`.`user` (`id`, `email`, `first_name`, `last_name`, `password`, `hmail_account_name`, `is_active`, `join_date`, `forward_email`) VALUES (038054665, 'ipeleg@mygreenbill.com', 'Idan', 'Peleg', '81dc9bdb52d04dc20036dbd8313ed055', 'ipeleg', 1, '2013-09-16', 'ipeleg@hotmail.com');
 
 COMMIT;
 

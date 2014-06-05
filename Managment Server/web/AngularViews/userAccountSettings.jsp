@@ -1,3 +1,4 @@
+<%@ page import="com.mygreenbill.common.GreenBillUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: ipeleg
@@ -18,6 +19,16 @@
     </div>
     <hr />
 
+    <%
+        GreenBillUser user = (GreenBillUser) session.getAttribute("user");
+        if (user == null)
+        {
+            System.out.println(user);
+            response.sendRedirect("authenticate/login");
+            return;
+        }
+    %>
+
     <div class="row">
         <div class="col-lg-8">
             <div class="panel panel-default">
@@ -30,7 +41,7 @@
                             <form role="form">
                                 <div class="form-group">
                                     <label>Forward E-mail</label>
-                                    <input class="form-control">
+                                    <input class="form-control" value="<% out.write(user.getForwardEmail()); %>">
                                     <p class="help-block">The E-mail address to which your bills will be forwarded to</p>
                                 </div>
                             </form>
