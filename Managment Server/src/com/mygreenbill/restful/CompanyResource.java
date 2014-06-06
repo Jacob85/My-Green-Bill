@@ -8,6 +8,7 @@ import com.mygreenbill.common.SendEmailsHandler;
 import com.mygreenbill.database.DatabaseHandler;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
@@ -219,9 +220,9 @@ public class CompanyResource
      */
     @POST
     @Path("/removeUserCompanies")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String removeUserCompanies(@Context HttpServletRequest request, @FormParam("company") List<String> companiesToRemove)
+    public String removeUserCompanies(@Context HttpServletRequest request, String id)
     {
         HttpSession session = request.getSession();
         GreenBillUser greenBillUser = (GreenBillUser) session.getAttribute("user");
@@ -236,22 +237,24 @@ public class CompanyResource
 
         try
         {
-            for (String companyId : companiesToRemove)
-            {
-                String queryString = getCompany.replaceFirst("\\?", String.valueOf(companyId));
-                databaseHandler.runGetQuery(queryString);
-                GreenBillCompany greenBillCompany = new GreenBillCompany(databaseHandler.runGetQuery(queryString).get(0));
+            JSONObject companyIdJson = new JSONObject(id); // Getting the given ID of the company to remove
+            String queryString = getCompany.replaceFirst("\\?", String.valueOf(companyIdJson.get("id")));
+            databaseHandler.runGetQuery(queryString);
+            GreenBillCompany greenBillCompany = new GreenBillCompany(databaseHandler.runGetQuery(queryString).get(0));
 
-                queryString = deleteUserFromCompany.replaceFirst("\\?", greenBillUser.getUserId());
-                queryString = queryString.replaceFirst("\\?", String.valueOf(greenBillCompany.getId()));
-                databaseHandler.runUpdateQuery(queryString);
+            queryString = deleteUserFromCompany.replaceFirst("\\?", greenBillUser.getUserId());
+            queryString = queryString.replaceFirst("\\?", String.valueOf(greenBillCompany.getId()));
+            databaseHandler.runUpdateQuery(queryString);
 
-                sendEmailsHandler.sendUnregisterMailToCompany(greenBillUser, greenBillCompany); // Send email to the company for unregistering the user
-            }
+            sendEmailsHandler.sendUnregisterMailToCompany(greenBillUser, greenBillCompany); // Send email to the company for unregistering the user
 
             databaseHandler.retrieveUserCompanies(greenBillUser); // Updating the current user companies
         }
         catch (DatabaseException e)
+        {
+            e.printStackTrace();
+        }
+        catch (JSONException e)
         {
             e.printStackTrace();
         }

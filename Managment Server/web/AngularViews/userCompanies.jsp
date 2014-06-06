@@ -8,37 +8,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.mygreenbill.common.GreenBillUser" %>
 
-    <script>
-        console.log( "document test" );
-        $(document).ready(function()
-        {
-            console.log( "document loaded" );
-        });
-    </script>
-    <%
-        // Getting the user object from the current session
-        GreenBillUser user = (GreenBillUser) request.getSession().getAttribute("user");
-    %>
+<%
+    // Getting the user object from the current session
+    GreenBillUser user = (GreenBillUser) request.getSession().getAttribute("user");
+%>
 
-    <div class="row">
-        <div class="col-lg-8">
-            <h2>THIS IS USER COMPANIES PAGE</h2>
-            <a href="#/User/Companies/Select" class="btn btn-primary">Add Companies</a>
-            <a href="#/User/Companies/Remove" class="btn btn-primary">Remove Companies</a>
-        </div>
+<script src="assets/css/jquery-ui.css"></script>
+<link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+
+<script src="assets/plugins/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/pnotify.custom.min.js"></script>
+
+<div class="row">
+    <div class="col-lg-8">
+        <h2>THIS IS USER COMPANIES PAGE</h2>
+        <a href="#/User/Companies/Select" class="btn btn-primary">Add Companies</a>
     </div>
+</div>
 
-    <hr />
+<hr />
 
-    <div class="row">
-        <div ng-repeat="company in companies" class="col-lg-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{ company.name }}
-                </div>
-                <div class="panel-body">
-                    <img class="company-logo" src={{company.logo_path}} />
-                </div>
+<div class="row">
+    <div ng-repeat="company in companies" class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ company.name }}
+                <Button class="icon-remove" style="float: right" ng-click="askToSubmit(company.id, company.name)"></Button>
+            </div>
+            <div class="panel-body">
+                <img class="company-logo" src={{company.logo_path}} />
             </div>
         </div>
     </div>
+</div>

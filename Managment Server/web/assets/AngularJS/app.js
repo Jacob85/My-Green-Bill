@@ -8,7 +8,6 @@ var app = angular.module('app', [
     'userDashboardController',
     'userBillsController',
     'userSelectCompaniesController',
-    'userRemoveCompaniesController',
     'userSettingsController'
 ]);
 
@@ -28,11 +27,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         {
             controller: 'SelectCompaniesController',
             templateUrl: 'AngularViews/userSelectCompanies.jsp'
-        })
-        .when('/User/Companies/Remove',
-        {
-            controller: 'RemoveCompaniesController',
-            templateUrl: 'AngularViews/userRemoveCompanies.jsp'
         })
         .when('/User/Settings',
         {

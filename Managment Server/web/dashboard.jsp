@@ -218,7 +218,6 @@
     <script src="assets/AngularJS/controllers/UserDashboardController.js"></script>
     <script src="assets/AngularJS/controllers/UserBillsController.js"></script>
     <script src="assets/AngularJS/controllers/UserSelectCompaniesController.js"></script>
-    <script src="assets/AngularJS/controllers/UserRemoveCompaniesController.js"></script>
     <script src="assets/AngularJS/controllers/UserSettingsController.js"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->

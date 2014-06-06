@@ -65,7 +65,7 @@
                 }).on('pnotify.cancel', function()
                 {
                     new PNotify({
-                        title: 'Cancel',
+                        title: 'Nothing to do',
                         text: 'No changes were made.',
                         type: 'info'
                     });
