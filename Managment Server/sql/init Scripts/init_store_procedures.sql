@@ -1452,3 +1452,20 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllOtherCompaniesOfUser`(IN user
     END IF;
   END $$
 DELIMITER ;
+
+drop procedure if exists `SetNewForwardAddress`;
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`hmailserver`@`%` PROCEDURE `SetNewForwardAddress`(IN userEmail VARCHAR(128), IN newAddress VARCHAR(128))
+  BEGIN
+    SET SQL_SAFE_UPDATES=0;
+    UPDATE
+      mygreenbilldb.user
+    SET user.forward_email=newAddress
+    WHERE user.email=userEmail;
+  END $$
+DELIMITER ;

@@ -3605,6 +3605,7 @@
       <column name="hmail_account_name" sqlType="VARCHAR" length="128" precision="0" nullable="true" jdbcType="12"/>
       <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
       <column name="join_date" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="forward_email" sqlType="VARCHAR" length="128" precision="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id,email"/>
       <exported-key name="fk_table1_user1" table="incoming_massages" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>
       <exported-key name="fk_analytics_user1" table="user_analytics" schema="" catalog="mygreenbilldb" columns="user_id,user_email"/>

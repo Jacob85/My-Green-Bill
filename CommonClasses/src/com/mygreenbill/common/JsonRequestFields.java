@@ -14,7 +14,8 @@ public enum JsonRequestFields
     EMAIL_SEND_TO("To"),
     EMAIL_SUBJECT("Subject"),
     MESSAGE_CONTENT("MessageContent"),
-    MESSAGE_ID("messageId");
+    MESSAGE_ID("messageId"),
+    FORWARD_ADDRESS("ForwardAddress");
 
     private String field;
     JsonRequestFields(String field)

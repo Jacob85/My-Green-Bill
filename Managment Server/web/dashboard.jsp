@@ -97,7 +97,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#"><i class="icon-user"></i><%=properties.getProperty("user_profile")%> </a> </li>
+                                    <li><a href="#/User/Settings"><i class="icon-user"></i><%=properties.getProperty("user_profile")%> </a> </li>
                                     <li class="divider"></li>
                                     <li><a href="${pageContext.request.contextPath}/authenticate/logout"><i class="icon-signout"></i><%=properties.getProperty("logout")%> </a></li>
                                 </ul>

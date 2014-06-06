@@ -93,7 +93,7 @@ public class JsonMessageHandler
                     break;
 
                 case SET_NEW_FORWARD_ADDRESS:
-                    setNewForwardAddress(innerJson.getString(JsonRequestFields.ACCOUNT_NAME.field()), innerJson.getString(JsonRequestFields.EMAIL_ADDRESS.field()));
+                    setNewForwardAddress(innerJson.getString(JsonRequestFields.ACCOUNT_NAME.field()), innerJson.getString(JsonRequestFields.FORWARD_ADDRESS.field()));
                     break;
 
                 case SEND_MAIL_TO_COSTUMER:

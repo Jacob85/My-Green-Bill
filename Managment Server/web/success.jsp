@@ -66,7 +66,7 @@
       <div class="jumbotron">
         <h2><%= "Hello " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName()%></h2>
          <p>To Active your account and access Dashboard please press the link on the email sent to you <br>
-            The email was sent to <%=greenBillUser.getEmail()%></p>
+            The email was sent to <%=greenBillUser.getForwardEmail()%></p>
           <p>
               If you did not get the email yet please check your spam folder <br>
               To resend the activation email please press <b><a href="${pageContext.request.contextPath}/authenticate/resendActivationEmail">here</a></b>

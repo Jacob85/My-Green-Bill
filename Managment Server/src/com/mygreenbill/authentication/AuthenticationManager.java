@@ -1,5 +1,6 @@
 package com.mygreenbill.authentication;
 
+import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.common.*;
 import com.mygreenbill.database.DatabaseHandler;
@@ -117,7 +118,7 @@ public class AuthenticationManager
     {
         Map<String, String> messageFiled = new HashMap<String, String>();
         messageFiled.put(JsonRequestFields.MESSAGE_TYPE.field(), String.valueOf(MessageType.SEND_MAIL_TO_COSTUMER));
-        messageFiled.put(JsonRequestFields.EMAIL_SEND_TO.field(), user.getEmail());
+        messageFiled.put(JsonRequestFields.EMAIL_SEND_TO.field(), user.getForwardEmail()); // Sending the email to the forward address of the user
         messageFiled.put(JsonRequestFields.EMAIL_SUBJECT.field(), "Welcome");
         messageFiled.put(JsonRequestFields.MESSAGE_CONTENT.field(), emailString);
         JSONObject message = new JSONObject(messageFiled);
@@ -182,7 +183,7 @@ public class AuthenticationManager
         messageFiled.put(JsonRequestFields.MESSAGE_TYPE.field(), String.valueOf(MessageType.ADD_USER));
         messageFiled.put(JsonRequestFields.ACCOUNT_NAME.field(), EncryptionUtil.encryptString(greenBillUser.getEmail(), EncryptionType.MD5));
         messageFiled.put(JsonRequestFields.PASSWORD.field(), greenBillUser.getPassword());
-        messageFiled.put(JsonRequestFields.EMAIL_ADDRESS.field(), greenBillUser.getEmail());
+        messageFiled.put(JsonRequestFields.EMAIL_ADDRESS.field(), greenBillUser.getForwardEmail()); // Sending the email to the forward address of the user
         JSONObject message = new JSONObject(messageFiled);
         LOGGER.info("Finished to construct json request : " + message.toString());
         LOGGER.info("Sending message to mail server");
@@ -195,5 +196,43 @@ public class AuthenticationManager
             LOGGER.info("Failed to send message to mail server");
             LOGGER.error(e);
         }
+    }
+
+    public Status setNewForwardAddress(GreenBillUser greenBillUser, String newAddress)
+    {
+        Status status = null;
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+
+        try
+        {
+            status = databaseHandler.runUpdateQuery(String.format("CALL SetNewForwardAddress('%s','%s');", greenBillUser.getEmail(), newAddress));
+
+            if (status.getOperationStatus() == Status.OperationStatus.SUCCESS)
+            {
+                Map<String, String> messageFiled = new HashMap<String, String>();
+                messageFiled.put(JsonRequestFields.MESSAGE_TYPE.field(), String.valueOf(MessageType.SET_NEW_FORWARD_ADDRESS));
+                messageFiled.put(JsonRequestFields.ACCOUNT_NAME.field(), EncryptionUtil.encryptString(greenBillUser.getEmail(), EncryptionType.MD5));
+                messageFiled.put(JsonRequestFields.FORWARD_ADDRESS.field(), newAddress);
+                JSONObject message = new JSONObject(messageFiled);
+                LOGGER.info("Finished to construct json request : " + message.toString());
+                LOGGER.info("Sending message to mail server");
+
+                ConnectionManager.getInstance().sendToTrafficBlade(new JSONObject(messageFiled));
+            }
+        }
+        catch (DatabaseException e)
+        {
+            LOGGER.error("DatabaseException in setNewForwardAddress");
+            LOGGER.error(e.getMessage(), e);
+            status = new Status(Status.OperationStatus.FAILED, "DatabaseException in setNewForwardAddress");
+        }
+        catch (InitException e)
+        {
+            LOGGER.error("InitException in setNewForwardAddress");
+            LOGGER.error(e.getMessage(), e);
+            status = new Status(Status.OperationStatus.FAILED, "InitException in setNewForwardAddress");
+        }
+
+        return status;
     }
 }

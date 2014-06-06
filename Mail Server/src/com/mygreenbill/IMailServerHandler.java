@@ -30,6 +30,4 @@ public interface IMailServerHandler
      * @return
      */
     public boolean sendMessage(String toAddress, String subject, String messageBody);
-
-    public void getAccountAllAttachments(String accountName);
 }
