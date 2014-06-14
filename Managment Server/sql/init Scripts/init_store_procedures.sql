@@ -347,7 +347,7 @@ BEGIN
 	IF isExist=0 THEN
 
 		INSERT INTO user
-		VALUES(id, email, first_name, last_name, pass, hmail_account, 0, CURDATE());
+		VALUES(id, email, first_name, last_name, pass, hmail_account, 0, CURDATE(), email);
 
 	ELSE
 		SET @message_text = CONCAT('A user with the ID: ', id, ' already exist.');

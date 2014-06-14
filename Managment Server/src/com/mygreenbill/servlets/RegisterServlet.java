@@ -3,8 +3,10 @@ package com.mygreenbill.servlets;
 import com.mygreenbill.authentication.AuthenticationManager;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
+import com.mygreenbill.registration.AppRegistrationRequest;
 import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationManager;
+import com.mygreenbill.registration.RegistrationRequestAbstract;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -34,46 +36,45 @@ public class RegisterServlet extends HttpServlet
         LOGGER.debug(request.getRequestURI());
         String uri = request.getRequestURI();
 
-        // if we are dealing with full registration
-        if (uri.contains("/full"))
-        {
-           /*
-                The Registration process is build of phases:
-                1. the first phase is when the user choose to register and submit its details (phase = 0 || phase = null)
-                2. second phase is after validation questions returned from the user with the answers (phase = 1)
-                3. we can add some more phases like choosing companies
-                4. we can add some more phases like validate email address
 
-                **IMPORTANT** - In the End of each method remember to ser the phase to be the next phase!
-            */
-            HttpSession session = request.getSession();
-            Integer registrationPhase = (Integer) session.getAttribute("phase");
-            if (registrationPhase == null)
+       /*
+            The Registration process is build of phases:
+            1. the first phase is when the user choose to register and submit its details (phase = 0 || phase = null)
+            2. second phase is after validation questions returned from the user with the answers (phase = 1)
+            3. we can add some more phases like choosing companies
+            4. we can add some more phases like validate email address
+
+            **IMPORTANT** - In the End of each method remember to ser the phase to be the next phase!
+        */
+       HttpSession session = request.getSession();
+       Integer registrationPhase = (Integer) session.getAttribute("phase");
+       if (registrationPhase == null)
+       {
+            // new request
+           processNewSession(request, response);
+       }
+       else
+       {
+            switch (registrationPhase)
             {
-                // new request
-                processNewSession(request, response);
-            }
-            else
-            {
-                switch (registrationPhase)
-                {
-                    case 1:
-                        // process First Phase
-                        processFirstPhase(request, response);
-                        break;
-                    default:
-                        break;
-                }
+                case 1:
+                    // process First Phase
+                    processFirstPhase(request, response);
+                    break;
+                default:
+                    break;
             }
         }
     }
+
+
 
     private void processFirstPhase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession currentSession = request.getSession();
         String answer1 = request.getParameter("first_validation_question");
         String answer2 = request.getParameter("second_validation_question");
-        FullRegistrationRequest registrationRequest = (FullRegistrationRequest) currentSession.getAttribute("registrationRequest");
+        RegistrationRequestAbstract registrationRequest = (RegistrationRequestAbstract) currentSession.getAttribute("registrationRequest");
 
         RegistrationManager registrationManager = RegistrationManager.getInstance();
         boolean answersAreValid = registrationManager.areAnswersValid(registrationRequest, answer1, answer2);
@@ -93,7 +94,6 @@ public class RegisterServlet extends HttpServlet
             return;
         }
         //else the user was successfully added to the Database (Register successfully)
-
         registrationManager.updateCurrentSessionWithUserInfo(registrationRequest, currentSession);
 
         GreenBillUser greenBillUser = (GreenBillUser) currentSession.getAttribute("user");
@@ -109,13 +109,10 @@ public class RegisterServlet extends HttpServlet
 
     private void processNewSession(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String email =  request.getParameter("full_registration_inputEmail");
-        String id =  request.getParameter("full_registration_inputId");
-        String password = request.getParameter("full_registration_inputPassword");
-
-        FullRegistrationRequest registrationRequest = new FullRegistrationRequest(id, email, password);
-
         RegistrationManager registrationManager = RegistrationManager.getInstance();
+        RegistrationRequestAbstract registrationRequest = registrationManager.creteRegistrationRequest(request);
+
+        LOGGER.info("Start to process registration request" + registrationRequest);
         Status status = registrationManager.processRegistrationRequest(registrationRequest);
 
         if (status.getOperationStatus() == Status.OperationStatus.FAILED)

@@ -47,7 +47,7 @@
     <div class="col-lg-8 col-lg-offset-2 text-center">
         <div class="logo">
             <h1>Error :( </h1>          </div>
-        <p class="lead text-muted"><%= request.getSession().getAttribute("message") %></p>
+        <p class="lead text-muted"><%= session.getAttribute("message") %></p>
         <p class="lead text-muted"><%= exception != null ? exception.getMessage(): "" %></p>
         <div class="clearfix"></div>
         <br />
@@ -60,7 +60,9 @@
 </div>
 <!-- END PAGE CONTENT -->
 
-
+  <%
+      session.invalidate();
+  %>
 
 </body>
 <!-- END BODY -->

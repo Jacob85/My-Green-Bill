@@ -63,25 +63,53 @@ function isEmailAddressValid(email)
 
 $(document).ready(function(){
 
-/*
-    $('#login_form').validate(
+    $('#appLoginForm').validate(
         {
-            rules:{
-                login_form_email: {
-                    required: true,
-                    email: true
-                },
-                login_form_password: {
-                    required: true,
-                    minlength: 6
+            rules:
+            {
+                appRegisterId:
+                {
+                    required: function()
+                    {
+                        var selected = $("#appLoginForm input[type='radio']:checked");
+                        var selectedId = selected.attr('id');
+                        console.log("Selected Radio button id is: " + selectedId);
+                        if (selectedId == "registerRadioBox")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    },
+                    minlength: 8,
+                    number: true
                 }
             },
             highlight: function(element) {
                 $(element).closest('.form-group').removeClass('success').addClass('error');
+            },
+            submitHandler: function(form){
+                console.log("submit Called");
+
+                if (firstTime)
+                {
+                    firstTime=false;
+                    googleLogin();
+                    event.preventDefault();
+                }
+                else
+                {
+                    var origAction = $('#appLoginForm').attr('action');
+                    var selected = $("#appLoginForm input[type='radio']:checked");
+                    /*change the form action*/
+                    console.log("changing form action from" + origAction + " to " + origAction + selected.val());
+                    $('#appLoginForm').attr('action', origAction + selected.val());
+                    form.submit();
+                }
             }
         });
-
-*/
 
 
     $('#full_registration_form').validate(
@@ -101,19 +129,18 @@ $(document).ready(function(){
                     equalTo: "#full_registration_inputPassword"
                 },
                 full_registration_inputId: {
-                   required: true,
+                    required: true,
                     minlength: 8,
                     number: true
                 }
             },
             highlight: function(element) {
                 $(element).closest('.form-group').removeClass('success').addClass('error');
-            },
+            }/*,
           success: function(element) {
                 element
-                    .text('OK!').addClass('valid')
                     .closest('.form-group').removeClass('error').addClass('success');
-            }
+            }*/
         });
 
    // jQuery.noConflict();
@@ -132,3 +159,88 @@ function openPopUp()
     jQuery.noConflict();
     $('#sign_up_model').modal('show');
 }
+
+function googleLogin()
+{
+    var myParams = {
+        'clientid' : '288366509317-1hgkph86vukk0iu4983vsol50b24l0bg.apps.googleusercontent.com', //You need to set client id
+        'cookiepolicy' : 'single_host_origin',
+        'callback' : 'signinCallback', //callback function
+//        'approvalprompt':'force',
+        'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'
+    };
+    gapi.auth.signIn(myParams);
+}
+
+function signinCallback(authResult)
+{
+    if (authResult['status']['signed_in']) {
+        // Update the app to reflect a signed in user
+        // Hide the sign-in button now that the user is authorized, for example:
+        //document.getElementById('signinButton').setAttribute('style', 'display: none');
+        console.log("Success!!");
+        $.getJSON("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + authResult["access_token"], function (data){
+            console.log(data);
+            console.log(data.email);
+            addFormHiddenParamsAndSubmit(data);
+
+        });
+    } else {
+        // Update the app to reflect a signed out user
+        // Possible error values:
+        //   "user_signed_out" - User is signed-out
+        //   "access_denied" - User denied access to your app
+        //   "immediate_failed" - Could not automatically log in the user
+        console.log('Sign-in state: ' + authResult['error']);
+    }
+    console.log(authResult);
+}
+
+function addFormHiddenParamsAndSubmit(data){
+
+    $('<input />').attr('type', 'hidden')
+        .attr('name', 'firstName')
+        .attr('value', data.given_name)
+        .appendTo('#appLoginForm');
+
+    $('<input />').attr('type', 'hidden')
+        .attr('name', 'lastName')
+        .attr('value', data.family_name)
+        .appendTo('#appLoginForm');
+
+    $('<input />').attr('type', 'hidden')
+        .attr('name', 'email')
+        .attr('value', data.email)
+        .appendTo('#appLoginForm');
+
+    $('<input />').attr('type', 'hidden')
+        .attr('name', 'picture')
+        .attr('value', data.picture)
+        .appendTo('#appLoginForm');
+
+     /*submit the form*/
+    $('#appLoginForm').submit();
+}
+
+var firstTime = true;
+$( document ).ready(function(){
+    //$('#googleLoginButton').click(googleLogin);
+   /* $('#appLoginForm').submit(function(event){
+        console.log("submit Called");
+
+        if (firstTime)
+        {
+            firstTime=false;
+            googleLogin();
+            event.preventDefault();
+        }
+        else
+        {
+            var origAction = $('#appLoginForm').attr('action');
+            var selected = $("#appLoginForm input[type='radio']:checked");
+            *//*change the form action*//*
+            console.log("changing form action from" + origAction + " to " + origAction + selected.val());
+            $('#appLoginForm').attr('action', origAction + selected.val());
+        }
+    });*/
+});

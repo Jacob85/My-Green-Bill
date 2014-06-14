@@ -4,6 +4,7 @@ import com.mygreenbill.Exceptions.DatabaseException;
 import com.mygreenbill.Exceptions.InitException;
 import com.mygreenbill.authentication.LoginStatus;
 import com.mygreenbill.common.*;
+import com.mygreenbill.registration.AppRegistrationRequest;
 import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationRequestAbstract;
 import com.mygreenbill.security.EncryptionType;
@@ -356,13 +357,10 @@ public class DatabaseHandler
     {
         //call add new user stored procedure
         //String addUserQuery = "call "
-        if (registrationRequest instanceof FullRegistrationRequest)
-        {
-            FullRegistrationRequest fullRegistrationRequest = (FullRegistrationRequest) registrationRequest;
-            return registerUserFullRequest(fullRegistrationRequest);
-        }
-        return null;
+        return registerUserFullRequest(registrationRequest);
     }
+
+
 
     public String getEmailTemplate(MailTemplate mailTemplate)
     {
@@ -397,8 +395,7 @@ public class DatabaseHandler
            return null;
         }
     }
-
-    private Status registerUserFullRequest(FullRegistrationRequest fullRegistrationRequest)
+    private Status registerUserFullRequest(RegistrationRequestAbstract fullRegistrationRequest)
     {
         if (fullRegistrationRequest == null)
         {

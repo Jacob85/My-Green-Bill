@@ -9,6 +9,7 @@ import com.mygreenbill.security.EncryptionUtil;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,35 +80,24 @@ public class RegistrationManager implements IRegistration
     {
         if (request != null)
         {
-            if (request instanceof FullRegistrationRequest)
+            // create new user in the database
+            LOGGER.info(String.format("Adding the user %s %s to the database", request.getValidationResponse().getFirstName(),
+                                                                               request.getValidationResponse().getLastName()));
+            Status addToDbStatus = DatabaseHandler.getInstance().registerUser(request);
+            if (addToDbStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
             {
-                FullRegistrationRequest registrationRequest = (FullRegistrationRequest) request;
+                LOGGER.info("User was added to Database, start to compose Json request and send it to Mail server");
 
-                // create new user in the database
-                LOGGER.info(String.format("Adding the user %s %s to the database", registrationRequest.getValidationResponse().getFirstName(),
-                                                                                   registrationRequest.getValidationResponse().getLastName()));
-                Status addToDbStatus = DatabaseHandler.getInstance().registerUser(request);
-                if (addToDbStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
-                {
-                    LOGGER.info("User was added to Database, start to compose Json request and send it to Mail server");
-
-                    // this part was removed to after user activate his account
-                    // send message to the Mail server to open new account
-                    //sendRegistrationMessage(registrationRequest);
-                    return new Status(Status.OperationStatus.SUCCESS, "user was successfully register");
-                }
-                else
-                {
-                    // failed to add user to database
-                    return addToDbStatus;
-                }
+                // this part was removed to after user activate his account
+                // send message to the Mail server to open new account
+                //sendRegistrationMessage(registrationRequest);
+                return new Status(Status.OperationStatus.SUCCESS, "user was successfully register");
             }
             else
             {
-                // registration by app
-                //todo yaki - implement same procedure for registration by app
+                // failed to add user to database
+                return addToDbStatus;
             }
-
         }
         return null;
     }
@@ -176,5 +166,26 @@ public class RegistrationManager implements IRegistration
             return new Status(Status.OperationStatus.FAILED, "Problem with user identity");
         }
         return new Status(Status.OperationStatus.FAILED, "Validation failed");
+    }
+
+    @Override
+    public RegistrationRequestAbstract creteRegistrationRequest(HttpServletRequest request)
+    {
+        RegistrationRequestAbstract registrationRequest;
+        if (request.getRequestURI().contains("App"))
+        {
+            String email = request.getParameter("email");
+            String id = request.getParameter("appRegisterId");
+            String pictureUrl = request.getParameter("picture");
+            registrationRequest = new AppRegistrationRequest(id, email, pictureUrl);
+        }
+        else
+        {
+            String email =  request.getParameter("full_registration_inputEmail");
+            String id =  request.getParameter("full_registration_inputId");
+            String password = request.getParameter("full_registration_inputPassword");
+            registrationRequest = new FullRegistrationRequest(id, email, password);
+        }
+        return registrationRequest;
     }
 }

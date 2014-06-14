@@ -3,6 +3,7 @@ package com.mygreenbill.servlets;
 import com.mygreenbill.authentication.AuthenticationManager;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.Status;
+import com.mygreenbill.registration.AppRegistrationRequest;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -24,36 +25,24 @@ public class AuthenticationServlet extends HttpServlet
         doPost(request, response);
     }
 
-    private void processLoginRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        String email = request.getParameter("login_form_email");
-        String password = request.getParameter("login_form_password");
-        HttpSession session = request.getSession();
-        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
-
-        Status loginStatus = authenticationManager.processLoginRequest(email, password, session);
-        if (loginStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
-        {
-            //forward to dashboard
-            LOGGER.info("User %s logged in, forward to dashboard");
-            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
-        }
-        else
-        {
-            forwardToErrorPage(request, response, loginStatus.getDescription());
-            return;
-        }
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String uri = request.getRequestURI();
         LOGGER.debug(uri);
-
-        if (uri.contains("login"))
+        if (uri.contains("loginByApp"))
         {
-            processLoginRequest(request, response);
+            String email = request.getParameter("email");
+            String pictureUrl = request.getParameter("picture");
+            request.getSession().setAttribute("userPicture", pictureUrl);
+            processLoginRequest(email, "Aa123456"/*AppRegistrationRequest.defaultPassword*/, request.getSession(), request, response);
+        }
+        else if (uri.contains("login"))
+        {
+            String email = request.getParameter("login_form_email");
+            String password = request.getParameter("login_form_password");
+            HttpSession session = request.getSession();
+            processLoginRequest(email, password, session, request, response);
         }
         else if (uri.contains("accountActivation"))
         {
@@ -71,9 +60,25 @@ public class AuthenticationServlet extends HttpServlet
         {
             processResendActivationEmail(request, response);
         }
+    }
 
+    private void processLoginRequest(String email, String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
 
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
 
+        Status loginStatus = authenticationManager.processLoginRequest(email, password, session);
+        if (loginStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
+        {
+            //forward to dashboard
+            LOGGER.info("User %s logged in, forward to dashboard");
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
+        }
+        else
+        {
+            forwardToErrorPage(request, response, loginStatus.getDescription());
+            return;
+        }
     }
 
     private void processResendActivationEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

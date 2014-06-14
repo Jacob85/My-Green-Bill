@@ -46,10 +46,8 @@ public class FullRegistrationRequest extends RegistrationRequestAbstract impleme
     @Override
     public String toString()
     {
-        return "FullRegistrationRequest{" +
-                "'id='" +id + '\'' +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
+        return super.toString() + " FullRegistrationRequest{" +
+                "password='" + password + '\'' +
                 '}';
     }
 }

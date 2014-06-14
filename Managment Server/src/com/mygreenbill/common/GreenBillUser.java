@@ -53,6 +53,7 @@ public class GreenBillUser
         this.email = fullRegistrationRequest.getEmail();
         this.firstName = fullRegistrationRequest.getValidationResponse().getFirstName();
         this.lastName = fullRegistrationRequest.getValidationResponse().getLastName();
+        this.forwardEmail = this.email;
     }
 
     public GreenBillUser(Map<String, Object> map)

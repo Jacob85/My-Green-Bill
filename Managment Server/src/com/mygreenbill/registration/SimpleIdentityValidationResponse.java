@@ -145,4 +145,21 @@ public class SimpleIdentityValidationResponse  implements Serializable
     {
         this.deathDate = deathDate;
     }
+
+    @Override
+    public String toString()
+    {
+        return "SimpleIdentityValidationResponse{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", addressString='" + addressString + '\'' +
+                ", birthDate=" + birthDate +
+                ", isAlive=" + isAlive +
+                ", deathDate=" + deathDate +
+                '}';
+    }
 }
+
+

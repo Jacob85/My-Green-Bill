@@ -2,6 +2,7 @@ package com.mygreenbill.registration;
 
 import com.mygreenbill.common.Status;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -17,5 +18,5 @@ public interface IRegistration
     public Status registerUser(RegistrationRequestAbstract request);
     public Status updateCurrentSessionWithUserInfo(RegistrationRequestAbstract request, HttpSession currentSession);
     public Status processRegistrationRequest(RegistrationRequestAbstract registrationRequest);
-
+    public RegistrationRequestAbstract creteRegistrationRequest(HttpServletRequest request);
 }

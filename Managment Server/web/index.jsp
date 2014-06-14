@@ -14,6 +14,14 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/login.css" />
     <link rel="stylesheet" href="assets/plugins/magic/magic.css" />
+    <link rel="stylesheet" href="assets/plugins/Font-Awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/MoneAdmin.css" />
+    <link rel="stylesheet" href="assets/plugins/social-buttons/social-buttons.css" />
+
+
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -35,6 +43,59 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
+    <%-- Google Sign in--%>
+   <%-- <meta name="google-signin-clientid" content="288366509317-1hgkph86vukk0iu4983vsol50b24l0bg.apps.googleusercontent.com" />
+    <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email" />
+    <meta name="google-signin-requestvisibleactions" content="http://schemas.google.com/AddActivity" />
+    <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+    <meta name="google-signin-callback" content="signinCallback1" />--%>
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+
+        function onLoadCallback()
+        {
+            //gapi.client.setApiKey('VMiZxsaNID-iZP3r1jsxomaf'); //set your API KEY
+            gapi.client.load('plus', 'v1',function(){});//Load Google + API
+        }
+
+/*        function mylogin()
+        {
+            var myParams = {
+                'clientid' : '288366509317-1hgkph86vukk0iu4983vsol50b24l0bg.apps.googleusercontent.com', //You need to set client id
+                'cookiepolicy' : 'single_host_origin',
+                'callback' : 'loginCallback', //callback function
+                'approvalprompt':'force',
+                'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'
+            };
+            gapi.auth.signIn(myParams);
+        }*/
+
+      /*  function loginCallback(authResult)
+        {
+                if (authResult['status']['signed_in']) {
+                    // Update the app to reflect a signed in user
+                    // Hide the sign-in button now that the user is authorized, for example:
+                    //document.getElementById('signinButton').setAttribute('style', 'display: none');
+                    console.log("Success!!");
+                    $.getJSON("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + authResult["access_token"], function (data){
+                        console.log(data);
+                        console.log(data.email);
+                    });
+                } else {
+                    // Update the app to reflect a signed out user
+                    // Possible error values:
+                    //   "user_signed_out" - User is signed-out
+                    //   "access_denied" - User denied access to your app
+                    //   "immediate_failed" - Could not automatically log in the user
+                    console.log('Sign-in state: ' + authResult['error']);
+                }
+            console.log(authResult);
+        }*/
+    </script>
 </head>
 <body>
 
@@ -95,12 +156,32 @@
                             <button class="btn text-muted text-center btn-success" type="submit">Register</button>
                         </form>
                     </div>
+                    <div id="appLogin" class="tab-pane">
+                        <form id="appLoginForm" method="post" action="${pageContext.request.contextPath}" class="form-signin">
+                            <p class="text-muted text-center btn-block btn btn-primary btn-rect">Enter your valid ID</p>
+                            <input type="text"  required="required" placeholder="Your ID"  class="form-control" id="idInput" name="appRegisterId" />
+                            <div class="text-muted text-center btn-block" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input type="radio" checked required="required" name="options" placeholder="Log in" class="btn btn-info" value="/authenticate/loginByApp" id="loginRadioBox"> Login
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" required="required" name="options" placeholder="Register" class="btn btn-info" value="/register/byApp" id="registerRadioBox"> Register
+                                </label>
+                            </div>
+                            <br>
+                            <button type="submit" id="googleLoginButton" class="btn btn-block btn-social btn-google-plus">
+                                <i class="icon-google-plus"></i> Sign in with Google
+                            </button>
+                        </form>
+                    </div>
                 </div>
+
                 <div class="text-center">
                     <ul class="list-inline">
                         <li><a class="btn" href="#login" data-toggle="tab">Login</a></li>
                         <li><a class="btn" href="#forgot" data-toggle="tab">Forgot Password</a></li>
                         <li><a class="btn" href="#signup" data-toggle="tab">Signup</a></li>
+                        <li><a class="btn" href="#appLogin" data-toggle="tab">Google Login</a></li>
                     </ul>
                 </div>
 
@@ -109,47 +190,6 @@
 
 
 
-
-
-<%--
-                <form class="form-horizontal" method="post" id="full_registration_form" action="${pageContext.request.contextPath}/register/full" onsubmit="return validateFullRegistrationForm()">
-                    <div class="form-group">
-                        <label for="full_registration_inputEmail" class="control-label col-xs-2">Email</label>
-                        <div class="col-xs-10">
-                            <input type="email" class="form-control" id="full_registration_inputEmail" name="full_registration_inputEmail" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="full_registration_inputPassword" class="control-label col-xs-2">Password</label>
-                        <div class="col-xs-10">
-                            <input type="password" class="form-control" id="full_registration_inputPassword" name="full_registration_inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="full_registration_confirmPassword" class="control-label col-xs-2">Confirm Password</label>
-                        <div class="col-xs-10">
-                            <input type="password" class="form-control" id="full_registration_confirmPassword" name="full_registration_confirmPassword" placeholder="Confirm Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="full_registration_inputId" class="control-label col-xs-2">ID</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="full_registration_inputId" name="full_registration_inputId" placeholder="Id">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-xs-offset-2 col-xs-10">
-                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-                    </div>
-                </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-10">
-                            <button class="btn btn-primary">Use Google</button>
-                            <button class="btn btn-primary">Use Facebook</button>
-                        </div>
-                    </div>
-                </form>
---%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -164,6 +204,8 @@
 <br>
 <br>
 
+<%--<input type="button"  value="Login" onclick="mylogin()" />
+<input type="button"  value="Logout" onclick="logout()" />--%>
 <div class="container">
 
     <!-- Main hero unit for a primary marketing message or call to action -->

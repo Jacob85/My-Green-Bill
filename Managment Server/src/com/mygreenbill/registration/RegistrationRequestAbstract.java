@@ -102,4 +102,17 @@ public abstract class RegistrationRequestAbstract implements Serializable
     }
     public abstract String getEncryptPassword(EncryptionType encryptionType);
     public abstract boolean isRequestValid();
+
+    @Override
+    public String toString()
+    {
+        return "RegistrationRequestAbstract{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", validationResponse=" + validationResponse +
+                ", firstValidationQuestion=" + firstValidationQuestion +
+                ", secondValidationQuestion=" + secondValidationQuestion +
+                ", companiesToAdd=" + companiesToAdd +
+                '}';
+    }
 }

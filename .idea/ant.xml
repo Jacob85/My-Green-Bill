@@ -7,6 +7,7 @@
       </additionalClassPath>
     </buildFile>
     <buildFile url="file://$PROJECT_DIR$/my_green_bill.xml" />
+    <buildFile url="file://$PROJECT_DIR$/Copy To DB/module_copy_to_db.xml" />
   </component>
 </project>
 
