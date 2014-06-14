@@ -96,6 +96,21 @@
             console.log(authResult);
         }*/
     </script>
+
+    <%
+        Object ob = session.getAttribute("passRestore");
+        if (ob != null)
+        {
+            boolean resendEmail = Boolean.parseBoolean(String.valueOf(ob));
+            if (resendEmail)
+            {
+                out.write("<script type=\"text/javascript\" src=\"js/pnotify.custom.min.js\"></script>\n"
+                        +
+                        "<script type=\"text/javascript\"  src=\"js/showNotificationReset.js\"></script>");
+            }
+        }
+
+    %>
 </head>
 <body>
 
@@ -139,7 +154,7 @@
                         </form>
                     </div>
                     <div id="forgot" class="tab-pane">
-                        <form action="${pageContext.request.contextPath}/authenticate/restorePassword" class="form-signin">
+                        <form method="post" action="${pageContext.request.contextPath}/authenticate/restorePassword" class="form-signin">
                             <p class="text-muted text-center btn-block btn btn-primary btn-rect">Enter your valid e-mail</p>
                             <input type="email"  required="required" placeholder="Your E-mail"  class="form-control" id="email" name="email" />
                             <br />

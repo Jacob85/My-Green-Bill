@@ -9,7 +9,8 @@ public enum MailTemplate
     PASSWORD_RESET("Password Reset"),
     MONTHLY_UPDATE("Monthly update"),
     UNREGISTER_CUSTOMER("Unregister Customer"),
-    REGISTER_CUSTOMER‏("Register Customer");
+    REGISTER_CUSTOMER‏("Register Customer"),
+    PASSWORD_RESET_SUCCESS("Password Successfully Reset");
 
     private String dataBaseName;
 

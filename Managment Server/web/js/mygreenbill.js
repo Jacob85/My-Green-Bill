@@ -112,7 +112,25 @@ $(document).ready(function(){
             }
         });
 
-
+    $('#passwordRestoreForm').validate(
+        {
+            rules:
+            {
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                reenteredPassword: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').removeClass('success').addClass('error');
+            }
+        }
+    );
     $('#full_registration_form').validate(
         {
             rules: {

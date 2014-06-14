@@ -173,7 +173,10 @@ public class GreenBillUser
         }
         return false;
     }
-
+    public String getFullName()
+    {
+        return firstName + " " + lastName;
+    }
     public GreenBillCompany getCompanyById(String companyId)
     {
         for (GreenBillCompany company : userCompanyList)

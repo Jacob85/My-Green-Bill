@@ -61,6 +61,7 @@ function isEmailAddressValid(email)
     return true;
 }
 
+var firstTime = true;
 $(document).ready(function(){
 
     $('#appLoginForm').validate(
@@ -111,7 +112,25 @@ $(document).ready(function(){
             }
         });
 
-
+    $('#passwordRestoreForm').validate(
+        {
+            rules:
+            {
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                reenteredPassword: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').removeClass('success').addClass('error');
+            }
+        }
+    );
     $('#full_registration_form').validate(
         {
             rules: {
@@ -221,26 +240,3 @@ function addFormHiddenParamsAndSubmit(data){
      /*submit the form*/
     $('#appLoginForm').submit();
 }
-
-var firstTime = true;
-$( document ).ready(function(){
-    //$('#googleLoginButton').click(googleLogin);
-   /* $('#appLoginForm').submit(function(event){
-        console.log("submit Called");
-
-        if (firstTime)
-        {
-            firstTime=false;
-            googleLogin();
-            event.preventDefault();
-        }
-        else
-        {
-            var origAction = $('#appLoginForm').attr('action');
-            var selected = $("#appLoginForm input[type='radio']:checked");
-            *//*change the form action*//*
-            console.log("changing form action from" + origAction + " to " + origAction + selected.val());
-            $('#appLoginForm').attr('action', origAction + selected.val());
-        }
-    });*/
-});

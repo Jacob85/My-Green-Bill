@@ -294,7 +294,7 @@ public class DatabaseHandler
             return runUpdateQuery("update user set password= '" + newPassword +"' where id=" + user.getUserId() + ";");
         } catch (DatabaseException e)
         {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return null;
     }

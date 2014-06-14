@@ -779,11 +779,11 @@ COMMIT;
 START TRANSACTION;
 USE `mygreenbilldb`;
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (1, 'Welcome', 'Welcome to any new user', 'Hello $first_name $last_name \r\nThank you for joining My green Bill! to access the Dashboard please activate your account by clicking the following link: $link', 'path/to/file.png', '2013-08-01');
-INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (2, 'Password Reset', 'Reset the user password', 'Please press the following link to reset your password', 'path/to/file.png', '2013-08-02');
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (2, 'Password Reset', 'Reset the user password', 'Hello $first_name $last_name \r\nTo reset your password please press the following link: $link', 'path/to/file.png', '2013-08-02');
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (3, 'Monthly update', 'Display the monthly update to the user', 'your monthly update is... bla bla bla ', 'path/to/update.txt', '2013-08-03');
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (4, 'Unregister Customer', 'Message company to unregister a user', 'Hello $company_name\r\nPlease remove the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nE-Mail: $user_email\r\nfrom your mailing list.', 'path/to/update.txt', '2013-08-03');
 INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (5, 'Register Customer', 'Message company to register a user', 'Hello $company_name\r\nPlease add the following user:\r\nName: $first_name $last_name\r\nID: $user_id\r\nE-Mail: $user_email\r\nto your mailing list.', 'path/to/update.txt', '2013-08-03');
-
+INSERT INTO `mygreenbilldb`.`mail_template` (`id`, `name`, `description`, `context`, `path_to_file`, `create_date`) VALUES (6, 'Password Successfully Reset', 'Reset user password success', 'Hello $first_name $last_name \r\nYour Password was successfully restored\r\nNew Password: $pass', 'path/to/file.png', '2013-08-02');
 COMMIT;
 
 

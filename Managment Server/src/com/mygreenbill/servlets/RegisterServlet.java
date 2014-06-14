@@ -2,9 +2,8 @@ package com.mygreenbill.servlets;
 
 import com.mygreenbill.authentication.AuthenticationManager;
 import com.mygreenbill.common.GreenBillUser;
+import com.mygreenbill.common.MailTemplate;
 import com.mygreenbill.common.Status;
-import com.mygreenbill.registration.AppRegistrationRequest;
-import com.mygreenbill.registration.FullRegistrationRequest;
 import com.mygreenbill.registration.RegistrationManager;
 import com.mygreenbill.registration.RegistrationRequestAbstract;
 import org.apache.log4j.Logger;
@@ -99,7 +98,7 @@ public class RegisterServlet extends HttpServlet
         GreenBillUser greenBillUser = (GreenBillUser) currentSession.getAttribute("user");
         LOGGER.info("Composing Welcome and Validation email for the user " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName());
         AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
-        authenticationManager.composeAndSendAuthenticationEmail(greenBillUser);
+        authenticationManager.composeAndSendEmailFromTemplate(greenBillUser, MailTemplate.WELCOME);
 
          /*end of phase 1 next phase is 2*/
         request.getSession().setAttribute("phase", 2);

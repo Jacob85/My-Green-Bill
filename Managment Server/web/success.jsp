@@ -64,7 +64,7 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h2><%= "Hello " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName()%></h2>
+        <h2><%= "Hello " + greenBillUser.getFullName()%></h2>
          <p>To Active your account and access Dashboard please press the link on the email sent to you <br>
             The email was sent to <%=greenBillUser.getForwardEmail()%></p>
           <p>

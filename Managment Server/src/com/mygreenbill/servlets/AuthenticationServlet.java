@@ -2,8 +2,8 @@ package com.mygreenbill.servlets;
 
 import com.mygreenbill.authentication.AuthenticationManager;
 import com.mygreenbill.common.GreenBillUser;
+import com.mygreenbill.common.MailTemplate;
 import com.mygreenbill.common.Status;
-import com.mygreenbill.registration.AppRegistrationRequest;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -52,6 +52,14 @@ public class AuthenticationServlet extends HttpServlet
         {
             processLogoutRequest(request, response);
         }
+        else if (uri.contains("restorePasswordSubmitted"))
+        {
+            processChangePassword(request, response);
+        }
+        else if (uri.contains("restorePasswordUrl"))
+        {
+            processRestorePasswordUrlPressed(request, response);
+        }
         else if (uri.contains("restorePassword"))
         {
             processRestorePasswordRequest(request, response);
@@ -60,8 +68,83 @@ public class AuthenticationServlet extends HttpServlet
         {
             processResendActivationEmail(request, response);
         }
+        else if (uri.contains("resendRestorePasswordEmail"))
+        {
+            processResendResetPasswordEmail(request, response);
+        }
+
     }
 
+    private void processChangePassword(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    {
+        String password = request.getParameter("password");
+        GreenBillUser greenBillUser = (GreenBillUser) request.getSession().getAttribute("user");
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
+        Status changePasswordStatus = authenticationManager.changePassword(greenBillUser, password);
+        if (changePasswordStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
+        {
+            //forward to index.jsp
+            LOGGER.info("User's password was successfully restored, forwarding to mainPage");
+            request.getSession().setAttribute("passRestore", true);
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
+        }
+        else
+        {
+            forwardToErrorPage(request, response, changePasswordStatus.getDescription());
+        }
+
+    }
+
+    private void processResendResetPasswordEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        GreenBillUser greenBillUser = (GreenBillUser) request.getSession().getAttribute("user");
+        if (greenBillUser == null)
+        {
+            LOGGER.info("Session Timeout, User has to reconnect again..");
+            processLogoutRequest(request, response);
+            return;
+        }
+        // else - user is still logged in
+        LOGGER.info("Composing Reset Password email for the user " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName());
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
+        authenticationManager.composeAndSendEmailFromTemplate(greenBillUser, MailTemplate.PASSWORD_RESET);
+
+        request.getSession().setAttribute("resendEmail", "true");
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/restorePasswordSuccess.jsp"));
+
+    }
+
+    private void processRestorePasswordUrlPressed(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    {
+        String email = request.getParameter("email");
+        String hash = request.getParameter("hash");
+
+        AuthenticationManager  authenticationManager = AuthenticationManager.getInstance();
+        Status restorePassword = authenticationManager.processRestorePasswordRequestPressed(email, hash, request.getSession());
+        if (restorePassword.getOperationStatus() == Status.OperationStatus.SUCCESS)
+        {
+            // forward to password restore form
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/restorePasswordPage.jsp"));
+        }
+        else
+        {
+            forwardToErrorPage(request, response, restorePassword.getDescription());
+        }
+    }
+    private void processAccountActivation(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        String email = request.getParameter("email");
+        String hash = request.getParameter("hash");
+
+        AuthenticationManager  authenticationManager = AuthenticationManager.getInstance();
+        Status activationStatus = authenticationManager.processActivationRequest(email, hash, request.getSession());
+        if (activationStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
+        {
+            LOGGER.info("User was successfully activate, forwarding to dashboard");
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
+        }
+
+    }
     private void processLoginRequest(String email, String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 
@@ -93,15 +176,24 @@ public class AuthenticationServlet extends HttpServlet
         // else - user is still logged in
         LOGGER.info("Composing Welcome and Validation email for the user " + greenBillUser.getFirstName() + " " + greenBillUser.getLastName());
         AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
-        authenticationManager.composeAndSendAuthenticationEmail(greenBillUser);
+        authenticationManager.composeAndSendEmailFromTemplate(greenBillUser, MailTemplate.WELCOME);
 
         request.getSession().setAttribute("resendEmail", "true");
         response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/success.jsp"));
     }
 
-    private void processRestorePasswordRequest(HttpServletRequest request, HttpServletResponse response)
+    private void processRestorePasswordRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        //todo yaki - implement this part
+        LOGGER.info("Start process restore password request");
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
+        Status restorePasswordStatus = authenticationManager.processRestorePasswordRequest(request.getParameter("email"), request.getSession());
+        if (restorePasswordStatus.getOperationStatus() == Status.OperationStatus.FAILED)
+        {
+            forwardToErrorPage(request, response, restorePasswordStatus.getDescription());
+            return;
+        }
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/restorePasswordSuccess.jsp"));
+
     }
 
 
@@ -111,20 +203,7 @@ public class AuthenticationServlet extends HttpServlet
         response.sendRedirect("/greenbill");
     }
 
-    private void processAccountActivation(HttpServletRequest request, HttpServletResponse response) throws IOException
-    {
-        String email = request.getParameter("email");
-        String hash = request.getParameter("hash");
 
-        AuthenticationManager  authenticationManager = AuthenticationManager.getInstance();
-        Status activationStatus = authenticationManager.processActivationRequest(email, hash, request.getSession());
-        if (activationStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
-        {
-            LOGGER.info("User was successfully activate, forwarding to dashboard");
-            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
-        }
-
-    }
 
     private void forwardToErrorPage(HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException
     {
