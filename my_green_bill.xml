@@ -319,6 +319,7 @@
              keyfile="idan-key-pair.pem">
             <fileset dir="Managment Server/out/artifacts/web_war_exploded"/>
         </scp>
+        <antcall target="restart.tomcat"/>
     </target>
     <target name="fully.deploy.web.server.to.amazon.exclude.plugins" depends="artifact.managment_server:war_exploded2, management.copy.conf">
         <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill"
@@ -329,12 +330,15 @@
             </fileset>
 
         </scp>
-    </target>    <target name="management.server.deploy.classes.to.amazon" depends="management.copy.conf, artifact.managment_server:war_exploded2">
+        <antcall target="restart.tomcat"/>
+    </target>
+    <target name="management.server.deploy.classes.to.amazon" depends="management.copy.conf, artifact.managment_server:war_exploded2">
         <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill/WEB-INF/classes"
              trust="true"
              keyfile="idan-key-pair.pem">
             <fileset dir="Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes"/>
         </scp>
+        <antcall target="restart.tomcat"/>
     </target>
 
     <target name="management.server.deploy.jsp.files.to.amazon" depends="management.copy.conf, artifact.managment_server:war_exploded2">
@@ -345,6 +349,7 @@
                 <include name="*.jsp"/>
             </fileset>
         </scp>
+        <antcall target="restart.tomcat"/>
     </target>
 
 
@@ -356,11 +361,20 @@
                 <include name="*.properties"/>
             </fileset>
         </scp>
+        <antcall target="restart.tomcat"/>
     </target>
 
 
   <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
 
+
+  <target name="restart.tomcat" description="Restart the Tomcat server in Amazon">
+      <sshexec host="54.72.32.127"
+               trust="true"
+               username="ubuntu"
+               keyfile="puttyKey.ppk"
+               command=" cd /home/ubuntu/apache-tomcat-7.0.53/bin/ ; ./shutdown.sh ; ./startup.sh"/>
+  </target>
 
 </project>
 
