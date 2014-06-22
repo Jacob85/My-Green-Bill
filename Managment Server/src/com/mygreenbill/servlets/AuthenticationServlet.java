@@ -83,7 +83,7 @@ public class AuthenticationServlet extends HttpServlet
         Status changePasswordStatus = authenticationManager.changePassword(greenBillUser, password);
         if (changePasswordStatus.getOperationStatus() == Status.OperationStatus.SUCCESS)
         {
-            //forward to index.jsp
+            //forward to old_index.jsp
             LOGGER.info("User's password was successfully restored, forwarding to mainPage");
             request.getSession().setAttribute("passRestore", true);
             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
