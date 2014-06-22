@@ -106,7 +106,7 @@
             <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:My Green Bill" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Register Today </h1>
+                    <h1>Register Today</h1>
                     <p>Register today and start getting your bills by email instead of paper over mail. you can register using google or full registration</p>
                     <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#full_registration" href="#login" role="button">Register today</a></p>
                 </div>
@@ -116,8 +116,8 @@
             <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:My Green Bill" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Email Changed?</h1>
-                    <p>Change your email is easy then ever, just log in to your dashboard and replace the email we will do all the hatd work</p>
+                    <h1>Got new Email address?</h1>
+                    <p>Change your email is easy then ever, just log in to your dashboard and change the email setting, we'll take it from there</p>
                 </div>
             </div>
         </div>
@@ -149,19 +149,19 @@
         <div class="col-lg-4">
             <img class="img-circle" src="img/do.png" alt="Generic placeholder image">
             <h2>Don't Panic</h2>
-            <p>Managing your bills has never bean so easy! get all your bills in one place - Free archive for your bills, you will never forget to pay another bill again</p>
+            <p>Managing your bills has never bean so easy! get all your bills in one place - Free archive for your bills - You will never forget to pay another bill again</p>
             <p><a class="btn btn-success" href="#dont_panic" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="img/think_green.png" alt="Generic placeholder image">
             <h2>Think Green</h2>
-            <p>Start getting your Monthly bills as electronic bills instead of paper over mail! Save paper and money. by saving the printed paper you will help to save the world</p>
+            <p>Start getting your Monthly bills as electronic bills instead of paper over mail! Save paper and money! By saving the paper you will help to save the world</p>
             <p><a class="btn btn-success" href="#save_trees" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="img/stats_small.jpg" alt="Generic placeholder image">
             <h2>Personal Analytics</h2>
-            <p>Get your Personal analytic! from now tracking your monthly expenses in easy then ever, see where you can save money - what expenses can you reduce <payment></payment></p>
+            <p>Get your Personal analytic! from now tracking your monthly expenses in easy than ever, see where you can save money and what expenses can you reduce <payment></payment></p>
             <p><a class="btn btn-success" href="#stats_big" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
@@ -189,9 +189,9 @@
         </div>
         <div class="col-md-7">
             <h2 class="featurette-heading">Save the Trees <span class="text-muted">Save Money</span></h2>
-            <p class="lead">With My Green Bill you can easily get all your monthly bills as electronics one, sane the paper they printed on and make our globe a better place,
-                All you need to do is choose from which service providers you wish to get their monthly bill as electronic one instead of paper over mail
-                We will do all the hard work of informing thh company. go back is always possible.
+            <p class="lead">With My Green Bill you can easily get all your monthly bills as electronically over email, save the paper they printed on and make our globe a better place,
+                All you need to do is choose from which service providers you wish to get monthly bill as electronic one instead of paper over mail
+                We will do all the hard work of informing the company. go back is always possible.
             </p>
         </div>
     </div>
@@ -203,7 +203,7 @@
             <h2 class="featurette-heading">Custom Analytic <span class="text-muted"></span></h2>
             <p class="lead">
                 My Green bill know how to extract the total amount to pay out of your bills, we then construct a custom analytic for your bills
-                you can get information by category, service provider and date
+                you can get information by category, service provider and date.
             </p>
         </div>
         <div class="col-md-5">
