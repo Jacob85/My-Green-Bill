@@ -43,3 +43,7 @@ label.error {
 .my-valid-class {
     color:#00CC00; /* green */
 }
+h3
+{
+    display: inline;
+}

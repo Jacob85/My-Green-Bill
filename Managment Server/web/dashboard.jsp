@@ -86,6 +86,12 @@
 
                 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                     <div class="container">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
                         <header class="navbar-header">
                             <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
                         </header>
@@ -129,7 +135,7 @@
 
         <li class="panel active">
             <a href="#" >
-                <i class="icon-table"></i><%=properties.getProperty("dashboard")%></a>
+                <i class="icon-table"></i> <%=properties.getProperty("dashboard")%></a>
         </li>
 
         <li class="panel ">

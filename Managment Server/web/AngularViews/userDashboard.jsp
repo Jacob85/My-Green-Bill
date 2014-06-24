@@ -35,10 +35,10 @@
         <div class="col-lg-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 style="display: inline">  {{currMonthName}} Expenses Top Category </h3>
+                    <h3 style="display: inline">  {{currMonthName}} Top Category spent</h3>
                 </div>
                 <div class="panel-body">
-                    <h1 class="text-center">Top Category Spent: {{ topCategorySpent }}</h1>
+                    <h1 class="text-center">{{ topCategorySpent }}</h1>
                 </div>
                 <div class="panel-footer">
                     <a href="#/User/Statistics">see more statistics</a>

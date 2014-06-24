@@ -22,7 +22,7 @@
     <div class="col-lg-6">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3>{{currMonthName}} Total Expenses </h3>
+                <h3 style="display: inline">{{currMonthName}} Total Expenses </h3>
             </div>
             <div class="panel-body">
                 <h1 class="text-center"> {{ currentMonthTotalExpenses }} ₪</h1>
@@ -32,7 +32,7 @@
     <div class="col-lg-6">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3>{{lastMonthName}} Total Expenses</h3>
+                <h3 style="display: inline">{{lastMonthName}} Total Expenses</h3>
             </div>
             <div class="panel-body">
                 <h1 class="text-center"> {{ lastMonthTotalExpenses }} ₪</h1>
@@ -44,7 +44,7 @@
     <div class="col-lg-6">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3>  Year Stats</h3>
+                <h3 style="display: inline">  Year Stats</h3>
             </div>
             <div class="panel-body">
                 <div id="year-stats"></div>
@@ -54,7 +54,7 @@
     <div class="col-lg-6">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3>{{currMonthName}} Expenses By Category </h3>
+                <h3 style="display: inline">{{currMonthName}} Expenses By Category </h3>
             </div>
             <div class="panel-body">
                 <div id="donut-example"></div>

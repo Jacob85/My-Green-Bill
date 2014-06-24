@@ -365,7 +365,6 @@ public class ConnectionManager
         {
             try
             {
-
                 InetAddress address = InetAddress.getByName(trafficBladeIp);
                 byte[] buffer = message.toString().getBytes();
                 if (buffer.length < MAX_DATAGRAM_SIZE)
@@ -430,9 +429,6 @@ public class ConnectionManager
                     JSONObject ob = new JSONObject(str);
                     this.LOGGER.info("New message received, composed it into JSON: " + ob.toString());
                     processAckJson(ob);
-                    // todo yaki - to remove from here
-                    //just for debugging
-                    //processAckJson(new JSONObject("{messageID: 1, MessageType: ACK}"));
                 } catch (IOException e)
                 {
                     this.LOGGER.error(e);
