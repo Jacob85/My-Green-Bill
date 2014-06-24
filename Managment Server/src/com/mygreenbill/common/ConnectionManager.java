@@ -1,6 +1,7 @@
 package com.mygreenbill.common;
 
 import com.mygreenbill.Exceptions.*;
+import com.mygreenbill.database.DatabaseHandler;
 import com.mygreenbill.interfaces.GreenBillClient;
 import com.mygreenbill.interfaces.GreenBillServer;
 import com.mygreenbill.registration.SimpleIdentityValidationResponse;
@@ -238,11 +239,14 @@ public class ConnectionManager
     public void processAckJson(JSONObject ackJson)
     {
         if (ackJson == null)
+        {
+            LOGGER.info("ackJson is null");
             return;
+        }
         try
         {
-            String id = String.valueOf(ackJson.getInt("messageID"));
-            String messageType = ackJson.getString("MessageType");
+            String id = String.valueOf(ackJson.getInt(JsonRequestFields.MESSAGE_ID.field()));
+            String messageType = ackJson.getString(JsonRequestFields.MESSAGE_TYPE.field());
             if (messageType.equals("ACK"))
             {
                 // remove the JSON message from the resend Map
@@ -256,6 +260,7 @@ public class ConnectionManager
             }
         } catch (JSONException e)
         {
+            LOGGER.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }
