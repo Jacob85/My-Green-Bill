@@ -8,7 +8,7 @@
 <link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
 
-<script src="assets/plugins/jquery-2.1.1.min.js" type="text/javascript" ></script>
+<!-- <script src="assets/plugins/jquery-2.1.1.min.js"></script> -->
 <script src="js/pnotify.custom.min.js" type="text/javascript" ></script>
 
 <script language="javascript" type="text/javascript">

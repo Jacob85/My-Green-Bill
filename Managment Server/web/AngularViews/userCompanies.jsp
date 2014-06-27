@@ -16,7 +16,7 @@
 <link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
 
-<script src="assets/plugins/jquery-2.1.1.min.js"></script>
+<!-- <script src="assets/plugins/jquery-2.1.1.min.js"></script> -->
 <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
 
 <div class="row">
