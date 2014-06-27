@@ -4,6 +4,7 @@ import com.mygreenbill.authentication.AuthenticationManager;
 import com.mygreenbill.common.GreenBillUser;
 import com.mygreenbill.common.MailTemplate;
 import com.mygreenbill.common.Status;
+import com.mygreenbill.registration.AppRegistrationRequest;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -35,7 +36,7 @@ public class AuthenticationServlet extends HttpServlet
             String email = request.getParameter("email");
             String pictureUrl = request.getParameter("picture");
             request.getSession().setAttribute("userPicture", pictureUrl);
-            processLoginRequest(email, "Aa123456"/*AppRegistrationRequest.defaultPassword*/, request.getSession(), request, response);
+            processLoginRequest(email, AppRegistrationRequest.defaultPassword, request.getSession(), request, response);
         }
         else if (uri.contains("login"))
         {
