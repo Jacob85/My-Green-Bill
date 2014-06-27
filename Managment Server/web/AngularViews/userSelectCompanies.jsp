@@ -5,12 +5,11 @@
   Time: 8:22 PM
   To change this template use File | Settings | File Templates.
 --%>
-<script src="assets/css/jquery-ui.css"></script>
+<link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
 
-<script src="assets/plugins/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="js/pnotify.custom.min.js"></script>
-
+<script src="assets/plugins/jquery-2.1.1.min.js" type="text/javascript" ></script>
+<script src="js/pnotify.custom.min.js" type="text/javascript" ></script>
 
 <script language="javascript" type="text/javascript">
 
@@ -102,7 +101,7 @@
                     </label>
                 </div>
                 <div class="panel-body">
-                    <img class="company-logo" src={{company.logo_path}} />
+                    <img class="company-logo" ng-src={{company.logo_path}} />
                 </div>
             </div>
         </div>
