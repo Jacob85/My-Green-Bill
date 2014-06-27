@@ -9,7 +9,6 @@ angular.module('userSelectCompaniesController',[])
             $http.get('/greenbill/rest/company/allOtherCompanies')
                 .success(function (response)
                 {
-                    console.log(response);
                     $scope.otherCompanies  = response;
                 });
         }

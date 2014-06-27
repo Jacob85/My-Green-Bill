@@ -31,7 +31,7 @@ angular.module('userCompaniesController',[])
                             text: 'Your changes were made and the companies were notified.',
                             type: 'success'
                         });
-                        window.setTimeout(reloadPage,2000) // Wait for 2.5s and reload the page
+                        window.setTimeout(reloadPage,2000) // Wait for 2.0s and reload the page
                     },
                     error: function (xhr) {
                         alert(xhr.responseText);

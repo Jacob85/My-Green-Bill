@@ -13,10 +13,10 @@
     GreenBillUser user = (GreenBillUser) request.getSession().getAttribute("user");
 %>
 
-<script src="assets/css/jquery-ui.css"></script>
+<link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
 
-<script src="assets/plugins/jquery-2.0.3.min.js"></script>
+<script src="assets/plugins/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
 
 <div class="row">
@@ -36,7 +36,7 @@
                 <Button class="icon-remove" style="float: right" ng-click="askToSubmit(company.id, company.name)"></Button>
             </div>
             <div class="panel-body">
-                <img class="company-logo" src={{company.logo_path}} />
+                <img class="company-logo" ng-src={{company.logo_path}} />
             </div>
         </div>
     </div>
