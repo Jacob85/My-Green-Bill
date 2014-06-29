@@ -106,8 +106,9 @@
             <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:My Green Bill" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Register Today</h1>
+                    <h1>Join Us Today</h1>
                     <p>Register today and start getting your bills by email instead of paper over mail. you can register using google or full registration</p>
+                    <img src="img/join_us_bg.jpg" style="width: 60%"><br><br>
                     <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#full_registration" href="#login" role="button">Register today</a></p>
                 </div>
             </div>
@@ -118,6 +119,7 @@
                 <div class="carousel-caption">
                     <h1>Got new Email address?</h1>
                     <p>Change your email is easy then ever, just log in to your dashboard and change the email setting, we'll take it from there</p>
+                    <img src="img/index_bg.jpg" style="width: 80%">
                 </div>
             </div>
         </div>
@@ -237,7 +239,7 @@
                                 <p class="text-muted text-center btn-block btn btn-primary btn-rect">
                                     Enter your username and password
                                 </p>
-                                <input type="text" placeholder="Username" class="form-control" name="login_form_email"/>
+                                <input type="text" placeholder="Email" class="form-control" name="login_form_email"/>
                                 <input type="password" placeholder="Password" class="form-control" name="login_form_password"/>
                                 <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
                             </form>
@@ -256,7 +258,7 @@
                                 <input type="email" placeholder="Your E-mail" class="form-control" id="full_registration_inputEmail" name="full_registration_inputEmail"/>
                                 <input type="password" placeholder="password" class="form-control" id="full_registration_inputPassword" name="full_registration_inputPassword"/>
                                 <input type="password" placeholder="Re type password" class="form-control" id="full_registration_confirmPassword" name="full_registration_confirmPassword"/>
-                                <input type="text" placeholder="Id" class="form-control" id="full_registration_inputId" name="full_registration_inputId" >
+                                <input type="text" placeholder="Id" class="form-control" id="full_registration_inputId" name="full_registration_inputId" ><br>
                                 <button class="btn text-muted text-center btn-success" type="submit">Register</button>
                             </form>
                         </div>
