@@ -21,7 +21,7 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h2>THIS IS USER COMPANIES PAGE</h2>
+        <h2>COMPANIES PAGE</h2>
         <a href="#/User/Companies/Select" class="btn btn-primary">Add Companies</a>
     </div>
 </div>

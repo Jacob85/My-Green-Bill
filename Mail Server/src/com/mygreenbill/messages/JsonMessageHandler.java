@@ -23,6 +23,7 @@ public class JsonMessageHandler
 
     private IMailServerHandler mailServerHandler;
     private DatabaseHandler databaseHandler;
+    private int maxNumOfTries = 5;
 
     private CacheManager cacheManager;
     private Cache msgCache;
@@ -243,6 +244,15 @@ public class JsonMessageHandler
 
     public void sendMessageToCostumer(String toEmail, String subject, String messageContent)
     {
-        mailServerHandler.sendMessage(toEmail, subject, messageContent);
+        int numOfTries = 0;
+        while (!mailServerHandler.sendMessage(toEmail, subject, messageContent))
+        {
+            ++numOfTries;
+            if (numOfTries >= maxNumOfTries)
+            {
+                LOGGER.error("Max number of tries reached, could not send message to " + toEmail);
+                break;
+            }
+        }
     }
 }
