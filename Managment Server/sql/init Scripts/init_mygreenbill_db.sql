@@ -443,6 +443,22 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mygreenbilldb`.`company_has_log_in_event`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `mygreenbilldb`.`users_inquiry`;
+
+CREATE TABLE IF NOT EXISTS mygreenbilldb.users_inquiry
+(
+  id int NOT NULL AUTO_INCREMENT,
+  email text ,
+  name text ,
+  title text ,
+  content longtext,
+  PRIMARY KEY(id)
+)ENGINE = InnoDB;
+ALTER TABLE mygreenbilldb.users_inquiry ADD CONSTRAINT unique_id UNIQUE (id);
+
+-- -----------------------------------------------------
+-- Table `mygreenbilldb`.`company_has_log_in_event`
+-- -----------------------------------------------------
 DROP TABLE IF EXISTS `mygreenbilldb`.`company_has_log_in_event` ;
 
 CREATE TABLE IF NOT EXISTS `mygreenbilldb`.`company_has_log_in_event` (

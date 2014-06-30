@@ -53,6 +53,11 @@
               </button>
               <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
           </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="contact.jsp">Contact Us</a></li>
+              </ul>
+          </div>
       </div>
   </div>
   <br>

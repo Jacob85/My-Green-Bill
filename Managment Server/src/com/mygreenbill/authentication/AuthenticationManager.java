@@ -326,4 +326,34 @@ public class AuthenticationManager
         //sending message to mail server
         sendMailToCustomer(greenBillUser, mailTemplate, MailTemplate.PASSWORD_RESET_SUCCESS);
     }
+
+    public Status processContactUs(String email, String name, String title, String content)
+    {
+        if (!GeneralUtilities.hasData(email) || !GeneralUtilities.hasData(content))
+        {
+            LOGGER.info("cannot process contact inquiry, the email or the message inserted are empty ");
+            return new Status(Status.OperationStatus.FAILED, "cannot process contact inquiry, the email or the message inserted are empty");
+        }
+
+        /*Generate the query string*/
+        String query = "insert into mygreenbilldb.users_inquiry (email, name, title, content)  values ('$email', '$name', '$title', '$content');";
+        query = query.replace("$email", email);
+        query = query.replace("$name", name);
+        query = query.replace("$title", title);
+        query = query.replace("$content", content);
+        LOGGER.debug("Query String to add inquiry was generated: " + query);
+
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+        try
+        {
+            LOGGER.info("run the insert query..");
+            Status status = databaseHandler.runInsertQuery(query);
+            LOGGER.debug(status);
+            return status;
+        } catch (DatabaseException e)
+        {
+            LOGGER.error(e.getMessage(), e);
+            return new Status(Status.OperationStatus.FAILED, "Something went wrong in DB.. " + e.getMessage());
+        }
+    }
 }

@@ -3663,6 +3663,14 @@
       <foreign-key name="fk_month_stats_user1" columns="user_id,user_email" ref-table="user" ref-schema="" ref-catalog="mygreenbilldb" ref-columns="id,email" update-rule="0" delete-rule="0" deferrability="2"/>
       <index name="fk_month_stats_user1_idx" unique="false" columns="user_id,user_email"/>
     </table>
+    <table name="users_inquiry" schema="" catalog="mygreenbilldb" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="email" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="name" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="title" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="columns_priv" schema="" catalog="mysql" type="TABLE">
       <column name="Host" sqlType="CHAR" length="60" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
       <column name="Db" sqlType="CHAR" length="64" precision="0" nullable="false" jdbcType="1" def="Jyc="/>
@@ -4378,6 +4386,12 @@
         <parameter name="status" sqlType="VARCHAR" length="15" precision="15" nullable="true" jdbcType="12" type="1" index="8"/>
         <parameter name="file_name" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="9"/>
         <parameter name="path_to_file" sqlType="VARCHAR" length="2048" precision="2048" nullable="true" jdbcType="12" type="1" index="10"/>
+      </prototype>
+    </procedure>
+    <procedure name="SetNewForwardAddress" schema="" catalog="mygreenbilldb" type="1">
+      <prototype>
+        <parameter name="userEmail" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="newAddress" sqlType="VARCHAR" length="128" precision="128" nullable="true" jdbcType="12" type="1" index="2"/>
       </prototype>
     </procedure>
     <procedure name="UpdateCompanyAddress" schema="" catalog="mygreenbilldb" type="1">

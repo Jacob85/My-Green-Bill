@@ -94,6 +94,9 @@
                         <header class="navbar-header">
                             <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
                         </header>
+                        <ul class="nav navbar-nav">
+                            <li><a href="contact.jsp">Contact Us</a></li>
+                        </ul>
                         <ul class="nav navbar-top-links navbar-right">
 
                             <li class="dropdown">

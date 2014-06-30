@@ -73,7 +73,33 @@ public class AuthenticationServlet extends HttpServlet
         {
             processResendResetPasswordEmail(request, response);
         }
+        else if (uri.contains("contactUs"))
+        {
+            processContactUs(request, response);
+        }
 
+    }
+
+    private void processContactUs(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    {
+        String email = request.getParameter("email");
+        String name = request.getParameter("name");
+        String title = request.getParameter("title");
+        String content = request.getParameter("message");
+
+        AuthenticationManager authenticationManager = AuthenticationManager.getInstance();
+        Status status = authenticationManager.processContactUs(email, name, title, content);
+        if (status.getOperationStatus() == Status.OperationStatus.SUCCESS)
+        {
+            LOGGER.info("contact us inquiry was submitted, redirect to contact us page");
+            request.getSession().setAttribute("contactUs", true);
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/contact.jsp"));
+        }
+        else
+        {
+            LOGGER.info("failed to submit inquiry, forward to error page");
+            forwardToErrorPage(request, response, "Failed to send feedback");
+        }
     }
 
     private void processChangePassword(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException

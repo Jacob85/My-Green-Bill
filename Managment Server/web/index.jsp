@@ -82,6 +82,9 @@
             <a class="navbar-brand" href="#">My Green Bill</a>
         </div>
         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="contact.jsp">Contact Us</a></li>
+            </ul>
             <form id="login_form" class="navbar-form navbar-right" role="form">
                 <a data-toggle="modal" data-target="#full_registration" href="#login" class="btn btn-success">Sign In</a>
                 <a data-toggle="modal" data-target="#full_registration" href="#signup" class="btn btn-primary">Sign Up</a>
