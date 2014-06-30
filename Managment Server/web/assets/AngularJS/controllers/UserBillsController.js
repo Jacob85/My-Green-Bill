@@ -12,6 +12,7 @@ application.controller('BillsController', ['$scope', '$http', '$location',
         $scope.subject = "Subject";
         $scope.content = "Content";
         $scope.download = "Download File";
+        $scope.linkName = "pdf";
 
 
         var queryParameter = $location.search();
@@ -38,11 +39,13 @@ application.controller('BillsController', ['$scope', '$http', '$location',
                     console.log("Error Json");
                     //error json
                     $scope.bills = [{"date": 'NA', "company_name": 'NA', "message_subject": "NA", "fie_path": "NA"}];
+                    $scope.linkName = "";
                 }
                 else
                 {
                     console.log("Valod respons "+ response);
                     $scope.bills  = response;
+                    $scope.linkName = "pdf";
                 }
             })
             .error(function(data, status, headers, config) {

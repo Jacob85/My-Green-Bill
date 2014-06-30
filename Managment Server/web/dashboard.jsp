@@ -29,8 +29,6 @@
     %>
     <title><%=properties.getProperty("title")%></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
@@ -43,6 +41,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <!--END GLOBAL STYLES -->
 
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <!-- PAGE LEVEL STYLES -->
     <link href="assets/css/layout2.css" rel="stylesheet" />
     <link href="assets/plugins/flot/examples/examples.css" rel="stylesheet" />
