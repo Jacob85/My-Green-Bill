@@ -75,7 +75,7 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h2>SELECT NEW COMPANIES PAGE</h2>
+        <h2>Choose Companies To Subscribe</h2>
     </div>
 </div>
 
