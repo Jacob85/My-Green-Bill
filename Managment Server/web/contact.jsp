@@ -192,7 +192,7 @@
                             <span class="help-block" style="display: none;">Please enter Title.</span>
                         </div>
                         <div class="form-group">
-                            <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message"></textarea>
+                            <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message" style="height: 308px"></textarea>
                             <span class="help-block" style="display: none;">Please enter a message.</span>
                         </div>
                         <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" style="display: block; margin-top: 10px;">Send Feedback</button>

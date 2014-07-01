@@ -8,6 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
+    <%
+        /*if the session contains user mean the user is still logged on -> forward to dashboard*/
+        if (session.getAttribute("user") != null)
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
+    %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

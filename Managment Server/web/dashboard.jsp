@@ -59,31 +59,7 @@
 
     <div id="wrap">
         <div>
-            <%--<nav class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 10px">
-                <!-- LOGO SECTION -->
-                <header class="navbar-header">
-                    <a href="#" class="navbar-brand brand" style="color: limegreen">
-                        <%=properties.getProperty("brand")%>
-                    </a>
-                </header>
-
-                <ul class="nav navbar-top-links navbar-right">
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i><%=properties.getProperty("user_profile")%> </a> </li>
-                            <li class="divider"></li>
-                            <li><a href="${pageContext.request.contextPath}/authenticate/logout"><i class="icon-signout"></i><%=properties.getProperty("logout")%> </a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>--%>
-
-                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+               <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                     <div class="container">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
                             <span class="sr-only">Toggle navigation</span>
@@ -92,7 +68,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <header class="navbar-header">
-                            <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
+                            <a class="navbar-brand" href="#">My Green Bill</a>
                         </header>
                         <ul class="nav navbar-nav">
                             <li><a href="contact.jsp">Contact Us</a></li>
