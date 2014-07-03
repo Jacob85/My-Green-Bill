@@ -61,8 +61,33 @@ function isEmailAddressValid(email)
     return true;
 }
 
+$(document).ready(function(){
+    $('#registration_modal').on('shown.bs.modal', function() {
+        $('#toogleSignUp').click();
+    })
+});
 var firstTime = true;
 $(document).ready(function(){
+
+    $('#form-signin').validate(
+        {
+            rules:{
+                login_form_email:{
+                    required: true,
+                    email: true
+                },
+                login_form_password:{
+                    required: true,
+                    password: true,
+                    minlength: 6
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').removeClass('success').addClass('error');
+            }
+        }
+    );
+
 
     $('#appLoginForm').validate(
         {
@@ -70,20 +95,7 @@ $(document).ready(function(){
             {
                 appRegisterId:
                 {
-                    required: function()
-                    {
-                        var selected = $("#appLoginForm input[type='radio']:checked");
-                        var selectedId = selected.attr('id');
-                        console.log("Selected Radio button id is: " + selectedId);
-                        if (selectedId == "registerRadioBox")
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    },
+                    required: true,
                     minlength: 8,
                     number: true
                 }
@@ -97,16 +109,11 @@ $(document).ready(function(){
                 if (firstTime)
                 {
                     firstTime=false;
-                    googleLogin();
+                    googleLogin(signinCallback);
                     event.preventDefault();
                 }
                 else
                 {
-                    var origAction = $('#appLoginForm').attr('action');
-                    var selected = $("#appLoginForm input[type='radio']:checked");
-                    /*change the form action*/
-                    console.log("changing form action from" + origAction + " to " + origAction + selected.val());
-                    $('#appLoginForm').attr('action', origAction + selected.val());
                     form.submit();
                 }
             }
@@ -162,35 +169,48 @@ $(document).ready(function(){
             }*/
         });
 
-   // jQuery.noConflict();
-
-    // set the content of the front page
-    $('#marketing_text').text("Tired of losing your monthly bills? " +
-        "The bills went lost by the post office again? " +
-        "Finding it hard to keep track on your household expenses? " +
-        "If the answer is yes, let us help you... check out this video...");
 
 
+    $('#loginWithGoogle').click(function(){
+        googleLogin(signInOnlyCallback);
+    });
 }); // end document.ready
 
-function openPopUp()
-{
-    jQuery.noConflict();
-    $('#sign_up_model').modal('show');
-}
 
-function googleLogin()
+function googleLogin(callback)
 {
     var myParams = {
         'clientid' : '288366509317-1hgkph86vukk0iu4983vsol50b24l0bg.apps.googleusercontent.com', //You need to set client id
         'cookiepolicy' : 'single_host_origin',
-        'callback' : 'signinCallback', //callback function
+        'callback' : callback, //callback function
 //        'approvalprompt':'force',
         'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'
     };
     gapi.auth.signIn(myParams);
 }
+function signInOnlyCallback(authResult)
+{
+    if (authResult['status']['signed_in']) {
+        // Update the app to reflect a signed in user
+        // Hide the sign-in button now that the user is authorized, for example:
+        //document.getElementById('signinButton').setAttribute('style', 'display: none');
+        console.log("Success!!");
+        $.getJSON("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + authResult["access_token"], function (data){
+            console.log(data);
+            console.log(data.email);
+            addFormHiddenParamsAndSubmit(data, '#goggleLoginForm');
 
+        });
+    } else {
+        // Update the app to reflect a signed out user
+        // Possible error values:
+        //   "user_signed_out" - User is signed-out
+        //   "access_denied" - User denied access to your app
+        //   "immediate_failed" - Could not automatically log in the user
+        console.log('Sign-in state: ' + authResult['error']);
+    }
+    console.log(authResult);
+}
 function signinCallback(authResult)
 {
     if (authResult['status']['signed_in']) {
@@ -201,7 +221,7 @@ function signinCallback(authResult)
         $.getJSON("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + authResult["access_token"], function (data){
             console.log(data);
             console.log(data.email);
-            addFormHiddenParamsAndSubmit(data);
+            addFormHiddenParamsAndSubmit(data, "#appLoginForm");
 
         });
     } else {
@@ -215,28 +235,28 @@ function signinCallback(authResult)
     console.log(authResult);
 }
 
-function addFormHiddenParamsAndSubmit(data){
+function addFormHiddenParamsAndSubmit(data, formID){
 
     $('<input />').attr('type', 'hidden')
         .attr('name', 'firstName')
         .attr('value', data.given_name)
-        .appendTo('#appLoginForm');
+        .appendTo(formID);
 
     $('<input />').attr('type', 'hidden')
         .attr('name', 'lastName')
         .attr('value', data.family_name)
-        .appendTo('#appLoginForm');
+        .appendTo(formID);
 
     $('<input />').attr('type', 'hidden')
         .attr('name', 'email')
         .attr('value', data.email)
-        .appendTo('#appLoginForm');
+        .appendTo(formID);
 
     $('<input />').attr('type', 'hidden')
         .attr('name', 'picture')
         .attr('value', data.picture)
-        .appendTo('#appLoginForm');
+        .appendTo(formID);
 
      /*submit the form*/
-    $('#appLoginForm').submit();
+    $( formID).submit();
 }

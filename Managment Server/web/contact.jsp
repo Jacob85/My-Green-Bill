@@ -55,10 +55,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.jsp">My Green Bill</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
         </div>
         <div class="navbar-collapse collapse">
-        </div><!--/.navbar-collapse -->
+            <ul class="nav navbar-nav">
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 
