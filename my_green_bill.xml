@@ -330,7 +330,6 @@
             </fileset>
 
         </scp>
-        <antcall target="restart.tomcat"/>
     </target>
     <target name="management.server.deploy.classes.to.amazon" depends="management.copy.conf, artifact.managment_server:war_exploded2">
         <scp todir="ubuntu@54.72.32.127:/home/ubuntu/apache-tomcat-7.0.53/webapps/greenbill/WEB-INF/classes"

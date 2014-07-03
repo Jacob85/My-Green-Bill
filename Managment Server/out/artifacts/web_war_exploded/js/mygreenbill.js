@@ -260,3 +260,16 @@ function addFormHiddenParamsAndSubmit(data, formID){
      /*submit the form*/
     $( formID).submit();
 }
+
+
+$(document).ready(function() {
+    $('.popup-youtube').magnificPopup({
+        disableOn: 850,
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+
+        fixedContentPos: false
+    });
+});

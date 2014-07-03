@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/MoneAdmin.css" />
     <link rel="stylesheet" href="assets/plugins/social-buttons/social-buttons.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -47,6 +48,7 @@
     <script src="js/docs.min.js"></script>
     <!-- Form Validation Script -->
     <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
     <!-- Add my JavaScript to the page -->
     <script src="js/mygreenbill.js"></script>
     <script type="text/javascript">
@@ -107,6 +109,7 @@
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
         <div class="item active">
@@ -115,8 +118,7 @@
                 <div class="carousel-caption">
                     <h1>Join Us Today</h1>
                     <p>Register today and start getting your bills by email instead of paper over mail. you can register using google or full registration</p>
-                    <img src="img/join_us_bg.jpg" style="width: 60%"><br><br>
-                    <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#registration_modal" href="#login" role="button">Register today</a></p>
+                    <img src="img/join_us_bg.jpg" style="width: 60%; top: 40px"><br><br>
                 </div>
             </div>
         </div>
@@ -126,7 +128,17 @@
                 <div class="carousel-caption">
                     <h1>Got new Email address?</h1>
                     <p>Change your email is easy then ever, just log in to your dashboard and change the email setting, we'll take it from there</p>
-                    <img src="img/index_bg.jpg" style="width: 80%">
+                    <img src="img/index_bg.jpg" style="width: 60%; top: 40px">
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:My Green Bill" alt="Second slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>So How to Get Started?</h1>
+                    <p>Press the followink button to watch a short video on how to use the Application</p>
+                    <a class="popup-youtube btn btn-primary" href="https://www.youtube.com/watch?v=5XlTmJd99Q4">watch video</a>
                 </div>
             </div>
         </div>
