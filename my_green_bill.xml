@@ -348,7 +348,6 @@
                 <include name="*.jsp"/>
             </fileset>
         </scp>
-        <antcall target="restart.tomcat"/>
     </target>
 
 

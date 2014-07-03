@@ -11,6 +11,12 @@
 <%
     // Getting the user object from the current session
     GreenBillUser user = (GreenBillUser) request.getSession().getAttribute("user");
+    if (user == null)
+    {
+        System.out.println(user);
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
+        return;
+    }
 %>
 
 <link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -21,7 +27,7 @@
 
 <div class="row">
     <div class="col-lg-8">
-        <h2>COMPANIES PAGE</h2>
+        <h2><%=user.getFullName()%>'s Companies </h2>
         <a href="#/User/Companies/Select" class="btn btn-primary">Add Companies</a>
     </div>
 </div>

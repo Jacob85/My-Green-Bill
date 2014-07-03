@@ -29,8 +29,6 @@
     %>
     <title><%=properties.getProperty("title")%></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
@@ -43,6 +41,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <!--END GLOBAL STYLES -->
 
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <!-- PAGE LEVEL STYLES -->
     <link href="assets/css/layout2.css" rel="stylesheet" />
     <link href="assets/plugins/flot/examples/examples.css" rel="stylesheet" />
@@ -60,31 +59,7 @@
 
     <div id="wrap">
         <div>
-            <%--<nav class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 10px">
-                <!-- LOGO SECTION -->
-                <header class="navbar-header">
-                    <a href="#" class="navbar-brand brand" style="color: limegreen">
-                        <%=properties.getProperty("brand")%>
-                    </a>
-                </header>
-
-                <ul class="nav navbar-top-links navbar-right">
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i><%=properties.getProperty("user_profile")%> </a> </li>
-                            <li class="divider"></li>
-                            <li><a href="${pageContext.request.contextPath}/authenticate/logout"><i class="icon-signout"></i><%=properties.getProperty("logout")%> </a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>--%>
-
-                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+               <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                     <div class="container">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
                             <span class="sr-only">Toggle navigation</span>
@@ -93,8 +68,11 @@
                             <span class="icon-bar"></span>
                         </button>
                         <header class="navbar-header">
-                            <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
+                            <a class="navbar-brand" href="#">My Green Bill</a>
                         </header>
+                        <ul class="nav navbar-nav">
+                            <li><a href="contact.jsp">Contact Us</a></li>
+                        </ul>
                         <ul class="nav navbar-top-links navbar-right">
 
                             <li class="dropdown">

@@ -30,8 +30,8 @@
          <h3 style="display: inline"> <%=user != null ? user.getFirstName() + " " + user.getLastName() : ""%> Bills </h3>
           <div style="float: right;">
               Filter the table:
-              <input type="text" ng-model="searchstr" placeholder="filter the table..." />
-              <select id="selectedFilter">
+              <input type="text" class="input-block-level" ng-model="searchstr" placeholder="filter the table..." />
+              <select class="input-block-level" id="selectedFilter">
                  <option value="date">{{ date }}</option>
                  <option value="companyName" selected>{{ companyName }}</option>
                  <option value="subject">{{ subject }}</option>
@@ -60,7 +60,7 @@
           <td>{{bill.company_name}}</td>
           <td>{{bill.message_subject}}</td>
           <!-- <td>{{bill.message_content}}</td> -->
-          <td> <a ng-attr-href="${pageContext.request.contextPath}/dashboard/downloadBill?path={{bill.fie_path}}" target="_blank"> pdf </a></td>
+          <td> <a ng-attr-href="${pageContext.request.contextPath}/dashboard/downloadBill?path={{bill.fie_path}}" target="_blank"> {{linkName}} </a></td>
       </tr>
 
       </tbody>

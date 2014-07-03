@@ -8,12 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
+    <%
+        /*if the session contains user mean the user is still logged on -> forward to dashboard*/
+        if (session.getAttribute("user") != null)
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dashboard"));
+    %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>My Green Bill</title>
 
     <!-- Bootstrap core CSS -->
@@ -83,6 +87,9 @@
             <a class="navbar-brand" href="#">My Green Bill</a>
         </div>
         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="contact.jsp">Contact Us</a></li>
+            </ul>
             <form id="login_form" class="navbar-form navbar-right" role="form">
                 <a data-toggle="modal" data-target="#full_registration" href="#login" class="btn btn-success">Sign In</a>
                 <a data-toggle="modal" data-target="#full_registration" href="#signup" class="btn btn-primary">Sign Up</a>
@@ -90,7 +97,6 @@
         </div><!--/.navbar-collapse -->
     </div>
 </div>
-
 
 <!-- Carousel
 ================================================== -->

@@ -6,7 +6,7 @@
     if (user == null)
     {
         System.out.println(user);
-        response.sendRedirect("authenticate/login");
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
         return;
     }
 %>
@@ -65,7 +65,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h2>ACCOUNT SETTINGS PAGE</h2>
+        <h2> <%=user.getFullName()%>'s Setting Page</h2>
     </div>
 </div>
 <hr />
