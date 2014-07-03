@@ -106,10 +106,10 @@
             <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:My Green Bill" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
+                    <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#full_registration" href="#login" role="button">Register today</a></p>
                     <h1>Join Us Today</h1>
                     <p>Register today and start getting your bills by email instead of paper over mail. you can register using google or full registration</p>
-                    <img src="img/join_us_bg.jpg" style="width: 60%"><br><br>
-                    <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#full_registration" href="#login" role="button">Register today</a></p>
+                    <img src="img/join_us_bg.jpg" style="width: 60%; top: 40px"><br><br>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
                 <div class="carousel-caption">
                     <h1>Got new Email address?</h1>
                     <p>Change your email is easy then ever, just log in to your dashboard and change the email setting, we'll take it from there</p>
-                    <img src="img/index_bg.jpg" style="width: 80%">
+                    <img src="img/index_bg.jpg" style="width: 60%; top: 40px">
                 </div>
             </div>
         </div>
