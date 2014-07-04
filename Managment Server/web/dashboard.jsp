@@ -111,12 +111,12 @@
         <ul id="menu" class="collapse">
 
 
-        <li class="panel active">
+        <li class="panel">
             <a href="#" >
                 <i class="icon-table"></i> <%=properties.getProperty("dashboard")%></a>
         </li>
 
-        <li class="panel ">
+        <li class="panel">
             <a href="#/User/Bills" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                 <i class="icon-tasks"> </i> <%=properties.getProperty("my_bills")%>
                         <span class="pull-right">
