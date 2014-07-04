@@ -119,6 +119,7 @@ public class RegistrationManager implements IRegistration
             return new Status(Status.OperationStatus.FAILED, "Failed to update Current Session With User Info the request or the session is null");
         }
         GreenBillUser registeredUser = new GreenBillUser(request);
+        registeredUser.setLoggedIn(true);
         currentSession.setAttribute("user", registeredUser);
         return  new Status(Status.OperationStatus.SUCCESS, "Current Session Was Updated With User Info ");
 

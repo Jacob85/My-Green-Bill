@@ -113,6 +113,8 @@ public class AuthenticationServlet extends HttpServlet
             //forward to old_index.jsp
             LOGGER.info("User's password was successfully restored, forwarding to mainPage");
             request.getSession().setAttribute("passRestore", true);
+            // make sure user is not logged in
+            greenBillUser.setLoggedIn(false);
             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
         }
         else

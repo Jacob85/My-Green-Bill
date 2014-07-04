@@ -22,6 +22,7 @@ public class GreenBillUser
     private String forwardEmail;
     private boolean isActive;
     private List<GreenBillCompany> userCompanyList;
+    private boolean isLoggedIn = false;
 
     //database filed
     private final String emailKey = "email";
@@ -184,5 +185,15 @@ public class GreenBillUser
                 return company;
 
         return null;
+    }
+
+    public boolean isLoggedIn()
+    {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean isLoggedIn)
+    {
+        this.isLoggedIn = isLoggedIn;
     }
 }

@@ -17,16 +17,17 @@
     <meta charset="UTF-8" />
     <title>Error Page</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
-    <!-- GLOBAL STYLES -->
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="assets/plugins/Font-Awesome/css/font-awesome.css" />
-    <!--END GLOBAL STYLES -->
+    <script src="assets/css/jquery-ui.css"></script>
+    <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <script src="assets/plugins/jquery-2.0.3.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
 
     <!-- PAGE LEVEL STYLES -->
     <link rel="stylesheet" href="assets/css/error.css" />
@@ -38,12 +39,30 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
 <body >
 
 <!--  PAGE CONTENT -->
 <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}">My Green Bill</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="contact.jsp">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
     <div class="col-lg-8 col-lg-offset-2 text-center">
         <div class="logo">
             <h1>Error :( </h1>          </div>

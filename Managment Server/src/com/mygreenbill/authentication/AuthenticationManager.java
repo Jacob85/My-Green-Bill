@@ -58,6 +58,7 @@ public class AuthenticationManager
             LOGGER.info("login process completed, adding sign in record");
             databaseHandler.addSignInRecord(user);
             // update session with the user information
+            user.setLoggedIn(true);
             session.setAttribute("user", user);
             return new Status(Status.OperationStatus.SUCCESS, "Login completed");
         }
@@ -92,6 +93,7 @@ public class AuthenticationManager
             else
             {
                 //user was fully register and need to restore its password
+                greenBillUser.setLoggedIn(false);
                 session.setAttribute("user", greenBillUser);
                 return composeAndSendEmailFromTemplate(greenBillUser, MailTemplate.PASSWORD_RESET);
             }
@@ -288,6 +290,7 @@ public class AuthenticationManager
             sendActivationMessage(greenBillUser);
             LOGGER.debug("User was successfully activate his account, json request was sent to Mail server");
 
+            greenBillUser.setLoggedIn(true);
             session.setAttribute("user", greenBillUser);
             LOGGER.info("Current session was update with user details fro user name: " + greenBillUser.getFirstName());
 

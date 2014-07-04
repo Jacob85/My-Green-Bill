@@ -33,9 +33,9 @@ public class ConfigurationManager
 
         try
         {
-            //properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.properties"));
-            inputStream = new FileInputStream(projectPath + "/conf/configuration.properties");
-            properties.load(inputStream);
+            properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.properties"));
+            /*inputStream = new FileInputStream(projectPath + "/conf/configuration.properties");
+            properties.load(inputStream);*/
         } catch (FileNotFoundException e)
         {
             LOGGER.error("Cannot open configuration file", e);
