@@ -137,8 +137,8 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>So How to Get Started?</h1>
-                    <p>Press the followink button to watch a short video on how to use the Application</p>
-                    <a class="popup-youtube btn btn-primary" href="https://www.youtube.com/watch?v=5XlTmJd99Q4">watch video</a>
+                    <p>Press the following image to watch a short video on how to use the Application</p>
+                    <a class="popup-youtube" href="https://www.youtube.com/watch?v=5XlTmJd99Q4"><img src="img/clip_image.jpg" style="width: 60%; top: 40px"></a>
                 </div>
             </div>
         </div>

@@ -7,11 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ced5316-d76b-49bb-8a2d-30fde3c8d588" name="Default" comment="Syntax update">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/web/img/index_bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/web/img/join_us_bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Managment Server/web/img/clip_image.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConfigurationManager.class" afterPath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/WEB-INF/classes/com/mygreenbill/common/ConfigurationManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" afterPath="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java" afterPath="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/Managment Server/out/artifacts/web_war_exploded/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Managment Server/web/index.jsp" afterPath="$PROJECT_DIR$/Managment Server/web/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -74,23 +74,7 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" line="36" class="com.mygreenbill.common.ConfigurationManager" package="com.mygreenbill.common">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -100,66 +84,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MailServerHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="261" column="22" selection-start="10019" selection-end="10019" vertical-scroll-proportion="0.0" vertical-offset="4059" max-vertical-offset="4740">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonMessageHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="96" selection-start="9606" selection-end="9606" vertical-scroll-proportion="0.0" vertical-offset="3046" max-vertical-offset="3735">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init_mygreenbill_db.sql" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="784" column="324" selection-start="36331" selection-end="36331" vertical-scroll-proportion="0.0" vertical-offset="11498" max-vertical-offset="13710">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userCompanies.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="12" selection-start="782" selection-end="782" vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="735">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userAccountSettings.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userAccountSettings.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="12" selection-start="2171" selection-end="2171" vertical-scroll-proportion="-13.75" vertical-offset="675" max-vertical-offset="1515">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Managment Server/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="158" selection-start="13981" selection-end="13981" vertical-scroll-proportion="0.87383175" vertical-offset="3339" max-vertical-offset="4665">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userSelectCompanies.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="23" selection-start="2467" selection-end="2467" vertical-scroll-proportion="-5.625" vertical-offset="1020" max-vertical-offset="1770">
+            <state line="139" column="48" selection-start="6451" selection-end="6451" vertical-scroll-proportion="0.47560975" vertical-offset="1890" max-vertical-offset="5055">
               <folding />
             </state>
           </provider>
@@ -207,7 +135,6 @@
         <option value="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_store_procedures.sql" />
         <option value="db-console:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/" />
         <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/authentication/AuthenticationManager.java" />
-        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/IMailServerHandler.java" />
         <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/servlets/DashboardServlet.java" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userRemoveCompanies.jsp" />
@@ -216,18 +143,19 @@
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/common/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/my_green_bill.xml" />
         <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConnectionManager.java" />
-        <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" />
         <option value="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserCompaniesController.js" />
         <option value="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserSelectCompaniesController.js" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userDashboard.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/web/assets/AngularJS/app.js" />
-        <option value="$PROJECT_DIR$/Managment Server/web/dashboard.jsp" />
         <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java" />
         <option value="$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp" />
         <option value="$PROJECT_DIR$/Managment Server/web/AngularViews/userAccountSettings.jsp" />
+        <option value="$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java" />
+        <option value="$PROJECT_DIR$/Managment Server/web/dashboard.jsp" />
+        <option value="$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java" />
         <option value="$PROJECT_DIR$/Managment Server/web/index.jsp" />
       </list>
     </option>
@@ -331,11 +259,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -349,11 +273,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AngularViews" />
+              <option name="myItemId" value="mygreenbill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My Green Bill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Managment Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mygreenbill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -995,7 +941,13 @@
       <workItem from="1403610018852" duration="775000" />
       <workItem from="1403872974240" duration="870000" />
       <workItem from="1403874615923" duration="4607000" />
-      <workItem from="1404060957881" duration="4103000" />
+      <workItem from="1404060957881" duration="4650000" />
+      <workItem from="1404223669689" duration="610000" />
+      <workItem from="1404380357436" duration="871000" />
+      <workItem from="1404381410878" duration="599000" />
+      <workItem from="1404463857080" duration="375000" />
+      <workItem from="1404464355328" duration="328000" />
+      <workItem from="1404554761223" duration="587000" />
     </task>
     <task id="LOCAL-00001" summary="added the Copy-To-Db moudule">
       <created>1396524249284</created>
@@ -1237,11 +1189,15 @@
       <created>1404064275207</created>
       <updated>1404064275207</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Added photos to index">
+      <created>1404066797348</created>
+      <updated>1404066797348</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="297970000" />
+    <option name="totallyTimeSpent" value="301887000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1272,7 +1228,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.369863" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32649842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22051696" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31260097" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1289,13 +1244,14 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3101777" sideWeight="0.48820326" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35068494" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24717286" sideWeight="0.48820326" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34931508" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40851736" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32649842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1311,7 +1267,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3785489" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3101777" sideWeight="0.48820326" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35068494" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35068494" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40851736" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1343,7 +1299,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added user_analytics table to the DB" />
     <MESSAGE value="Added new store procedure AddUserAnalytic" />
     <MESSAGE value="Added select company for users (Not complete)" />
     <MESSAGE value="Added remove company for users (Not complete)" />
@@ -1368,7 +1323,8 @@
     <MESSAGE value="Fix errors in user companies page" />
     <MESSAGE value="Fixed My Bills bug" />
     <MESSAGE value="Bux fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bux fix" />
+    <MESSAGE value="Added photos to index" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added photos to index" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1470,11 +1426,11 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..user">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Copy To DB/conf/configuration.properties">
@@ -1499,9 +1455,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/my_green_bill.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="339" column="14" selection-start="19210" selection-end="19210" vertical-scroll-proportion="0.41654572" vertical-offset="4798" max-vertical-offset="5775">
-          <folding />
-        </state>
+        <state line="339" column="14" selection-start="19210" selection-end="19210" vertical-scroll-proportion="0.41654572" vertical-offset="4798" max-vertical-offset="5775" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CommonClasses/Common Classes.iml">
@@ -1516,30 +1470,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/restful/CompanyResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="45" selection-start="7238" selection-end="7238" vertical-scroll-proportion="0.0" vertical-offset="2356" max-vertical-offset="3870">
-          <folding />
-        </state>
+        <state line="203" column="45" selection-start="7238" selection-end="7238" vertical-scroll-proportion="0.0" vertical-offset="2356" max-vertical-offset="3870" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="27" selection-start="6477" selection-end="6477" vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="6480">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="1365">
-          <folding />
-        </state>
+        <state line="151" column="27" selection-start="6477" selection-end="6477" vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="6480" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/SendEmailsHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="76" selection-start="5338" selection-end="5338" vertical-scroll-proportion="0.0" vertical-offset="1294" max-vertical-offset="1935">
-          <folding />
-        </state>
+        <state line="119" column="76" selection-start="5338" selection-end="5338" vertical-scroll-proportion="0.0" vertical-offset="1294" max-vertical-offset="1935" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CommonClasses/src/com/mygreenbill/common/MailTemplate.java">
@@ -1584,141 +1525,112 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserBillsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userDashboard.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1755" selection-end="4447" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1665">
-          <folding />
-        </state>
+        <state line="48" column="0" selection-start="1755" selection-end="4447" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1665" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userBills.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="12" selection-start="2277" selection-end="2277" vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="1365">
-          <folding />
-        </state>
+        <state line="72" column="12" selection-start="2277" selection-end="2277" vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="1365" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/assets/AngularJS/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="42" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="825">
-          <folding />
-        </state>
+        <state line="42" column="42" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="825" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/assets/AngularJS/controllers/UserCompaniesController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
+        <state line="13" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/conf/configuration.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="26" selection-start="211" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/IMailServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="19" selection-start="792" selection-end="792" vertical-scroll-proportion="0.7673267" vertical-offset="0" max-vertical-offset="606" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..mail_template">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..company">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="784" column="20" selection-start="34722" selection-end="34722" vertical-scroll-proportion="0.0" vertical-offset="11760" max-vertical-offset="13950" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="825" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/css/carousel.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="908" selection-end="908" vertical-scroll-proportion="0.3328424" vertical-offset="419" max-vertical-offset="2280" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="96461" selection-start="96631" selection-end="96631" vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="666" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="252" column="96" selection-start="9606" selection-end="9606" vertical-scroll-proportion="0.0" vertical-offset="3046" max-vertical-offset="3735" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="270" column="50" selection-start="10570" selection-end="10570" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userAccountSettings.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="12" selection-start="2209" selection-end="2209" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1515" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="42" selection-start="2486" selection-end="2486" vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="1770" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Managment Server/src/com/mygreenbill/common/ConfigurationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="41" selection-start="1382" selection-end="1382" vertical-scroll-proportion="-0.08708273" vertical-offset="555" max-vertical-offset="1365">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/dashboard.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="82" selection-start="10318" selection-end="10318" vertical-scroll-proportion="0.0" vertical-offset="3390" max-vertical-offset="3555">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/conf/configuration.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="211" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/IMailServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="19" selection-start="792" selection-end="792" vertical-scroll-proportion="0.7673267" vertical-offset="0" max-vertical-offset="606">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/MailServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="261" column="22" selection-start="10019" selection-end="10019" vertical-scroll-proportion="0.0" vertical-offset="4059" max-vertical-offset="4740">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..mail_template">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/7f2ce55d/5a0824dc-39e9-41b3-b059-025ce97c84e7/mygreenbilldb..company">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mail Server/src/com/mygreenbill/messages/JsonMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="96" selection-start="9606" selection-end="9606" vertical-scroll-proportion="0.0" vertical-offset="3046" max-vertical-offset="3735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/sql/init Scripts/init_mygreenbill_db.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="784" column="324" selection-start="36331" selection-end="36331" vertical-scroll-proportion="0.0" vertical-offset="11498" max-vertical-offset="13710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userCompanies.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="12" selection-start="782" selection-end="782" vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userSelectCompanies.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="23" selection-start="2467" selection-end="2467" vertical-scroll-proportion="-5.625" vertical-offset="1020" max-vertical-offset="1770">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/AngularViews/userAccountSettings.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="12" selection-start="2171" selection-end="2171" vertical-scroll-proportion="-13.75" vertical-offset="675" max-vertical-offset="1515">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/css/carousel.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="908" selection-end="908" vertical-scroll-proportion="0.3328424" vertical-offset="419" max-vertical-offset="2280">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Managment Server/web/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="96461" selection-start="96631" selection-end="96631" vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="666">
+        <state line="110" column="39" selection-start="5026" selection-end="5026" vertical-scroll-proportion="1.2225564" vertical-offset="837" max-vertical-offset="3225">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Managment Server/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="158" selection-start="13981" selection-end="13981" vertical-scroll-proportion="0.87383175" vertical-offset="3339" max-vertical-offset="4665">
+        <state line="139" column="48" selection-start="6451" selection-end="6451" vertical-scroll-proportion="0.47560975" vertical-offset="1890" max-vertical-offset="5055">
           <folding />
         </state>
       </provider>
